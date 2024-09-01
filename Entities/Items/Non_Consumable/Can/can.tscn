@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbsovvq1nyqk8"]
+
+[ext_resource type="Texture2D" uid="uid://dxfc1p7t6tg7o" path="res://Entities/Items/Non_Consumable/Can/Art/Can.png" id="1_uvlpk"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_uvlpk")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cboycr5wy67ji"
+path="res://.godot/imported/Feb.19 2023-05-29 1325.mp3-1b7ff712bc715f2a27869e4c4fad8c4e.mp3str"
+
+[deps]
+
+source_file="res://Locations/City/Sound/Music/Feb.19 2023-05-29 1325.mp3"
+dest_files=["res://.godot/imported/Feb.19 2023-05-29 1325.mp3-1b7ff712bc715f2a27869e4c4fad8c4e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

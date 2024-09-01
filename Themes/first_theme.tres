@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://brr683dvacaev"]
+
+[ext_resource type="FontFile" uid="uid://bjmir8y7vyk8c" path="res://Themes/Fonts/Caviar_Dreams_Bold.ttf" id="1_6rn46"]
+
+[resource]
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_6rn46")

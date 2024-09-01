@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqg55wljmotdt"]
+
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://Components/Pickup/pickup_comp.tscn" id="1_pput7"]
+[ext_resource type="Resource" uid="uid://bl8fxmedo4f47" path="res://Entities/Items/Consumables/Veggies/Tomato/tomato.tres" id="2_i4ddp"]
+
+[node name="Tomato" type="Node2D"]
+
+[node name="PickupComp" parent="." instance=ExtResource("1_pput7")]
+item = ExtResource("2_i4ddp")

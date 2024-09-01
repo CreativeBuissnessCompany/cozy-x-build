@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://6amsqu21k8vs"]
+
+[ext_resource type="Texture2D" uid="uid://vsnbalv21gcw" path="res://Locations/Sunset /Art/sunset-flat.png" id="1_q8ioe"]
+
+[node name="Sunset Map" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="PNG" type="Sprite2D" parent="."]
+texture = ExtResource("1_q8ioe")
+metadata/_edit_lock_ = true

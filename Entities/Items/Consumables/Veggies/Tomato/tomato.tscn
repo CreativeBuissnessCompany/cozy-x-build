@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2dav2jsi0fnv"]
+
+[ext_resource type="Texture2D" uid="uid://c2k8bvm2iejdv" path="res://Entities/Items/Consumables/Veggies/Tomato/Art/Tomato.png" id="1_d0dox"]
+[ext_resource type="Script" path="res://Components/ItemResizer/item_resizer.gd" id="2_3jyay"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_d0dox")
+script = ExtResource("2_3jyay")
