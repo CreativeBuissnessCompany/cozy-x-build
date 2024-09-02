@@ -17,7 +17,7 @@ func _ready() -> void:
 func _on_area_2d_body_entered(body: Player) -> void:
 	
 	if body is Player: 
-		print("Got an %s!" % item.name)
+		print_debug("Got an %s!" % item.name)
 		body.on_item_picked_up(item)
 		self.queue_free()
 	else:

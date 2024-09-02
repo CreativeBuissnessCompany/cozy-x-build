@@ -12,7 +12,7 @@
 
 [node name="Player" parent="Sunset Map" instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
-metadata/_edit_lock_ = true
+position = Vector2(-16, 118)
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
 script = ExtResource("3_p78e7")
