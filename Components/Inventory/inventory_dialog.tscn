@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://gmoti5cjspg6"]
+[gd_scene load_steps=8 format=3 uid="uid://gmoti5cjspg6"]
 
 [ext_resource type="Script" path="res://Components/Inventory/inventory_dialog.gd" id="1_roulo"]
 [ext_resource type="Texture2D" uid="uid://c5lrmo5nbo2u3" path="res://Components/Inventory/Art/UI_Screen.png" id="1_xvxwu"]
@@ -9,14 +9,6 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5aj0"]
 texture = ExtResource("1_xvxwu")
 region_rect = Rect2(0, 0, 640, 370)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1rx1"]
-texture = ExtResource("4_tlcim")
-region_rect = Rect2(16, 16, 288, 160)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jgoud"]
-texture = ExtResource("4_tlcim")
-region_rect = Rect2(96, 208, 288, 32)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_er53s"]
 texture = ExtResource("4_tlcim")
@@ -38,6 +30,7 @@ item_slot_scene = ExtResource("2_g44k5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
+custom_minimum_size = Vector2(640, 360)
 layout_mode = 2
 color = Color(0.137255, 0.137255, 0.137255, 0.745098)
 
@@ -55,11 +48,16 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 9
 
-[node name="MainBoxPanel" type="Panel" parent="HBoxContainer/VBoxContainer"]
+[node name="MainBoxPanel" type="NinePatchRect" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(240, 150)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_k1rx1")
+texture = ExtResource("4_tlcim")
+region_rect = Rect2(17, 16, 288, 160)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/MainBoxPanel"]
 unique_name_in_owner = true
@@ -78,22 +76,32 @@ custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="LowerBoxPanel" type="Panel" parent="HBoxContainer/VBoxContainer/LowerBoxHBoxContainer"]
+[node name="LowerBoxPanel" type="NinePatchRect" parent="HBoxContainer/VBoxContainer/LowerBoxHBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_jgoud")
+texture = ExtResource("4_tlcim")
+region_rect = Rect2(97, 208, 288, 32)
+patch_margin_left = 4
+patch_margin_top = 6
+patch_margin_right = 4
+patch_margin_bottom = 6
 
-[node name="ItemDescRichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/LowerBoxHBoxContainer/LowerBoxPanel"]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/LowerBoxHBoxContainer/LowerBoxPanel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.021
-anchor_top = 0.135
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="ItemDescRichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/LowerBoxHBoxContainer/LowerBoxPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_djjsr")
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true

@@ -30,89 +30,91 @@ offset_top = -17.5
 offset_right = 36.0
 offset_bottom = 17.5
 
-[node name="Apple" parent="." instance=ExtResource("8_gd88y")]
+[node name="SpawnedItems" type="Node" parent="."]
+
+[node name="Apple" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(20, 95)
 
-[node name="Apple2" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple2" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(62, 100)
 
-[node name="Apple3" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple3" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(52, 174)
 
-[node name="Apple4" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple4" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(22, 141)
 
-[node name="Apple5" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple5" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-33, 148)
 
-[node name="Apple6" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple6" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-65, 124)
 
-[node name="Apple7" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple7" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-95, 98)
 
-[node name="Apple8" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple8" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-105, 59)
 
-[node name="Apple9" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple9" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(38, 66)
 
-[node name="Apple10" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple10" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(80, 71)
 
-[node name="Apple11" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple11" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(70, 145)
 
-[node name="Apple12" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple12" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(40, 112)
 
-[node name="Apple13" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple13" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-15, 119)
 
-[node name="Apple14" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple14" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-47, 95)
 
-[node name="Apple15" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple15" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-77, 69)
 
-[node name="Apple16" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple16" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-87, 30)
 
-[node name="Apple17" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple17" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(9, 125)
 
-[node name="Apple18" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple18" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(51, 130)
 
-[node name="Apple19" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple19" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(41, 204)
 
-[node name="Apple20" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple20" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(11, 171)
 
-[node name="Apple21" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple21" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-44, 178)
 
-[node name="Apple22" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple22" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-76, 154)
 
-[node name="Apple23" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple23" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-106, 128)
 
-[node name="Apple24" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple24" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-116, 89)
 
-[node name="Apple25" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple25" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(88, 196)
 
-[node name="Apple26" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple26" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(33, 203)
 
-[node name="Apple27" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple27" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(1, 179)
 
-[node name="Apple28" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple28" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-29, 153)
 
-[node name="Apple29" parent="." instance=ExtResource("8_gd88y")]
+[node name="Apple29" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-39, 114)

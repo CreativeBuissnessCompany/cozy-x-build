@@ -33,10 +33,20 @@ func open(inventory:Inventory):
 
 
 
+# ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT
 
-func _on_item_button_pressed(item_description):
+func _on_item_button_pressed(item_description,animated_sprite_2d):
 		print_debug("Received " + item_description )
 		item_desc_label.text = item_description
+		
+		# Stop Other Slot Animations
+		var slot_array = grid_container.get_children()
+		for slot in slot_array:
+			slot.animated_sprite_2d.animation = "Default"
+		
+		
+		# Set Animation
+		animated_sprite_2d.animation = "Selected"
 		pass
 
 
