@@ -20,9 +20,13 @@ config/icon="res://Entities/Player/Art/raincoat-boy-player-version.png"
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/borderless=true
-window/size/window_width_override=2880
-window/size/window_height_override=1800
+window/size/window_width_override=1440
+window/size/window_height_override=900
 window/stretch/mode="canvas_items"
+
+[editor]
+
+movie_writer/movie_file="/Users/kennethfee/Documents/Cozy Game Clips/CozyX02.avi"
 
 [file_customization]
 
