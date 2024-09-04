@@ -21,9 +21,13 @@ func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_slide()
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	
 	camera_zoom()
+	
+	quit_game()
+	
+	
 
 
 
@@ -44,3 +48,8 @@ func camera_zoom():
 func get_input():
 	var input_direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	velocity = input_direction * speed
+
+func quit_game()->void:
+	
+	if Input.is_action_just_released("escape"):
+		get_tree().quit() 

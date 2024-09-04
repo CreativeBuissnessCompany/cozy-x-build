@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://db4eylrann81f"]
+[gd_scene load_steps=8 format=3 uid="uid://db4eylrann81f"]
 
 [ext_resource type="PackedScene" uid="uid://6amsqu21k8vs" path="res://Locations/Sunset /sunset_map.tscn" id="1_7ri7l"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="2_3rlae"]
 [ext_resource type="PackedScene" uid="uid://gmoti5cjspg6" path="res://Components/Inventory/inventory_dialog.tscn" id="2_dx7gh"]
 [ext_resource type="Script" path="res://UI/UI Root/ui_root.gd" id="3_p78e7"]
+[ext_resource type="PackedScene" uid="uid://dkh1qf7asekwi" path="res://Entities/Items/Tools/Hoe/hoe_pickup.tscn" id="6_k6nmn"]
+[ext_resource type="PackedScene" uid="uid://coshdjio0oqhl" path="res://Entities/Items/Tools/Watering_Can/watering_can_pickup.tscn" id="7_gm8dl"]
 [ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://Entities/Items/Consumables/Fruits/Apple/apple_pickup.tscn" id="8_gd88y"]
 
 [node name="Universe" type="Node2D"]
@@ -32,89 +34,23 @@ offset_bottom = 17.5
 
 [node name="SpawnedItems" type="Node" parent="."]
 
-[node name="Apple" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(20, 95)
-
-[node name="Apple2" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(62, 100)
-
-[node name="Apple3" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(52, 174)
-
-[node name="Apple4" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(22, 141)
-
-[node name="Apple5" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-33, 148)
-
-[node name="Apple6" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-65, 124)
-
 [node name="Apple7" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-95, 98)
-
-[node name="Apple8" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-105, 59)
-
-[node name="Apple9" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(38, 66)
-
-[node name="Apple10" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(80, 71)
 
 [node name="Apple11" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(70, 145)
 
-[node name="Apple12" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(40, 112)
-
-[node name="Apple13" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-15, 119)
-
-[node name="Apple14" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-47, 95)
-
-[node name="Apple15" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-77, 69)
-
-[node name="Apple16" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-87, 30)
-
-[node name="Apple17" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(9, 125)
-
-[node name="Apple18" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(51, 130)
-
-[node name="Apple19" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(41, 204)
-
-[node name="Apple20" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(11, 171)
-
-[node name="Apple21" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-44, 178)
-
-[node name="Apple22" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-76, 154)
-
-[node name="Apple23" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-106, 128)
-
-[node name="Apple24" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-116, 89)
-
-[node name="Apple25" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(88, 196)
-
-[node name="Apple26" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(33, 203)
-
-[node name="Apple27" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(1, 179)
-
-[node name="Apple28" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
-position = Vector2(-29, 153)
-
 [node name="Apple29" parent="SpawnedItems" instance=ExtResource("8_gd88y")]
 position = Vector2(-39, 114)
+
+[node name="HoePickup" parent="SpawnedItems" instance=ExtResource("6_k6nmn")]
+position = Vector2(30, 88)
+
+[node name="HoePickup2" parent="SpawnedItems" instance=ExtResource("6_k6nmn")]
+position = Vector2(65, 103)
+
+[node name="WateringCanPickup" parent="SpawnedItems" instance=ExtResource("7_gm8dl")]
+position = Vector2(27, 137)
+
+[node name="WateringCanPickup2" parent="SpawnedItems" instance=ExtResource("7_gm8dl")]
+position = Vector2(14, 174)

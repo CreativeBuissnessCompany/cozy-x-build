@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=5 format=3 uid="uid://b8kqqyhobg6pb"]
+
+[ext_resource type="Script" path="res://Data/Model/item_sprite_sheet.gd" id="1_3e63d"]
+[ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://Entities/Items/Tools/Art/tools.png" id="1_ysscr"]
+[ext_resource type="PackedScene" uid="uid://dbtiim1tk6o6q" path="res://Entities/Items/Tools/Hoe/hoe.tscn" id="2_jtsoy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hirg"]
+atlas = ExtResource("1_ysscr")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_3e63d")
+name = "Hoe"
+scene = ExtResource("2_jtsoy")
+icon = SubResource("AtlasTexture_5hirg")
+description = "A [wave amp=25.0 freq=3.0 connected=1] [color=Lightsteelblue ]Hoe...[/color][/wave] But for Farming!"
