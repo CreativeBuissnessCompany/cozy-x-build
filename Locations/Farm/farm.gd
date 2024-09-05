@@ -2,13 +2,17 @@
 extends Node2D
 
 # @onready.. 
-@onready var tilemap: TileMapLayer = $"01Ground_TileMapLayer"
+
+# Layers
+@onready var tml_1:= $"01GroundAndGrass_TileMapLayer"
+@onready var tml_2:= $"02GrassAndCrops_TileMapLayer"
+@onready var tml_3:= $"03TilledAndWateredTileMapLayer2"
+
+
 
 
 
 #  Variables ....   NOTE 
-
-
 
 
 # 1st Terrain Set
@@ -54,11 +58,11 @@ func _input(event: InputEvent) -> void:
 		farming_mode_state = FARMING_MODES.TILL
 		print("till")
 	
-	
 	# R key
 	if Input.is_action_just_pressed("toggle_seeds"):
 		farming_mode_state = FARMING_MODES.WATERING
 		print("water")
+	
 	
 	
 	# Is the mouse clicked?
@@ -66,36 +70,50 @@ func _input(event: InputEvent) -> void:
 		# Whats the pos of Mouse? Vector 2
 		var mouse_pos: Vector2 = get_global_mouse_position()
 		# Convert that from Float to Int ...
-		var tml_mouse_pos: Vector2i = tilemap.local_to_map(mouse_pos)
 		
 		# Check state of farming ... If WATERING...
 		if farming_mode_state == FARMING_MODES.WATERING:
 			# Custom func , Requires converted mouse location and custom data layer name ...
 			#  Retrievies SPECIFIC data from the tile ...
-			if retrieving_custom_data(tml_mouse_pos, can_water_custom_data):
-				wet_tiles.append(tml_mouse_pos)
+			var mouse_pos_for_watering = convert_mos_local(tml_3,mouse_pos)
+			
+			# How's this working ? ...
+			# Layer , Mos , CustomData Name
+			if retrieving_custom_data(tml_3, mouse_pos_for_watering,can_water_custom_data):
+				wet_tiles.append(mouse_pos_for_watering)
 				# Set the tilemap at mouse position using source id and atlas coords 
-				tilemap.set_cells_terrain_connect(wet_tiles,terrain_set, watered_terrain)
+				tml_3.set_cells_terrain_connect(wet_tiles,terrain_set, watered_terrain)
 		
 		# Otherwise it's just TILL.... 
 		elif farming_mode_state == FARMING_MODES.TILL:
+			
+			var mouse_pos_for_tilling = convert_mos_local(tml_2,mouse_pos)
+			
 			# Check that you can even get custom data called can_water
-			if retrieving_custom_data(tml_mouse_pos, can_till_custom_data):
-				dirt_tiles.append(tml_mouse_pos)
-				tilemap.set_cells_terrain_connect(dirt_tiles,terrain_set, tilled_terrain)
-				pass
+			if retrieving_custom_data(tml_2, mouse_pos_for_tilling, can_till_custom_data):
+				dirt_tiles.append(mouse_pos_for_tilling)
+				tml_3.set_cells_terrain_connect(dirt_tiles,terrain_set, tilled_terrain)
+				
 
+
+
+func convert_mos_local(tml_layer,mos_pos):
+	var result = tml_layer.local_to_map(mos_pos)
+	return result
 
 
 # Custom function ....
-func retrieving_custom_data(tml_mouse_pos, custom_tilemap_data_name):
+func retrieving_custom_data(tml_layer,tml_mouse_pos, custom_tilemap_data_name):
 	
-	# ALERT may cause problems due to tile_data naming ...
 	# Get tile map data at the converted mouse position...
-	var tile_data: TileData = tilemap.get_cell_tile_data(tml_mouse_pos)
+	var tile_data: TileData = tml_layer.get_cell_tile_data(tml_mouse_pos)
 	# Check if exists...
 	if tile_data:
+		print("Got Data")
+		
 		return tile_data.get_custom_data(custom_tilemap_data_name)
 	else:
+		print("NO Data here")
+		
 		return false
 	
