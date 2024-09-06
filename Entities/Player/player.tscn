@@ -6,13 +6,18 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hr3uo"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera_node") groups=["Player"]]
+y_sort_enabled = true
 script = ExtResource("1_eeuee")
 camera_node = NodePath("Camera2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 8)
 texture = ExtResource("2_4ueq5")
+offset = Vector2(0.46, -28.63)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -13)
 shape = SubResource("CircleShape2D_hr3uo")
 
 [node name="Camera2D" type="Camera2D" parent="."]

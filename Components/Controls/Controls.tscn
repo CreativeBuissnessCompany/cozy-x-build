@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://fcc1qd2fx2tc"]
+
+[ext_resource type="Theme" uid="uid://brr683dvacaev" path="res://Themes/first_theme.tres" id="1_5ekkx"]
+
+[node name="ControlsCanvasLayer" type="CanvasLayer"]
+
+[node name="Controls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5ekkx")
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="Controls/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.627451, 0.823529, 0.388235, 0.529412)
+
+[node name="LowerHalfHBoxContainer" type="HBoxContainer" parent="Controls"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls/LowerHalfHBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Controls/LowerHalfHBoxContainer/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0.552941, 1, 0.52549)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/LowerHalfHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls/LowerHalfHBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Wasd" type="RichTextLabel" parent="Controls/LowerHalfHBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
+text = "    W, A, S, D 
+Up, Dwn, Lft, Rght
+"
+
+[node name="Zoom" type="RichTextLabel" parent="Controls/LowerHalfHBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
+text = "    Z and X 
+Zoom Out and In"
+
+[node name="TillWaterRichTextLabel3" type="RichTextLabel" parent="Controls/LowerHalfHBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
+text = "     E and R 
+  Till Or Water"

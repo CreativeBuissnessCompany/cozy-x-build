@@ -4,8 +4,8 @@ extends Node2D
 # @onready.. 
 
 # Layers
-@onready var tml_1:= $"01GroundAndGrass_TileMapLayer"
-@onready var tml_2:= $"02GrassAndCrops_TileMapLayer"
+@onready var tml_1:= $"01FarmGrass_TileMapLayer"
+@onready var tml_2:= $"02GrassOnDirt_TileMapLayer"
 @onready var tml_3:= $"03TilledAndWateredTileMapLayer2"
 
 
@@ -71,6 +71,10 @@ func _input(event: InputEvent) -> void:
 		var mouse_pos: Vector2 = get_global_mouse_position()
 		# Convert that from Float to Int ...
 		
+		
+		
+		
+		# NOTE FARMING STATES //////
 		# Check state of farming ... If WATERING...
 		if farming_mode_state == FARMING_MODES.WATERING:
 			# Custom func , Requires converted mouse location and custom data layer name ...
@@ -84,6 +88,8 @@ func _input(event: InputEvent) -> void:
 				# Set the tilemap at mouse position using source id and atlas coords 
 				tml_3.set_cells_terrain_connect(wet_tiles,terrain_set, watered_terrain)
 		
+		
+		
 		# Otherwise it's just TILL.... 
 		elif farming_mode_state == FARMING_MODES.TILL:
 			
@@ -94,6 +100,17 @@ func _input(event: InputEvent) -> void:
 				dirt_tiles.append(mouse_pos_for_tilling)
 				tml_3.set_cells_terrain_connect(dirt_tiles,terrain_set, tilled_terrain)
 				
+		
+		# Trying to fix tiles, tiling weird
+		if wet_tiles.size() or dirt_tiles.size() >= 3:
+			print("Big 3 !")
+			wet_tiles.pop_back()
+			dirt_tiles.pop_back()
+			
+			pass
+		
+		#print(wet_tiles)
+		return
 
 
 
