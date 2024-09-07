@@ -17,11 +17,11 @@ var inventory:Inventory = Inventory.new()
 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	get_input()
 	move_and_slide()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	
 	camera_zoom()
 	

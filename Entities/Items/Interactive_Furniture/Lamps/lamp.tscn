@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://0tebga7h547q"]
+
+[ext_resource type="Texture2D" uid="uid://bhsr5t3imheng" path="res://Locations/Farm/Art/farm-interior-test.png" id="1_udxyt"]
+
+[node name="Lamp" type="Sprite2D"]
+texture = ExtResource("1_udxyt")
+region_enabled = true
+region_rect = Rect2(352, 32, 32, 32)

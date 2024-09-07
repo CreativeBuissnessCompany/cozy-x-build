@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6nqqggvbaemk"]
+
+[ext_resource type="Texture2D" uid="uid://bhsr5t3imheng" path="res://Locations/Farm/Art/farm-interior-test.png" id="1_uqytj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1vhk"]
+size = Vector2(58, 90)
+
+[node name="Bed" type="StaticBody2D"]
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(92, -9)
+texture = ExtResource("1_uqytj")
+region_enabled = true
+region_rect = Rect2(480, 16, 64, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(93, -9)
+shape = SubResource("RectangleShape2D_f1vhk")

@@ -7,6 +7,7 @@
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera_node") groups=["Player"]]
 y_sort_enabled = true
+collision_layer = 2
 script = ExtResource("1_eeuee")
 camera_node = NodePath("Camera2D")
 

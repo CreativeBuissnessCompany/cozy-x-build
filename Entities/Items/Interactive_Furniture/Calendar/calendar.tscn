@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dodifjmhww8xr"]
+
+[ext_resource type="Texture2D" uid="uid://bhsr5t3imheng" path="res://Locations/Farm/Art/farm-interior-test.png" id="1_15j7w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffpga"]
+size = Vector2(16, 28)
+
+[node name="Calendar" type="Area2D"]
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_15j7w")
+region_enabled = true
+region_rect = Rect2(328, 34, 16, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 64)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_ffpga")

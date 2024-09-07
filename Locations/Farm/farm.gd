@@ -1,6 +1,7 @@
 # farm.gd
 extends Node2D
 
+
 # @onready.. 
 
 # Layers
@@ -8,6 +9,8 @@ extends Node2D
 @onready var tml_2:= $"02GrassOnDirt_TileMapLayer"
 @onready var tml_3:= $"03TilledAndWateredTileMapLayer2"
 
+# Player....
+@onready var player: Player = %Player
 
 
 
@@ -17,6 +20,7 @@ extends Node2D
 
 # 1st Terrain Set
 var terrain_set:int = 0
+# Terrains within 1st Set
 # Tilled ...
 var tilled_terrain:int = 2
 # Wet ...
@@ -42,15 +46,8 @@ var can_water_custom_data: String = "can_water"
 
 
 
-func _ready() -> void:
-	pass # Replace with function body.
 
-
-func _process(delta: float) -> void:
-	pass
-
-
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	
 	
 	# E key
@@ -59,7 +56,7 @@ func _input(event: InputEvent) -> void:
 		print("till")
 	
 	# R key
-	if Input.is_action_just_pressed("toggle_seeds"):
+	if Input.is_action_just_pressed("toggle_water"):
 		farming_mode_state = FARMING_MODES.WATERING
 		print("water")
 	
@@ -79,7 +76,7 @@ func _input(event: InputEvent) -> void:
 		if farming_mode_state == FARMING_MODES.WATERING:
 			# Custom func , Requires converted mouse location and custom data layer name ...
 			#  Retrievies SPECIFIC data from the tile ...
-			var mouse_pos_for_watering = convert_mos_local(tml_3,mouse_pos)
+			var mouse_pos_for_watering = Utility.convert_mos_local(tml_3,mouse_pos)
 			
 			# How's this working ? ...
 			# Layer , Mos , CustomData Name
@@ -93,7 +90,7 @@ func _input(event: InputEvent) -> void:
 		# Otherwise it's just TILL.... 
 		elif farming_mode_state == FARMING_MODES.TILL:
 			
-			var mouse_pos_for_tilling = convert_mos_local(tml_2,mouse_pos)
+			var mouse_pos_for_tilling = Utility.convert_mos_local(tml_2,mouse_pos)
 			
 			# Check that you can even get custom data called can_water
 			if retrieving_custom_data(tml_2, mouse_pos_for_tilling, can_till_custom_data):
@@ -103,7 +100,7 @@ func _input(event: InputEvent) -> void:
 		
 		# Trying to fix tiles, tiling weird
 		if wet_tiles.size() or dirt_tiles.size() >= 3:
-			print("Big 3 !")
+			print("3 tiles stored, Now removing...")
 			wet_tiles.pop_back()
 			dirt_tiles.pop_back()
 			
@@ -114,9 +111,6 @@ func _input(event: InputEvent) -> void:
 
 
 
-func convert_mos_local(tml_layer,mos_pos):
-	var result = tml_layer.local_to_map(mos_pos)
-	return result
 
 
 # Custom function ....

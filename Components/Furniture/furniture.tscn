@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://5dt1uoo5hpq4"]
+
+[node name="Furniture" type="StaticBody2D"]
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(92, -9)
+region_enabled = true
+region_rect = Rect2(480, 16, 64, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
