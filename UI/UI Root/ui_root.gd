@@ -3,7 +3,7 @@ extends CanvasLayer
 
 
 # Variables
-@onready var player: Player = %Player
+@onready var player: Player = $"../Player"
 @onready var inventory_dialog: InventoryDialog = %InventoryDialog
 
 

@@ -1,5 +1,5 @@
 # farm.gd
-extends Node2D
+extends BaseScene
 
 
 # @onready.. 
@@ -10,8 +10,7 @@ extends Node2D
 @onready var tml_3:= $"03TilledAndWateredTileMapLayer2"
 
 # Player....
-@onready var player: Player = %Player
-
+# X x X x X x watch out
 
 
 
