@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtk2yqjj1edop"]
+
+[ext_resource type="Script" path="res://Entities/Items/Interactive_Furniture/Chests/chest.gd" id="1_iexao"]
+[ext_resource type="Texture2D" uid="uid://bmfb4e50vdyw3" path="res://Entities/Items/Interactive_Furniture/Chests/roomchest-animation-Sheet.png" id="2_6w6px"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkttf"]
+atlas = ExtResource("2_6w6px")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x54gf"]
+atlas = ExtResource("2_6w6px")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb1ju"]
+atlas = ExtResource("2_6w6px")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_538ob"]
+atlas = ExtResource("2_6w6px")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puk0u"]
+atlas = ExtResource("2_6w6px")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6226"]
+atlas = ExtResource("2_6w6px")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwe6u"]
+atlas = ExtResource("2_6w6px")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ec62v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkttf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x54gf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb1ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_538ob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puk0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6226")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwe6u")
+}],
+"loop": false,
+"name": &"open",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wi0g"]
+size = Vector2(40, 19)
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_iexao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ec62v")
+animation = &"open"
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 23.5)
+shape = SubResource("RectangleShape2D_8wi0g")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

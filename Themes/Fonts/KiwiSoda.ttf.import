@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bjmir8y7vyk8c"
-path="res://.godot/imported/Caviar_Dreams_Bold.ttf-4e54513c9a411abc7398bdcaa9405c36.fontdata"
+uid="uid://dxeiphk6b42gn"
+path="res://.godot/imported/KiwiSoda.ttf-e2c80466ad6e8643853bab087ae040d0.fontdata"
 
 [deps]
 
-source_file="res://Themes/Fonts/Caviar_Dreams_Bold.ttf"
-dest_files=["res://.godot/imported/Caviar_Dreams_Bold.ttf-4e54513c9a411abc7398bdcaa9405c36.fontdata"]
+source_file="res://Themes/Fonts/KiwiSoda.ttf"
+dest_files=["res://.godot/imported/KiwiSoda.ttf-e2c80466ad6e8643853bab087ae040d0.fontdata"]
 
 [params]
 
@@ -28,13 +28,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0),
-"variation_embolden": 0.0
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

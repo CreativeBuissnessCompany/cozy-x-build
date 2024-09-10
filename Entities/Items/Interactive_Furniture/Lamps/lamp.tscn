@@ -1,8 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://0tebga7h547q"]
+[gd_scene load_steps=7 format=3 uid="uid://0tebga7h547q"]
 
-[ext_resource type="Texture2D" uid="uid://bhsr5t3imheng" path="res://Locations/Farm/Art/farm-interior-test.png" id="1_udxyt"]
+[ext_resource type="Texture2D" uid="uid://dbtt8dkaf4ht2" path="res://Entities/Items/Interactive_Furniture/Lamps/lamp.png" id="1_bv0nk"]
 
-[node name="Lamp" type="Sprite2D"]
-texture = ExtResource("1_udxyt")
-region_enabled = true
-region_rect = Rect2(352, 32, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3h8u"]
+atlas = ExtResource("1_bv0nk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cov2"]
+atlas = ExtResource("1_bv0nk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8o7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3h8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cov2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_nqr15"]
+offsets = PackedFloat32Array(0, 0.790514)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t32j7"]
+gradient = SubResource("Gradient_nqr15")
+fill = 1
+fill_from = Vector2(0.480769, 0.510684)
+
+[node name="Lamp" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_y8o7i")
+
+[node name="OmniLight3D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(0, 12.5)
+scale = Vector2(0.59375, 0.421875)
+color = Color(0.12549, 0.396078, 0.721569, 1)
+energy = 6.82
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_t32j7")
