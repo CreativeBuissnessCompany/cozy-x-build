@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4vrpmdrlpamn"]
+[gd_scene load_steps=5 format=3 uid="uid://c4vrpmdrlpamn"]
 
 [ext_resource type="Script" path="res://Entities/Items/Interactive_Furniture/VendingMachine/vending_machine.gd" id="1_myppn"]
+[ext_resource type="Resource" uid="uid://b2dktshx1ka1v" path="res://Components/Inventory/InventoryDialogVendingMachine/vending_inventory_01.tres" id="2_y44pt"]
 [ext_resource type="Texture2D" uid="uid://c1b1a8rdevi05" path="res://Entities/Items/Interactive_Furniture/VendingMachine/Art/overworld-vending.png" id="2_ykt3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t68w"]
@@ -8,6 +9,7 @@ size = Vector2(32, 30)
 
 [node name="VendingMachine" type="Node2D"]
 script = ExtResource("1_myppn")
+vending_inventory = ExtResource("2_y44pt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ykt3q")
@@ -18,5 +20,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_1t68w")
+
+[node name="VendingInventory01" type="Node" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

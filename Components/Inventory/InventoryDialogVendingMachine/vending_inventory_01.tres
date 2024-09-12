@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=6 format=3 uid="uid://b2dktshx1ka1v"]
+
+[ext_resource type="Script" path="res://Components/Inventory/inventory_comp.gd" id="1_abhnl"]
+[ext_resource type="Script" path="res://Data/Model/item.gd" id="1_fwxbh"]
+[ext_resource type="Resource" uid="uid://bcuhffno36qld" path="res://Entities/Items/Consumables/Fruits/Apple/apple.tres" id="2_rw88w"]
+[ext_resource type="Resource" uid="uid://c2rr865bmxad1" path="res://Entities/Items/Non_Consumable/Can/can.tres" id="3_saems"]
+[ext_resource type="Resource" uid="uid://bl8fxmedo4f47" path="res://Entities/Items/Consumables/Veggies/Tomato/tomato.tres" id="4_savyg"]
+
+[resource]
+script = ExtResource("1_abhnl")
+_content = Array[ExtResource("1_fwxbh")]([ExtResource("2_rw88w"), ExtResource("3_saems"), ExtResource("2_rw88w"), ExtResource("4_savyg")])

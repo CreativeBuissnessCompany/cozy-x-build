@@ -5,6 +5,7 @@ extends PanelContainer
 @export var item_slot_scene:PackedScene
 
 @onready var grid_container: GridContainer = %GridContainer
+# Name ...
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
 
 
@@ -23,21 +24,24 @@ func open(inventory:Inventory):
 		child.queue_free()
 	
 	for item in inventory.get_items():
-		var slot: ItemSlot = item_slot_scene.instantiate()
+		var slot: ItemSlotVending = item_slot_scene.instantiate()
 		grid_container.add_child(slot)
 		slot.display(item)
 		# Connect Slot
 		slot.on_item_button_pressed.connect(_on_item_button_pressed)
 		# Fill Data
 		slot.item_description = item.description
+		slot.item_name = item.name
 
 
 
 # ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT
 
-func _on_item_button_pressed(item_description,animated_sprite_2d):
-		print_debug("Received " + item_description )
-		item_desc_label.text = item_description
+func _on_item_button_pressed(item_name,item_description,animated_sprite_2d):
+		print_debug("Received " + item_name )
+		# Center
+		var centered_name = "[center]%s[/center]" % item_name
+		item_desc_label.text = centered_name
 		
 		# Stop Other Slot Animations
 		var slot_array = grid_container.get_children()

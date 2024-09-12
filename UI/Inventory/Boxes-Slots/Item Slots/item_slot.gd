@@ -1,5 +1,5 @@
 extends PanelContainer
-class_name ItemSlotVending
+class_name ItemSlot
 
 
 @onready var texture_rect: TextureRect = %TextureRect

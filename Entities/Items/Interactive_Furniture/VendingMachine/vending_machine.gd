@@ -1,30 +1,38 @@
 # vending_machine.gd
 extends Interactable
 
-# Variables 
 
-var player:Player
+# @Export
+@export var vending_inventory: Inventory
 
+# Signals
 signal vending_machine_ui
+
+# Variables
+@onready var player: Player = %Player
+
+#var player:Player
+
+
+
 
 
 
 func _ready() -> void:
-	
 	pass
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_key_input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		if self.area_2d.overlaps_body(player):
-			print("vending")
-			emit_signal("vending_machine_ui")
-	
-	
-	pass
+			print("Player Vending")
+			
+			# Goes to UIRoot.gd in Universe.TSCN
+			vending_machine_ui.emit(vending_inventory)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	player = body
-	pass # Replace with function body.
+	if body == Player:
+		player = body
+	

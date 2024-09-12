@@ -1,9 +1,10 @@
 # inventory_comp.gd
 
 class_name Inventory
+extends Resource
 
 
-var _content:Array[Item] = []
+@export var _content:Array[Item] = []
 
 
 func add_item(item:Item):

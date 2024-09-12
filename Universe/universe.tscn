@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="2_3rlae"]
 [ext_resource type="PackedScene" uid="uid://gmoti5cjspg6" path="res://Components/Inventory/inventory_dialog.tscn" id="2_dx7gh"]
-[ext_resource type="PackedScene" uid="uid://dkaattecblq0" path="res://UI/Vending Machine Ui/vending_machine_ui.tscn" id="3_140le"]
 [ext_resource type="Script" path="res://UI/UI Root/ui_root.gd" id="3_p78e7"]
+[ext_resource type="PackedScene" uid="uid://ds71vstvhnftl" path="res://Components/Inventory/InventoryDialogVendingMachine/inventory_dialog_vending_machine.tscn" id="3_wqqmh"]
 [ext_resource type="PackedScene" uid="uid://c4vrpmdrlpamn" path="res://Entities/Items/Interactive_Furniture/VendingMachine/vending_machine.tscn" id="4_7lut0"]
 [ext_resource type="PackedScene" uid="uid://6amsqu21k8vs" path="res://Locations/Sunset /sunset_map.tscn" id="4_o75i1"]
 
@@ -25,7 +25,8 @@ offset_top = -17.5
 offset_right = 36.0
 offset_bottom = 17.5
 
-[node name="VendingMachineUI" parent="UIRoot" instance=ExtResource("3_140le")]
+[node name="InventoryDialogVendingMachine" parent="UIRoot" instance=ExtResource("3_wqqmh")]
+visible = false
 
 [node name="Sunset Map" parent="." instance=ExtResource("4_o75i1")]
 
@@ -36,3 +37,4 @@ unique_name_in_owner = true
 position = Vector2(96, 32)
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
+unique_name_in_owner = true
