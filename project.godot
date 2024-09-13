@@ -18,6 +18,7 @@ config/icon="res://Entities/Player/Art/raincoat-boy-player-version.png"
 [autoload]
 
 Utility="*res://Globals/utility.gd"
+scene_manager="*res://AutoLoads/scene_manager.gd"
 
 [display]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ds71vstvhnftl"]
 
-[ext_resource type="Script" path="res://Components/Inventory/InventoryDialogVendingMachine/inventory_dialog_vending_machine.gd" id="2_248sr"]
+[ext_resource type="Script" path="res://Components/Inventory/InventoryUIVendingMachine/inventory_ui_vending_machine.gd" id="1_dc3ac"]
 [ext_resource type="Texture2D" uid="uid://6j2m5l5gumf8" path="res://Entities/Items/Interactive_Furniture/VendingMachine/Art/vendingtestui.png" id="3_6yxd1"]
 [ext_resource type="PackedScene" uid="uid://c5m0saftfc32m" path="res://UI/Inventory/Boxes-Slots/Item Slots/VendingMachineItemSlots/item_slot_vending.tscn" id="3_er532"]
 [ext_resource type="FontFile" uid="uid://bjmir8y7vyk8c" path="res://Themes/Fonts/Caviar_Dreams_Bold.ttf" id="5_ajaxk"]
@@ -16,7 +16,7 @@ texture = ExtResource("3_6yxd1")
 texture = ExtResource("6_pc5yp")
 region_rect = Rect2(0, 0, 80, 112)
 
-[node name="InventoryDialogVendingMachine" type="PanelContainer"]
+[node name="InventoryUIVendingMachine" type="PanelContainer"]
 custom_minimum_size = Vector2(640, 360)
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,8 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 theme_override_styles/panel = SubResource("StyleBoxTexture_u5aj0")
-script = ExtResource("2_248sr")
-item_slot_scene = ExtResource("3_er532")
+script = ExtResource("1_dc3ac")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true

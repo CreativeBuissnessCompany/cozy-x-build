@@ -1,4 +1,4 @@
-class_name InventoryDialogVendingMachine
+class_name InventoryUIVendingMachine
 extends PanelContainer
 
 

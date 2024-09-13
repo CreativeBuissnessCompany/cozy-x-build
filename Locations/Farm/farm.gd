@@ -45,6 +45,15 @@ var can_water_custom_data: String = "can_water"
 
 
 
+func _ready() -> void:
+	super()
+
+
+
+
+
+
+
 
 func _input(_event: InputEvent) -> void:
 	

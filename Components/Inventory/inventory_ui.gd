@@ -1,4 +1,4 @@
-class_name InventoryDialog
+class_name InventoryUI
 extends PanelContainer
 
 

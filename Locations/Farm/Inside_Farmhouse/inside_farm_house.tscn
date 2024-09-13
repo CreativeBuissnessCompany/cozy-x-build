@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://b4eonh37fv6eo"]
+[gd_scene load_steps=14 format=4 uid="uid://b4eonh37fv6eo"]
 
 [ext_resource type="Texture2D" uid="uid://bhsr5t3imheng" path="res://Locations/Farm/Art/farm-interior-test.png" id="1_l1bxf"]
 [ext_resource type="Script" path="res://Locations/Farm/Inside_Farmhouse/inside_farm_house.gd" id="1_tuqnl"]
 [ext_resource type="PackedScene" uid="uid://c6nqqggvbaemk" path="res://Entities/Items/Interactive_Furniture/Beds/Bed.tscn" id="2_ujri3"]
 [ext_resource type="PackedScene" uid="uid://bq1hrrbom2hl4" path="res://Entities/Items/Interactive_Furniture/NightStands/nightstand.tscn" id="3_7h6m2"]
-[ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="3_vl427"]
 [ext_resource type="PackedScene" uid="uid://cksttmx08lh3a" path="res://Entities/Items/Interactive_Furniture/BookShelf/bookshelf.tscn" id="4_ml53b"]
 [ext_resource type="PackedScene" uid="uid://dodifjmhww8xr" path="res://Entities/Items/Interactive_Furniture/Calendar/calendar.tscn" id="6_uwnsm"]
 [ext_resource type="PackedScene" uid="uid://bomm8onlnh6ui" path="res://Entities/Items/Decorative/Clock/clock.tscn" id="7_x77sm"]
@@ -537,9 +536,6 @@ connected_scene = "res://Locations/Farm/farm.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
 position = Vector2(1, 3.5)
 shape = SubResource("RectangleShape2D_gv78x")
-
-[node name="Player" parent="." instance=ExtResource("3_vl427")]
-position = Vector2(-54, 64)
 
 [node name="EntranceMarkers" type="Node2D" parent="."]
 position = Vector2(-77, 65)

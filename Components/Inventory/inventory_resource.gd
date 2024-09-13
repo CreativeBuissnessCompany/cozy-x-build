@@ -1,4 +1,4 @@
-# inventory_comp.gd
+# inventory_resource.gd
 
 class_name Inventory
 extends Resource

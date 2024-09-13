@@ -1,0 +1,136 @@
+[gd_scene load_steps=8 format=3 uid="uid://gmoti5cjspg6"]
+
+[ext_resource type="Script" path="res://Components/Inventory/inventory_ui.gd" id="1_roulo"]
+[ext_resource type="Texture2D" uid="uid://c5lrmo5nbo2u3" path="res://Components/Inventory/Art/UI_Screen.png" id="1_xvxwu"]
+[ext_resource type="PackedScene" uid="uid://dmt5nacpltl6i" path="res://UI/Inventory/Boxes-Slots/Item Slots/item_slot.tscn" id="2_g44k5"]
+[ext_resource type="Texture2D" uid="uid://s48gy8ly3s0w" path="res://UI/Inventory/Boxes-Slots/Main Boxes/Art/inventory-boxes.png" id="4_tlcim"]
+[ext_resource type="FontFile" uid="uid://bjmir8y7vyk8c" path="res://Themes/Fonts/Caviar_Dreams_Bold.ttf" id="5_djjsr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5aj0"]
+texture = ExtResource("1_xvxwu")
+region_rect = Rect2(0, 0, 640, 370)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_er53s"]
+texture = ExtResource("4_tlcim")
+region_rect = Rect2(337, 16, 112, 160)
+
+[node name="InventoryUI" type="PanelContainer"]
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_u5aj0")
+script = ExtResource("1_roulo")
+item_slot_scene = ExtResource("2_g44k5")
+
+[node name="Transparency" type="ColorRect" parent="."]
+show_behind_parent = true
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+color = Color(0.137255, 0.137255, 0.137255, 0.745098)
+
+[node name="MarginForInsideScreen" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 175
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 175
+theme_override_constants/margin_bottom = 150
+
+[node name="HBoxContainerForAll" type="HBoxContainer" parent="MarginForInsideScreen"]
+custom_minimum_size = Vector2(250.34, 228.6)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="VBoxLeftSide" type="VBoxContainer" parent="MarginForInsideScreen/HBoxContainerForAll"]
+custom_minimum_size = Vector2(360.37, 218.64)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 9
+
+[node name="MarginForTop" type="MarginContainer" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_right = 25
+
+[node name="MainBoxPanel" type="NinePatchRect" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide/MarginForTop"]
+custom_minimum_size = Vector2(240, 306.67)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_tlcim")
+region_rect = Rect2(17, 16, 288, 160)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide/MarginForTop/MainBoxPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 250.0
+offset_bottom = 8.0
+columns = 9
+
+[node name="ItemSlot" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide/MarginForTop/MainBoxPanel/GridContainer" instance=ExtResource("2_g44k5")]
+layout_mode = 2
+
+[node name="MarginForBottom" type="MarginContainer" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="LowerBoxHBoxContainer" type="HBoxContainer" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide/MarginForBottom"]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LowerBoxPanel" type="NinePatchRect" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide/MarginForBottom/LowerBoxHBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_tlcim")
+region_rect = Rect2(97, 208, 288, 32)
+patch_margin_left = 4
+patch_margin_top = 6
+patch_margin_right = 4
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide/MarginForBottom/LowerBoxHBoxContainer/LowerBoxPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="ItemDescRichTextLabel" type="RichTextLabel" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide/MarginForBottom/LowerBoxHBoxContainer/LowerBoxPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_djjsr")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+
+[node name="VBoxRightSide" type="VBoxContainer" parent="MarginForInsideScreen/HBoxContainerForAll"]
+custom_minimum_size = Vector2(193.92, 0)
+layout_mode = 2
+
+[node name="SidePanelContainer" type="PanelContainer" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxRightSide"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxRightSide/SidePanelContainer"]
+custom_minimum_size = Vector2(60, 140)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_er53s")

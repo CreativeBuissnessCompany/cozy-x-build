@@ -19,6 +19,7 @@ signal vending_machine_ui
 
 
 func _ready() -> void:
+	print_debug("VendingMachine: Ready")
 	pass
 
 

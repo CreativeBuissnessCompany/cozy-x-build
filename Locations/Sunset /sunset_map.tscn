@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://6amsqu21k8vs"]
+[gd_scene load_steps=3 format=3 uid="uid://6amsqu21k8vs"]
 
 [ext_resource type="Texture2D" uid="uid://vsnbalv21gcw" path="res://Locations/Sunset /Art/sunset-flat.png" id="1_q8ioe"]
+[ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://Entities/Items/Consumables/Fruits/Apple/apple_pickup.tscn" id="2_0hc3l"]
 
 [node name="Sunset Map" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -8,3 +9,8 @@ metadata/_edit_lock_ = true
 [node name="PNG" type="Sprite2D" parent="."]
 texture = ExtResource("1_q8ioe")
 metadata/_edit_lock_ = true
+
+[node name="Pickups" type="Node2D" parent="PNG"]
+
+[node name="Apple" parent="PNG/Pickups" instance=ExtResource("2_0hc3l")]
+position = Vector2(-25, 9)
