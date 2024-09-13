@@ -11,3 +11,4 @@ scene = ExtResource("1_qqd38")
 icon = ExtResource("1_e6a23")
 description = "A delicious [wave amp=25.0 freq=3.0 connected=1] [color=Firebrick]Apple[/color] [/wave] to eat on.....Have an Eat!
 Yup, Love me some [wave amp=25.0 freq=3.0 connected=1] [color=firebrick]Apple[/color] [/wave] ...."
+price = 4
