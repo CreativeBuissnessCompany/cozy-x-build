@@ -497,7 +497,7 @@ sources/0 = SubResource("TileSetAtlasSource_444jn")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gv78x"]
 size = Vector2(48.6513, 23.6785)
 
-[node name="InsideFarmHouse" type="Node2D"]
+[node name="InsideFarmHouse" type="Node2D" groups=["Locations"]]
 position = Vector2(0, -1)
 script = ExtResource("1_tuqnl")
 

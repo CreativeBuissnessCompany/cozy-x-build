@@ -11,7 +11,7 @@ signal vending_machine_ui
 # Variables
 @onready var player: Player = %Player
 
-#var player:Player
+
 
 
 
@@ -19,7 +19,6 @@ signal vending_machine_ui
 
 
 func _ready() -> void:
-	print_debug("VendingMachine: Ready")
 	pass
 
 

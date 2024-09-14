@@ -17,8 +17,9 @@ config/icon="res://Entities/Player/Art/raincoat-boy-player-version.png"
 
 [autoload]
 
-Utility="*res://Globals/utility.gd"
+Signalbus="*res://AutoLoads/signal_bus.gd"
 scene_manager="*res://AutoLoads/scene_manager.gd"
+Utility="*res://Globals/utility.gd"
 
 [display]
 
@@ -37,6 +38,10 @@ movie_writer/movie_file="/Users/kennethfee/Documents/Cozy Game Clips/CozyX02.avi
 folder_colors={
 "res://Universe/": "red"
 }
+
+[global_group]
+
+Locations="Scenes Of Locations To Be Loaded in Universe"
 
 [gui]
 
