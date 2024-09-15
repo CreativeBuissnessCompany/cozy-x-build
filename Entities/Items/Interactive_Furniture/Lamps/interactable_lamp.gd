@@ -5,7 +5,7 @@ extends Interactable
 @onready var light: PointLight2D = $Lamp/OmniLight3D
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	lamp.play("default")
 	light.visible = !light.visible
 	print("Liight")

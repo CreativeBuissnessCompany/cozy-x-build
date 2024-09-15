@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://c1t2o5xyrom3b"]
+[gd_scene load_steps=10 format=4 uid="uid://c1t2o5xyrom3b"]
 
 [ext_resource type="Script" path="res://Locations/Farm/farm.gd" id="1_slb32"]
 [ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://Locations/Farm/Art/farm_tileset.tres" id="2_f15kg"]
 [ext_resource type="PackedScene" uid="uid://c6s3lxp4v0570" path="res://Components/SceneTrigger/scene_trigger.tscn" id="3_d5uw2"]
 [ext_resource type="PackedScene" uid="uid://cwahs8ks6udmp" path="res://Components/highlight_tile/highlight_tile.tscn" id="5_3l1uu"]
+[ext_resource type="Script" path="res://Components/ObjectsWithUI/objects_with_ui.gd" id="5_6rcer"]
+[ext_resource type="PackedScene" uid="uid://c4vrpmdrlpamn" path="res://Entities/Items/Interactive_Furniture/VendingMachine/vending_machine.tscn" id="5_ie2gv"]
+[ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://Entities/Items/Consumables/Fruits/Apple/apple_pickup.tscn" id="7_uvcjc"]
+[ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://Entities/Items/Consumables/Veggies/Tomato/tomato_pickup.tscn" id="8_xx28p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6d87"]
 radius = 3.44227
@@ -50,6 +54,27 @@ shape = SubResource("CapsuleShape2D_g6d87")
 [node name="HighlightTile" parent="." instance=ExtResource("5_3l1uu")]
 
 [node name="EntranceMarkers" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(199.122, -95.4701)
 
 [node name="any" type="Marker2D" parent="EntranceMarkers"]
+
+[node name="ObjectsWithUI" type="Node2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+script = ExtResource("5_6rcer")
+
+[node name="VendingMachine" parent="ObjectsWithUI" instance=ExtResource("5_ie2gv")]
+position = Vector2(23, -128)
+
+[node name="PickUps" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Apple" parent="PickUps" instance=ExtResource("7_uvcjc")]
+position = Vector2(115, 54)
+
+[node name="Apple2" parent="PickUps" instance=ExtResource("7_uvcjc")]
+position = Vector2(201.586, 65.2403)
+
+[node name="Tomato" parent="PickUps" instance=ExtResource("8_xx28p")]
+position = Vector2(54, 81)

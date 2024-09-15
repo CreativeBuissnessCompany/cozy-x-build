@@ -2,37 +2,34 @@
 extends Interactable
 
 
-# @Export
+
+
+# @exports ....
+# Resource holding Inventory
 @export var vending_inventory: Inventory
 
-# Signals
-signal vending_machine_ui
 
 # Variables
-@onready var player: Player = %Player
+# Caution 
+var player: Player
 
 
 
 
 
-
-
-
-func _ready() -> void:
-	pass
-
-
-func _unhandled_key_input(event: InputEvent) -> void:
+func _unhandled_key_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		if self.area_2d.overlaps_body(player):
 			print("Player Vending")
 			
-			# Goes to UIRoot.gd in Universe.TSCN
-			vending_machine_ui.emit(vending_inventory)
+			# Goes to UIRoot.gd in Universe.tscn
+			Signalbus.open_object_with_inventory.emit(vending_inventory)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == Player:
+	
+	
+	if body is Player:
 		player = body
 	

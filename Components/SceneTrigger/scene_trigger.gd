@@ -2,14 +2,17 @@ class_name SceneTrigger extends Area2D
 
 
 # Variables ...
-@export var connected_scene: String
 
-var current_scene
+# NEXT Scene ....
+@export var connected_scene: String
+# Current ....
+var current_scene: Node2D
+
+
 
 
 
 func _on_body_entered(body: Node2D) -> void:
-	#print("Entered")
 	
 	if body is Player:
 		# Load next Scene

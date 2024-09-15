@@ -1,5 +1,5 @@
 class_name InventoryUI
-extends PanelContainer
+extends Control  # Sept 15, Used to be panel container
 
 
 @export var item_slot_scene:PackedScene

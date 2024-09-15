@@ -4,5 +4,6 @@
 
 [node name="Clock" type="Sprite2D"]
 texture = ExtResource("1_knk07")
+offset = Vector2(0, -11.3)
 region_enabled = true
 region_rect = Rect2(390, 36, 20, 22)

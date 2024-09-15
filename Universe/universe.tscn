@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://db4eylrann81f"]
+[gd_scene load_steps=7 format=3 uid="uid://db4eylrann81f"]
 
 [ext_resource type="Script" path="res://Universe/universe.gd" id="1_lm1sa"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="2_3rlae"]
 [ext_resource type="PackedScene" uid="uid://gmoti5cjspg6" path="res://Components/Inventory/inventory_ui.tscn" id="2_dx7gh"]
 [ext_resource type="Script" path="res://UI/UI Root/ui_root.gd" id="3_p78e7"]
 [ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://Components/Inventory/InventoryUIVendingMachine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
-[ext_resource type="PackedScene" uid="uid://c4vrpmdrlpamn" path="res://Entities/Items/Interactive_Furniture/VendingMachine/vending_machine.tscn" id="4_7lut0"]
-[ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://Locations/Farm/farm.tscn" id="5_gy64x"]
+[ext_resource type="PackedScene" uid="uid://b4eonh37fv6eo" path="res://Locations/Farm/Inside_Farmhouse/inside_farm_house.tscn" id="5_ijb3x"]
 
-[node name="Universe" type="Node"]
+[node name="Universe" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_lm1sa")
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
@@ -20,13 +20,8 @@ visible = false
 [node name="InventoryUIVendingMachine" parent="UIRoot" instance=ExtResource("3_vl8i7")]
 visible = false
 
-[node name="Farm" parent="." instance=ExtResource("5_gy64x")]
-
-[node name="ObjectsWithUI" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="VendingMachine" parent="ObjectsWithUI" instance=ExtResource("4_7lut0")]
-position = Vector2(96, 32)
+[node name="InsideFarmHouse" parent="." instance=ExtResource("5_ijb3x")]
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
+position = Vector2(21, -91)

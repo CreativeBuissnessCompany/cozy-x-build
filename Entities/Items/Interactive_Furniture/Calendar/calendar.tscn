@@ -10,6 +10,7 @@ collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_15j7w")
+offset = Vector2(0, -13.75)
 region_enabled = true
 region_rect = Rect2(328, 34, 16, 28)
 
