@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6nqqggvbaemk"]
+[gd_scene load_steps=5 format=3 uid="uid://c6nqqggvbaemk"]
 
+[ext_resource type="Script" path="res://Entities/Items/Interactive_Furniture/Beds/bed.gd" id="1_4kw3y"]
 [ext_resource type="Texture2D" uid="uid://bhsr5t3imheng" path="res://Locations/Farm/Art/farm-interior-test.png" id="1_uqytj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1vhk"]
 size = Vector2(58, 90)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6q8a"]
+size = Vector2(20, 46)
+
 [node name="Bed" type="StaticBody2D"]
 y_sort_enabled = true
 collision_mask = 2
+script = ExtResource("1_4kw3y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -21,3 +26,67 @@ region_rect = Rect2(480, 16, 64, 96)
 y_sort_enabled = true
 position = Vector2(93, -54.46)
 shape = SubResource("RectangleShape2D_f1vhk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(48, -36)
+shape = SubResource("RectangleShape2D_b6q8a")
+
+[node name="DialogBox" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(78, 16.72)
+offset_left = 48.0
+offset_top = -157.0
+offset_right = 126.0
+offset_bottom = -129.81
+color = Color(0.47451, 0.6, 0.603922, 0)
+
+[node name="BoxContainer" type="BoxContainer" parent="DialogBox"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 80.53
+offset_bottom = 27.85
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogBox/BoxContainer"]
+custom_minimum_size = Vector2(74.41, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]Do you want to go to bed?"
+scroll_active = false
+
+[node name="Yes?" type="Button" parent="DialogBox"]
+layout_mode = 0
+offset_left = 8.77
+offset_top = 30.48
+offset_right = 33.77
+offset_bottom = 50.48
+theme_override_colors/font_color = Color(0.980139, 0.980139, 0.980139, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 8
+text = "Yes?"
+flat = true
+
+[node name="No?" type="Button" parent="DialogBox"]
+layout_mode = 0
+offset_left = 40.77
+offset_top = 30.48
+offset_right = 65.77
+offset_bottom = 50.48
+theme_override_colors/font_color = Color(0.980139, 0.980139, 0.980139, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 8
+text = "No?"
+flat = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="DialogBox/Yes?" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="DialogBox/No?" to="." method="_on_no_pressed"]

@@ -20,6 +20,7 @@ config/icon="res://Entities/Player/Art/raincoat-boy-player-version.png"
 Signalbus="*res://AutoLoads/signal_bus.gd"
 scene_manager="*res://AutoLoads/scene_manager.gd"
 Utility="*res://Globals/utility.gd"
+time_tracker="*res://AutoLoads/time_tracker.gd"
 
 [display]
 
