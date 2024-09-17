@@ -15,8 +15,9 @@ var wait_time: float = 0.15
 
 
 func _ready() -> void:
-	var parent = get_parent()
-	tilemap_target = parent.find_child("04CropTileMapLayer3")
+	var parent = get_parent() # 04CropTileMapLayer3 Highlight
+	tilemap_target = parent.find_child("Highlight")
+	print(tilemap_target.name)
 	#print(tilemap_target)
 	pass 
 

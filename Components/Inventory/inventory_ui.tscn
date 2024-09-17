@@ -68,9 +68,9 @@ patch_margin_bottom = 16
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 10.0
-offset_top = 8.0
-offset_right = 250.0
-offset_bottom = 8.0
+offset_top = 11.0
+offset_right = 346.0
+offset_bottom = 149.0
 columns = 9
 
 [node name="ItemSlot" parent="MarginForInsideScreen/HBoxContainerForAll/VBoxLeftSide/MarginForTop/MainBoxPanel/GridContainer" instance=ExtResource("2_g44k5")]

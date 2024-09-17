@@ -2,8 +2,8 @@
 extends BaseScene
 
 
-## NOTE : Tilling is happening on top of one tilemap layer, And watering ontop of Tilling. 
-
+## NOTE : Tilling is happening on top of tilemap layers, And watering ontop of Tilling. 
+# Seeds
 
 # @Onready.. 
 
@@ -11,28 +11,41 @@ extends BaseScene
 @onready var tml_1:= $"01FarmGrass_TileMapLayer"
 @onready var tml_2:= $"02GrassOnDirt_TileMapLayer"
 @onready var tml_3:= $"03TilledAndWateredTileMapLayer2"
+@onready var tml_4:= $"04CropTileMapLayer3"
 
 #  Variables ....  
 
 # 1st Terrain Set
 var terrain_set:int = 0
+
+# Tile Data/Info.... for custom data? Maybe Unused
+var terrain_sourceid_farmhouse: int = 0
+var source_id
+
+# Second Image SourceID, Seeds and Crops
+var terrain_sourceid_crops:int = 1
+
 # Terrains within 1st Set
 var tilled_terrain:int = 2
 var watered_terrain:int = 3
+var seed_terrain:int = 4
 # Tile Arrays ...
 var dirt_tiles: Array = []
 var wet_tiles: Array = []
+# Seed AtlasCoords
+var seed_coords: Vector2i = Vector2i(0,4)
+
+
 
 # Farming States ...
-enum FARMING_MODES {WATERING, TILL}
+enum FARMING_MODES {WATERING, TILL, PLANT_SEED}
 # Current State of Farming mode 
 var farming_mode_state := FARMING_MODES.TILL
 
-# Tile Data/Info.... for custom data? Maybe Unused
-var source_id: int = 0
 # Holds the string name for the custom data we want...
 var can_till_custom_data: String = "can_till"
 var can_water_custom_data: String = "can_water"
+var can_plant: String = "can_plant"
 
 # Empty vars until used by farming()
 var layer_to_look: TileMapLayer
@@ -51,6 +64,8 @@ var custom_data: String
 
 func _ready() -> void:
 	super()
+	# Connects to ItemSlot in inventory_ui
+	Signalbus.item_clicked.connect(on_seed_selected)
 
 
 
@@ -101,6 +116,14 @@ func _input(_event: InputEvent) -> void:
 		return
 
 
+func on_seed_selected(item_resource: Item):
+	if item_resource.item_type == Item.ITEM_TYPE.SEED:
+		farming_mode_state = FARMING_MODES.PLANT_SEED
+		print("Clicked Seed to Plant")
+	pass
+
+
+
 # Test Func .... FARMING FUNC
 func farming(state,mouse_pos):
 	
@@ -111,7 +134,7 @@ func farming(state,mouse_pos):
 			tiles = dirt_tiles
 			terrain = tilled_terrain
 			custom_data = can_till_custom_data
-			print(" Farming Worked - Till ")
+			
 	
 		FARMING_MODES.WATERING:
 			layer_to_look = tml_3
@@ -119,20 +142,43 @@ func farming(state,mouse_pos):
 			tiles = wet_tiles
 			terrain = watered_terrain
 			custom_data = can_water_custom_data
-			print(" Farming Worked - Water")
+			
 	
-	# After STATE match, Do work ...
-	var mouse_pos_for_farming = Utility.convert_mos_local(layer_to_look,mouse_pos)
-	if retrieving_custom_data(layer_to_look, mouse_pos_for_farming, custom_data):
-		tiles.append(mouse_pos_for_farming) 
-		layer_to_place.set_cells_terrain_connect(tiles,terrain_set, terrain) 
+	# NOTE Test ...
+		FARMING_MODES.PLANT_SEED:
+			layer_to_look = tml_3
+			layer_to_place = tml_4
+			#terrain = seed_terrain
+			custom_data = can_plant
+			source_id = 1
+			print("Farming Mode Seed") 
+			
+			var mouse_pos_for_data = Utility.convert_mos_local(layer_to_look,mouse_pos)
+			var mouse_pos_for_seed = tml_4.local_to_map(get_local_mouse_position())
+			
+			if retrieving_custom_data(layer_to_look, mouse_pos_for_data, custom_data):
+				#tiles.append(mouse_pos_for_farming) # Changed mosposfarm to mos pos
+				layer_to_place.set_cell(mouse_pos_for_seed,source_id, seed_coords) 
+				#print("Checked for Seed Data, Tried to place")
+				print("layer_to_place : %s" % mouse_pos_for_data)
+				return
+			
+			
+	
+	if farming_mode_state != FARMING_MODES.PLANT_SEED:
+		print("Not in seed mode")
+		# After STATE match, Do work ...
+		var mouse_pos_for_farming = Utility.convert_mos_local(layer_to_look,mouse_pos)
+		if retrieving_custom_data(layer_to_look, mouse_pos_for_farming, custom_data):
+			tiles.append(mouse_pos_for_farming) 
+			layer_to_place.set_cells_terrain_connect(tiles,terrain_set, terrain) 
+		
+		
 		# If that worked, Pop Tile Array to try to fiz issues with placement 
-		if wet_tiles.size() or dirt_tiles.size() >= 3:
-			print("3 tiles stored, Now removing...")
-			wet_tiles.pop_back()
-			dirt_tiles.pop_back()
-
-
+			if wet_tiles.size() or dirt_tiles.size() >= 3:
+				print("3 tiles stored, Now removing...")
+				wet_tiles.pop_back()
+				dirt_tiles.pop_back()
 
 
 # Custom function ....

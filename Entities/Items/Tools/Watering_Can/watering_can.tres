@@ -14,3 +14,4 @@ name = "Watering Can"
 scene = ExtResource("2_fsg47")
 icon = SubResource("AtlasTexture_5hirg")
 description = "A [wave amp=25.0 freq=3.0 connected=1] [color=Lightsteelblue ]Watering Can![/color][/wave] Do you like water?"
+price = 0

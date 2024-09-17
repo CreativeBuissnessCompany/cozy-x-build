@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd1lc4a05nwn7"]
+
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://Entities/Items/Tools/Seeds/crops.png" id="1_y2lk1"]
+
+[node name="Greenpea" type="Sprite2D"]
+texture = ExtResource("1_y2lk1")
+hframes = 6
+region_enabled = true
+region_rect = Rect2(0, 32, 96, 48)

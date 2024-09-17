@@ -36,6 +36,8 @@ animations = [{
 
 [node name="ItemSlot" type="PanelContainer"]
 self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_v5xih")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

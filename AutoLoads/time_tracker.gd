@@ -8,4 +8,4 @@ var day: int = 1:
 		day = value
 		Signalbus.day_change.emit(day)
 		#day_node.text = "Day: %s" % day
-		print()
+		

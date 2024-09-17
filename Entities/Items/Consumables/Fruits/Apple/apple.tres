@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_sheuc")
+item_type = 0
 name = "Apple"
 scene = ExtResource("1_qqd38")
 icon = ExtResource("1_e6a23")

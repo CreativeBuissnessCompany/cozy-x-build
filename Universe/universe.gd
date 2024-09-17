@@ -40,4 +40,4 @@ func on_location_loaded(new_entrance_markers: Node2D):
 	Utility.position_player(new_entrance_markers, player)
 	
 	#print("Universe: Signal Received from BaseScene")
-	pass
+	

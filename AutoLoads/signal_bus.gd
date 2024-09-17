@@ -13,3 +13,5 @@ signal open_object_with_inventory
 signal object_with_dialogbox
 # Day change...
 signal day_change
+# Item Clicked
+signal item_clicked

@@ -6,6 +6,9 @@
 
 [resource]
 script = ExtResource("1_6dlwh")
+item_type = 0
 name = "Tomato"
 scene = ExtResource("2_hycsb")
 icon = ExtResource("1_p51pu")
+description = ""
+price = 0

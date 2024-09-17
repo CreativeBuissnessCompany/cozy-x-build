@@ -30,13 +30,16 @@ func open(inventory:Inventory):
 		slot.on_item_button_pressed.connect(_on_item_button_pressed)
 		# Fill Data
 		slot.item_description = item.description
+		# Test
+		# New ....
+		slot.item_resource = item
 
 
 
 # ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT
 
 func _on_item_button_pressed(item_description,animated_sprite_2d):
-		print_debug("Received " + item_description )
+		#print_debug("Received " + item_description )
 		item_desc_label.text = item_description
 		
 		# Stop Other Slot Animations

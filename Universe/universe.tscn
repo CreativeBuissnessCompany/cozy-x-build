@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://db4eylrann81f"]
+[gd_scene load_steps=9 format=3 uid="uid://db4eylrann81f"]
 
 [ext_resource type="Script" path="res://Universe/universe.gd" id="1_lm1sa"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="2_3rlae"]
 [ext_resource type="PackedScene" uid="uid://gmoti5cjspg6" path="res://Components/Inventory/inventory_ui.tscn" id="2_dx7gh"]
 [ext_resource type="Script" path="res://UI/UI Root/ui_root.gd" id="3_p78e7"]
 [ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://Components/Inventory/InventoryUIVendingMachine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
-[ext_resource type="PackedScene" uid="uid://b4eonh37fv6eo" path="res://Locations/Farm/Inside_Farmhouse/inside_farm_house.tscn" id="5_ijb3x"]
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="5_xd6ju"]
+[ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://Locations/Farm/farm.tscn" id="6_v8fun"]
+[ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://Entities/Items/Tools/Seeds/greenpea/greenpea_picup.tscn" id="7_u5c8f"]
 
 [node name="Universe" type="Node2D"]
 y_sort_enabled = true
@@ -17,6 +18,7 @@ script = ExtResource("3_p78e7")
 
 [node name="InventoryUI" parent="UIRoot" instance=ExtResource("2_dx7gh")]
 visible = false
+mouse_force_pass_scroll_events = false
 
 [node name="InventoryUIVendingMachine" parent="UIRoot" instance=ExtResource("3_vl8i7")]
 visible = false
@@ -60,9 +62,20 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "Day: 1"
 
-[node name="InsideFarmHouse" parent="." instance=ExtResource("5_ijb3x")]
-metadata/_edit_lock_ = true
+[node name="Farm" parent="." instance=ExtResource("6_v8fun")]
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
 position = Vector2(21, -91)
+
+[node name="GreenPea" parent="." instance=ExtResource("7_u5c8f")]
+z_index = 1
+position = Vector2(-58, -40)
+
+[node name="GreenPea2" parent="." instance=ExtResource("7_u5c8f")]
+z_index = 1
+position = Vector2(-65.5301, 33.2272)
+
+[node name="GreenPea3" parent="." instance=ExtResource("7_u5c8f")]
+z_index = 1
+position = Vector2(-130.706, -64.5373)

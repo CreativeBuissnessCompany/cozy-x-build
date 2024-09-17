@@ -49,7 +49,7 @@ func open(inventory:Inventory):
 # ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT
 
 func _on_item_button_pressed(item_name,item_description,item_price,animated_sprite_2d):
-		print_debug("Received " + item_name )
+		#print_debug("Received " + item_name )
 		# Center
 		var centered_name = "[center]%s[/center]" % item_name
 		

@@ -14,3 +14,4 @@ name = "Hoe"
 scene = ExtResource("2_jtsoy")
 icon = SubResource("AtlasTexture_5hirg")
 description = "A [wave amp=25.0 freq=3.0 connected=1] [color=Lightsteelblue ]Hoe...[/color][/wave] But for Farming!"
+price = 0
