@@ -11,7 +11,10 @@ var tilemap_target: TileMapLayer
 var tile_array: Array = []
 var wait_time: float = 0.15
 
+var highlight_atlas_coords = Vector2(0,0)
 
+var tilemap_to_copy
+var highlight_tilemap
 
 
 func _ready() -> void:
@@ -31,7 +34,7 @@ func _process(_delta: float) -> void:
 	# Store Atlas Coords of selected Tile ....
 	tile_array.append(tilemap_target.get_cell_atlas_coords(mouse_pos_tml))
 	# Change Tile to Highlight PNG
-	tilemap_target.set_cell(mouse_pos_tml, 0, Vector2(9,13))
+	tilemap_target.set_cell(mouse_pos_tml, 2, highlight_atlas_coords)
 	# Create Timer and Wait for TimeOut...
 	await get_tree().create_timer(wait_time).timeout
 	# Grab the previous Tile and Put it back where it belongs ....
