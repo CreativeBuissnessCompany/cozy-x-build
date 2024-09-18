@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf4hfc8olenw0"]
+
+[ext_resource type="Script" path="res://Components/SeedToCrop/seed_to_crop.gd" id="1_mb8ct"]
+[ext_resource type="Resource" uid="uid://bqgt8f6gd6wxm" path="res://Entities/Items/Tools/Seeds/greenpea/greenpea_resource.tres" id="2_6ml3r"]
+
+[node name="SeedToCrop" type="Sprite2D"]
+y_sort_enabled = true
+script = ExtResource("1_mb8ct")
+item_data = ExtResource("2_6ml3r")

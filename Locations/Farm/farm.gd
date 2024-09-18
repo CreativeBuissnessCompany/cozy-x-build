@@ -66,6 +66,7 @@ func _ready() -> void:
 	super()
 	# Connects to ItemSlot in inventory_ui
 	Signalbus.item_clicked.connect(on_seed_selected)
+	print("Farm Ready ")
 
 
 
@@ -150,15 +151,16 @@ func farming(state,mouse_pos):
 			layer_to_place = tml_4
 			#terrain = seed_terrain
 			custom_data = can_plant
-			source_id = 1
+			source_id = 3 # Maybe change for scene tile , from 1 to 3
+			var scene_tile_id = 1
 			print("Farming Mode Seed") 
 			
 			var mouse_pos_for_data = Utility.convert_mos_local(layer_to_look,mouse_pos)
 			var mouse_pos_for_seed = tml_4.local_to_map(get_local_mouse_position())
 			
 			if retrieving_custom_data(layer_to_look, mouse_pos_for_data, custom_data):
-				#tiles.append(mouse_pos_for_farming) # Changed mosposfarm to mos pos
-				layer_to_place.set_cell(mouse_pos_for_seed,source_id, seed_coords) 
+				# # Scenetile, Add sourceid and tile id, seed_cord to (0,0)
+				layer_to_place.set_cell(mouse_pos_for_seed,source_id, Vector2i(0,0),scene_tile_id) 
 				#print("Checked for Seed Data, Tried to place")
 				print("layer_to_place : %s" % mouse_pos_for_data)
 				return
