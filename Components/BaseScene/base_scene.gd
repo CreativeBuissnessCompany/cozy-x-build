@@ -16,7 +16,7 @@ func _ready() -> void:
 	Signalbus.location_loaded.emit(entrance_markers)
 	
 	#print_orphan_nodes()
-	print("BaseScene: Ready")
+	#print("BaseScene: Ready")
 
 
 func _enter_tree() -> void:

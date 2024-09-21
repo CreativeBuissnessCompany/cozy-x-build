@@ -16,7 +16,7 @@ var inventory:Inventory = Inventory.new()
 
 func _ready() -> void:
 	# Send self to SceneManager
-	print("Player: Ready")
+	#print("Player: Ready")
 	scene_manager.player = self
 
 

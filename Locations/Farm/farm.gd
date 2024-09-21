@@ -66,7 +66,7 @@ func _ready() -> void:
 	super()
 	# Connects to ItemSlot in inventory_ui
 	Signalbus.item_clicked.connect(on_seed_selected)
-	print("Farm Ready ")
+	#print("Farm Ready ")
 
 
 

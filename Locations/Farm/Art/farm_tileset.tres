@@ -745,7 +745,6 @@ texture = ExtResource("3_15130")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mkd21"]
 scenes/1/scene = ExtResource("4_hod7c")
-scenes/1/display_placeholder = ExtResource("4_hod7c")
 
 [resource]
 terrain_set_0/mode = 0
