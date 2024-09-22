@@ -22,25 +22,30 @@ var current_frame
 
 
 
+
+
 func _ready() -> void:
 	# Set Texture
-	self.texture = item_data.icon
+	#self.texture = item_data.icon
 	
 	# New
 	# Setting Vars ...
 	if GameData.crop_array:
-		print("GameData Exists")
+		print("GameData Exists, crop_array")
+		print(GameData.crop_array)
 		# Get Crops, day_planted from GameData
 		# Set
-		day_planted = GameData.crop_array[0]
+		day_planted = GameData.crop_array[-2]
+		current_frame = GameData.crop_array[-1]
 		# Pop
-		GameData.crop_array.pop_front()
+		GameData.crop_array.pop_back()
+		GameData.crop_array.pop_back()
+		
+		
 		#print(GameData.crop_array[0])
 	#Or Else Get crops From Self
 	else:
 		day_planted = time_tracker.day
-		print("Vars from self")
-		
 		
 	
 	# Happens no matter what 
@@ -50,13 +55,17 @@ func _ready() -> void:
 	# Advance to next stage of plant growth...
 	advance_stage(days_since_planted)
 	
-	
 
 func advance_stage(_days_since_planted):
 	animation_player.play("default")
 	animation_player.seek(0.00, true)
 	
+	if current_frame:
+		animation_player.seek(current_frame, true)
+	
 	print(_days_since_planted)
+	
+	
 	match _days_since_planted:
 		
 		stage_one:
@@ -64,35 +73,40 @@ func advance_stage(_days_since_planted):
 		
 		stage_two:
 			animation_player.seek(2.00, true)
-			print("Stage Two")
+			#print("Stage Two")
 			
 		stage_three:
 			animation_player.seek(3.00,true)
-			print("Stage Three")
+			#print("Stage Three")
 			
 		stage_four:
 			animation_player.seek(4.00,true)
-			print("Stage Four")
+			#print("Stage Four")
 			
 		stage_five:
 			animation_player.seek(5.00,true)
-			print("Stage Five")
+			#print("Stage Five")
 			
 		stage_six:
 			animation_player.seek(6.00,true)
-			print("Stage Six")
+			#print("Stage Six")
 			
 		stage_seven:
 			animation_player.seek(7.00,true)
-			print("Stage Seven")
+			#print("Stage Seven")
 			
+	current_frame = animation_player.current_animation_position
 	animation_player.pause()
+	
 
 
 func _exit_tree() -> void:
 	# Send
 	GameData.crop_array.append(day_planted)
+	GameData.crop_array.append(current_frame)
+	
+	print(" GameData Sent, crop_array")
 	print(GameData.crop_array)
+	
 	#get_parent().crops.append(crop_dict)
-	print(" GameData Sent")
 	pass

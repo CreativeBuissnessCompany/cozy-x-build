@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf4hfc8olenw0"]
+[gd_scene load_steps=7 format=3 uid="uid://bf4hfc8olenw0"]
 
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://Entities/Items/Tools/Seeds/crops.png" id="1_aanqd"]
 [ext_resource type="Script" path="res://Components/SeedToCrop/seed_to_crop.gd" id="1_mb8ct"]
 [ext_resource type="Resource" uid="uid://bqgt8f6gd6wxm" path="res://Entities/Items/Tools/Seeds/greenpea/greenpea_resource.tres" id="2_6ml3r"]
 
@@ -8,7 +9,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:item_data:icon:region")
+tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +26,7 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:item_data:icon:region")
+tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,6 +44,9 @@ _data = {
 
 [node name="SeedToCrop" type="Sprite2D"]
 y_sort_enabled = true
+texture = ExtResource("1_aanqd")
+region_enabled = true
+region_rect = Rect2(16, 48, 16, 32)
 script = ExtResource("1_mb8ct")
 item_data = ExtResource("2_6ml3r")
 stage_two = 2

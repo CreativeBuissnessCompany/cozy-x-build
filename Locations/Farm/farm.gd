@@ -92,27 +92,6 @@ func _input(_event: InputEvent) -> void:
 		# Farming Func ...
 		farming(state, mouse_pos)
 		
-
-		#
-		## NOTE Farming States ...
-		## Check state of farming ... If WATERING...
-		#if farming_mode_state == FARMING_MODES.WATERING:
-			#var mouse_pos_for_watering = Utility.convert_mos_local(tml_3,mouse_pos)
-			## How's this working ? ...
-			## Layer , MousPos , CustomData Name  tml_3 to tml_3
-			#if retrieving_custom_data(tml_3, mouse_pos_for_watering,can_water_custom_data):
-				#wet_tiles.append(mouse_pos_for_watering)
-				## Set the tilemap at mouse position using cells in Array, TerrainSet and  Terrain
-				#tml_3.set_cells_terrain_connect(wet_tiles,terrain_set, watered_terrain)
-		#
-		## Otherwise it's just TILL.... 
-		#elif farming_mode_state == FARMING_MODES.TILL:
-			#var mouse_pos_for_tilling = Utility.convert_mos_local(tml_2,mouse_pos)
-			## Check that you can even get custom data called can_till  tml_2 to tml_3
-			#if retrieving_custom_data(tml_2, mouse_pos_for_tilling, can_till_custom_data):
-				#dirt_tiles.append(mouse_pos_for_tilling) 
-				#tml_3.set_cells_terrain_connect(dirt_tiles,terrain_set, tilled_terrain) 
-
 		
 		return
 
