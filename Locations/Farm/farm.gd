@@ -34,6 +34,8 @@ var dirt_tiles: Array = []
 var wet_tiles: Array = []
 # Seed AtlasCoords
 var seed_coords: Vector2i = Vector2i(0,4)
+# Scenetile ID for SEEDS
+var scene_tile_id := 1
 
 
 
@@ -99,6 +101,9 @@ func _input(_event: InputEvent) -> void:
 func on_seed_selected(item_resource: Item):
 	if item_resource.item_type == Item.ITEM_TYPE.SEED:
 		farming_mode_state = FARMING_MODES.PLANT_SEED
+		# Hacky way to close inventory on seed selected
+		var inventory_ui: Control = get_parent().find_child("InventoryUI")
+		inventory_ui.hide()
 		print("Clicked Seed to Plant")
 	pass
 
@@ -124,14 +129,12 @@ func farming(state,mouse_pos):
 			custom_data = can_water_custom_data
 			
 	
-	# NOTE Test ...
 		FARMING_MODES.PLANT_SEED:
 			layer_to_look = tml_3
 			layer_to_place = tml_4
 			#terrain = seed_terrain
 			custom_data = can_plant
 			source_id = 3 # Maybe change for scene tile , from 1 to 3
-			var scene_tile_id = 1
 			print("Farming Mode Seed") 
 			
 			var mouse_pos_for_data = Utility.convert_mos_local(layer_to_look,mouse_pos)
@@ -145,7 +148,7 @@ func farming(state,mouse_pos):
 				return
 			
 			
-	
+	 # Farming Func for NOT seeds
 	if farming_mode_state != FARMING_MODES.PLANT_SEED:
 		print("Not in seed mode")
 		# After STATE match, Do work ...
@@ -153,6 +156,15 @@ func farming(state,mouse_pos):
 		if retrieving_custom_data(layer_to_look, mouse_pos_for_farming, custom_data):
 			tiles.append(mouse_pos_for_farming) 
 			layer_to_place.set_cells_terrain_connect(tiles,terrain_set, terrain) 
+		# Check if watering
+		if farming_mode_state == FARMING_MODES.WATERING:
+			var mos_pos_waterin = Utility.convert_mos_local(tml_4,mouse_pos)
+			#var mos_pos_waterin = get_global_mouse_position()
+			Signalbus.emit_signal("watered", mos_pos_waterin)
+			print("Sent From FARM")
+			pass
+		
+		
 		
 		
 		# If that worked, Pop Tile Array to try to fiz issues with placement 
@@ -160,6 +172,9 @@ func farming(state,mouse_pos):
 				print("3 tiles stored, Now removing...")
 				wet_tiles.pop_back()
 				dirt_tiles.pop_back()
+
+
+
 
 
 # Custom function ....

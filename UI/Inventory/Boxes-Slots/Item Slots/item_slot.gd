@@ -26,7 +26,6 @@ func _gui_input(event: InputEvent) -> void:
 			#print("Item Click Worked")
 			# for inventory_ui
 			on_item_button_pressed.emit(item_description,animated_sprite_2d)
-			
 			# Test , Maybe to farm ...
 			Signalbus.item_clicked.emit(item_resource)
 			#item_check()

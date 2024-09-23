@@ -15,3 +15,5 @@ signal object_with_dialogbox
 signal day_change
 # Item Clicked
 signal item_clicked
+# Watered for Seeds
+signal watered

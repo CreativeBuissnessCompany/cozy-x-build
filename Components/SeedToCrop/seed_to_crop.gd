@@ -17,52 +17,80 @@ class_name CropToSeed extends Sprite2D
 var day_planted: int
 var days_since_planted: int = 0
 var current_day: int 
-
 var current_frame
+
+var watered: bool = false
 
 
 
 
 
 func _ready() -> void:
-	# Set Texture
-	#self.texture = item_data.icon
+	Signalbus.connect("watered", _on_watered)
 	
 	# New
 	# Setting Vars ...
 	if GameData.crop_array:
 		print("GameData Exists, crop_array")
 		print(GameData.crop_array)
-		# Get Crops, day_planted from GameData
-		# Set
-		day_planted = GameData.crop_array[-2]
-		current_frame = GameData.crop_array[-1]
+		 #Get Crops, day_planted from GameData
+		 #Set
+		day_planted = GameData.crop_array[-3]
+		current_frame = GameData.crop_array[-2]
+		watered = GameData.crop_array[-1]
 		# Pop
 		GameData.crop_array.pop_back()
 		GameData.crop_array.pop_back()
+		GameData.crop_array.pop_back()
 		
-		
+		#print(" CROP_ARRAY : ")
 		#print(GameData.crop_array[0])
 	#Or Else Get crops From Self
 	else:
 		day_planted = time_tracker.day
 		
 	
-	# Happens no matter what 
+	# NOTE Happens no matter what 
 	current_day = time_tracker.day
 	days_since_planted = current_day - day_planted
 	
-	# Advance to next stage of plant growth...
-	advance_stage(days_since_planted)
-	
-
-func advance_stage(_days_since_planted):
+	# Set Animationplayer @ 0.00 in "default" Animation
 	animation_player.play("default")
 	animation_player.seek(0.00, true)
+	animation_player.pause()
+	
+	if watered == true:
+		
+		# Advance to next stage of plant growth...
+		advance_stage(days_since_planted)
+	
+
+
+func _on_watered(mos_pos):
+	
+	print("Receieved and Watered:")
+	print("Passed in mos_pos")
+	print(mos_pos)
+	
+	var parent = get_parent()
+	var tile_pos_global: Vector2 = global_position
+	var tile_pos_local = Utility.convert_mos_local(parent,global_position )
+	print("Local tile_pos")
+	print(tile_pos_local)
+	
+	if mos_pos == tile_pos_local:
+		watered=true
+		print("Win!!!!!")
+	
+
+
+
+func advance_stage(_days_since_planted):
 	
 	if current_frame:
 		animation_player.seek(current_frame, true)
 	
+	print("Days Since Planted:")
 	print(_days_since_planted)
 	
 	
@@ -104,9 +132,11 @@ func _exit_tree() -> void:
 	# Send
 	GameData.crop_array.append(day_planted)
 	GameData.crop_array.append(current_frame)
+	GameData.crop_array.append(watered)
+
 	
-	print(" GameData Sent, crop_array")
-	print(GameData.crop_array)
+	#print(" GameData Sent, crop_array")
+	#print(GameData.crop_array)
 	
 	#get_parent().crops.append(crop_dict)
 	pass
