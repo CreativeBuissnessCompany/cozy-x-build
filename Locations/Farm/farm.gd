@@ -32,6 +32,15 @@ var seed_terrain:int = 4
 # Tile Arrays ...
 var dirt_tiles: Array = []
 var wet_tiles: Array = []
+var dirt_tiles_to_replace: Array = []
+
+var dirt_tile_data: Dictionary = {
+	"tile location" : 0,
+	"atlas coords" : Vector2(0,0)
+}
+
+
+
 # Seed AtlasCoords
 var seed_coords: Vector2i = Vector2i(0,4)
 # Scenetile ID for SEEDS
@@ -56,7 +65,8 @@ var tiles: Array
 var terrain: int
 var custom_data: String
 
-
+# Day Change
+var current_day: int
 
 
 
@@ -68,8 +78,14 @@ func _ready() -> void:
 	super()
 	# Connects to ItemSlot in inventory_ui
 	Signalbus.item_clicked.connect(on_seed_selected)
+	
 	#print("Farm Ready ")
 
+
+
+func _enter_tree() -> void:
+	super()
+	check_day()
 
 
 # Player Inputs at Farm ...
@@ -94,7 +110,6 @@ func _input(_event: InputEvent) -> void:
 		# Farming Func ...
 		farming(state, mouse_pos)
 		
-		
 		return
 
 
@@ -106,7 +121,6 @@ func on_seed_selected(item_resource: Item):
 		inventory_ui.hide()
 		print("Clicked Seed to Plant")
 	pass
-
 
 
 # Test Func .... FARMING FUNC
@@ -146,8 +160,7 @@ func farming(state,mouse_pos):
 				#print("Checked for Seed Data, Tried to place")
 				print("layer_to_place : %s" % mouse_pos_for_data)
 				return
-			
-			
+
 	 # Farming Func for NOT seeds
 	if farming_mode_state != FARMING_MODES.PLANT_SEED:
 		print("Not in seed mode")
@@ -155,18 +168,36 @@ func farming(state,mouse_pos):
 		var mouse_pos_for_farming = Utility.convert_mos_local(layer_to_look,mouse_pos)
 		if retrieving_custom_data(layer_to_look, mouse_pos_for_farming, custom_data):
 			tiles.append(mouse_pos_for_farming) 
+			# Store dirt tile first
+			dirt_tile_data["tile location"] = mouse_pos_for_farming
+			var dirt_coords = tml_3.get_cell_atlas_coords(mouse_pos_for_farming)
+			dirt_tile_data["atlas coords"] = dirt_coords
+			dirt_tiles_to_replace.append(dirt_tile_data.duplicate())
+			Signalbus.emit_signal("watered", mouse_pos_for_farming)
+			print("Sent From FARM")
+			print("dirt_tiles_to_replace:")
+			print(dirt_tiles_to_replace)
+			
 			layer_to_place.set_cells_terrain_connect(tiles,terrain_set, terrain) 
+			
 		# Check if watering
 		if farming_mode_state == FARMING_MODES.WATERING:
-			var mos_pos_waterin = Utility.convert_mos_local(tml_4,mouse_pos)
-			#var mos_pos_waterin = get_global_mouse_position()
-			Signalbus.emit_signal("watered", mos_pos_waterin)
-			print("Sent From FARM")
+			
+			# Keep track of dirt_tiles to DELETE
+			#var mos_pos_waterin = Utility.convert_mos_local(tml_4,mouse_pos)
+			#dirt_tile_data["tile location"] = mos_pos_waterin
+			#dirt_tiles_to_replace.append(mos_pos_waterin)
+			#var dirt_coords = tml_3.get_cell_atlas_coords(mos_pos_waterin)
+			#dirt_tile_data["atlas coords"] = dirt_coords
+			#dirt_tiles_to_replace.append(dirt_tile_data.duplicate())
+			#dirt_tiles_to_replace.append(dirt_coords)
+			#Telling SeedToCrop it got watered # NOTE was mos_pos_waterin
+			#Signalbus.emit_signal("watered", mouse_pos_for_farming)
 			pass
 		
 		
 		
-		
+		# Beware, May need to tab shift back a bit.... if farmingmode watering may be interfereing..
 		# If that worked, Pop Tile Array to try to fiz issues with placement 
 			if wet_tiles.size() or dirt_tiles.size() >= 3:
 				print("3 tiles stored, Now removing...")
@@ -174,8 +205,21 @@ func farming(state,mouse_pos):
 				dirt_tiles.pop_back()
 
 
-
-
+func check_day():
+	
+	if time_tracker.day > current_day:
+		#print("Wet Tiles To Delete : ")
+		#print(wet_tiles_to_delete)
+		if dirt_tiles_to_replace:
+			for tile in dirt_tiles_to_replace:
+				print(" Tile: ")
+				print(tile["tile location"])
+				print(tile["atlas coords"])
+				# Reset dirt_tiles
+				tml_3.set_cell(tile["tile location"], terrain_sourceid_farmhouse, tile["atlas coords"])
+				
+			
+			current_day = time_tracker.day
 
 # Custom function ....
 func retrieving_custom_data(tml_layer: TileMapLayer,tml_mouse_pos: Vector2, custom_tilemap_data_name: String):

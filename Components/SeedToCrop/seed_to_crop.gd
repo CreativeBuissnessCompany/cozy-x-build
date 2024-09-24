@@ -26,13 +26,14 @@ var watered: bool = false
 
 
 func _ready() -> void:
+	# From Farm?
 	Signalbus.connect("watered", _on_watered)
 	
 	# New
 	# Setting Vars ...
 	if GameData.crop_array:
-		print("GameData Exists, crop_array")
-		print(GameData.crop_array)
+		#print("GameData Exists, crop_array")
+		#print(GameData.crop_array)
 		 #Get Crops, day_planted from GameData
 		 #Set
 		day_planted = GameData.crop_array[-3]

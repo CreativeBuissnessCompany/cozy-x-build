@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://db4eylrann81f"]
+[gd_scene load_steps=8 format=3 uid="uid://db4eylrann81f"]
 
 [ext_resource type="Script" path="res://Universe/universe.gd" id="1_lm1sa"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="2_3rlae"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://Components/Inventory/InventoryUIVendingMachine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="5_xd6ju"]
 [ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://Locations/Farm/farm.tscn" id="6_v8fun"]
-[ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://Entities/Items/Tools/Seeds/greenpea/greenpea_picup.tscn" id="7_u5c8f"]
 
 [node name="Universe" type="Node2D"]
 y_sort_enabled = true
@@ -67,15 +66,3 @@ text = "Day: 1"
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
 position = Vector2(21, -91)
-
-[node name="GreenPea" parent="." instance=ExtResource("7_u5c8f")]
-z_index = 1
-position = Vector2(-58, -40)
-
-[node name="GreenPea2" parent="." instance=ExtResource("7_u5c8f")]
-z_index = 1
-position = Vector2(-65.5301, 33.2272)
-
-[node name="GreenPea3" parent="." instance=ExtResource("7_u5c8f")]
-z_index = 1
-position = Vector2(-130.706, -64.5373)
