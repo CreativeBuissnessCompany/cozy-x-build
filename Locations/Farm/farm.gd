@@ -66,7 +66,7 @@ var terrain: int
 var custom_data: String
 
 # Day Change
-var current_day: int
+var current_day: int = 1
 
 
 
@@ -168,15 +168,16 @@ func farming(state,mouse_pos):
 		var mouse_pos_for_farming = Utility.convert_mos_local(layer_to_look,mouse_pos)
 		if retrieving_custom_data(layer_to_look, mouse_pos_for_farming, custom_data):
 			tiles.append(mouse_pos_for_farming) 
-			# Store dirt tile first
-			dirt_tile_data["tile location"] = mouse_pos_for_farming
-			var dirt_coords = tml_3.get_cell_atlas_coords(mouse_pos_for_farming)
-			dirt_tile_data["atlas coords"] = dirt_coords
-			dirt_tiles_to_replace.append(dirt_tile_data.duplicate())
-			Signalbus.emit_signal("watered", mouse_pos_for_farming)
-			print("Sent From FARM")
-			print("dirt_tiles_to_replace:")
-			print(dirt_tiles_to_replace)
+			if farming_mode_state == FARMING_MODES.WATERING:
+				# Store dirt tile first
+				dirt_tile_data["tile location"] = mouse_pos_for_farming
+				var dirt_coords = tml_3.get_cell_atlas_coords(mouse_pos_for_farming)
+				dirt_tile_data["atlas coords"] = dirt_coords
+				dirt_tiles_to_replace.append(dirt_tile_data.duplicate())
+				Signalbus.emit_signal("watered", mouse_pos_for_farming)
+				print("Sent From FARM")
+				print("dirt_tiles_to_replace:")
+				print(dirt_tiles_to_replace)
 			
 			layer_to_place.set_cells_terrain_connect(tiles,terrain_set, terrain) 
 			
@@ -218,8 +219,10 @@ func check_day():
 				# Reset dirt_tiles
 				tml_3.set_cell(tile["tile location"], terrain_sourceid_farmhouse, tile["atlas coords"])
 				
-			
 			current_day = time_tracker.day
+			
+			dirt_tiles_to_replace.clear()
+			
 
 # Custom function ....
 func retrieving_custom_data(tml_layer: TileMapLayer,tml_mouse_pos: Vector2, custom_tilemap_data_name: String):
