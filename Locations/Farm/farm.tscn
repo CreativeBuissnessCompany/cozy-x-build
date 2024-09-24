@@ -91,3 +91,4 @@ position = Vector2(201.586, 65.2403)
 position = Vector2(54, 81)
 
 [node name="GreenPea" parent="PickUps" instance=ExtResource("10_mmsmp")]
+position = Vector2(200.877, -66.0738)

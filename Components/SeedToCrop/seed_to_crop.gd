@@ -17,127 +17,149 @@ class_name CropToSeed extends Sprite2D
 var day_planted: int
 var days_since_planted: int = 0
 var current_day: int 
-var current_frame
-
+var current_frame: float = 0.00
 var watered: bool = false
 
+var days_watered: int = 0
 
 
 
 
 func _ready() -> void:
-	# From Farm?
+	# From Farm...
 	Signalbus.connect("watered", _on_watered)
 	
-	# New
 	# Setting Vars ...
 	if GameData.crop_array:
-		#print("GameData Exists, crop_array")
-		#print(GameData.crop_array)
-		 #Get Crops, day_planted from GameData
+		 #Get Crops Data from GameData
 		 #Set
+		days_watered = GameData.crop_array[-5]
+		current_day = GameData.crop_array[-4]
 		day_planted = GameData.crop_array[-3]
 		current_frame = GameData.crop_array[-2]
 		watered = GameData.crop_array[-1]
+		#print(" GameData Exisits")
+		#print(day_planted,current_frame,watered)
+		#print(" Data Received , Current Frame")
+		#print( current_frame)
 		# Pop
 		GameData.crop_array.pop_back()
 		GameData.crop_array.pop_back()
 		GameData.crop_array.pop_back()
+		GameData.crop_array.pop_back()
+		GameData.crop_array.pop_back()
 		
-		#print(" CROP_ARRAY : ")
-		#print(GameData.crop_array[0])
-	#Or Else Get crops From Self
+		
+	#Or Else ...
 	else:
 		day_planted = time_tracker.day
+		print("DayPlanted set to timetracker")
 		
-	
-	# NOTE Happens no matter what 
-	current_day = time_tracker.day
-	days_since_planted = current_day - day_planted
+	if watered == true:
+		print(" Water is True ")
+		if time_tracker.day > day_planted:
+			days_watered += 1
+			days_since_planted = time_tracker.day - day_planted
+			print(" days_watered ")
+			print(days_watered)
 	
 	# Set Animationplayer @ 0.00 in "default" Animation
 	animation_player.play("default")
-	animation_player.seek(0.00, true)
+	animation_player.seek(current_frame, true)
 	animation_player.pause()
 	
 	if watered == true:
-		
+		#print("Watered = True")
 		# Advance to next stage of plant growth...
-		advance_stage(days_since_planted)
+		advance_stage(days_watered)
+		
+	
+	# if day bigger than day on record, watered false
+	if current_day < time_tracker.day:
+		# set watered to false
+		watered = false 
+	
+	# NOTE Happens no matter what 
+	current_day = time_tracker.day
+	
+	
 	
 
 
 func _on_watered(mos_pos):
 	
-	print("Receieved and Watered:")
-	print("Passed in mos_pos")
-	print(mos_pos)
+	#print("Receieved and Watered:")
+	#print("Passed in mos_pos")
+	#print(mos_pos)
 	
 	var parent = get_parent()
 	var tile_pos_global: Vector2 = global_position
 	var tile_pos_local = Utility.convert_mos_local(parent,global_position )
-	print("Local tile_pos")
-	print(tile_pos_local)
+	#print("Local tile_pos")
+	#print(tile_pos_local)
 	
 	if mos_pos == tile_pos_local:
-		watered=true
-		print("Win!!!!!")
-	
+		watered = true
+		#print(watered)
 
 
 
 func advance_stage(_days_since_planted):
 	
-	if current_frame:
-		animation_player.seek(current_frame, true)
-	
-	print("Days Since Planted:")
-	print(_days_since_planted)
-	
+	#if current_frame:
+		#animation_player.seek(current_frame, true)
+		
+	#print("Advancing Stage ...")
+	#print("Days Since Planted ")
+	#print(_days_since_planted)
+	# Set to frame received from array 
+	#animation_player.current_animation_position = current_frame
 	
 	match _days_since_planted:
 		
 		stage_one:
+			animation_player.seek(0.00, true)
 			print("Stage One")
 		
 		stage_two:
-			animation_player.seek(2.00, true)
-			#print("Stage Two")
+			animation_player.seek(1.00, true)
+			print("Stage Two")
 			
 		stage_three:
-			animation_player.seek(3.00,true)
-			#print("Stage Three")
+			animation_player.seek(2.00,true)
+			print("Stage Three")
 			
 		stage_four:
-			animation_player.seek(4.00,true)
-			#print("Stage Four")
+			animation_player.seek(3.00,true)
+			print("Stage Four")
 			
 		stage_five:
-			animation_player.seek(5.00,true)
-			#print("Stage Five")
+			animation_player.seek(4.00,true)
+			print("Stage Five")
 			
 		stage_six:
-			animation_player.seek(6.00,true)
-			#print("Stage Six")
+			animation_player.seek(5.00,true)
+			print("Stage Six")
 			
 		stage_seven:
-			animation_player.seek(7.00,true)
-			#print("Stage Seven")
+			animation_player.seek(6.00,true)
+			print("Stage Seven")
 			
-	current_frame = animation_player.current_animation_position
 	animation_player.pause()
+	current_frame = animation_player.current_animation_position
+	
 	
 
 
 func _exit_tree() -> void:
 	# Send
+	GameData.crop_array.append(days_watered)
+	GameData.crop_array.append(current_day)
 	GameData.crop_array.append(day_planted)
 	GameData.crop_array.append(current_frame)
 	GameData.crop_array.append(watered)
+	#print(" Data Sent , Current Frame")
+	#print( current_frame)
 
 	
-	#print(" GameData Sent, crop_array")
-	#print(GameData.crop_array)
-	
-	#get_parent().crops.append(crop_dict)
 	pass

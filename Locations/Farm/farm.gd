@@ -94,12 +94,12 @@ func _input(_event: InputEvent) -> void:
 	# E key
 	if Input.is_action_just_pressed("toggle_dirt"):
 		farming_mode_state = FARMING_MODES.TILL
-		print("Till State")
+		#print("Till State")
 	
 	# R key
 	if Input.is_action_just_pressed("toggle_water"):
 		farming_mode_state = FARMING_MODES.WATERING
-		print("Water State")
+		#print("Water State")
 	
 	
 	# Mouse click, Farming Happening ..
@@ -119,7 +119,7 @@ func on_seed_selected(item_resource: Item):
 		# Hacky way to close inventory on seed selected
 		var inventory_ui: Control = get_parent().find_child("InventoryUI")
 		inventory_ui.hide()
-		print("Clicked Seed to Plant")
+		#print("Clicked Seed to Plant")
 	pass
 
 
@@ -149,7 +149,7 @@ func farming(state,mouse_pos):
 			#terrain = seed_terrain
 			custom_data = can_plant
 			source_id = 3 # Maybe change for scene tile , from 1 to 3
-			print("Farming Mode Seed") 
+			#print("Farming Mode Seed") 
 			
 			var mouse_pos_for_data = Utility.convert_mos_local(layer_to_look,mouse_pos)
 			var mouse_pos_for_seed = tml_4.local_to_map(get_local_mouse_position())
@@ -158,12 +158,12 @@ func farming(state,mouse_pos):
 				# # Scenetile, Add sourceid and tile id, seed_cord to (0,0)
 				layer_to_place.set_cell(mouse_pos_for_seed,source_id, Vector2i(0,0),scene_tile_id) 
 				#print("Checked for Seed Data, Tried to place")
-				print("layer_to_place : %s" % mouse_pos_for_data)
+				#print("layer_to_place : %s" % mouse_pos_for_data)
 				return
 
 	 # Farming Func for NOT seeds
 	if farming_mode_state != FARMING_MODES.PLANT_SEED:
-		print("Not in seed mode")
+		#print("Not in seed mode")
 		# After STATE match, Do work ...
 		var mouse_pos_for_farming = Utility.convert_mos_local(layer_to_look,mouse_pos)
 		if retrieving_custom_data(layer_to_look, mouse_pos_for_farming, custom_data):
@@ -175,33 +175,19 @@ func farming(state,mouse_pos):
 				dirt_tile_data["atlas coords"] = dirt_coords
 				dirt_tiles_to_replace.append(dirt_tile_data.duplicate())
 				Signalbus.emit_signal("watered", mouse_pos_for_farming)
-				print("Sent From FARM")
-				print("dirt_tiles_to_replace:")
-				print(dirt_tiles_to_replace)
+				#print("Sent From FARM")
+				#print("dirt_tiles_to_replace:")
+				#print(dirt_tiles_to_replace)
 			
+			
+			# After storing dirt tiles, Place dirt or watering tile
 			layer_to_place.set_cells_terrain_connect(tiles,terrain_set, terrain) 
-			
-		# Check if watering
-		if farming_mode_state == FARMING_MODES.WATERING:
-			
-			# Keep track of dirt_tiles to DELETE
-			#var mos_pos_waterin = Utility.convert_mos_local(tml_4,mouse_pos)
-			#dirt_tile_data["tile location"] = mos_pos_waterin
-			#dirt_tiles_to_replace.append(mos_pos_waterin)
-			#var dirt_coords = tml_3.get_cell_atlas_coords(mos_pos_waterin)
-			#dirt_tile_data["atlas coords"] = dirt_coords
-			#dirt_tiles_to_replace.append(dirt_tile_data.duplicate())
-			#dirt_tiles_to_replace.append(dirt_coords)
-			#Telling SeedToCrop it got watered # NOTE was mos_pos_waterin
-			#Signalbus.emit_signal("watered", mouse_pos_for_farming)
-			pass
-		
 		
 		
 		# Beware, May need to tab shift back a bit.... if farmingmode watering may be interfereing..
 		# If that worked, Pop Tile Array to try to fiz issues with placement 
 			if wet_tiles.size() or dirt_tiles.size() >= 3:
-				print("3 tiles stored, Now removing...")
+				#print("3 tiles stored, Now removing...")
 				wet_tiles.pop_back()
 				dirt_tiles.pop_back()
 
@@ -213,15 +199,18 @@ func check_day():
 		#print(wet_tiles_to_delete)
 		if dirt_tiles_to_replace:
 			for tile in dirt_tiles_to_replace:
-				print(" Tile: ")
-				print(tile["tile location"])
-				print(tile["atlas coords"])
+				#print(" Tile: ")
+				#print(tile["tile location"])
+				#print(tile["atlas coords"])
 				# Reset dirt_tiles
 				tml_3.set_cell(tile["tile location"], terrain_sourceid_farmhouse, tile["atlas coords"])
 				
-			current_day = time_tracker.day
-			
-			dirt_tiles_to_replace.clear()
+		# Set day Eitherway... As long as Timetracker.day is bigger than current day in farm 
+		current_day = time_tracker.day
+		# Clear Dirt Tiles Array
+		dirt_tiles_to_replace.clear()
+		# Clear Dict
+		dirt_tile_data.clear()
 			
 
 # Custom function ....
