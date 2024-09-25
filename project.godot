@@ -24,6 +24,10 @@ Utility="*res://Globals/utility.gd"
 time_tracker="*res://AutoLoads/time_tracker.gd"
 AudioData="*res://AutoLoads/audio_data.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=640

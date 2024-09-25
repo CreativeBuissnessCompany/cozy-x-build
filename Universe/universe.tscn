@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://UI/UI Root/ui_root.gd" id="3_p78e7"]
 [ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://Components/Inventory/InventoryUIVendingMachine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="5_xd6ju"]
-[ext_resource type="PackedScene" uid="uid://smt7a20k5ia3" path="res://Locations/Farm02/farm02.tscn" id="6_lapc1"]
+[ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://Locations/Farm/farm.tscn" id="6_qng6u"]
 [ext_resource type="AudioStream" uid="uid://blf0dnkb8lyof" path="res://AudioFiles/Music/AmbiBankC.mp3" id="8_nxnny"]
 [ext_resource type="AudioStream" uid="uid://dlo4g24p5cme6" path="res://AudioFiles/Music/821 Loop.mp3" id="9_wco5c"]
 [ext_resource type="AudioStream" uid="uid://bp54n8ghvava4" path="res://AudioFiles/Music/43020.mp3" id="10_ffxe7"]
@@ -76,7 +76,7 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "Day: 1"
 
-[node name="Farm02" parent="." instance=ExtResource("6_lapc1")]
+[node name="Farm" parent="." instance=ExtResource("6_qng6u")]
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
