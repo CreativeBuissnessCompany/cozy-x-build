@@ -22,6 +22,7 @@ Signalbus="*res://AutoLoads/signal_bus.gd"
 scene_manager="*res://AutoLoads/scene_manager.gd"
 Utility="*res://Globals/utility.gd"
 time_tracker="*res://AutoLoads/time_tracker.gd"
+AudioData="*res://AutoLoads/audio_data.gd"
 
 [display]
 

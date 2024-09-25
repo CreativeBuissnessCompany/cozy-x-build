@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://db4eylrann81f"]
+[gd_scene load_steps=13 format=3 uid="uid://db4eylrann81f"]
 
 [ext_resource type="Script" path="res://Universe/universe.gd" id="1_lm1sa"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="2_3rlae"]
@@ -7,6 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://Components/Inventory/InventoryUIVendingMachine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="5_xd6ju"]
 [ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://Locations/Farm/farm.tscn" id="6_v8fun"]
+[ext_resource type="AudioStream" uid="uid://blf0dnkb8lyof" path="res://AudioFiles/Music/AmbiBankC.mp3" id="8_nxnny"]
+[ext_resource type="AudioStream" uid="uid://dlo4g24p5cme6" path="res://AudioFiles/Music/821 Loop.mp3" id="9_wco5c"]
+[ext_resource type="AudioStream" uid="uid://bp54n8ghvava4" path="res://AudioFiles/Music/43020.mp3" id="10_ffxe7"]
+[ext_resource type="AudioStream" uid="uid://cx8gh37mgdmov" path="res://AudioFiles/Music/Faze.mp3" id="11_4jhlq"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wtpp2"]
+shuffle = true
+stream_count = 4
+stream_0 = ExtResource("8_nxnny")
+stream_1 = ExtResource("9_wco5c")
+stream_2 = ExtResource("10_ffxe7")
+stream_3 = ExtResource("11_4jhlq")
 
 [node name="Universe" type="Node2D"]
 y_sort_enabled = true
@@ -66,3 +78,9 @@ text = "Day: 1"
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
 position = Vector2(21, -91)
+
+[node name="AudioManager" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+stream = SubResource("AudioStreamPlaylist_wtpp2")
+autoplay = true
