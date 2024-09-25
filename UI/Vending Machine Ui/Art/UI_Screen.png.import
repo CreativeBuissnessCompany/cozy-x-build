@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnspgeui0pcpm"
-path="res://.godot/imported/tile-selection.png-19f97545c137b00ab586e53c711827ff.ctex"
+uid="uid://c5lrmo5nbo2u3"
+path="res://.godot/imported/UI_Screen.png-bccc11805db7a54fca3d27705923432d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Components/highlight_tile/tile-selection.png"
-dest_files=["res://.godot/imported/tile-selection.png-19f97545c137b00ab586e53c711827ff.ctex"]
+source_file="res://UI/Vending Machine Ui/Art/UI_Screen.png"
+dest_files=["res://.godot/imported/UI_Screen.png-bccc11805db7a54fca3d27705923432d.ctex"]
 
 [params]
 

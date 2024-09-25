@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="2_3rlae"]
 [ext_resource type="PackedScene" uid="uid://gmoti5cjspg6" path="res://Components/Inventory/inventory_ui.tscn" id="2_dx7gh"]
 [ext_resource type="Script" path="res://UI/UI Root/ui_root.gd" id="3_p78e7"]
-[ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://Components/Inventory/InventoryUIVendingMachine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
+[ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://UI/Vending Machine Ui/InventoryUIVendingMachine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="5_xd6ju"]
 [ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://Locations/Farm/farm.tscn" id="6_qng6u"]
 [ext_resource type="AudioStream" uid="uid://blf0dnkb8lyof" path="res://AudioFiles/Music/AmbiBankC.mp3" id="8_nxnny"]

@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://Locations/Farm/Art/farm_tileset.tres" id="2_f15kg"]
 [ext_resource type="PackedScene" uid="uid://c6s3lxp4v0570" path="res://Components/SceneTrigger/scene_trigger.tscn" id="3_d5uw2"]
 [ext_resource type="Script" path="res://Locations/Farm/04_crop_tile_map_layer_3.gd" id="3_x4tph"]
-[ext_resource type="PackedScene" uid="uid://cwahs8ks6udmp" path="res://Components/highlight_tile/highlight_tile.tscn" id="5_3l1uu"]
+[ext_resource type="PackedScene" uid="uid://cwahs8ks6udmp" path="res://Components/HighlightTile/highlight_tile.tscn" id="5_3l1uu"]
 [ext_resource type="Script" path="res://Components/ObjectsWithUI/objects_with_ui.gd" id="5_6rcer"]
 [ext_resource type="PackedScene" uid="uid://c4vrpmdrlpamn" path="res://Entities/Items/Interactive_Furniture/VendingMachine/vending_machine.tscn" id="5_ie2gv"]
 [ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://Entities/Items/Consumables/Fruits/Apple/apple_pickup.tscn" id="7_uvcjc"]

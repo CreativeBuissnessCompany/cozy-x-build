@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4vrpmdrlpamn"]
 
 [ext_resource type="Script" path="res://Entities/Items/Interactive_Furniture/VendingMachine/vending_machine.gd" id="1_myppn"]
-[ext_resource type="Resource" uid="uid://b2dktshx1ka1v" path="res://Components/Inventory/InventoryUIVendingMachine/vending_inventory_01.tres" id="2_y44pt"]
+[ext_resource type="Resource" uid="uid://b2dktshx1ka1v" path="res://UI/Vending Machine Ui/InventoryUIVendingMachine/vending_inventory_01.tres" id="2_y44pt"]
 [ext_resource type="Texture2D" uid="uid://c1b1a8rdevi05" path="res://Entities/Items/Interactive_Furniture/VendingMachine/Art/overworld-vending.png" id="2_ykt3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t68w"]

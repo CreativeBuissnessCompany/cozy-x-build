@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://gmoti5cjspg6"]
 
 [ext_resource type="Script" path="res://Components/Inventory/inventory_ui.gd" id="1_roulo"]
-[ext_resource type="Texture2D" uid="uid://c5lrmo5nbo2u3" path="res://Components/Inventory/Art/UI_Screen.png" id="1_xvxwu"]
+[ext_resource type="Texture2D" uid="uid://c5lrmo5nbo2u3" path="res://UI/Vending Machine Ui/Art/UI_Screen.png" id="1_xvxwu"]
 [ext_resource type="PackedScene" uid="uid://dmt5nacpltl6i" path="res://UI/Inventory/Boxes-Slots/Item Slots/item_slot.tscn" id="2_g44k5"]
 [ext_resource type="Texture2D" uid="uid://s48gy8ly3s0w" path="res://UI/Inventory/Boxes-Slots/Main Boxes/Art/inventory-boxes.png" id="4_tlcim"]
 [ext_resource type="FontFile" uid="uid://bjmir8y7vyk8c" path="res://Themes/Fonts/Caviar_Dreams_Bold.ttf" id="5_djjsr"]

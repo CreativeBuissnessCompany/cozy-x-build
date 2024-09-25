@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bybcwn4p07qyq" path="res://Locations/Farm/Art/farmhousetest (2).png" id="1_forse"]
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://Entities/Items/Tools/Seeds/crops.png" id="2_wxhmr"]
-[ext_resource type="Texture2D" uid="uid://bnspgeui0pcpm" path="res://Components/highlight_tile/tile-selection.png" id="3_15130"]
+[ext_resource type="Texture2D" uid="uid://bnspgeui0pcpm" path="res://Components/HighlightTile/tile-selection.png" id="3_15130"]
 [ext_resource type="PackedScene" uid="uid://bf4hfc8olenw0" path="res://Components/SeedToCrop/seed_to_crop.tscn" id="4_hod7c"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_vyf1w"]

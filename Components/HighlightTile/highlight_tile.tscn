@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwahs8ks6udmp"]
 
-[ext_resource type="Script" path="res://Components/highlight_tile/highlight_tile.gd" id="1_h4q3m"]
+[ext_resource type="Script" path="res://Components/HighlightTile/highlight_tile.gd" id="1_h4q3m"]
 
 [sub_resource type="Animation" id="Animation_gxyhq"]
 length = 0.001
