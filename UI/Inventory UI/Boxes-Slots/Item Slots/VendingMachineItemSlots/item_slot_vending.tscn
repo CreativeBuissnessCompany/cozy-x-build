@@ -1,15 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmt5nacpltl6i"]
+[gd_scene load_steps=7 format=3 uid="uid://c5m0saftfc32m"]
 
-[ext_resource type="Texture2D" uid="uid://joc01qndttyc" path="res://UI/Inventory/Boxes-Slots/Item Slots/Art/inventory-slots.png" id="1_5fg31"]
-[ext_resource type="Texture2D" uid="uid://bj4weai7yes1k" path="res://Entities/Items/Consumables/Fruits/Apple/Art/Apple02.png" id="1_5isbi"]
-[ext_resource type="Script" path="res://UI/Inventory/Boxes-Slots/Item Slots/item_slot.gd" id="1_v5xih"]
+[ext_resource type="Script" path="res://UI/Inventory UI/Boxes-Slots/Item Slots/VendingMachineItemSlots/item_slot_vending.gd" id="1_t4a8f"]
+[ext_resource type="Texture2D" uid="uid://joc01qndttyc" path="res://UI/Inventory UI/Boxes-Slots/Item Slots/Art/inventory-slots.png" id="2_2pa76"]
+[ext_resource type="Texture2D" uid="uid://bj4weai7yes1k" path="res://Entities/Items/Consumables/Fruits/Apple/Art/Apple02.png" id="3_x2cxg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6er8"]
-atlas = ExtResource("1_5fg31")
+atlas = ExtResource("2_2pa76")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8shr2"]
-atlas = ExtResource("1_5fg31")
+atlas = ExtResource("2_2pa76")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xlen3"]
@@ -34,11 +34,9 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="ItemSlot" type="PanelContainer"]
+[node name="ItemSlotVending" type="PanelContainer"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(32, 32)
-mouse_force_pass_scroll_events = false
-script = ExtResource("1_v5xih")
+script = ExtResource("1_t4a8f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -51,4 +49,4 @@ frame_progress = 0.540309
 [node name="TextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("1_5isbi")
+texture = ExtResource("3_x2cxg")

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Universe/universe.gd" id="1_lm1sa"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="2_3rlae"]
-[ext_resource type="PackedScene" uid="uid://gmoti5cjspg6" path="res://Components/Inventory/inventory_ui.tscn" id="2_dx7gh"]
 [ext_resource type="Script" path="res://UI/UI Root/ui_root.gd" id="3_p78e7"]
+[ext_resource type="PackedScene" uid="uid://b37p04mi2tsjd" path="res://UI/InventoryUI 02/Data/inventory_ui_02.tscn" id="3_pelb8"]
 [ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://UI/Vending Machine Ui/InventoryUIVendingMachine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="5_xd6ju"]
 [ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://Locations/Farm/farm.tscn" id="6_qng6u"]
@@ -28,10 +28,8 @@ metadata/_edit_lock_ = true
 [node name="UIRoot" type="CanvasLayer" parent="."]
 script = ExtResource("3_p78e7")
 
-[node name="InventoryUI" parent="UIRoot" instance=ExtResource("2_dx7gh")]
+[node name="InventoryUI" parent="UIRoot" instance=ExtResource("3_pelb8")]
 visible = false
-mouse_force_pass_scroll_events = false
-metadata/_edit_lock_ = true
 
 [node name="InventoryUIVendingMachine" parent="UIRoot" instance=ExtResource("3_vl8i7")]
 visible = false

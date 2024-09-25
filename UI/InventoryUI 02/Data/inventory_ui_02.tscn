@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=3 uid="uid://b37p04mi2tsjd"]
+
+[ext_resource type="Texture2D" uid="uid://c5lrmo5nbo2u3" path="res://UI/Vending Machine Ui/Art/UI_Screen.png" id="1_20nbn"]
+[ext_resource type="Script" path="res://UI/Inventory UI/Data/inventory_ui.gd" id="2_okr7b"]
+[ext_resource type="Texture2D" uid="uid://ddxxapt5o1de2" path="res://UI/InventoryUI 02/Art/InventoryContainerFolder.png" id="4_d227q"]
+[ext_resource type="FontFile" uid="uid://bjmir8y7vyk8c" path="res://Themes/Fonts/Caviar_Dreams_Bold.ttf" id="5_5k7wg"]
+[ext_resource type="Texture2D" uid="uid://0by4tji51neu" path="res://UI/InventoryUI 02/Art/page-icons.png" id="5_56aus"]
+[ext_resource type="PackedScene" uid="uid://fgpgayuk8qg5" path="res://UI/InventoryUI 02/Data/item_slot_02.tscn" id="6_hgrmp"]
+[ext_resource type="Texture2D" uid="uid://dif5g8824ajlo" path="res://UI/InventoryUI 02/Art/ItemDescriptionFolder.png" id="6_r34tm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5aj0"]
+texture = ExtResource("1_20nbn")
+region_rect = Rect2(48, 16, 544, 336)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_er53s"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("6_r34tm")
+region_rect = Rect2(16, 14, 194, 146)
+
+[node name="InventoryUI" type="PanelContainer"]
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_u5aj0")
+script = ExtResource("2_okr7b")
+item_slot_scene = ExtResource("6_hgrmp")
+
+[node name="Transparency" type="ColorRect" parent="."]
+show_behind_parent = true
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+color = Color(0.137255, 0.137255, 0.137255, 0.745098)
+
+[node name="MarginForInsideScreen" type="BoxContainer" parent="."]
+custom_minimum_size = Vector2(549.09, 254.47)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginForInsideScreen"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainerForAll" type="HBoxContainer" parent="MarginForInsideScreen/MarginContainer"]
+custom_minimum_size = Vector2(548.82, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 6
+
+[node name="Icons" type="TextureButton" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll"]
+custom_minimum_size = Vector2(32, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_56aus")
+
+[node name="Spacer" type="MarginContainer" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll"]
+custom_minimum_size = Vector2(2.97, 0)
+layout_mode = 2
+
+[node name="MainBoxPanel" type="NinePatchRect" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll"]
+custom_minimum_size = Vector2(224, 197)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_d227q")
+region_rect = Rect2(16, 14, 194, 178)
+
+[node name="GridContainer" type="GridContainer" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll/MainBoxPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 22.77
+offset_top = -65.81
+offset_right = 199.7
+offset_bottom = 92.44
+grow_vertical = 2
+columns = 5
+
+[node name="ItemSlot" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll/MainBoxPanel/GridContainer" instance=ExtResource("6_hgrmp")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll/MainBoxPanel/GridContainer" instance=ExtResource("6_hgrmp")]
+layout_mode = 2
+
+[node name="Spacer2" type="MarginContainer" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll"]
+custom_minimum_size = Vector2(21.73, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll"]
+custom_minimum_size = Vector2(224, 169)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_er53s")
+
+[node name="ItemDescRichTextLabel" type="RichTextLabel" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.118
+anchor_top = 0.679
+anchor_right = 0.899
+anchor_bottom = 0.862
+offset_left = -0.431999
+offset_top = 0.248993
+offset_right = -1.37599
+offset_bottom = 0.322006
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("5_5k7wg")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
