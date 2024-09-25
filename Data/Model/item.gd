@@ -9,3 +9,4 @@ enum ITEM_TYPE {DEFAULT, SEED}
 @export var icon:Texture2D
 @export_multiline var description: String = ""
 @export var price: int = 0
+var qty: int = 1
