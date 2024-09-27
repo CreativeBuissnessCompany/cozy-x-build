@@ -16,19 +16,26 @@ extends BaseScene
 #  Variables ....  
 
 # 1st Terrain Set
-var terrain_set:int = 0
+var terrain_set:int = 0 # Changed from 0 
 
 # Tile Data/Info.... for custom data? Maybe Unused
 var terrain_sourceid_farmhouse: int = 0
 var source_id
-
 # Second Image SourceID, Seeds and Crops
 var terrain_sourceid_crops:int = 1
+# dirt_tiles Source
+var dirt_tiles_source_id: int = 4 
+
+
+
 
 # Terrains within 1st Set
-var tilled_terrain:int = 2
-var watered_terrain:int = 3
+var tilled_terrain:int = 2 # Changing from 2 to ...
+var watered_terrain:int = 3 # Changing from 3 to ...
 var seed_terrain:int = 4
+var tilled_terrain_02: int = 5
+var watered_terrain_02: int = 6
+
 # Tile Arrays ...
 var dirt_tiles: Array = []
 var wet_tiles: Array = []
@@ -103,7 +110,7 @@ func _input(_event: InputEvent) -> void:
 	
 	
 	# Mouse click, Farming Happening ..
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_pressed("click"):
 		# Whats the pos of Mouse? Vector 2
 		var mouse_pos: Vector2 = get_global_mouse_position()
 		var state = farming_mode_state
@@ -131,7 +138,7 @@ func farming(state,mouse_pos):
 			layer_to_look = tml_2 
 			layer_to_place = tml_3
 			tiles = dirt_tiles
-			terrain = tilled_terrain
+			terrain = tilled_terrain_02
 			custom_data = can_till_custom_data
 			
 	
@@ -139,7 +146,7 @@ func farming(state,mouse_pos):
 			layer_to_look = tml_3
 			layer_to_place = tml_3
 			tiles = wet_tiles
-			terrain = watered_terrain
+			terrain = watered_terrain_02
 			custom_data = can_water_custom_data
 			
 	
@@ -203,7 +210,7 @@ func check_day():
 				#print(tile["tile location"])
 				#print(tile["atlas coords"])
 				# Reset dirt_tiles
-				tml_3.set_cell(tile["tile location"], terrain_sourceid_farmhouse, tile["atlas coords"])
+				tml_3.set_cell(tile["tile location"], dirt_tiles_source_id, tile["atlas coords"]) # Changed from farmhouse - 0
 				
 		# Set day Eitherway... As long as Timetracker.day is bigger than current day in farm 
 		current_day = time_tracker.day

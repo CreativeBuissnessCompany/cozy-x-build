@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://b37p04mi2tsjd" path="res://UI/InventoryUI 02/Data/inventory_ui_02.tscn" id="3_pelb8"]
 [ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://UI/Vending Machine Ui/InventoryUIVendingMachine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="5_xd6ju"]
+[ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://Locations/Farm/farm.tscn" id="6_odfom"]
 [ext_resource type="AudioStream" uid="uid://blf0dnkb8lyof" path="res://AudioFiles/Music/AmbiBankC.mp3" id="8_nxnny"]
 [ext_resource type="AudioStream" uid="uid://dlo4g24p5cme6" path="res://AudioFiles/Music/821 Loop.mp3" id="9_wco5c"]
 [ext_resource type="AudioStream" uid="uid://bp54n8ghvava4" path="res://AudioFiles/Music/43020.mp3" id="10_ffxe7"]
 [ext_resource type="AudioStream" uid="uid://cx8gh37mgdmov" path="res://AudioFiles/Music/Faze.mp3" id="11_4jhlq"]
-[ext_resource type="PackedScene" uid="uid://b4eonh37fv6eo" path="res://Locations/Farm/Inside_Farmhouse/inside_farm_house.tscn" id="11_qqaj2"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wtpp2"]
 shuffle = true
@@ -74,6 +74,8 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "Day: 1"
 
+[node name="Farm" parent="." instance=ExtResource("6_odfom")]
+
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
 position = Vector2(-44.6356, 48.8218)
@@ -85,5 +87,3 @@ metadata/_edit_lock_ = true
 stream = SubResource("AudioStreamPlaylist_wtpp2")
 volume_db = -12.0
 autoplay = true
-
-[node name="InsideFarmHouse" parent="." instance=ExtResource("11_qqaj2")]
