@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b4eonh37fv6eo"]
+[gd_scene load_steps=15 format=4 uid="uid://b4eonh37fv6eo"]
 
 [ext_resource type="Texture2D" uid="uid://bhsr5t3imheng" path="res://Locations/Farm/Art/farm-interior-test.png" id="1_l1bxf"]
 [ext_resource type="Script" path="res://Locations/Farm/Inside_Farmhouse/inside_farm_house.gd" id="1_tuqnl"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c6s3lxp4v0570" path="res://Components/SceneTrigger/scene_trigger.tscn" id="9_5txvw"]
 [ext_resource type="PackedScene" uid="uid://dtk2yqjj1edop" path="res://Entities/Items/Interactive_Furniture/Chests/chest.tscn" id="9_updlg"]
 [ext_resource type="PackedScene" uid="uid://7g4gbu5boirf" path="res://Entities/Items/Interactive_Furniture/Lamps/interactable_lamp.tscn" id="9_xyvvo"]
+[ext_resource type="AudioStream" uid="uid://se8cawjh4tlt" path="res://AudioFiles/SFX/Doors/DoorInsideOut.mp3" id="11_aphup"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_444jn"]
 texture = ExtResource("1_l1bxf")
@@ -861,6 +862,7 @@ position = Vector2(40, -54)
 [node name="SceneTrigger" parent="." instance=ExtResource("9_5txvw")]
 position = Vector2(-81.5759, 116.339)
 connected_scene = "res://Locations/Farm/farm.tscn"
+audio_file = ExtResource("11_aphup")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
 position = Vector2(1, 3.5)

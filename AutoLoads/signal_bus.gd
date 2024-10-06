@@ -17,3 +17,7 @@ signal day_change
 signal item_clicked
 # Watered for Seeds
 signal watered
+# Emit SFX
+signal sfx(audio_file)
+# 
+signal ui_open()

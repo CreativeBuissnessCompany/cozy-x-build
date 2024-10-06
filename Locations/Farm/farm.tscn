@@ -1,12 +1,16 @@
-[gd_scene load_steps=12 format=4 uid="uid://c1t2o5xyrom3b"]
+[gd_scene load_steps=16 format=4 uid="uid://c1t2o5xyrom3b"]
 
 [ext_resource type="Script" path="res://Locations/Farm/farm.gd" id="1_slb32"]
 [ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://Locations/Farm/Art/farm_tileset.tres" id="2_f15kg"]
+[ext_resource type="AudioStream" uid="uid://mldb1gakx82s" path="res://AudioFiles/SFX/Till/Pat03.mp3" id="2_ph3a1"]
+[ext_resource type="AudioStream" uid="uid://cy4edxwou7sos" path="res://AudioFiles/SFX/Waterin/Watering01.mp3" id="3_048vp"]
 [ext_resource type="PackedScene" uid="uid://c6s3lxp4v0570" path="res://Components/SceneTrigger/scene_trigger.tscn" id="3_d5uw2"]
 [ext_resource type="Script" path="res://Locations/Farm/04_crop_tile_map_layer_3.gd" id="3_x4tph"]
+[ext_resource type="AudioStream" uid="uid://207bb6sxk4vb" path="res://AudioFiles/SFX/Seed/PlantSeed.mp3" id="4_5s2ym"]
 [ext_resource type="PackedScene" uid="uid://cwahs8ks6udmp" path="res://Components/HighlightTile/highlight_tile.tscn" id="5_3l1uu"]
 [ext_resource type="Script" path="res://Components/ObjectsWithUI/objects_with_ui.gd" id="5_6rcer"]
 [ext_resource type="PackedScene" uid="uid://c4vrpmdrlpamn" path="res://Entities/Items/Interactive_Furniture/VendingMachine/vending_machine.tscn" id="5_ie2gv"]
+[ext_resource type="AudioStream" uid="uid://b7fb3jyookw64" path="res://AudioFiles/SFX/Doors/DoorOutsideIn.mp3" id="5_pv6jj"]
 [ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://Entities/Items/Consumables/Fruits/Apple/apple_pickup.tscn" id="7_uvcjc"]
 [ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://Entities/Items/Consumables/Veggies/Tomato/tomato_pickup.tscn" id="8_xx28p"]
 [ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://Entities/Items/Tools/Seeds/greenpea/greenpea_picup.tscn" id="10_mmsmp"]
@@ -17,6 +21,9 @@ radius = 3.44227
 [node name="Farm" type="Node2D" groups=["Locations"]]
 y_sort_enabled = true
 script = ExtResource("1_slb32")
+sfx_till = ExtResource("2_ph3a1")
+sfx_watering = ExtResource("3_048vp")
+sfx_seed = ExtResource("4_5s2ym")
 
 [node name="01FarmGrass_TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
@@ -55,6 +62,7 @@ metadata/_edit_lock_ = true
 [node name="SceneTrigger" parent="." instance=ExtResource("3_d5uw2")]
 position = Vector2(198.646, -122.436)
 connected_scene = "res://Locations/Farm/Inside_Farmhouse/inside_farm_house.tscn"
+audio_file = ExtResource("5_pv6jj")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]

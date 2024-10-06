@@ -5,12 +5,15 @@ class_name Player extends CharacterBody2D
 # 1. In group " Player "
 
 
+
+
 # Variables 
 @export var speed = 250
 @export var camera_node: Camera2D 
 
 var inventory:Inventory = Inventory.new()
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 
@@ -23,6 +26,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	get_input()
 	move_and_slide()
+	walk_sound()
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -32,7 +36,15 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 
 
-# Custom Functions 
+
+
+func walk_sound() -> void:
+	if velocity.length() != 0:
+		if !audio_stream_player.playing:
+			audio_stream_player.play()
+			print(velocity)
+
+
 func on_item_picked_up(item:Item):
 	inventory.add_item(item)
 
@@ -53,6 +65,8 @@ func camera_zoom():
 func get_input():
 	var input_direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	velocity = input_direction * speed
+
+
 
 
 func quit_game()->void:

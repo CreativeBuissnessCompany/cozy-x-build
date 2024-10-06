@@ -7,6 +7,12 @@ extends Control  # Sept 15, Used to be panel container
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
 
+# For Signals, And Stopping user Input
+var ui_open: bool = false:
+	set(value):
+		ui_open = value
+		Signalbus.ui_open.emit()
+		print(" Emitting From Inventory ")
 
 
 func _ready() -> void:
@@ -15,7 +21,9 @@ func _ready() -> void:
 
 # What node is using this? Player.gd ... 
 func open(inventory:Inventory):
-	
+	# Emit Signal to Stop Input in Farm.gd
+	self.ui_open = true
+	# Show/Hide UI
 	self.visible = !self.visible
 	
 	
@@ -35,9 +43,6 @@ func open(inventory:Inventory):
 		slot.item_resource = item
 
 
-
-# ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT ALERT
-
 func _on_item_button_pressed(item_description,animated_sprite_2d):
 	#print_debug("Received " + item_description )
 	item_desc_label.text = item_description
@@ -53,4 +58,6 @@ func _on_item_button_pressed(item_description,animated_sprite_2d):
 
 
 func _on_close_button_pressed() -> void:
+	# Let everyone know ui is Closed.....
+	self.ui_open = false
 	hide()

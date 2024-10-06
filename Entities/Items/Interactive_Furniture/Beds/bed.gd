@@ -1,8 +1,11 @@
 extends StaticBody2D
 
-var player : Player
 @onready var dialog_box: ColorRect = %DialogBox
 @onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
+
+var player : Player
+
+
 
 
 
@@ -33,12 +36,18 @@ func _on_yes_pressed() -> void:
 	collision_shape_2d.disabled = true
 	# Move player under sheets?
 	player.z_index = 1
-	player.global_position += Vector2(50.0,-20.0)
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(player,"position",Vector2(95,-15),0.30)
+	#player.position = Vector2(95.00,-15.00)
+	player.set_physics_process(false)
 	# Timer
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1).timeout
 	# Outta Bed
 	player.z_index = 0
-	player.global_position += Vector2(-50.0,20.0)
+	var tween2: Tween = get_tree().create_tween()
+	tween2.tween_property(player,"position",Vector2(50, 0),0.30)
+	collision_shape_2d.disabled = false
+	player.set_physics_process(true)
 	
 	pass # Replace with function body.
 
