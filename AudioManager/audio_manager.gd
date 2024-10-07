@@ -11,6 +11,7 @@ func _ready() -> void:
 
 
 func _on_sfx(audio_file) ->void:
-	sfx_player.stream = audio_file
-	sfx_player.play()
-	print(" Signal Received.......Playing .....")
+	if !sfx_player.playing: 
+		sfx_player.stream = audio_file
+		sfx_player.play()
+		print(" Signal Received.......Playing .....")

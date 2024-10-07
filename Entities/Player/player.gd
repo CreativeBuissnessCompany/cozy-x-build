@@ -4,12 +4,12 @@ class_name Player extends CharacterBody2D
 # Notes: 
 # 1. In group " Player "
 
-
-
-
 # Variables 
 @export var speed = 250
 @export var camera_node: Camera2D 
+@export var sfx_step_interval: float 
+# For sfx purposes...
+var time_elapsed: float
 
 var inventory:Inventory = Inventory.new()
 
@@ -17,6 +17,11 @@ var inventory:Inventory = Inventory.new()
 
 
 
+
+
+
+
+# Script_Start
 func _ready() -> void:
 	# Send self to SceneManager
 	#print("Player: Ready")
@@ -26,7 +31,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	get_input()
 	move_and_slide()
-	walk_sound()
+	walk_sound(_delta)
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -36,13 +41,18 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 
 
+func walk_sound(delta) -> void:
+	
+	var input_direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	if input_direction != Vector2(0,0):
+		time_elapsed += delta
+		if time_elapsed > sfx_step_interval:
+			if !audio_stream_player.playing:
+				audio_stream_player.play()
+	else:
+		audio_stream_player.stop()
+		time_elapsed = 0.0
 
-
-func walk_sound() -> void:
-	if velocity.length() != 0:
-		if !audio_stream_player.playing:
-			audio_stream_player.play()
-			print(velocity)
 
 
 func on_item_picked_up(item:Item):
@@ -65,8 +75,6 @@ func camera_zoom():
 func get_input():
 	var input_direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	velocity = input_direction * speed
-
-
 
 
 func quit_game()->void:

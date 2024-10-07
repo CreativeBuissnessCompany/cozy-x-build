@@ -1,7 +1,7 @@
 # farm.gd
 extends BaseScene
 
-
+# Variables
 # TileMapLayers
 @onready var tml_1:= $"01FarmGrass_TileMapLayer"
 @onready var tml_2:= $"02GrassOnDirt_TileMapLayer"
@@ -17,7 +17,6 @@ var source_id
 var terrain_sourceid_crops:int = 1
 # dirt_tiles Source
 var dirt_tiles_source_id: int = 4 
-
 
 # Terrains within 1st Set
 var tilled_terrain:int = 2 # Changing from 2 to ...
@@ -36,12 +35,10 @@ var dirt_tile_data: Dictionary = {
 	"atlas coords" : Vector2(0,0)
 }
 
-
 # Seed AtlasCoords
 var seed_coords: Vector2i = Vector2i(0,4)
 # Scenetile ID for SEEDS
 var scene_tile_id := 1
-
 
 # Farming States ...
 enum FARMING_MODES {WATERING, TILL, PLANT_SEED}
@@ -66,30 +63,25 @@ var sfx_file: AudioStreamMP3
 @export var sfx_seed: AudioStreamMP3
 #Stop User input if UI is open ....
 var ui_open: bool = false
-	#set(value):
-		#ui_open = value
-		#print("ui_open value changed")
-		#print(ui_open)
 
 
 
 
 
 
+
+#Script_Start 
 func _ready() -> void:
 	super()
 	# Connects to ItemSlot in inventory_ui
 	Signalbus.item_clicked.connect(on_seed_selected)
 	# To stop User input while UI open
 	Signalbus.ui_open.connect(on_ui_open)
-	#print("Farm Ready ")
-
 
 
 func _enter_tree() -> void:
 	super()
 	check_day()
-
 
 # Player Inputs at Farm ...
 func _input(_event: InputEvent) -> void:
@@ -173,11 +165,10 @@ func farming(state,mouse_pos):
 				#return
 				if ui_open == false:
 					Signalbus.sfx.emit(sfx_file)
-					print(" Seed Sounds ")
+					#print(" Seed Sounds ")
 
 	 # Farming Func for NOT seeds
 	if farming_mode_state != FARMING_MODES.PLANT_SEED:
-		#print("Not in seed mode")
 		# After STATE match, Do work ...
 		var mouse_pos_for_farming = Utility.convert_mos_local(layer_to_look,mouse_pos)
 		if retrieving_custom_data(layer_to_look, mouse_pos_for_farming, custom_data):
@@ -189,10 +180,6 @@ func farming(state,mouse_pos):
 				dirt_tile_data["atlas coords"] = dirt_coords
 				dirt_tiles_to_replace.append(dirt_tile_data.duplicate())
 				Signalbus.emit_signal("watered", mouse_pos_for_farming)
-				#print("Sent From FARM")
-				#print("dirt_tiles_to_replace:")
-				#print(dirt_tiles_to_replace)
-			
 			
 			# After storing dirt tiles, Place dirt or watering tile
 			layer_to_place.set_cells_terrain_connect(tiles,terrain_set, terrain) 
@@ -205,23 +192,17 @@ func farming(state,mouse_pos):
 				wet_tiles.pop_back()
 				dirt_tiles.pop_back()
 	
-
 	if ui_open == false:
 		Signalbus.sfx.emit(sfx_file)
 		# NOTE Do When UI Closed....
-		print(" Do When UI Closed.... ")
+		#print(" Do When UI Closed.... ")
 
 
 func check_day():
 	
 	if time_tracker.day > current_day:
-		#print("Wet Tiles To Delete : ")
-		#print(wet_tiles_to_delete)
 		if dirt_tiles_to_replace:
 			for tile in dirt_tiles_to_replace:
-				#print(" Tile: ")
-				#print(tile["tile location"])
-				#print(tile["atlas coords"])
 				# Reset dirt_tiles
 				tml_3.set_cell(tile["tile location"], dirt_tiles_source_id, tile["atlas coords"]) # Changed from farmhouse - 0
 				

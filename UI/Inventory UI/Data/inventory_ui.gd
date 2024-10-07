@@ -2,6 +2,7 @@ class_name InventoryUI
 extends Control  # Sept 15, Used to be panel container
 
 
+# Variables
 @export var item_slot_scene:PackedScene
 
 @onready var grid_container: GridContainer = %GridContainer
@@ -12,11 +13,17 @@ var ui_open: bool = false:
 	set(value):
 		ui_open = value
 		Signalbus.ui_open.emit()
-		print(" Emitting From Inventory ")
+		#print(" Emitting From Inventory ")
 
 
+
+
+
+# Script_Start
 func _ready() -> void:
 	pass
+
+
 
 
 # What node is using this? Player.gd ... 

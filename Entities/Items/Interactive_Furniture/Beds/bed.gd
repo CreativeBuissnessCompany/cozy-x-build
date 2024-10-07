@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @onready var dialog_box: ColorRect = %DialogBox
 @onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
-
+@export var jingle: AudioStreamMP3
 var player : Player
 
 
@@ -30,7 +30,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_yes_pressed() -> void:
 	time_tracker.day += 1
 	dialog_box.hide()
-	print("pressed")
+	
+	# Play Jingle ....
+	Signalbus.sfx.emit(jingle)
 	
 	# Disable Collisions so player can get in bed...
 	collision_shape_2d.disabled = true

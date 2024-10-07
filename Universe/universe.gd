@@ -1,8 +1,7 @@
 	# Universe.gd
 extends Node2D
 
-
-# @onready & Variables ...
+# Variables & @onready ...
 @onready var player: Player = %Player
 
 # Locations/Scene
@@ -16,7 +15,7 @@ var entrance_markers
 
 
 
-
+# Script_Start
 func _ready() -> void:
 	# Give Player Node Referece to Scene_Manager
 	scene_manager.player = player
@@ -30,14 +29,10 @@ func _ready() -> void:
 	entrance_markers = current_location.entrance_markers
 	# PositionPlayer with Grabbed Markers...
 	Utility.position_player(entrance_markers, player)
-	
-	#print("Universe: Ready")
 
 
 # Position player again when new scene is loaded
 # Maybe add current location ....
 func on_location_loaded(new_entrance_markers: Node2D):
 	Utility.position_player(new_entrance_markers, player)
-	
-	#print("Universe: Signal Received from BaseScene")
 	

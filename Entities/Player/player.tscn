@@ -32,6 +32,7 @@ y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_eeuee")
 camera_node = NodePath("Camera2D")
+sfx_step_interval = 0.07
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true

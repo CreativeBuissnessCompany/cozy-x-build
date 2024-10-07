@@ -19,5 +19,5 @@ signal item_clicked
 signal watered
 # Emit SFX
 signal sfx(audio_file)
-# 
+# When UI Opens ...
 signal ui_open()
