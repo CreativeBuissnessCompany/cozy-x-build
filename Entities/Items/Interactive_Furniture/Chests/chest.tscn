@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dtk2yqjj1edop"]
 
-[ext_resource type="Script" path="res://Entities/Items/Interactive_Furniture/Chests/chest.gd" id="1_iexao"]
-[ext_resource type="Texture2D" uid="uid://bmfb4e50vdyw3" path="res://Entities/Items/Interactive_Furniture/Chests/roomchest-animation-Sheet.png" id="2_6w6px"]
+[ext_resource type="Script" path="res://Entities/items/Interactive_Furniture/Chests/chest.gd" id="1_iexao"]
+[ext_resource type="Texture2D" uid="uid://bmfb4e50vdyw3" path="res://Entities/items/Interactive_Furniture/Chests/roomchest-animation-Sheet.png" id="2_6w6px"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkttf"]
 atlas = ExtResource("2_6w6px")

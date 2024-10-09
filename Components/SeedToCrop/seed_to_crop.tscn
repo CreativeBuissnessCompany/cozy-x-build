@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf4hfc8olenw0"]
+[gd_scene load_steps=8 format=3 uid="uid://bf4hfc8olenw0"]
 
-[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://Entities/Items/Tools/Seeds/crops.png" id="1_aanqd"]
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://Entities/items/Tools/Seeds/crops.png" id="1_aanqd"]
 [ext_resource type="Script" path="res://Components/SeedToCrop/seed_to_crop.gd" id="1_mb8ct"]
-[ext_resource type="Resource" uid="uid://bqgt8f6gd6wxm" path="res://Entities/Items/Tools/Seeds/greenpea/greenpea_resource.tres" id="2_6ml3r"]
+[ext_resource type="Resource" uid="uid://bqgt8f6gd6wxm" path="res://Entities/items/Tools/Seeds/greenpea/greenpea_seed_resource.tres" id="2_6ml3r"]
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://Components/Pickup/pickup_comp.tscn" id="4_sqvg0"]
 
 [sub_resource type="Animation" id="Animation_henvn"]
 length = 0.001
@@ -80,6 +81,8 @@ stage_four = 3
 stage_five = 4
 stage_six = 5
 stage_seven = 6
+last_stage = 1
+pickup_comp = ExtResource("4_sqvg0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

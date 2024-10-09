@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dps80idljpcuw"]
 
 [ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://Components/Pickup/pickup_comp.tscn" id="1_tvyag"]
-[ext_resource type="Resource" uid="uid://bcuhffno36qld" path="res://Entities/Items/Consumables/Fruits/Apple/apple.tres" id="2_xou11"]
+[ext_resource type="Resource" uid="uid://bcuhffno36qld" path="res://Entities/items/consumables/fruits/apple/apple.tres" id="2_xou11"]
 
 [node name="Apple" type="Node2D"]
 

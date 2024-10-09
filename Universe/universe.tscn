@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://db4eylrann81f"]
+[gd_scene load_steps=15 format=3 uid="uid://db4eylrann81f"]
 
 [ext_resource type="Script" path="res://Universe/universe.gd" id="1_lm1sa"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://Entities/Player/player.tscn" id="2_3rlae"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dlo4g24p5cme6" path="res://AudioFiles/Music/821 Loop.mp3" id="9_wco5c"]
 [ext_resource type="AudioStream" uid="uid://bp54n8ghvava4" path="res://AudioFiles/Music/43020.mp3" id="10_ffxe7"]
 [ext_resource type="AudioStream" uid="uid://cx8gh37mgdmov" path="res://AudioFiles/Music/Faze.mp3" id="11_4jhlq"]
+[ext_resource type="PackedScene" uid="uid://cbtp70dus0fab" path="res://Entities/items/consumables/from_seed_pickups/greenpea_pickup.tscn" id="13_6rjbv"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wtpp2"]
 shuffle = true
@@ -24,7 +25,6 @@ stream_3 = ExtResource("11_4jhlq")
 [node name="Universe" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_lm1sa")
-metadata/_edit_lock_ = true
 
 [node name="UIRoot" type="CanvasLayer" parent="."]
 script = ExtResource("3_p78e7")
@@ -90,3 +90,6 @@ volume_db = -12.0
 bus = &"Music"
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+
+[node name="GreenpeaPickup" parent="." instance=ExtResource("13_6rjbv")]
+position = Vector2(-10, 53)

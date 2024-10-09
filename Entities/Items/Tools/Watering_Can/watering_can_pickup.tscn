@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://coshdjio0oqhl"]
 
 [ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://Components/Pickup/pickup_comp.tscn" id="1_s8148"]
-[ext_resource type="Resource" uid="uid://dfp7fvxjfmtlv" path="res://Entities/Items/Tools/Watering_Can/watering_can.tres" id="2_64ssg"]
+[ext_resource type="Resource" uid="uid://dfp7fvxjfmtlv" path="res://Entities/items/Tools/Watering_Can/watering_can.tres" id="2_64ssg"]
 
 [node name="WateringCanPickup" type="Node2D"]
 

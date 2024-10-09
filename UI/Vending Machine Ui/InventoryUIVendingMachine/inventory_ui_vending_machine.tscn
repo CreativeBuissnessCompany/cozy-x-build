@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://fe23f5hgo7jc"]
 
 [ext_resource type="Script" path="res://UI/Vending Machine Ui/InventoryUIVendingMachine/inventory_ui_vending_machine.gd" id="1_vmw0m"]
-[ext_resource type="Texture2D" uid="uid://6j2m5l5gumf8" path="res://Entities/Items/Interactive_Furniture/VendingMachine/Art/vendingtestui.png" id="2_tfyev"]
+[ext_resource type="Texture2D" uid="uid://6j2m5l5gumf8" path="res://Entities/items/Interactive_Furniture/VendingMachine/Art/vendingtestui.png" id="2_tfyev"]
 [ext_resource type="PackedScene" uid="uid://c5m0saftfc32m" path="res://UI/Inventory UI/Boxes-Slots/Item Slots/VendingMachineItemSlots/item_slot_vending.tscn" id="3_aia2p"]
-[ext_resource type="Texture2D" uid="uid://dn1hfpy3cl1h4" path="res://Entities/Items/Interactive_Furniture/VendingMachine/Art/vending ui.png" id="4_3or7j"]
+[ext_resource type="Texture2D" uid="uid://dn1hfpy3cl1h4" path="res://Entities/items/Interactive_Furniture/VendingMachine/Art/vending ui.png" id="4_3or7j"]
 [ext_resource type="FontFile" uid="uid://bjmir8y7vyk8c" path="res://Themes/Fonts/Caviar_Dreams_Bold.ttf" id="5_38an4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5aj0"]

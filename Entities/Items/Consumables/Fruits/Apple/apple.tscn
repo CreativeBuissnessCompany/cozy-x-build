@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b54bhgfmjmcb1"]
 
-[ext_resource type="Texture2D" uid="uid://bj4weai7yes1k" path="res://Entities/Items/Consumables/Fruits/Apple/Art/Apple02.png" id="1_l116c"]
+[ext_resource type="Texture2D" uid="uid://bj4weai7yes1k" path="res://Entities/items/consumables/fruits/apple/art/Apple02.png" id="1_l116c"]
 [ext_resource type="Script" path="res://Components/ItemResizer/item_resizer.gd" id="2_68wxs"]
 
 [node name="Apple" type="Sprite2D"]

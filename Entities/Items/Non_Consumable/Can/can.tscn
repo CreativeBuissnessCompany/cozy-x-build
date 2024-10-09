@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbsovvq1nyqk8"]
 
-[ext_resource type="Texture2D" uid="uid://dxfc1p7t6tg7o" path="res://Entities/Items/Non_Consumable/Can/Art/Can.png" id="1_uvlpk"]
+[ext_resource type="Texture2D" uid="uid://dxfc1p7t6tg7o" path="res://Entities/items/Non_Consumable/Can/Art/Can.png" id="1_uvlpk"]
 [ext_resource type="Script" path="res://Components/ItemResizer/item_resizer.gd" id="2_k7lyn"]
 
 [node name="Sprite2D" type="Sprite2D"]

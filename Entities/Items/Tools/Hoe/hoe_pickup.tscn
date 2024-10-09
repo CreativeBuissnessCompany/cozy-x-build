@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkh1qf7asekwi"]
 
 [ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://Components/Pickup/pickup_comp.tscn" id="1_3ae07"]
-[ext_resource type="Resource" uid="uid://b8kqqyhobg6pb" path="res://Entities/Items/Tools/Hoe/hoe.tres" id="2_xgigf"]
+[ext_resource type="Resource" uid="uid://b8kqqyhobg6pb" path="res://Entities/items/Tools/Hoe/hoe.tres" id="2_xgigf"]
 
 [node name="HoePickup" type="Node2D"]
 

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=5 format=3 uid="uid://bqgt8f6gd6wxm"]
+
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://Entities/items/Tools/Seeds/crops.png" id="1_loba6"]
+[ext_resource type="PackedScene" uid="uid://cd1lc4a05nwn7" path="res://Entities/items/Tools/Seeds/greenpea/greenpea_seed.tscn" id="2_6vxbl"]
+[ext_resource type="Script" path="res://Data/Model/item_sprite_sheet.gd" id="3_00raq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk8ji"]
+atlas = ExtResource("1_loba6")
+region = Rect2(0, 64, 16, 16)
+
+[resource]
+script = ExtResource("3_00raq")
+item_type = 1
+name = "Greenpea Seed"
+scene = ExtResource("2_6vxbl")
+icon = SubResource("AtlasTexture_uk8ji")
+description = ""
+price = 6

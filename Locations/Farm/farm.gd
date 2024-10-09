@@ -67,10 +67,13 @@ var ui_open: bool = false
 
 
 
-
-
-
 #Script_Start 
+
+func _enter_tree() -> void:
+	super()
+	check_day()
+
+
 func _ready() -> void:
 	super()
 	# Connects to ItemSlot in inventory_ui
@@ -78,10 +81,6 @@ func _ready() -> void:
 	# To stop User input while UI open
 	Signalbus.ui_open.connect(on_ui_open)
 
-
-func _enter_tree() -> void:
-	super()
-	check_day()
 
 # Player Inputs at Farm ...
 func _input(_event: InputEvent) -> void:
@@ -108,10 +107,11 @@ func _input(_event: InputEvent) -> void:
 		return
 
 
+
 func on_ui_open():
 	ui_open = !ui_open
-	print(" UI Status")
-	print(ui_open)
+	#print(" UI Status")
+	#print(ui_open)
 
 
 func on_seed_selected(item_resource: Item):
@@ -213,6 +213,7 @@ func check_day():
 		# Clear Dict
 		dirt_tile_data.clear()
 			
+
 
 # Custom function ....
 func retrieving_custom_data(tml_layer: TileMapLayer,tml_mouse_pos: Vector2, custom_tilemap_data_name: String):

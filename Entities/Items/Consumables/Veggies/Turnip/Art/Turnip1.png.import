@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc0w1fpxvpcuj"
-path="res://.godot/imported/Turnip1.png-7e7cdbfd674d3a84f85c0184684532a3.ctex"
+path="res://.godot/imported/Turnip1.png-72c2890bb5e04a3e164fd5b2b7dce8d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Items/Consumables/Veggies/Turnip/Art/Turnip1.png"
-dest_files=["res://.godot/imported/Turnip1.png-7e7cdbfd674d3a84f85c0184684532a3.ctex"]
+source_file="res://Entities/items/consumables/veggies/Turnip/Art/Turnip1.png"
+dest_files=["res://.godot/imported/Turnip1.png-72c2890bb5e04a3e164fd5b2b7dce8d4.ctex"]
 
 [params]
 

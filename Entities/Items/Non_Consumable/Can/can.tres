@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://c2rr865bmxad1"]
 
 [ext_resource type="Script" path="res://Data/Model/item.gd" id="1_1k4a5"]
-[ext_resource type="PackedScene" uid="uid://cbsovvq1nyqk8" path="res://Entities/Items/Non_Consumable/Can/can.tscn" id="1_3d2gj"]
-[ext_resource type="Texture2D" uid="uid://dxfc1p7t6tg7o" path="res://Entities/Items/Non_Consumable/Can/Art/Can.png" id="1_icgwy"]
+[ext_resource type="PackedScene" uid="uid://cbsovvq1nyqk8" path="res://Entities/items/Non_Consumable/Can/can.tscn" id="1_3d2gj"]
+[ext_resource type="Texture2D" uid="uid://dxfc1p7t6tg7o" path="res://Entities/items/Non_Consumable/Can/Art/Can.png" id="1_icgwy"]
 
 [resource]
 script = ExtResource("1_1k4a5")

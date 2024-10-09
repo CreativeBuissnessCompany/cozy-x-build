@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=5 format=3 uid="uid://dfp7fvxjfmtlv"]
 
-[ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://Entities/Items/Tools/Art/tools.png" id="1_awncx"]
-[ext_resource type="PackedScene" uid="uid://bisrl4xat66wc" path="res://Entities/Items/Tools/Watering_Can/watering_can.tscn" id="2_fsg47"]
+[ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://Entities/items/Tools/Art/tools.png" id="1_awncx"]
+[ext_resource type="PackedScene" uid="uid://bisrl4xat66wc" path="res://Entities/items/Tools/Watering_Can/watering_can.tscn" id="2_fsg47"]
 [ext_resource type="Script" path="res://Data/Model/item_sprite_sheet.gd" id="3_4bapa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5hirg"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://epp758vql0by"
-path="res://.godot/imported/crops.png-586e70737908bf595dffdbe8bb94aa12.ctex"
+path="res://.godot/imported/crops.png-f51efbb0d418c5f2e152bfedd4d8f16c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Items/Tools/Seeds/crops.png"
-dest_files=["res://.godot/imported/crops.png-586e70737908bf595dffdbe8bb94aa12.ctex"]
+source_file="res://Entities/items/Tools/Seeds/crops.png"
+dest_files=["res://.godot/imported/crops.png-f51efbb0d418c5f2e152bfedd4d8f16c.ctex"]
 
 [params]
 

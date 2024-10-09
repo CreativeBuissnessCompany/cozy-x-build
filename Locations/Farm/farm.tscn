@@ -9,11 +9,11 @@
 [ext_resource type="AudioStream" uid="uid://207bb6sxk4vb" path="res://AudioFiles/SFX/Seed/PlantSeed.mp3" id="4_5s2ym"]
 [ext_resource type="PackedScene" uid="uid://cwahs8ks6udmp" path="res://Components/HighlightTile/highlight_tile.tscn" id="5_3l1uu"]
 [ext_resource type="Script" path="res://Components/ObjectsWithUI/objects_with_ui.gd" id="5_6rcer"]
-[ext_resource type="PackedScene" uid="uid://c4vrpmdrlpamn" path="res://Entities/Items/Interactive_Furniture/VendingMachine/vending_machine.tscn" id="5_ie2gv"]
+[ext_resource type="PackedScene" uid="uid://c4vrpmdrlpamn" path="res://Entities/items/Interactive_Furniture/VendingMachine/vending_machine.tscn" id="5_ie2gv"]
 [ext_resource type="AudioStream" uid="uid://b7fb3jyookw64" path="res://AudioFiles/SFX/Doors/DoorOutsideIn.mp3" id="5_pv6jj"]
-[ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://Entities/Items/Consumables/Fruits/Apple/apple_pickup.tscn" id="7_uvcjc"]
-[ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://Entities/Items/Consumables/Veggies/Tomato/tomato_pickup.tscn" id="8_xx28p"]
-[ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://Entities/Items/Tools/Seeds/greenpea/greenpea_picup.tscn" id="10_mmsmp"]
+[ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://Entities/items/consumables/fruits/apple/apple_pickup.tscn" id="7_uvcjc"]
+[ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://Entities/items/consumables/veggies/Tomato/tomato_pickup.tscn" id="8_xx28p"]
+[ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://Entities/items/Tools/Seeds/greenpea/greenpea_seed_pickup.tscn" id="10_mmsmp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6d87"]
 radius = 3.44227

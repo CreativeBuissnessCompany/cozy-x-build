@@ -15,6 +15,7 @@ class_name CropToSeed extends Sprite2D
 @export var stage_six: int
 @export var stage_seven: int
 @export var last_stage: int
+@export var current_stage: int
 
 var day_planted: int
 var days_since_planted: int = 0
@@ -22,6 +23,9 @@ var current_day: int
 var current_frame: float = 0.00
 var watered: bool = false
 var days_watered: int = 0
+
+
+
 
 
 
@@ -91,38 +95,55 @@ func _on_watered(mos_pos):
 
 func advance_stage(_days_since_planted):
 	
+	
+	
 	match _days_since_planted:
 		
 		stage_one:
+			current_stage = stage_one
 			animation_player.seek(0.00, true)
 			print("Stage One")
 		
 		stage_two:
+			current_stage = stage_two
 			animation_player.seek(1.00, true)
 			print("Stage Two")
 			
 		stage_three:
+			current_stage = stage_three
 			animation_player.seek(2.00,true)
 			print("Stage Three")
 			
 		stage_four:
+			current_stage = stage_four
 			animation_player.seek(3.00,true)
 			print("Stage Four")
 			
 		stage_five:
+			current_stage = stage_five
 			animation_player.seek(4.00,true)
 			print("Stage Five")
 			
 		stage_six:
+			current_stage = stage_six
 			animation_player.seek(5.00,true)
 			print("Stage Six")
 			
 		stage_seven:
+			current_stage = stage_seven
 			animation_player.seek(6.00,true)
 			print("Stage Seven")
 			
-		last_stage:
-			print("Last Stage")
+	# Last Stage ...
+	if current_stage == last_stage:
+		print("Last Stage")
+		print(item_data.name)
+		# Delete word "Seed" from item name....
+		var name = item_data.name.replacen("seed","")
+		print(name)
+		var dir = DirAccess.open("res://Entities/items/consumables/from_seed_pickups/")
+	
+		
 	
 	animation_player.pause()
 	current_frame = animation_player.current_animation_position

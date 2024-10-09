@@ -14,4 +14,4 @@ func _on_sfx(audio_file) ->void:
 	if !sfx_player.playing: 
 		sfx_player.stream = audio_file
 		sfx_player.play()
-		print(" Signal Received.......Playing .....")
+		#print(" Signal Received.......Playing .....")
