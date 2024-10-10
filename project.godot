@@ -11,19 +11,19 @@ config_version=5
 [application]
 
 config/name="Cozy X Build"
-run/main_scene="res://Universe/universe.tscn"
+run/main_scene="res://universe/universe.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.1693, 0.66401, 0.5073, 1)
-config/icon="res://Entities/Player/Art/raincoat-boy-player-version.png"
+config/icon="res://entities/player/art/raincoat-boy-player-version.png"
 
 [autoload]
 
-GameData="*res://AutoLoads/game_data.gd"
-Signalbus="*res://AutoLoads/signal_bus.gd"
-scene_manager="*res://AutoLoads/scene_manager.gd"
-Utility="*res://Globals/utility.gd"
-time_tracker="*res://AutoLoads/time_tracker.gd"
-AudioData="*res://AutoLoads/audio_data.gd"
+GameData="*res://autoloads/game_data.gd"
+Signalbus="*res://autoloads/signal_bus.gd"
+scene_manager="*res://autoloads/scene_manager.gd"
+Utility="*res://globals/utility.gd"
+time_tracker="*res://autoloads/time_tracker.gd"
+AudioData="*res://autoloads/audio_data.gd"
 
 [debug]
 
@@ -45,7 +45,7 @@ movie_writer/movie_file="/Users/kennethfee/Documents/Cozy Game Clips/CozyX02.avi
 [file_customization]
 
 folder_colors={
-"res://Universe/": "red"
+"res://universe/": "red"
 }
 
 [global_group]
@@ -54,7 +54,7 @@ Locations="Scenes Of Locations To Be Loaded in Universe"
 
 [gui]
 
-theme/custom="res://Themes/first_theme.tres"
+theme/custom="res://themes/first_theme.tres"
 theme/default_font_multichannel_signed_distance_field=true
 
 [input]

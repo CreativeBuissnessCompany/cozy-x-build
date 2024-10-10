@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bybcwn4p07qyq"
-path="res://.godot/imported/farmhousetest (2).png-b61f7ef259ca367d1f54f1954990f8fa.ctex"
+path="res://.godot/imported/farmhousetest (2).png-3e75a3452eb0288290e233c921007ced.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Locations/Farm/Art/farmhousetest (2).png"
-dest_files=["res://.godot/imported/farmhousetest (2).png-b61f7ef259ca367d1f54f1954990f8fa.ctex"]
+source_file="res://locations/farm/Art/farmhousetest (2).png"
+dest_files=["res://.godot/imported/farmhousetest (2).png-3e75a3452eb0288290e233c921007ced.ctex"]
 
 [params]
 

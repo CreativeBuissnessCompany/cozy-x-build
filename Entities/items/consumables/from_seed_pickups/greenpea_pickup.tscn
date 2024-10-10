@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbtp70dus0fab"]
 
-[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://Components/Pickup/pickup_comp.tscn" id="1_4gin4"]
-[ext_resource type="Resource" uid="uid://b2mmy33jxg724" path="res://Entities/items/consumables/veggies/greenpea/greenpea_resource.tres" id="2_m77lm"]
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_4gin4"]
+[ext_resource type="Resource" uid="uid://b2mmy33jxg724" path="res://entities/items/consumables/veggies/greenpea/greenpea_resource.tres" id="2_m77lm"]
 
 [node name="GreenpeaPickup" instance=ExtResource("1_4gin4")]
 item = ExtResource("2_m77lm")

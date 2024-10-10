@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhsr5t3imheng"
-path="res://.godot/imported/farm-interior-test.png-f888bec63d73c420aaa3404a28b82751.ctex"
+path="res://.godot/imported/farm-interior-test.png-bfee2e44db35b910c2c0feb5c4a5083d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Locations/Farm/Art/farm-interior-test.png"
-dest_files=["res://.godot/imported/farm-interior-test.png-f888bec63d73c420aaa3404a28b82751.ctex"]
+source_file="res://locations/farm/Art/farm-interior-test.png"
+dest_files=["res://.godot/imported/farm-interior-test.png-bfee2e44db35b910c2c0feb5c4a5083d.ctex"]
 
 [params]
 

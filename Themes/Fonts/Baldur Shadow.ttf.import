@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://db67v8e78xc4q"
-path="res://.godot/imported/Baldur Shadow.ttf-5fb48a2df2ee17f891289b6389dcad2b.fontdata"
+path="res://.godot/imported/Baldur Shadow.ttf-16a9f7cbcea95c629b7d1c50a687de83.fontdata"
 
 [deps]
 
-source_file="res://Themes/Fonts/Baldur Shadow.ttf"
-dest_files=["res://.godot/imported/Baldur Shadow.ttf-5fb48a2df2ee17f891289b6389dcad2b.fontdata"]
+source_file="res://themes/fonts/Baldur Shadow.ttf"
+dest_files=["res://.godot/imported/Baldur Shadow.ttf-16a9f7cbcea95c629b7d1c50a687de83.fontdata"]
 
 [params]
 

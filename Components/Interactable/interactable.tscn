@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmjdf3l8ytwxg"]
 
-[ext_resource type="Script" path="res://Components/Interactable/interactable.gd" id="1_nal3e"]
+[ext_resource type="Script" path="res://components/interactable/interactable.gd" id="1_nal3e"]
 
 [node name="Interactable" type="Node2D"]
 script = ExtResource("1_nal3e")

@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=16 format=3 uid="uid://mhfdim12khwl"]
 
-[ext_resource type="Texture2D" uid="uid://bybcwn4p07qyq" path="res://Locations/Farm/Art/farmhousetest (2).png" id="1_forse"]
-[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://Entities/items/Tools/Seeds/crops.png" id="2_ycxds"]
-[ext_resource type="Texture2D" uid="uid://bnspgeui0pcpm" path="res://Components/HighlightTile/tile-selection.png" id="3_15130"]
-[ext_resource type="PackedScene" uid="uid://bf4hfc8olenw0" path="res://Components/SeedToCrop/seed_to_crop.tscn" id="4_hod7c"]
-[ext_resource type="Texture2D" uid="uid://b6a0xkullsvms" path="res://Locations/Farm/Art/dirt_tiles.png" id="5_fg8lj"]
+[ext_resource type="Texture2D" uid="uid://bybcwn4p07qyq" path="res://locations/farm/Art/farmhousetest (2).png" id="1_forse"]
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="2_ycxds"]
+[ext_resource type="Texture2D" uid="uid://bnspgeui0pcpm" path="res://components/highlight_tile/tile-selection.png" id="3_15130"]
+[ext_resource type="PackedScene" uid="uid://bf4hfc8olenw0" path="res://components/seed_to_crop/seed_to_crop.tscn" id="4_hod7c"]
+[ext_resource type="Texture2D" uid="uid://b6a0xkullsvms" path="res://locations/farm/Art/dirt_tiles.png" id="5_fg8lj"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_vyf1w"]
 tile_data = PackedInt32Array(0, 589824, 6, 65536, 589824, 7, 196608, 589824, 9, 262144, 589824, 10, 1, 655360, 6, 65537, 655360, 7, 131073, 655360, 8, 196609, 655360, 9, 262145, 655360, 10, 65538, 720896, 7, 131074, 720896, 8, 196610, 720896, 9, 262146, 720896, 10, 131075, 786432, 8, 196611, 786432, 9, 262147, 786432, 10)

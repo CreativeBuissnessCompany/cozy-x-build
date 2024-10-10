@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=4 uid="uid://smt7a20k5ia3"]
 
-[ext_resource type="Script" path="res://Locations/Farm02/farm02.gd" id="1_tvubq"]
-[ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://Locations/Farm/Art/farm_tileset.tres" id="2_qtj7q"]
-[ext_resource type="PackedScene" uid="uid://c6s3lxp4v0570" path="res://Components/SceneTrigger/scene_trigger.tscn" id="4_2hw8y"]
-[ext_resource type="PackedScene" uid="uid://cwahs8ks6udmp" path="res://Components/HighlightTile/highlight_tile.tscn" id="5_2odbu"]
-[ext_resource type="Script" path="res://Components/ObjectsWithUI/objects_with_ui.gd" id="6_suryd"]
-[ext_resource type="PackedScene" uid="uid://c4vrpmdrlpamn" path="res://Entities/items/Interactive_Furniture/VendingMachine/vending_machine.tscn" id="7_grc1i"]
-[ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://Entities/items/consumables/fruits/apple/apple_pickup.tscn" id="8_tprp2"]
-[ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://Entities/items/consumables/veggies/Tomato/tomato_pickup.tscn" id="9_61fyd"]
-[ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://Entities/items/Tools/Seeds/greenpea/greenpea_seed_pickup.tscn" id="10_cfbwv"]
+[ext_resource type="Script" path="res://locations/farm02/farm02.gd" id="1_tvubq"]
+[ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://locations/farm/Art/farm_tileset.tres" id="2_qtj7q"]
+[ext_resource type="PackedScene" uid="uid://c6s3lxp4v0570" path="res://components/scene_trigger/scene_trigger.tscn" id="4_2hw8y"]
+[ext_resource type="PackedScene" uid="uid://cwahs8ks6udmp" path="res://components/highlight_tile/highlight_tile.tscn" id="5_2odbu"]
+[ext_resource type="Script" path="res://components/objects_with_ui/objects_with_ui.gd" id="6_suryd"]
+[ext_resource type="PackedScene" uid="uid://c4vrpmdrlpamn" path="res://entities/items/interactive_furniture/vending_machine/vending_machine.tscn" id="7_grc1i"]
+[ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://entities/items/consumables/fruits/apple/apple_pickup.tscn" id="8_tprp2"]
+[ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://entities/items/consumables/veggies/tomato/tomato_pickup.tscn" id="9_61fyd"]
+[ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://entities/items/tools/seeds/greenpea/greenpea_seed_pickup.tscn" id="10_cfbwv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6d87"]
 radius = 3.44227

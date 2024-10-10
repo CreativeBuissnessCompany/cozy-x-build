@@ -7,8 +7,8 @@ extends Node2D
 @export var item:Item:
 	set(value):
 		item = value
-		print(" Settin and Gettin")
-		print(item.name)
+		#print(" Settin and Gettin")
+		#print(item.name)
 		#if instance != null:
 			#instance.queue_free()
 			#instance = item.scene.instantiate()
@@ -19,7 +19,7 @@ var instance: Node2D
 
 
 func _ready() -> void:
-	print(" Pickup is Ready.... ")
+	print(item.name," is Ready.... ")
 	instance = item.scene.instantiate()
 	add_child(instance)
 

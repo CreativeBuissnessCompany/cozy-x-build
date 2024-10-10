@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmfb4e50vdyw3"
-path="res://.godot/imported/roomchest-animation-Sheet.png-34a68beb33ba1409a47464af69ee1c3d.ctex"
+path="res://.godot/imported/roomchest-animation-Sheet.png-aeb3b0774ec60c24243143997400eed6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/items/Interactive_Furniture/Chests/roomchest-animation-Sheet.png"
-dest_files=["res://.godot/imported/roomchest-animation-Sheet.png-34a68beb33ba1409a47464af69ee1c3d.ctex"]
+source_file="res://entities/items/interactive_furniture/chests/roomchest-animation-Sheet.png"
+dest_files=["res://.godot/imported/roomchest-animation-Sheet.png-aeb3b0774ec60c24243143997400eed6.ctex"]
 
 [params]
 

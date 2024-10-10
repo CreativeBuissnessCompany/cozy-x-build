@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://7g4gbu5boirf"]
 
-[ext_resource type="Script" path="res://Entities/items/Interactive_Furniture/Lamps/interactable_lamp.gd" id="1_og8h2"]
-[ext_resource type="PackedScene" uid="uid://0tebga7h547q" path="res://Entities/items/Interactive_Furniture/Lamps/lamp.tscn" id="2_qf4wl"]
+[ext_resource type="Script" path="res://entities/items/interactive_furniture/lamps/interactable_lamp.gd" id="1_og8h2"]
+[ext_resource type="PackedScene" uid="uid://0tebga7h547q" path="res://entities/items/interactive_furniture/lamps/lamp.tscn" id="2_qf4wl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8y45"]
 size = Vector2(30, 20)

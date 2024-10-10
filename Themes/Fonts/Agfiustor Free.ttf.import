@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://8mh7uny51w8"
-path="res://.godot/imported/Agfiustor Free.ttf-271d4ef2c3d55299938ebd21fb6d7ea1.fontdata"
+path="res://.godot/imported/Agfiustor Free.ttf-889d8cec24f982910b19efbd6262cc0a.fontdata"
 
 [deps]
 
-source_file="res://Themes/Fonts/Agfiustor Free.ttf"
-dest_files=["res://.godot/imported/Agfiustor Free.ttf-271d4ef2c3d55299938ebd21fb6d7ea1.fontdata"]
+source_file="res://themes/fonts/Agfiustor Free.ttf"
+dest_files=["res://.godot/imported/Agfiustor Free.ttf-889d8cec24f982910b19efbd6262cc0a.fontdata"]
 
 [params]
 

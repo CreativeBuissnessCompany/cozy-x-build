@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=5 format=3 uid="uid://b2mmy33jxg724"]
 
-[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://Entities/items/Tools/Seeds/crops.png" id="1_3lbob"]
-[ext_resource type="Script" path="res://Data/Model/item_sprite_sheet.gd" id="1_mmqno"]
-[ext_resource type="PackedScene" uid="uid://ymlkj6kjkmup" path="res://Entities/items/consumables/veggies/greenpea/greenpea.tscn" id="2_3umem"]
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_3lbob"]
+[ext_resource type="Script" path="res://data/models/item_sprite_sheet.gd" id="1_mmqno"]
+[ext_resource type="PackedScene" uid="uid://ymlkj6kjkmup" path="res://entities/items/consumables/veggies/greenpea/greenpea.tscn" id="2_3umem"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uk8ji"]
 atlas = ExtResource("1_3lbob")

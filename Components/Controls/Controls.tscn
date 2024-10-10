@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fcc1qd2fx2tc"]
 
-[ext_resource type="Theme" uid="uid://brr683dvacaev" path="res://Themes/first_theme.tres" id="1_5ekkx"]
+[ext_resource type="Theme" uid="uid://brr683dvacaev" path="res://themes/first_theme.tres" id="1_5ekkx"]
 
 [node name="ControlsCanvasLayer" type="CanvasLayer"]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c6nqqggvbaemk"]
 
-[ext_resource type="Script" path="res://Entities/items/Interactive_Furniture/Beds/bed.gd" id="1_4kw3y"]
-[ext_resource type="Texture2D" uid="uid://dl2550o15lyd3" path="res://Entities/items/Interactive_Furniture/Beds/Art/bed n covers.png" id="2_elal7"]
-[ext_resource type="AudioStream" uid="uid://c0bqg62ayapgv" path="res://AudioFiles/SFX/Jingles/BedtimeAndMorning 2024-09-27 1633.mp3" id="2_vri2h"]
+[ext_resource type="Script" path="res://entities/items/interactive_furniture/beds/bed.gd" id="1_4kw3y"]
+[ext_resource type="Texture2D" uid="uid://dl2550o15lyd3" path="res://entities/items/interactive_furniture/beds/art/bed n covers.png" id="2_elal7"]
+[ext_resource type="AudioStream" uid="uid://c0bqg62ayapgv" path="res://audio_files/sfx/jingles/BedtimeAndMorning 2024-09-27 1633.mp3" id="2_vri2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1vhk"]
 size = Vector2(58, 90)

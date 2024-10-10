@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf4hfc8olenw0"]
+
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_aanqd"]
+[ext_resource type="Script" path="res://components/seed_to_crop/seed_to_crop.gd" id="1_mb8ct"]
+[ext_resource type="Resource" uid="uid://bqgt8f6gd6wxm" path="res://entities/items/tools/seeds/greenpea/greenpea_seed_resource.tres" id="2_6ml3r"]
+
+[sub_resource type="Animation" id="Animation_henvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 48, 16, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.19, -5.81)]
+}
+
+[sub_resource type="Animation" id="Animation_64lyq"]
+resource_name = "default"
+length = 5.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 64, 16, 16), Rect2(16, 48, 16, 32), Rect2(32, 32, 16, 48), Rect2(48, 32, 16, 48), Rect2(64, 32, 16, 48), Rect2(80, 64, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.3, -0.81), Vector2(0.19, -5.81), Vector2(0.9, -16.79), Vector2(0.35, -16.893), Vector2(-0.26, -17.086), Vector2(-0.87, 0.84)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ogmy"]
+_data = {
+"RESET": SubResource("Animation_henvn"),
+"default": SubResource("Animation_64lyq")
+}
+
+[node name="SeedToCrop" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_aanqd")
+offset = Vector2(0.19, -5.81)
+region_enabled = true
+region_rect = Rect2(16, 48, 16, 32)
+script = ExtResource("1_mb8ct")
+item_data = ExtResource("2_6ml3r")
+stage_two = 1
+stage_three = 2
+stage_four = 3
+stage_five = 4
+stage_six = 5
+stage_seven = 6
+last_stage = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_6ogmy")
+}

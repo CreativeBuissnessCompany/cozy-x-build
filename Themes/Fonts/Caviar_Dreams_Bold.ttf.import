@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bjmir8y7vyk8c"
-path="res://.godot/imported/Caviar_Dreams_Bold.ttf-4e54513c9a411abc7398bdcaa9405c36.fontdata"
+path="res://.godot/imported/Caviar_Dreams_Bold.ttf-19bbf43031483b43a346f0c3298a8fbe.fontdata"
 
 [deps]
 
-source_file="res://Themes/Fonts/Caviar_Dreams_Bold.ttf"
-dest_files=["res://.godot/imported/Caviar_Dreams_Bold.ttf-4e54513c9a411abc7398bdcaa9405c36.fontdata"]
+source_file="res://themes/fonts/Caviar_Dreams_Bold.ttf"
+dest_files=["res://.godot/imported/Caviar_Dreams_Bold.ttf-19bbf43031483b43a346f0c3298a8fbe.fontdata"]
 
 [params]
 

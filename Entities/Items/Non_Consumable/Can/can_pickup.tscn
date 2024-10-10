@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://u4pab4j5ywss"]
 
-[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://Components/Pickup/pickup_comp.tscn" id="1_1p4mc"]
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_1p4mc"]
 
 [node name="WateringCanPickup" type="Node2D"]
 
