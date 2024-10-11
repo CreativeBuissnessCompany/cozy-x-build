@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://c1t2o5xyrom3b"]
+[gd_scene load_steps=18 format=4 uid="uid://c1t2o5xyrom3b"]
 
 [ext_resource type="Script" path="res://locations/farm/farm.gd" id="1_slb32"]
 [ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://locations/farm/Art/farm_tileset.tres" id="2_f15kg"]
@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://entities/items/consumables/fruits/apple/apple_pickup.tscn" id="7_uvcjc"]
 [ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://entities/items/consumables/veggies/tomato/tomato_pickup.tscn" id="8_xx28p"]
 [ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://entities/items/tools/seeds/greenpea/greenpea_seed_pickup.tscn" id="10_mmsmp"]
-[ext_resource type="PackedScene" uid="uid://cbtp70dus0fab" path="res://entities/items/consumables/from_seed_pickups/greenpea_pickup.tscn" id="15_03hin"]
+[ext_resource type="PackedScene" uid="uid://b6f1f2g3bv2jn" path="res://entities/items/tools/seeds/raddish/raddish_seed_pickup.tscn" id="15_m2g2s"]
+[ext_resource type="PackedScene" uid="uid://cqi02f3k1a31s" path="res://entities/items/consumables/from_seed_pickups/raddish_pickup.tscn" id="16_k54e6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6d87"]
 radius = 3.44227
@@ -46,6 +47,7 @@ metadata/_edit_lock_ = true
 
 [node name="04CropTileMapLayer3" type="TileMapLayer" parent="."]
 y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAOAAEAAwAAAAAAAQAPAAEAAwAAAAAAAQAMAAEAAwAAAAAAAQA=")
 tile_set = ExtResource("2_f15kg")
 script = ExtResource("3_x4tph")
 metadata/_edit_lock_ = true
@@ -96,15 +98,19 @@ z_index = 1
 metadata/_edit_lock_ = true
 
 [node name="Apple" parent="PickUps" instance=ExtResource("7_uvcjc")]
-position = Vector2(115, 54)
+position = Vector2(-127, 200)
 
 [node name="Apple2" parent="PickUps" instance=ExtResource("7_uvcjc")]
-position = Vector2(201.586, 65.2403)
+position = Vector2(-40.414, 211.24)
 
 [node name="Tomato" parent="PickUps" instance=ExtResource("8_xx28p")]
-position = Vector2(54, 81)
+position = Vector2(-188, 227)
 
-[node name="GreenPea" parent="PickUps" instance=ExtResource("10_mmsmp")]
-position = Vector2(200.877, -66.0738)
+[node name="GreenpeaSeed" parent="PickUps" instance=ExtResource("10_mmsmp")]
+position = Vector2(98, 0)
 
-[node name="GreenpeaPickup" parent="PickUps" instance=ExtResource("15_03hin")]
+[node name="RaddishSeedPickup" parent="PickUps" instance=ExtResource("15_m2g2s")]
+position = Vector2(-45.5341, -95.7692)
+
+[node name="RaddishPickup" parent="PickUps" instance=ExtResource("16_k54e6")]
+position = Vector2(-37.5881, 29.2474)

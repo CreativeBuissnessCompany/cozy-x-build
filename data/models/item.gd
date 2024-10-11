@@ -2,7 +2,7 @@ class_name Item
 extends Resource
 
 enum ITEM_TYPE {DEFAULT, SEED}
-@export var item_type: ITEM_TYPE 
+@export var item_type: ITEM_TYPE = ITEM_TYPE.DEFAULT
 
 @export var name:String
 @export var scene:PackedScene

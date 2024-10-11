@@ -9,4 +9,6 @@ var sprite_sheet_png: AtlasTexture
 
 
 func _init() -> void:
+	#icon = scene.texture # NOTE changed .... Becareful 10/11
 	icon = sprite_sheet_png
+	#print(scene)

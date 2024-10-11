@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=5 format=3 uid="uid://cca773myvhb44"]
+
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_b0jlw"]
+[ext_resource type="PackedScene" uid="uid://b2sk03mavno0p" path="res://entities/items/tools/seeds/raddish/raddish_seed.tscn" id="2_qu0n0"]
+[ext_resource type="Script" path="res://data/models/item_sprite_sheet.gd" id="3_n43sc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk8ji"]
+atlas = ExtResource("1_b0jlw")
+region = Rect2(0, 112, 16, 16)
+
+[resource]
+script = ExtResource("3_n43sc")
+item_type = 1
+name = "Raddish Seed"
+scene = ExtResource("2_qu0n0")
+icon = SubResource("AtlasTexture_uk8ji")
+description = ""
+price = 6

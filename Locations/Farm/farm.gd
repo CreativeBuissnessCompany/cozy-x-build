@@ -64,6 +64,10 @@ var sfx_file: AudioStreamMP3
 #Stop User input if UI is open ....
 var ui_open: bool = false
 
+var seed_selected: Item
+
+
+
 
 
 
@@ -108,6 +112,9 @@ func _input(_event: InputEvent) -> void:
 
 
 
+
+
+
 func on_ui_open():
 	ui_open = !ui_open
 	#print(" UI Status")
@@ -117,7 +124,7 @@ func on_ui_open():
 func on_seed_selected(item_resource: Item):
 	if item_resource.item_type == Item.ITEM_TYPE.SEED:
 		farming_mode_state = FARMING_MODES.PLANT_SEED
-		
+		seed_selected = item_resource
 		# NOTE  Close UI
 		var inventory_ui: InventoryUI = get_parent().find_child("InventoryUI")
 		inventory_ui._on_close_button_pressed()
@@ -158,7 +165,13 @@ func farming(state,mouse_pos):
 			
 			if retrieving_custom_data(layer_to_look, mouse_pos_for_data, custom_data):
 				# # Scenetile, Add sourceid and tile id, seed_cord to (0,0)
-				layer_to_place.set_cell(mouse_pos_for_seed,source_id, Vector2i(0,0),scene_tile_id) 
+				layer_to_place.set_cell(mouse_pos_for_seed,source_id, Vector2i(0,0),scene_tile_id)
+				# Grab SceneTile as Node from Parent ...
+				var child = layer_to_place.get_child(-1)
+				# Set Item Data to Current  
+				print(" This the Child.... " , child.item_data)
+				child.item_data = seed_selected
+				print(child.item_data)
 				#print("Checked for Seed Data, Tried to place")
 				#print("layer_to_place : %s" % mouse_pos_for_data)
 				# NOTE SEED SFX

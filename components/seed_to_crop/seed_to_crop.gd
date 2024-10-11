@@ -2,7 +2,7 @@
 class_name CropToSeed extends Sprite2D
 
 # Variables
-# Where we get the texture and such for seed to crop
+# Where we get the texture and such for seed to crop 
 @export var item_data: Item
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
@@ -41,7 +41,7 @@ func _ready() -> void:
 	# From Farm...
 	Signalbus.connect("watered", _on_watered)
 	
-	# Setting Vars ...
+	# Setting Vars from GameData...
 	if GameData.crop_array:
 		 #Get Crops Data from GameData
 		 #Set
@@ -65,8 +65,8 @@ func _ready() -> void:
 		if time_tracker.day > day_planted:
 			days_watered += 1
 			days_since_planted = time_tracker.day - day_planted
-			print(" days_watered ")
-			print(days_watered)
+			#print(" days_watered ")
+			#print(days_watered)
 	
 	# Set Animationplayer @ 0.00 in "default" Animation
 	animation_player.play("default")
@@ -87,6 +87,10 @@ func _ready() -> void:
 	# Set Day 
 	current_day = time_tracker.day
 	
+	
+	
+	
+	#item_data.icon
 
 
 func _on_watered(mos_pos):

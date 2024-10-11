@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6f1f2g3bv2jn"]
+
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_cquif"]
+[ext_resource type="Resource" uid="uid://cca773myvhb44" path="res://entities/items/tools/seeds/raddish/raddish_seed_resource.tres" id="2_sol3e"]
+
+[node name="RaddishSeedPickup" instance=ExtResource("1_cquif")]
+item = ExtResource("2_sol3e")

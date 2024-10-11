@@ -7,23 +7,26 @@ extends Node2D
 @export var item:Item:
 	set(value):
 		item = value
-		#print(" Settin and Gettin")
-		#print(item.name)
-		#if instance != null:
-			#instance.queue_free()
-			#instance = item.scene.instantiate()
-			#add_child(instance)
-			#print("Set Activated")
 
 var instance: Node2D
+var ITEM_TYPE_SEED: int = 1
+
+
+
+
 
 
 func _ready() -> void:
 	print(item.name," is Ready.... ")
 	instance = item.scene.instantiate()
+	
+	# Set offset if SEED type of item 
+	if item.item_type == ITEM_TYPE_SEED:
+		#print(item.item_type)
+		instance.global_position += Vector2(0,-15) 
+	
+	
 	add_child(instance)
-
-
 
 func _on_area_2d_body_entered(body: Player) -> void:
 	
