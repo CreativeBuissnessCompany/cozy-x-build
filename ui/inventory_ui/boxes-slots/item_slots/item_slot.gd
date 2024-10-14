@@ -5,9 +5,7 @@ class_name ItemSlot
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 
-
 signal on_item_button_pressed(item_description, animated_sprite_2d)
-
 
 #var item_info: Dictionary = {}
 var item_description: String = ""
@@ -17,8 +15,17 @@ var item_resource: Item
 
 
 
+func set_item(item):
+	item_resource = item
+	item_description = item.description
+	display(item)
+
+
 func display(item:Item):
-	texture_rect.texture = item.icon
+	# NOTE NEW ...
+	texture_rect.texture = item.sprite_frame.get_frame_texture("default", 0)
+	
+	#texture_rect.texture = item.icon
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

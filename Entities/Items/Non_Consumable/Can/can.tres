@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://c2rr865bmxad1"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://c2rr865bmxad1"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_1k4a5"]
-[ext_resource type="PackedScene" uid="uid://cbsovvq1nyqk8" path="res://entities/items/non_consumable/can/can.tscn" id="1_3d2gj"]
 [ext_resource type="Texture2D" uid="uid://dxfc1p7t6tg7o" path="res://entities/items/non_consumable/can/art/Can.png" id="1_icgwy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j2d86"]
@@ -19,8 +18,6 @@ animations = [{
 script = ExtResource("1_1k4a5")
 item_type = 0
 name = "Can"
-scene = ExtResource("1_3d2gj")
-icon = ExtResource("1_icgwy")
 description = ""
 price = 0
 sprite_frame = SubResource("SpriteFrames_j2d86")

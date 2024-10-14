@@ -52,8 +52,8 @@ func _ready() -> void:
 	
 	# Setting Vars from GameData...
 	if GameData.crop_array:
-		print("GameData CropArray Exists....")
-		print(GameData.crop_array)
+		#print("GameData CropArray Exists....")
+		#print(GameData.crop_array)
 		 #Get Crops Data from GameData
 		 #Set
 		days_watered = GameData.crop_array[-6]
@@ -170,36 +170,33 @@ func advance_stage(_days_since_planted):
 		
 		# Delete word "Seed" from item name....
 		# NOTE Space BEFORE the word seed is NEEDED
+		print(item_data.name)
 		var item_name = item_data.name.replacen(" seed","")
-		#print(item_name)
+		print(item_name)
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
-		if file_name.containsn(item_name):
-			#print(file_name)
-			#print( "They Match!")
-			# Combine Directory Path with File Path for full path...
-			#print(dir_path + file_name)
-			var full_path = dir_path + file_name
-			# Load, Instantiate
-			var crop_scene: PackedScene = load(full_path)
-			var instanced_scene = crop_scene.instantiate()
-			# Position
-			instanced_scene.global_position = self.global_position
-			# Add Child
-			#get_parent().add_child(instanced_scene)
-			var pickups_node = get_parent().owner.find_child("PickUps")
-			print("Pickups Node Name.....", pickups_node)
-			pickups_node.add_child(instanced_scene)
-			# NOTE Changed on 10/13... Unindented by one
-			# Set grown to true so we dont send data to GameData
-			grown = true
-			Signalbus.delete_crop.emit(self.global_position)
-			print("Grown?", grown)
-			get_parent().remove_child(self)
-			self.queue_free()
-			#get_parent().print_tree_pretty()
+		while file_name != "":
+			if file_name.containsn(item_name):
+				#print(file_name)
+				print( "They Match!")
+				# Combine Directory Path with File Path for full path...
+				#print(dir_path + file_name)
+				var full_path = dir_path + file_name
+				# Load, Instantiate
+				var crop_scene: PackedScene = load(full_path)
+				var instanced_scene = crop_scene.instantiate()
+				# Position
+				instanced_scene.global_position = self.global_position
+				var pickups_node = get_parent().owner.find_child("PickUps")
+				pickups_node.add_child(instanced_scene)
+				# NOTE Changed on 10/13... Unindented by one
+				# Set grown to true so we dont send data to GameData
+				grown = true
+				Signalbus.delete_crop.emit(self.global_position)
+				get_parent().remove_child(self)
+				self.queue_free()
+			file_name = dir.get_next()
 		#print(dir_path)
-		
 		#print(file_name)
 		
 	

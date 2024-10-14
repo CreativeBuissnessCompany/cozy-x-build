@@ -40,14 +40,15 @@ func open(inventory:Inventory):
 	for item in inventory.get_items():
 		var slot: ItemSlot = item_slot_scene.instantiate()
 		grid_container.add_child(slot)
-		slot.display(item)
+		slot.set_item(item)
+		#slot.display(item)
 		# Connect Slot
 		slot.on_item_button_pressed.connect(_on_item_button_pressed)
 		# Fill Data
-		slot.item_description = item.description
+		#slot.item_description = item.description
 		# Test
 		# New ....
-		slot.item_resource = item
+		#slot.item_resource = item
 
 
 func _on_item_button_pressed(item_description,animated_sprite_2d):

@@ -1,5 +1,4 @@
 # inventory_resource.gd
-
 class_name Inventory
 extends Resource
 
@@ -41,13 +40,8 @@ func add_item(item:Item):
 
 
 func remove_item(item:Item):
-	
 	# NOTE Need a drop or use button from Naz ...
-	
 	# Check Qty ...
-	
-	
-	
 	_content.erase(item)
 	
 

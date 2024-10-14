@@ -10,13 +10,15 @@ signal on_item_button_pressed(item_name,item_description, animated_sprite_2d)
 
 
 #var item_info: Dictionary = {}
-var item_description: String = ""
 var item_name: String = ""
+var item_description: String = ""
 var item_price: int = 0
 
 
+
+
 func display(item:Item):
-	texture_rect.texture = item.icon
+	texture_rect.texture = item.sprite_frame.get_frame_texture("default", 0)
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
