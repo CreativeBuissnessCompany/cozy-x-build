@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=5 format=3 uid="uid://dfp7fvxjfmtlv"]
+[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=7 format=3 uid="uid://dfp7fvxjfmtlv"]
 
 [ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://entities/items/tools/art/tools.png" id="1_awncx"]
 [ext_resource type="PackedScene" uid="uid://bisrl4xat66wc" path="res://entities/items/tools/watering_can/watering_can.tscn" id="2_fsg47"]
@@ -8,10 +8,27 @@
 atlas = ExtResource("1_awncx")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ace8w"]
+atlas = ExtResource("1_awncx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4gu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ace8w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [resource]
 script = ExtResource("3_4bapa")
+item_type = 0
 name = "Watering Can"
 scene = ExtResource("2_fsg47")
 icon = SubResource("AtlasTexture_5hirg")
 description = "A [wave amp=25.0 freq=3.0 connected=1] [color=Lightsteelblue ]Watering Can![/color][/wave] Do you like water?"
 price = 0
+sprite_frame = SubResource("SpriteFrames_k4gu3")

@@ -71,6 +71,10 @@ var seed_selected: Item
 
 
 
+
+
+
+
 #Script_Start 
 
 func _enter_tree() -> void:
@@ -84,6 +88,8 @@ func _ready() -> void:
 	Signalbus.item_clicked.connect(on_seed_selected)
 	# To stop User input while UI open
 	Signalbus.ui_open.connect(on_ui_open)
+	# SeedToCrop .... To delete Crop when pickup instantiated....
+	Signalbus.delete_crop.connect(on_delete_crop)
 
 
 # Player Inputs at Farm ...
@@ -111,6 +117,13 @@ func _input(_event: InputEvent) -> void:
 		return
 
 
+
+
+func on_delete_crop(coords):
+	var local_coords = tml_4.to_local(coords)
+	var cell = tml_4.local_to_map(local_coords)
+	tml_4.erase_cell(cell)
+	print(" Erased Cell At ....", cell )
 
 
 
@@ -166,12 +179,15 @@ func farming(state,mouse_pos):
 			if retrieving_custom_data(layer_to_look, mouse_pos_for_data, custom_data):
 				# # Scenetile, Add sourceid and tile id, seed_cord to (0,0)
 				layer_to_place.set_cell(mouse_pos_for_seed,source_id, Vector2i(0,0),scene_tile_id)
+				await get_tree().process_frame
 				# Grab SceneTile as Node from Parent ...
 				var child = layer_to_place.get_child(-1)
 				# Set Item Data to Current  
-				print(" This the Child.... " , child.item_data)
+				#print(" Last Added Child Data ... " , child.item_data.name)
 				child.item_data = seed_selected
-				print(child.item_data)
+				#print(" After Change made by farm.gd ", child.item_data.name)
+				print(" Changing selected Seed")
+				#layer_to_place.print_tree_pretty()
 				#print("Checked for Seed Data, Tried to place")
 				#print("layer_to_place : %s" % mouse_pos_for_data)
 				# NOTE SEED SFX

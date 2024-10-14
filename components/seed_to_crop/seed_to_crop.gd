@@ -1,9 +1,14 @@
 # seed_to_crop.gd
-class_name CropToSeed extends Sprite2D
+class_name CropToSeed extends AnimatedSprite2D
 
 # Variables
+
 # Where we get the texture and such for seed to crop 
-@export var item_data: Item
+@export var item_data: Item:
+	set(value):
+		item_data = value
+		self.sprite_frames = item_data.sprite_frame
+
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 # New, Set stages in inspector
@@ -23,12 +28,12 @@ var current_day: int
 var current_frame: float = 0.00
 var watered: bool = false
 var days_watered: int = 0
-
 # Path for Directory of "from_seed" ...
 var dir_path: String = "res://entities/items/consumables/from_seed_pickups/"
 # Directory for Fully grown versions of seeds....Fruit,Veggie....
 var dir = DirAccess.open(dir_path)
 
+var grown: bool = false
 
 
 
@@ -38,18 +43,25 @@ var dir = DirAccess.open(dir_path)
 
 # Script_Start
 func _ready() -> void:
+	print(" Grown Status at Ready in SeedToCrop....")
+	print(grown)
+	
+	
 	# From Farm...
 	Signalbus.connect("watered", _on_watered)
 	
 	# Setting Vars from GameData...
 	if GameData.crop_array:
+		print("GameData CropArray Exists....")
+		print(GameData.crop_array)
 		 #Get Crops Data from GameData
 		 #Set
-		days_watered = GameData.crop_array[-5]
-		current_day = GameData.crop_array[-4]
-		day_planted = GameData.crop_array[-3]
-		current_frame = GameData.crop_array[-2]
-		watered = GameData.crop_array[-1]
+		days_watered = GameData.crop_array[-6]
+		current_day = GameData.crop_array[-5]
+		day_planted = GameData.crop_array[-4]
+		current_frame = GameData.crop_array[-3]
+		watered = GameData.crop_array[-2]
+		item_data = GameData.crop_array[-1]
 		
 		# Pop
 		GameData.crop_array.pop_back()
@@ -57,6 +69,8 @@ func _ready() -> void:
 		GameData.crop_array.pop_back()
 		GameData.crop_array.pop_back()
 		GameData.crop_array.pop_back()
+		GameData.crop_array.pop_back()
+		
 		
 	#Or Else ...
 	else:
@@ -87,8 +101,10 @@ func _ready() -> void:
 	# Set Day 
 	current_day = time_tracker.day
 	
-	
-	
+	# NOTE New ...
+	# New, Try to set spriteframes...
+	self.sprite_frames = item_data.sprite_frame
+	self.offset = Vector2( 0 , -12 )
 	
 	#item_data.icon
 
@@ -104,44 +120,48 @@ func _on_watered(mos_pos):
 
 func advance_stage(_days_since_planted):
 	
-	
-	
 	match _days_since_planted:
 		
 		stage_one:
 			current_stage = stage_one
-			animation_player.seek(0.00, true)
-			print("Stage One")
+			self.frame = stage_one
+			#print("Stage One")
 		
 		stage_two:
 			current_stage = stage_two
-			animation_player.seek(1.00, true)
-			print("Stage Two")
+			#animation_player.seek(1.00, true)
+			self.frame = stage_two
+			#print("Stage Two")
 			
 		stage_three:
 			current_stage = stage_three
-			animation_player.seek(2.00,true)
-			print("Stage Three")
+			#animation_player.seek(2.00,true)
+			self.frame = stage_three
+			#print("Stage Three")
 			
 		stage_four:
 			current_stage = stage_four
-			animation_player.seek(3.00,true)
-			print("Stage Four")
+			#animation_player.seek(3.00,true)
+			self.frame = stage_four
+			#print("Stage Four")
 			
 		stage_five:
 			current_stage = stage_five
-			animation_player.seek(4.00,true)
-			print("Stage Five")
+			#animation_player.seek(4.00,true)
+			self.frame = stage_five
+			#print("Stage Five")
 			
 		stage_six:
 			current_stage = stage_six
-			animation_player.seek(5.00,true)
-			print("Stage Six")
+			#animation_player.seek(5.00,true)
+			self.frame = stage_six
+			#print("Stage Six")
 			
 		stage_seven:
 			current_stage = stage_seven
-			animation_player.seek(6.00,true)
-			print("Stage Seven")
+			#animation_player.seek(6.00,true)
+			self.frame = stage_seven
+			#print("Stage Seven")
 			
 	# Last Stage ...
 	if current_stage == last_stage:
@@ -155,10 +175,10 @@ func advance_stage(_days_since_planted):
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		if file_name.containsn(item_name):
-			print(file_name)
-			print( "They Match!")
+			#print(file_name)
+			#print( "They Match!")
 			# Combine Directory Path with File Path for full path...
-			print(dir_path + file_name)
+			#print(dir_path + file_name)
 			var full_path = dir_path + file_name
 			# Load, Instantiate
 			var crop_scene: PackedScene = load(full_path)
@@ -166,10 +186,18 @@ func advance_stage(_days_since_planted):
 			# Position
 			instanced_scene.global_position = self.global_position
 			# Add Child
-			get_parent().add_child(instanced_scene)
-			
+			#get_parent().add_child(instanced_scene)
+			var pickups_node = get_parent().owner.find_child("PickUps")
+			print("Pickups Node Name.....", pickups_node)
+			pickups_node.add_child(instanced_scene)
+			# NOTE Changed on 10/13... Unindented by one
+			# Set grown to true so we dont send data to GameData
+			grown = true
+			Signalbus.delete_crop.emit(self.global_position)
+			print("Grown?", grown)
+			get_parent().remove_child(self)
 			self.queue_free()
-			get_parent().print_tree_pretty()
+			#get_parent().print_tree_pretty()
 		#print(dir_path)
 		
 		#print(file_name)
@@ -182,11 +210,12 @@ func advance_stage(_days_since_planted):
 
 
 func _exit_tree() -> void:
-	# Send
-	GameData.crop_array.append(days_watered)
-	GameData.crop_array.append(current_day)
-	GameData.crop_array.append(day_planted)
-	GameData.crop_array.append(current_frame)
-	GameData.crop_array.append(watered)
-	
-	pass
+	# Send Data if Grown not true ...
+	if not grown:
+		GameData.crop_array.append(days_watered)
+		GameData.crop_array.append(current_day)
+		GameData.crop_array.append(day_planted)
+		GameData.crop_array.append(current_frame)
+		GameData.crop_array.append(watered)
+		GameData.crop_array.append(item_data)
+		print(" Not Grown ")

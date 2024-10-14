@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=5 format=3 uid="uid://cca773myvhb44"]
+[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=12 format=3 uid="uid://cca773myvhb44"]
 
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_b0jlw"]
 [ext_resource type="PackedScene" uid="uid://b2sk03mavno0p" path="res://entities/items/tools/seeds/raddish/raddish_seed.tscn" id="2_qu0n0"]
@@ -8,6 +8,56 @@
 atlas = ExtResource("1_b0jlw")
 region = Rect2(0, 112, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cseef"]
+atlas = ExtResource("1_b0jlw")
+region = Rect2(0, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tco5d"]
+atlas = ExtResource("1_b0jlw")
+region = Rect2(16, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp3h1"]
+atlas = ExtResource("1_b0jlw")
+region = Rect2(32, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56lmp"]
+atlas = ExtResource("1_b0jlw")
+region = Rect2(48, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8uat"]
+atlas = ExtResource("1_b0jlw")
+region = Rect2(64, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g74gv"]
+atlas = ExtResource("1_b0jlw")
+region = Rect2(80, 96, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wli21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cseef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tco5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp3h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56lmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8uat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g74gv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [resource]
 script = ExtResource("3_n43sc")
 item_type = 1
@@ -16,3 +66,4 @@ scene = ExtResource("2_qu0n0")
 icon = SubResource("AtlasTexture_uk8ji")
 description = ""
 price = 6
+sprite_frame = SubResource("SpriteFrames_wli21")

@@ -1,15 +1,27 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bcuhffno36qld"]
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://bcuhffno36qld"]
 
 [ext_resource type="Texture2D" uid="uid://bj4weai7yes1k" path="res://entities/items/consumables/fruits/apple/art/Apple02.png" id="1_e6a23"]
 [ext_resource type="PackedScene" uid="uid://b54bhgfmjmcb1" path="res://entities/items/consumables/fruits/apple/apple.tscn" id="1_qqd38"]
 [ext_resource type="Script" path="res://data/models/item.gd" id="2_sheuc"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_5oasv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e6a23")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [resource]
 script = ExtResource("2_sheuc")
-item_type = 0
+item_type = 2
 name = "Apple"
 scene = ExtResource("1_qqd38")
 icon = ExtResource("1_e6a23")
 description = "A delicious [wave amp=25.0 freq=3.0 connected=1] [color=Firebrick]Apple[/color] [/wave] to eat on.....Have an Eat!
 Yup, Love me some [wave amp=25.0 freq=3.0 connected=1] [color=firebrick]Apple[/color] [/wave] ...."
 price = 4
+sprite_frame = SubResource("SpriteFrames_5oasv")

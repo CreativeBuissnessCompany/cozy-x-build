@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=5 format=3 uid="uid://b8kqqyhobg6pb"]
+[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=7 format=3 uid="uid://b8kqqyhobg6pb"]
 
 [ext_resource type="Script" path="res://data/models/item_sprite_sheet.gd" id="1_3e63d"]
 [ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://entities/items/tools/art/tools.png" id="1_ysscr"]
@@ -8,10 +8,27 @@
 atlas = ExtResource("1_ysscr")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjbbr"]
+atlas = ExtResource("1_ysscr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgr7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjbbr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [resource]
 script = ExtResource("1_3e63d")
+item_type = 0
 name = "Hoe"
 scene = ExtResource("2_jtsoy")
 icon = SubResource("AtlasTexture_5hirg")
 description = "A [wave amp=25.0 freq=3.0 connected=1] [color=Lightsteelblue ]Hoe...[/color][/wave] But for Farming!"
 price = 0
+sprite_frame = SubResource("SpriteFrames_bgr7i")

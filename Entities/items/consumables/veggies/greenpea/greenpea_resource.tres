@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=5 format=3 uid="uid://b2mmy33jxg724"]
+[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=7 format=3 uid="uid://b2mmy33jxg724"]
 
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_3lbob"]
 [ext_resource type="Script" path="res://data/models/item_sprite_sheet.gd" id="1_mmqno"]
@@ -8,6 +8,21 @@
 atlas = ExtResource("1_3lbob")
 region = Rect2(80, 64, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0lrp"]
+atlas = ExtResource("1_3lbob")
+region = Rect2(80, 44, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k47st"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0lrp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [resource]
 script = ExtResource("1_mmqno")
 item_type = 0
@@ -16,3 +31,4 @@ scene = ExtResource("2_3umem")
 icon = SubResource("AtlasTexture_uk8ji")
 description = ""
 price = 20
+sprite_frame = SubResource("SpriteFrames_k47st")
