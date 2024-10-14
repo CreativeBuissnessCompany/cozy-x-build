@@ -3,8 +3,9 @@ extends Control  # Sept 15, Used to be panel container
 
 
 # Variables
+# Setting the item slot scene to use ....
 @export var item_slot_scene:PackedScene
-
+@export var inventory_for_objects: Inventory
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
 
@@ -19,10 +20,12 @@ var ui_open: bool = false:
 
 
 
+
 # Script_Start
 func _ready() -> void:
+	print(" Ready in inventory_ui")
+	print(inventory_for_objects)
 	pass
-
 
 
 
@@ -33,6 +36,13 @@ func open(inventory:Inventory):
 	# Show/Hide UI
 	self.visible = !self.visible
 	
+	# Used for things that already have inventory like...
+	#Vending Machine, Chest, Etc ...
+	if inventory_for_objects:
+		inventory = inventory_for_objects
+		print(" Found Inventory")
+		printt(inventory, inventory_for_objects)
+	
 	
 	for child in grid_container.get_children():
 		child.queue_free()
@@ -41,19 +51,14 @@ func open(inventory:Inventory):
 		var slot: ItemSlot = item_slot_scene.instantiate()
 		grid_container.add_child(slot)
 		slot.set_item(item)
-		#slot.display(item)
 		# Connect Slot
 		slot.on_item_button_pressed.connect(_on_item_button_pressed)
-		# Fill Data
-		#slot.item_description = item.description
-		# Test
-		# New ....
-		#slot.item_resource = item
 
 
-func _on_item_button_pressed(item_description,animated_sprite_2d):
+
+func _on_item_button_pressed(animated_sprite_2d, item_resource: Item):
 	#print_debug("Received " + item_description )
-	item_desc_label.text = item_description
+	item_desc_label.text = item_resource.description
 	
 	# Stop Other Slot Animations
 	var slot_array = grid_container.get_children()

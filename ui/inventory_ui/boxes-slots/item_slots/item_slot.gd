@@ -5,19 +5,19 @@ class_name ItemSlot
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 
-signal on_item_button_pressed(item_description, animated_sprite_2d)
+signal on_item_button_pressed( animated_sprite_2d, item_resource: Item)
 
-#var item_info: Dictionary = {}
-var item_description: String = ""
 
 # Store Item, Being set in Inevtory UI
 var item_resource: Item
 
 
 
+
+
+# Script_Start
 func set_item(item):
 	item_resource = item
-	item_description = item.description
 	display(item)
 
 
@@ -27,15 +27,14 @@ func display(item:Item):
 	
 	#texture_rect.texture = item.icon
 
+# Inventory ...
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			#print("Item Click Worked")
-			# for inventory_ui
-			on_item_button_pressed.emit(item_description,animated_sprite_2d)
-			# Test , Maybe to farm ...
+			on_item_button_pressed.emit( animated_sprite_2d, item_resource )
+			# Sent to farm ...
 			Signalbus.item_clicked.emit(item_resource)
-			#item_check()
+			
 		
 
 #func item_check():

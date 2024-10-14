@@ -1,4 +1,4 @@
-	# Universe.gd
+# Universe.gd
 extends Node2D
 
 # Variables & @onready ...

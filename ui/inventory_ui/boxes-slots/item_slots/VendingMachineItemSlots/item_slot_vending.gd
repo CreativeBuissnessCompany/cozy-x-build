@@ -5,20 +5,22 @@ class_name ItemSlotVending
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 
-
 signal on_item_button_pressed(item_name,item_description, animated_sprite_2d)
-
 
 #var item_info: Dictionary = {}
 var item_name: String = ""
 var item_description: String = ""
 var item_price: int = 0
 
+var item_resource: Item
 
 
 
+
+# Script_Start 
 func display(item:Item):
 	texture_rect.texture = item.sprite_frame.get_frame_texture("default", 0)
+	item_resource = item
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

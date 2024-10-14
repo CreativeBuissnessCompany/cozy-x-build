@@ -1,52 +1,45 @@
-[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=10 format=3 uid="uid://cca773myvhb44"]
+[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://cca773myvhb44"]
 
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_b0jlw"]
-[ext_resource type="Script" path="res://data/models/item_sprite_sheet.gd" id="3_n43sc"]
+[ext_resource type="Script" path="res://data/models/item.gd" id="1_ygirr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cseef"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ikr4"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(0, 96, 16, 32)
+region = Rect2(0, 113, 16, 14)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tco5d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqqks"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(16, 96, 16, 32)
+region = Rect2(16, 109, 16, 14)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vp3h1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_36vbt"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(32, 96, 16, 32)
+region = Rect2(32, 103, 16, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_56lmp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgc5l"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(48, 96, 16, 32)
+region = Rect2(48, 103, 16, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8uat"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqn0l"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(64, 96, 16, 32)
+region = Rect2(64, 101, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g74gv"]
-atlas = ExtResource("1_b0jlw")
-region = Rect2(80, 96, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wli21"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dta1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cseef")
+"texture": SubResource("AtlasTexture_7ikr4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tco5d")
+"texture": SubResource("AtlasTexture_pqqks")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vp3h1")
+"texture": SubResource("AtlasTexture_36vbt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_56lmp")
+"texture": SubResource("AtlasTexture_lgc5l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k8uat")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g74gv")
+"texture": SubResource("AtlasTexture_sqn0l")
 }],
 "loop": true,
 "name": &"default",
@@ -54,9 +47,9 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("3_n43sc")
+script = ExtResource("1_ygirr")
 item_type = 1
 name = "Raddish Seed"
 description = ""
 price = 6
-sprite_frame = SubResource("SpriteFrames_wli21")
+sprite_frame = SubResource("SpriteFrames_7dta1")

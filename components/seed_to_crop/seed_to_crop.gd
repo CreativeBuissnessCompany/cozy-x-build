@@ -72,16 +72,17 @@ func _ready() -> void:
 		GameData.crop_array.pop_back()
 		
 		
-	#Or Else ...
+	#Or Else ... Set DayPlanted, W
 	else:
 		day_planted = time_tracker.day
+	# Also ...advance DaysWatered ...
+	# Do math for days planted ....
 	if watered == true:
 		if time_tracker.day > day_planted:
 			days_watered += 1
 			days_since_planted = time_tracker.day - day_planted
-			#print(" days_watered ")
-			#print(days_watered)
 	
+	# NOTE NOTE Might Delete for SpriteFrames
 	# Set Animationplayer @ 0.00 in "default" Animation
 	animation_player.play("default")
 	animation_player.seek(current_frame, true)
@@ -104,9 +105,8 @@ func _ready() -> void:
 	# NOTE New ...
 	# New, Try to set spriteframes...
 	self.sprite_frames = item_data.sprite_frame
-	self.offset = Vector2( 0 , -12 )
-	
-	#item_data.icon
+	#self.offset = Vector2( 0 , -12 )
+
 
 
 func _on_watered(mos_pos):

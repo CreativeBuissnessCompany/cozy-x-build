@@ -1,22 +1,13 @@
-[gd_resource type="Resource" script_class="Item_Sprite_Sheet" load_steps=7 format=3 uid="uid://b2mmy33jxg724"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://b2mmy33jxg724"]
 
-[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_3lbob"]
-[ext_resource type="Script" path="res://data/models/item_sprite_sheet.gd" id="1_mmqno"]
-[ext_resource type="PackedScene" uid="uid://ymlkj6kjkmup" path="res://entities/items/consumables/veggies/greenpea/greenpea.tscn" id="2_3umem"]
+[ext_resource type="Script" path="res://data/models/item.gd" id="1_uqjfi"]
+[ext_resource type="Texture2D" uid="uid://3mcal4hf2mqa" path="res://entities/items/consumables/veggies/greenpea/greenpea32.png" id="2_x2ppm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uk8ji"]
-atlas = ExtResource("1_3lbob")
-region = Rect2(80, 64, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0lrp"]
-atlas = ExtResource("1_3lbob")
-region = Rect2(80, 44, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_k47st"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8k2m0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c0lrp")
+"texture": ExtResource("2_x2ppm")
 }],
 "loop": true,
 "name": &"default",
@@ -24,11 +15,9 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_mmqno")
+script = ExtResource("1_uqjfi")
 item_type = 0
 name = "Greenpea "
-scene = ExtResource("2_3umem")
-icon = SubResource("AtlasTexture_uk8ji")
 description = ""
 price = 20
-sprite_frame = SubResource("SpriteFrames_k47st")
+sprite_frame = SubResource("SpriteFrames_8k2m0")

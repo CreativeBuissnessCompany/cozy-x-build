@@ -26,9 +26,10 @@ func _ready() -> void:
 	
 	# Set offset if SEED type of item 
 	if item.item_type == ITEM_TYPE_SEED:
-		#print(item.item_type)
-		animated_sprite2d.global_position += Vector2(0,-15) 
-		#self.scale = Vector2(0.5,0.5)
+		
+		#animated_sprite2d.global_position += Vector2(0,-15) 
+		pass
+		
 	if item.item_type == ITEM_TYPE_RESIZE:
 		self.scale = Vector2(0.5,0.5)
 		pass

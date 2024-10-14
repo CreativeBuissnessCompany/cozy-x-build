@@ -86,9 +86,9 @@ func _ready() -> void:
 	super()
 	# Connects to ItemSlot in inventory_ui
 	Signalbus.item_clicked.connect(on_seed_selected)
-	# To stop User input while UI open
+	# Connects to inventory_ui, To stop User input while UI open
 	Signalbus.ui_open.connect(on_ui_open)
-	# SeedToCrop .... To delete Crop when pickup instantiated....
+	#  Connects to SeedToCrop .... To delete Crop when pickup instantiated....
 	Signalbus.delete_crop.connect(on_delete_crop)
 
 

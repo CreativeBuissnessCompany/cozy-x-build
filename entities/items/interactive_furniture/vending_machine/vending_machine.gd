@@ -25,6 +25,8 @@ func _unhandled_key_input(_event: InputEvent) -> void:
 			
 			# Goes to UIRoot.gd in Universe.tscn
 			Signalbus.open_object_with_inventory.emit(vending_inventory)
+		else:
+			print(" Vending Machine Thinks You want to interact with it! ")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
