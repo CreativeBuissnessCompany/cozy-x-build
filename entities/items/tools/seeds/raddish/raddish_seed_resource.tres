@@ -3,43 +3,43 @@
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_b0jlw"]
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_ygirr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ikr4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_44guu"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(0, 113, 16, 14)
+region = Rect2(0, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pqqks"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4sq6"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(16, 109, 16, 14)
+region = Rect2(16, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_36vbt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8l3w"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(32, 103, 16, 18)
+region = Rect2(32, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lgc5l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ycy5"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(48, 103, 16, 18)
+region = Rect2(48, 76, 16, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqn0l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhqme"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(64, 101, 16, 20)
+region = Rect2(64, 76, 16, 19)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7dta1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jfyjn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7ikr4")
+"texture": SubResource("AtlasTexture_44guu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pqqks")
+"texture": SubResource("AtlasTexture_i4sq6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_36vbt")
+"texture": SubResource("AtlasTexture_f8l3w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lgc5l")
+"texture": SubResource("AtlasTexture_2ycy5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sqn0l")
+"texture": SubResource("AtlasTexture_jhqme")
 }],
 "loop": true,
 "name": &"default",
@@ -52,4 +52,4 @@ item_type = 1
 name = "Raddish Seed"
 description = ""
 price = 6
-sprite_frame = SubResource("SpriteFrames_7dta1")
+sprite_frame = SubResource("SpriteFrames_jfyjn")

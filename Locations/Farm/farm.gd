@@ -3,27 +3,21 @@ extends BaseScene
 
 # Variables
 # TileMapLayers
-@onready var tml_1:= $"01FarmGrass_TileMapLayer"
-@onready var tml_2:= $"02GrassOnDirt_TileMapLayer"
-@onready var tml_3:= $"03TilledAndWateredTileMapLayer2"
-@onready var tml_4:= $"04CropTileMapLayer3"
+@onready var tml_1:= %"01BrightGrass"
+@onready var tml_2:= %"02DirtPaths"
+@onready var tml_3:= %"03TilledAndWatered"
+@onready var tml_4:= %"04Crops"
 
 # 1st Terrain Set
-var terrain_set:int = 0 # Changed from 0 
-# Tile Data/Info.... for custom data? Maybe Unused
-var terrain_sourceid_farmhouse: int = 0
+var terrain_set:int = 0 
+# Source ID
 var source_id
-# Second Image SourceID, Seeds and Crops
-var terrain_sourceid_crops:int = 1
-# dirt_tiles Source
-var dirt_tiles_source_id: int = 4 
+var dirt_tiles_source_id: int = 5 
+var scene_source_id = 3
 
 # Terrains within 1st Set
-var tilled_terrain:int = 2 # Changing from 2 to ...
-var watered_terrain:int = 3 # Changing from 3 to ...
-var seed_terrain:int = 4
-var tilled_terrain_02: int = 5
-var watered_terrain_02: int = 6
+var tilled_terrain_02: int = 10 # From 5
+var watered_terrain_02: int = 11 # From 6
 
 # Tile Containers ...
 var dirt_tiles: Array = []
@@ -35,8 +29,6 @@ var dirt_tile_data: Dictionary = {
 	"atlas coords" : Vector2(0,0)
 }
 
-# Seed AtlasCoords
-var seed_coords: Vector2i = Vector2i(0,4)
 # Scenetile ID for SEEDS
 var scene_tile_id := 1
 
@@ -63,7 +55,7 @@ var sfx_file: AudioStreamMP3
 @export var sfx_seed: AudioStreamMP3
 #Stop User input if UI is open ....
 var ui_open: bool = false
-
+# When selecting seed from inventory ....
 var seed_selected: Item
 
 
@@ -73,10 +65,7 @@ var seed_selected: Item
 
 
 
-
-
 #Script_Start 
-
 func _enter_tree() -> void:
 	super()
 	check_day()
@@ -113,17 +102,20 @@ func _input(_event: InputEvent) -> void:
 		var state = farming_mode_state
 		# Farming Func ...
 		farming(state, mouse_pos)
-		
+		print(" Trying To Farm at Farm.gd")
 		return
 
 
 
 
+
+# NOTE Custom Functions ...
+# Used for deleting CropToSeed when it turns into a Fruit/Veggie ...
 func on_delete_crop(coords):
 	var local_coords = tml_4.to_local(coords)
 	var cell = tml_4.local_to_map(local_coords)
 	tml_4.erase_cell(cell)
-	print(" Erased Cell At ....", cell )
+	#print(" Erased Cell At ....", cell )
 
 
 
@@ -168,9 +160,8 @@ func farming(state,mouse_pos):
 		FARMING_MODES.PLANT_SEED:
 			layer_to_look = tml_3
 			layer_to_place = tml_4
-			#terrain = seed_terrain
 			custom_data = can_plant
-			source_id = 3 # Maybe change for scene tile , from 1 to 3
+			source_id = scene_source_id # Maybe change for scene tile , from 1 to 3
 			sfx_file = sfx_seed
 			
 			var mouse_pos_for_data = Utility.convert_mos_local(layer_to_look,mouse_pos)
@@ -183,19 +174,11 @@ func farming(state,mouse_pos):
 				# Grab SceneTile as Node from Parent ...
 				var child = layer_to_place.get_child(-1)
 				# Set Item Data to Current  
-				#print(" Last Added Child Data ... " , child.item_data.name)
 				child.item_data = seed_selected
-				#print(" After Change made by farm.gd ", child.item_data.name)
 				print(" Changing selected Seed")
-				#layer_to_place.print_tree_pretty()
-				#print("Checked for Seed Data, Tried to place")
-				#print("layer_to_place : %s" % mouse_pos_for_data)
 				# NOTE SEED SFX
-				#return
 				if ui_open == false:
 					Signalbus.sfx.emit(sfx_file)
-					#print(" Seed Sounds ")
-
 	 # Farming Func for NOT seeds
 	if farming_mode_state != FARMING_MODES.PLANT_SEED:
 		# After STATE match, Do work ...
@@ -217,14 +200,12 @@ func farming(state,mouse_pos):
 		# Beware, May need to tab shift back a bit.... if farmingmode watering may be interfereing..
 		# If that worked, Pop Tile Array to try to fiz issues with placement 
 			if wet_tiles.size() or dirt_tiles.size() >= 3:
-				#print("3 tiles stored, Now removing...")
 				wet_tiles.pop_back()
 				dirt_tiles.pop_back()
 	
 	if ui_open == false:
 		Signalbus.sfx.emit(sfx_file)
 		# NOTE Do When UI Closed....
-		#print(" Do When UI Closed.... ")
 
 
 func check_day():
@@ -241,10 +222,8 @@ func check_day():
 		dirt_tiles_to_replace.clear()
 		# Clear Dict
 		dirt_tile_data.clear()
-			
 
 
-# Custom function ....
 func retrieving_custom_data(tml_layer: TileMapLayer,tml_mouse_pos: Vector2, custom_tilemap_data_name: String):
 	
 	# Get tile map data at the converted mouse position...
@@ -256,4 +235,3 @@ func retrieving_custom_data(tml_layer: TileMapLayer,tml_mouse_pos: Vector2, cust
 	else:
 		#print("NO DataTile here")
 		return false
-	

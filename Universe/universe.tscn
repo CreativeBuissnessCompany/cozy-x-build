@@ -25,6 +25,16 @@ stream_3 = ExtResource("11_4jhlq")
 y_sort_enabled = true
 script = ExtResource("1_lm1sa")
 
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("8_fxu4h")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+stream = SubResource("AudioStreamPlaylist_wtpp2")
+volume_db = -12.0
+bus = &"Music"
+
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+
 [node name="UIRoot" type="CanvasLayer" parent="."]
 script = ExtResource("3_p78e7")
 
@@ -43,9 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 script = ExtResource("5_xd6ju")
-metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="UIRoot/HUD"]
 visible = false
@@ -55,21 +63,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0.137255, 1)
 
 [node name="Day" type="RichTextLabel" parent="UIRoot/HUD"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(74.54, 31.28)
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -34.82
-offset_top = -20.29
+offset_left = -74.54
+offset_bottom = 31.28
 grow_horizontal = 0
-grow_vertical = 0
+mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "Day: 1"
@@ -79,13 +86,3 @@ text = "Day: 1"
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
 position = Vector2(53, -12)
-
-[node name="AudioManager" type="Node" parent="."]
-script = ExtResource("8_fxu4h")
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="AudioManager"]
-stream = SubResource("AudioStreamPlaylist_wtpp2")
-volume_db = -12.0
-bus = &"Music"
-
-[node name="SfxPlayer" type="AudioStreamPlayer" parent="AudioManager"]

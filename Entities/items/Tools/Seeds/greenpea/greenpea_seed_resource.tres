@@ -1,52 +1,45 @@
-[gd_resource type="Resource" script_class="Item" load_steps=10 format=3 uid="uid://bqgt8f6gd6wxm"]
+[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://bqgt8f6gd6wxm"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_ib0xx"]
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_loba6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2h03"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_el7ea"]
 atlas = ExtResource("1_loba6")
-region = Rect2(0, 64, 16, 13)
+region = Rect2(0, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtdww"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqkx6"]
 atlas = ExtResource("1_loba6")
-region = Rect2(16, 61, 16, 13)
+region = Rect2(16, 32, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_styqn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5f0d"]
 atlas = ExtResource("1_loba6")
-region = Rect2(32, 46, 16, 28)
+region = Rect2(32, 32, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uvmw6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ppdv"]
 atlas = ExtResource("1_loba6")
-region = Rect2(48, 46, 16, 28)
+region = Rect2(48, 32, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgsg4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_solih"]
 atlas = ExtResource("1_loba6")
-region = Rect2(64, 46, 16, 28)
+region = Rect2(64, 32, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_705wq"]
-atlas = ExtResource("1_loba6")
-region = Rect2(80, 60, 16, 14)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3xpe3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kin4s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s2h03")
+"texture": SubResource("AtlasTexture_el7ea")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wtdww")
+"texture": SubResource("AtlasTexture_yqkx6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_styqn")
+"texture": SubResource("AtlasTexture_b5f0d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uvmw6")
+"texture": SubResource("AtlasTexture_7ppdv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pgsg4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_705wq")
+"texture": SubResource("AtlasTexture_solih")
 }],
 "loop": true,
 "name": &"default",
@@ -59,4 +52,4 @@ item_type = 1
 name = "Greenpea Seed"
 description = ""
 price = 6
-sprite_frame = SubResource("SpriteFrames_3xpe3")
+sprite_frame = SubResource("SpriteFrames_kin4s")

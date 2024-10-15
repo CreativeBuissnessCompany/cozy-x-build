@@ -1,8 +1,22 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://biutgknunyp1u"]
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://biutgknunyp1u"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_f16po"]
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="2_d72bs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46hyh"]
+atlas = ExtResource("2_d72bs")
+region = Rect2(80, 80, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_13pyc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46hyh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_f16po")

@@ -34,7 +34,7 @@ func _gui_input(event: InputEvent) -> void:
 			on_item_button_pressed.emit( animated_sprite_2d, item_resource )
 			# Sent to farm ...
 			Signalbus.item_clicked.emit(item_resource)
-			
+			print(" Item Slot Knows You Clicked....")
 		
 
 #func item_check():
