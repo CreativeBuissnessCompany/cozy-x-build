@@ -45,6 +45,7 @@ movie_writer/movie_file="/Users/kennethfee/Documents/Cozy Game Clips/CozyX02.avi
 [file_customization]
 
 folder_colors={
+"res://locations/decorative/": "purple",
 "res://universe/": "red"
 }
 
