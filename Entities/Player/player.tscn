@@ -28,7 +28,6 @@ stream_7/stream = ExtResource("10_mypiu")
 stream_8/stream = ExtResource("11_ecpu2")
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera_node") groups=["Player"]]
-z_index = 2
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_eeuee")
