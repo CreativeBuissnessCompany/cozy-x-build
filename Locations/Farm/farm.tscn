@@ -818,6 +818,7 @@ texture = ExtResource("7_o2uj1")
 offset = Vector2(0, -15)
 
 [node name="Highlight" type="TileMapLayer" parent="."]
+y_sort_enabled = true
 tile_set = ExtResource("2_f15kg")
 metadata/_edit_lock_ = true
 

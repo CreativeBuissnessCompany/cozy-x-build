@@ -20,7 +20,7 @@ var highlight_tilemap
 func _ready() -> void:
 	var parent = get_parent() # 04CropTileMapLayer3 Highlight
 	tilemap_target = parent.find_child("Highlight")
-	#print(tilemap_target.name)
+	print(tilemap_target.name)
 	
 	pass 
 
