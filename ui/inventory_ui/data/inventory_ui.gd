@@ -9,6 +9,8 @@ extends Control  # Sept 15, Used to be panel container
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
 
+
+
 # For Signals, And Stopping user Input
 var ui_open: bool = false:
 	set(value):

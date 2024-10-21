@@ -7,15 +7,35 @@ class_name ItemSlot
 
 signal on_item_button_pressed( animated_sprite_2d, item_resource: Item)
 
-
 # Store Item, Being set in Inevtory UI
 var item_resource: Item
 
-
+@export var arrow_scene: PackedScene
+var instance: Node2D
 
 
 
 # Script_Start
+
+func _ready() -> void:
+	self.mouse_entered.connect(on_mouse_entered)
+	self.mouse_exited.connect(on_mouse_exited)
+
+
+func on_mouse_entered():
+	print(" Mouse Entered ItemSlot.gd ")
+	instance = arrow_scene.instantiate()
+	instance.position.x = 16
+	add_child(instance)
+	
+
+
+func on_mouse_exited():
+	instance.queue_free()
+	print(" Mouse Exited Slot ")
+	
+
+
 func set_item(item):
 	item_resource = item
 	display(item)

@@ -855,14 +855,23 @@ metadata/_edit_lock_ = true
 position = Vector2(23, -128)
 
 [node name="PickUps" type="Node2D" parent="."]
-visible = false
-z_index = 1
+y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="Apple" parent="PickUps" instance=ExtResource("7_uvcjc")]
 position = Vector2(-127, 200)
 
+[node name="Apple2" parent="PickUps" instance=ExtResource("7_uvcjc")]
+position = Vector2(35.9468, 214.644)
+
+[node name="Apple3" parent="PickUps" instance=ExtResource("7_uvcjc")]
+position = Vector2(142.381, 221.78)
+
+[node name="Apple4" parent="PickUps" instance=ExtResource("7_uvcjc")]
+position = Vector2(203.03, 175.401)
+
 [node name="GreenpeaSeed" parent="PickUps" instance=ExtResource("10_mmsmp")]
-position = Vector2(98, 0)
+position = Vector2(-107.273, 169.996)
 
 [node name="RaddishSeedPickup" parent="PickUps" instance=ExtResource("14_mp82r")]
+position = Vector2(-69.8927, 213.455)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://fgpgayuk8qg5"]
+[gd_scene load_steps=10 format=3 uid="uid://fgpgayuk8qg5"]
 
 [ext_resource type="Script" path="res://ui/inventory_ui/boxes-slots/item_slots/item_slot.gd" id="1_8nfu3"]
+[ext_resource type="PackedScene" uid="uid://dfl8psu4lnpkk" path="res://ui/inventory_ui/boxes-slots/item_slots/ui_arrow/ui_arrow.tscn" id="2_efalh"]
 [ext_resource type="Texture2D" uid="uid://joc01qndttyc" path="res://ui/inventory_ui/boxes-slots/item_slots/Art/inventory-slots.png" id="2_llk8m"]
 [ext_resource type="Texture2D" uid="uid://dpjvxapb84url" path="res://ui/inventory02_ui/art/selected-box.png" id="3_dwx4c"]
 [ext_resource type="Texture2D" uid="uid://bj4weai7yes1k" path="res://entities/items/consumables/fruits/apple/art/Apple02.png" id="3_ktnp1"]
@@ -51,6 +52,7 @@ animations = [{
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(32, 32)
 script = ExtResource("1_8nfu3")
+arrow_scene = ExtResource("2_efalh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
