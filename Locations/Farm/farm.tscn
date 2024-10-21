@@ -847,13 +847,12 @@ position = Vector2(141.728, 42.6543)
 
 [node name="ObjectsWithUI" type="Node2D" parent="."]
 unique_name_in_owner = true
-visible = false
 y_sort_enabled = true
 script = ExtResource("5_6rcer")
 metadata/_edit_lock_ = true
 
 [node name="VendingMachine" parent="ObjectsWithUI" instance=ExtResource("5_ie2gv")]
-position = Vector2(23, -128)
+position = Vector2(311, 64)
 
 [node name="PickUps" type="Node2D" parent="."]
 y_sort_enabled = true

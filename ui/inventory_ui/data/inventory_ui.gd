@@ -8,6 +8,7 @@ extends Control  # Sept 15, Used to be panel container
 @export var inventory_for_objects: Inventory
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
+@onready var qty: RichTextLabel = %Qty
 
 
 
@@ -25,8 +26,8 @@ var ui_open: bool = false:
 
 # Script_Start
 func _ready() -> void:
-	print(" Ready in inventory_ui")
-	print(inventory_for_objects)
+	#print(" Ready in inventory_ui")
+	#print(inventory_for_objects)
 	pass
 
 
@@ -42,8 +43,8 @@ func open(inventory:Inventory):
 	#Vending Machine, Chest, Etc ...
 	if inventory_for_objects:
 		inventory = inventory_for_objects
-		print(" Found Inventory")
-		printt(inventory, inventory_for_objects)
+		#print(" Found Inventory")
+		#printt(inventory, inventory_for_objects)
 	
 	
 	for child in grid_container.get_children():
@@ -61,7 +62,7 @@ func open(inventory:Inventory):
 func _on_item_button_pressed(animated_sprite_2d, item_resource: Item):
 	print_debug( "Received " + item_resource.description )
 	item_desc_label.text = item_resource.description
-	
+	qty.text = "Qty: " + str(item_resource.qty)
 	# Stop Other Slot Animations
 	var slot_array = grid_container.get_children()
 	for slot in slot_array:

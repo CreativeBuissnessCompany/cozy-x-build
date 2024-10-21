@@ -163,13 +163,11 @@ scroll_active = false
 
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/SidePanelsVBoxContainer2/SidePanelContainer/MarginContainer/Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 96.0
-offset_right = -3.0
-offset_bottom = -3.0
+anchors_preset = -1
+anchor_left = 0.235
+anchor_top = 0.043
+anchor_right = 0.767
+anchor_bottom = 0.172
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 2
@@ -179,6 +177,37 @@ theme_override_constants/margin_bottom = 2
 
 [node name="ItemPriceLabel" type="RichTextLabel" parent="HBoxContainer/SidePanelsVBoxContainer2/SidePanelContainer/MarginContainer/Panel/MarginContainer3"]
 unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0.247059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("5_38an4")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+scroll_active = false
+
+[node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/SidePanelsVBoxContainer2/SidePanelContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22
+anchor_top = 0.046
+anchor_right = 0.76
+anchor_bottom = 0.163
+offset_left = 0.999998
+offset_top = 91.0
+offset_right = 0.999996
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Qty" type="RichTextLabel" parent="HBoxContainer/SidePanelsVBoxContainer2/SidePanelContainer/MarginContainer/Panel/MarginContainer4"]
+unique_name_in_owner = true
+clip_contents = false
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0.247059, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
