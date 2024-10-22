@@ -1,4 +1,5 @@
 # UIRoot.gd
+@icon("res://themes/editor_icons/ui_icon.png")
 extends CanvasLayer
 
 

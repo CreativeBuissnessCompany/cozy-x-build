@@ -1,4 +1,5 @@
 ### Player.gd
+@icon("res://themes/editor_icons/player_icon.png")
 class_name Player extends CharacterBody2D
 
 # Notes: 

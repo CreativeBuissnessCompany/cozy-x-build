@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_f16po"]
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="2_d72bs"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_46hyh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdb1l"]
 atlas = ExtResource("2_d72bs")
-region = Rect2(80, 80, 16, 16)
+region = Rect2(80, 79, 16, 19)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_13pyc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_46hyh")
+"texture": SubResource("AtlasTexture_hdb1l")
 }],
 "loop": true,
 "name": &"default",

@@ -70,6 +70,15 @@ func _on_item_button_pressed(animated_sprite_2d, item_resource: Item):
 	
 	# Set Animation
 	animated_sprite_2d.animation = "Selected"
+	
+	display_use_or_drop()
+	
+	
+
+
+
+func display_use_or_drop() -> void:
+	
 	pass
 
 

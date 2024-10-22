@@ -1,4 +1,5 @@
 # Universe.gd
+@icon("res://themes/editor_icons/universe_icon.png") 
 extends Node2D
 
 # Variables & @onready ...

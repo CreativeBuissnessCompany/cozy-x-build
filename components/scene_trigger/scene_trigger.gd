@@ -1,4 +1,7 @@
-class_name SceneTrigger extends Area2D
+# scene_trigger.gd
+@icon("res://themes/editor_icons/scene_trigger_icon.png")
+class_name SceneTrigger 
+extends Area2D
 
 
 # Variables ...

@@ -14,6 +14,7 @@ config/name="Cozy X Build"
 run/main_scene="res://universe/universe.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.1693, 0.66401, 0.5073, 1)
+boot_splash/use_filter=false
 config/icon="res://entities/player/art/raincoat-boy-player-version.png"
 
 [autoload]
@@ -33,9 +34,8 @@ gdscript/warnings/unused_signal=0
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/initial_position_type=2
-window/size/window_width_override=1440
-window/size/window_height_override=900
+window/size/window_width_override=2560
+window/size/window_height_override=1440
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 

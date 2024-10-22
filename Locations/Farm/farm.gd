@@ -1,4 +1,5 @@
 # farm.gd
+@icon("res://themes/editor_icons/crops_icon.png")
 extends BaseScene
 
 # Variables

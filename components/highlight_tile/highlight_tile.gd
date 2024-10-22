@@ -1,4 +1,5 @@
 # highlight_tile.gd
+@icon("res://components/highlight_tile/tile-selection.png")
 extends Node2D
 
 

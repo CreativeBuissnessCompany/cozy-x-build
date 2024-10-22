@@ -3,43 +3,43 @@
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_b0jlw"]
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_ygirr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_44guu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kasd1"]
 atlas = ExtResource("1_b0jlw")
 region = Rect2(0, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4sq6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d486"]
 atlas = ExtResource("1_b0jlw")
 region = Rect2(16, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8l3w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_afht4"]
 atlas = ExtResource("1_b0jlw")
 region = Rect2(32, 80, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ycy5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5j6l"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(48, 76, 16, 19)
+region = Rect2(48, 76, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jhqme"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvmj2"]
 atlas = ExtResource("1_b0jlw")
-region = Rect2(64, 76, 16, 19)
+region = Rect2(64, 76, 16, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jfyjn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_44guu")
+"texture": SubResource("AtlasTexture_kasd1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i4sq6")
+"texture": SubResource("AtlasTexture_7d486")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f8l3w")
+"texture": SubResource("AtlasTexture_afht4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ycy5")
+"texture": SubResource("AtlasTexture_q5j6l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jhqme")
+"texture": SubResource("AtlasTexture_kvmj2")
 }],
 "loop": true,
 "name": &"default",

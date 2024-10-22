@@ -4,8 +4,8 @@ class_name ItemSlot
 
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
-
-signal on_item_button_pressed( animated_sprite_2d, item_resource: Item)
+# Where is this being sent to?
+signal on_item_button_pressed( animated_sprite_2d, item_resource: Item )
 
 # Store Item, Being set in Inevtory UI
 var item_resource: Item
