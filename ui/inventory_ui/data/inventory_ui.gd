@@ -9,6 +9,12 @@ extends Control  # Sept 15, Used to be panel container
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
 @onready var qty: RichTextLabel = %Qty
+# Use_or_drop stuff
+@export var use_drop_scene: PackedScene
+var use_drop_instance: Node2D
+var use_drop_displayed: bool = false
+
+
 
 
 
@@ -24,11 +30,26 @@ var ui_open: bool = false:
 
 
 
+
+
+
 # Script_Start
 func _ready() -> void:
 	#print(" Ready in inventory_ui")
 	#print(inventory_for_objects)
 	pass
+
+
+
+func display_use_drop(pos) -> void:
+	use_drop_instance = use_drop_scene.instantiate()
+	use_drop_instance.global_position = pos
+	add_child(use_drop_instance)
+	use_drop_displayed = true
+	pass
+
+
+
 
 
 
@@ -59,7 +80,7 @@ func open(inventory:Inventory):
 
 
 
-func _on_item_button_pressed(animated_sprite_2d, item_resource: Item):
+func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_position):
 	print_debug( "Received " + item_resource.description )
 	item_desc_label.text = item_resource.description
 	qty.text = "Qty: " + str(item_resource.qty)
@@ -71,15 +92,13 @@ func _on_item_button_pressed(animated_sprite_2d, item_resource: Item):
 	# Set Animation
 	animated_sprite_2d.animation = "Selected"
 	
-	display_use_or_drop()
-	
+	# Use or Drop Dialog Displayed 
+	if not use_drop_displayed:
+		display_use_drop(slot_position)
+	elif use_drop_displayed:
+		use_drop_instance.global_position = slot_position
 	
 
-
-
-func display_use_or_drop() -> void:
-	
-	pass
 
 
 func _on_close_button_pressed() -> void:

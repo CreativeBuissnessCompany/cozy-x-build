@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b37p04mi2tsjd"]
+[gd_scene load_steps=11 format=3 uid="uid://b37p04mi2tsjd"]
 
 [ext_resource type="Texture2D" uid="uid://c5lrmo5nbo2u3" path="res://ui/vending_machine_ui/art/UI_Screen.png" id="1_20nbn"]
 [ext_resource type="Script" path="res://ui/inventory_ui/data/inventory_ui.gd" id="2_okr7b"]
 [ext_resource type="Texture2D" uid="uid://ddxxapt5o1de2" path="res://ui/inventory02_ui/art/InventoryContainerFolder.png" id="4_d227q"]
+[ext_resource type="PackedScene" uid="uid://ilo203ik2wg5" path="res://ui/use_or_drop/use_or_drop.tscn" id="4_trncf"]
 [ext_resource type="FontFile" uid="uid://bjmir8y7vyk8c" path="res://themes/fonts/Caviar_Dreams_Bold.ttf" id="5_5k7wg"]
 [ext_resource type="Texture2D" uid="uid://0by4tji51neu" path="res://ui/inventory02_ui/art/page-icons.png" id="5_56aus"]
 [ext_resource type="PackedScene" uid="uid://fgpgayuk8qg5" path="res://ui/inventory02_ui/data/item_slot_02.tscn" id="6_hgrmp"]
@@ -32,6 +33,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_u5aj0")
 script = ExtResource("2_okr7b")
 item_slot_scene = ExtResource("6_hgrmp")
+use_drop_scene = ExtResource("4_trncf")
 
 [node name="Transparency" type="ColorRect" parent="."]
 show_behind_parent = true

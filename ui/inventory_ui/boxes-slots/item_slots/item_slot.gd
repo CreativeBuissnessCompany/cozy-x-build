@@ -9,9 +9,10 @@ signal on_item_button_pressed( animated_sprite_2d, item_resource: Item )
 
 # Store Item, Being set in Inevtory UI
 var item_resource: Item
-
+# Arrow
 @export var arrow_scene: PackedScene
-var instance: Node2D
+var arrow_instance: Node2D
+
 
 
 
@@ -22,17 +23,28 @@ func _ready() -> void:
 	self.mouse_exited.connect(on_mouse_exited)
 
 
+
+func display_arrow() -> void:
+	arrow_instance = arrow_scene.instantiate()
+	#arrow_instance.position.x = 16
+	add_child(arrow_instance)
+	pass
+
+
+
+
+
+
 func on_mouse_entered():
-	print(" Mouse Entered ItemSlot.gd ")
-	instance = arrow_scene.instantiate()
-	instance.position.x = 16
-	add_child(instance)
+	# Animated Arrow Highlighter
+	display_arrow()
 	
 
 
 func on_mouse_exited():
-	instance.queue_free()
-	print(" Mouse Exited Slot ")
+	# Destroy Arrow ...
+	arrow_instance.queue_free()
+	#print(" Mouse Exited Slot ")
 	
 
 
@@ -42,22 +54,15 @@ func set_item(item):
 
 
 func display(item:Item):
-	# NOTE NEW ...
+	
 	texture_rect.texture = item.sprite_frame.get_frame_texture("default", 0)
 	
-	#texture_rect.texture = item.icon
 
 # Inventory ...
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			on_item_button_pressed.emit( animated_sprite_2d, item_resource )
+			on_item_button_pressed.emit( animated_sprite_2d, item_resource, self.global_position )
 			# Sent to farm ...
 			Signalbus.item_clicked.emit(item_resource)
-			print(" Item Slot Knows You Clicked....")
-		
-
-#func item_check():
-	#if item_resource.item_type == Item.ITEM_TYPE.SEED:
-		#print("Wanna plant seeds")
-	#pass
+			#print(" Item Slot Knows You Clicked....")

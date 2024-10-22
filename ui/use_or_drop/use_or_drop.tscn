@@ -1,30 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://ilo203ik2wg5"]
+[gd_scene load_steps=2 format=3 uid="uid://ilo203ik2wg5"]
 
 [ext_resource type="Texture2D" uid="uid://dc3clei1uvqy3" path="res://ui/inventory02_ui/art/use-drop.png" id="1_ts6x4"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ssjrk"]
-texture = ExtResource("1_ts6x4")
+[node name="UseOrDrop" type="Node2D"]
 
-[node name="UseOrDrop" type="PanelContainer"]
-offset_right = 7.0
-offset_bottom = 20.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_ssjrk")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 8.0
+rotation = -0.0872665
+texture = ExtResource("1_ts6x4")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 9
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 4
@@ -32,14 +35,14 @@ bbcode_enabled = true
 text = "[center] Use [/center]"
 scroll_active = false
 
-[node name="UseButton" type="Button" parent="MarginContainer/VBoxContainer/RichTextLabel"]
+[node name="UseButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/RichTextLabel"]
 layout_mode = 0
 offset_right = 26.0
 offset_bottom = 8.0
 scale = Vector2(1, 0.74)
 flat = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="TextureRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 4
@@ -47,7 +50,7 @@ bbcode_enabled = true
 text = "[center] Drop [/center]"
 scroll_active = false
 
-[node name="DropButton" type="Button" parent="MarginContainer/VBoxContainer/RichTextLabel2"]
+[node name="DropButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/RichTextLabel2"]
 layout_mode = 0
 offset_right = 26.0
 offset_bottom = 8.0
