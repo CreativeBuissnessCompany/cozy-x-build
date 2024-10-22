@@ -40,6 +40,22 @@ func _ready() -> void:
 	pass
 
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	
+	if Input.is_action_just_released("escape"):
+		if use_drop_displayed:
+			use_drop_instance.queue_free()
+			use_drop_displayed = false
+		else:
+			_on_close_button_pressed()
+		
+	
+
+
+
+
+
+
 
 func display_use_drop(pos) -> void:
 	use_drop_instance = use_drop_scene.instantiate()
