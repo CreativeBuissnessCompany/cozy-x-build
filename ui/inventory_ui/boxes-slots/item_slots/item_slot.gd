@@ -50,7 +50,7 @@ func on_mouse_exited():
 
 func set_item(item):
 	item_resource = item
-	display(item)
+	display(item_resource)
 
 
 func display(item:Item):

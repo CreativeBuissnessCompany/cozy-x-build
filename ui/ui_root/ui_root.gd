@@ -8,7 +8,7 @@ extends CanvasLayer
 
 # Different UI Screens
 @onready var inventory_ui: InventoryUI = $InventoryUI
-@onready var inventory_ui_vending_machine: InventoryUI = $InventoryUIVendingMachine
+@onready var inventory_ui_vending_machine: VendorInventoryUI = $InventoryUIVendingMachine
 
 # Store Inventory of Opened Object
 var object_inventory: Array[Item]

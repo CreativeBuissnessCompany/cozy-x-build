@@ -1,5 +1,5 @@
 class_name InventoryUI
-extends Control  # Sept 15, Used to be panel container
+extends Control  # Oct 23rd.
 
 
 # Variables

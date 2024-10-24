@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://fe23f5hgo7jc"]
+[gd_scene load_steps=11 format=3 uid="uid://fe23f5hgo7jc"]
 
-[ext_resource type="Script" path="res://ui/inventory_ui/data/inventory_ui.gd" id="1_wku7l"]
+[ext_resource type="Script" path="res://ui/inventory_ui/data/vendor_inventory_ui.gd" id="1_s02yk"]
 [ext_resource type="Texture2D" uid="uid://6j2m5l5gumf8" path="res://entities/items/interactive_furniture/vending_machine/art/vendingtestui.png" id="2_tfyev"]
 [ext_resource type="PackedScene" uid="uid://c5m0saftfc32m" path="res://ui/inventory_ui/boxes-slots/item_slots/VendingMachineItemSlots/item_slot_vending.tscn" id="3_aia2p"]
-[ext_resource type="Resource" uid="uid://b2dktshx1ka1v" path="res://ui/vending_machine_ui/inventory_ui_vending_machine/vending_inventory_01.tres" id="3_m2ien"]
+[ext_resource type="Resource" uid="uid://b2dktshx1ka1v" path="res://ui/vending_machine_ui/inventory_ui_vending_machine/vending_inventory_stock_01.tres" id="3_kkcmo"]
 [ext_resource type="Texture2D" uid="uid://dn1hfpy3cl1h4" path="res://entities/items/interactive_furniture/vending_machine/art/vending ui.png" id="4_3or7j"]
+[ext_resource type="PackedScene" uid="uid://xv176iqra4gq" path="res://ui/buy/buy.tscn" id="4_vtv30"]
 [ext_resource type="FontFile" uid="uid://bjmir8y7vyk8c" path="res://themes/fonts/Caviar_Dreams_Bold.ttf" id="5_38an4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5aj0"]
@@ -26,9 +27,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 theme_override_styles/panel = SubResource("StyleBoxTexture_u5aj0")
-script = ExtResource("1_wku7l")
+script = ExtResource("1_s02yk")
 item_slot_scene = ExtResource("3_aia2p")
-inventory_for_objects = ExtResource("3_m2ien")
+inventory_for_objects = ExtResource("3_kkcmo")
+buy_scene = ExtResource("4_vtv30")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]

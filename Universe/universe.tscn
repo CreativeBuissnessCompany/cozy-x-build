@@ -42,8 +42,9 @@ script = ExtResource("3_p78e7")
 [node name="InventoryUI" parent="UIRoot" instance=ExtResource("3_pelb8")]
 visible = false
 
-[node name="InventoryUIVendingMachine" parent="UIRoot" instance=ExtResource("3_vl8i7")]
+[node name="InventoryUIVendingMachine" parent="UIRoot" node_paths=PackedStringArray("player") instance=ExtResource("3_vl8i7")]
 visible = false
+player = NodePath("../../Player")
 
 [node name="HUD" type="Control" parent="UIRoot"]
 layout_mode = 3
@@ -89,4 +90,4 @@ text = "Day: 1"
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
-position = Vector2(196.454, -158.271)
+position = Vector2(303.936, 87.3024)

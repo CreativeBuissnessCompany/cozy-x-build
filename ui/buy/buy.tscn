@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://xv176iqra4gq"]
+
+[ext_resource type="Texture2D" uid="uid://cmxk06k7mrn0g" path="res://ui/buy/buy.png" id="1_0wsg8"]
+
+[node name="Buy" type="Node2D"]
+
+[node name="Button" type="TextureButton" parent="."]
+offset_left = -6.28
+offset_top = -16.0
+offset_right = 37.72
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_0wsg8")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = 2.28
+offset_top = 1.0
+offset_right = 39.41
+offset_bottom = 32.0
+scale = Vector2(1.1, 0.45)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Buy"
+horizontal_alignment = 1
+vertical_alignment = 1
