@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://cukq87c7rga3i"]
-
-[node name="raddish" type="Sprite2D"]
-hframes = 6
-frame = 5
-region_enabled = true
-region_rect = Rect2(0, 96, 96, 32)

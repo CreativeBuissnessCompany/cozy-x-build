@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_uqjfi"]
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="2_503mv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ph2pw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvm0u"]
 atlas = ExtResource("2_503mv")
 region = Rect2(80, 48, 16, 16)
 
@@ -11,7 +11,7 @@ region = Rect2(80, 48, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ph2pw")
+"texture": SubResource("AtlasTexture_kvm0u")
 }],
 "loop": true,
 "name": &"default",
@@ -22,6 +22,6 @@ animations = [{
 script = ExtResource("1_uqjfi")
 item_type = 0
 name = "Greenpea "
-description = ""
+description = "Peas that are Green, Hiding but no leaves......* Snap snap snap snap....* "
 price = 20
 sprite_frame = SubResource("SpriteFrames_o1uqp")

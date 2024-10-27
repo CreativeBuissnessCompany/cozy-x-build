@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=9 format=3 uid="uid://b2dktshx1ka1v"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=8 format=3 uid="uid://b2dktshx1ka1v"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_hgrod"]
 [ext_resource type="Resource" uid="uid://c2rr865bmxad1" path="res://entities/items/non_consumable/can/can.tres" id="2_ci174"]
 [ext_resource type="Resource" uid="uid://bcuhffno36qld" path="res://entities/items/consumables/fruits/apple/apple.tres" id="3_2bput"]
 [ext_resource type="Resource" uid="uid://bl8fxmedo4f47" path="res://entities/items/consumables/veggies/tomato/tomato.tres" id="4_k5yx4"]
 [ext_resource type="Resource" uid="uid://b2mmy33jxg724" path="res://entities/items/consumables/veggies/greenpea/greenpea_resource.tres" id="5_q0i4b"]
-[ext_resource type="Resource" uid="uid://biutgknunyp1u" path="res://entities/items/consumables/veggies/raddish/raddish_resource.tres" id="6_bo7hu"]
 [ext_resource type="Resource" uid="uid://bqgt8f6gd6wxm" path="res://entities/items/tools/seeds/greenpea/greenpea_seed_resource.tres" id="7_qljup"]
 [ext_resource type="Script" path="res://components/inventory/inventory_resource.gd" id="8_jew0y"]
 
 [resource]
 script = ExtResource("8_jew0y")
-_content = Array[ExtResource("1_hgrod")]([ExtResource("2_ci174"), ExtResource("4_k5yx4"), ExtResource("5_q0i4b"), ExtResource("6_bo7hu"), ExtResource("7_qljup"), ExtResource("3_2bput"), ExtResource("4_k5yx4"), ExtResource("3_2bput"), ExtResource("5_q0i4b")])
+_content = Array[ExtResource("1_hgrod")]([ExtResource("2_ci174"), ExtResource("4_k5yx4"), ExtResource("5_q0i4b"), ExtResource("7_qljup"), ExtResource("3_2bput"), ExtResource("4_k5yx4"), ExtResource("3_2bput"), ExtResource("5_q0i4b")])

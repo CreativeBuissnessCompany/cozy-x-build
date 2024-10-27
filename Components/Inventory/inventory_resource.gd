@@ -6,6 +6,10 @@ extends Resource
 @export var _content:Array[Item] = []
 
 
+signal inventory_changed
+
+
+
 func add_item(item:Item):
 	
 	# Check Qty ...
@@ -40,10 +44,18 @@ func add_item(item:Item):
 
 
 func remove_item(item:Item):
-	# NOTE Need a drop or use button from Naz ...
-	# Check Qty ...
+	
+	# TO DO Check Qty ...
 	_content.erase(item)
 	
+	#for i in range(_content.size()):
+		#if _content[i]["name"] == item.name:
+			#_content[i] == null 
+			#
+			#print(_content[i]["name"])
+
+
+
 
 func get_items() -> Array[Item]:
 	return _content

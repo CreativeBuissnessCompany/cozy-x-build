@@ -129,7 +129,7 @@ func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_posit
 
 
 func _on_close_button_pressed() -> void:
-	# Let everyone know ui is Closed.....
+	
 	self.ui_open = false
 	hide()
 
@@ -137,8 +137,12 @@ func _on_close_button_pressed() -> void:
 func on_buy() -> void:
 	print(" Clicked Buy Button ")
 	player.inventory.add_item(last_clicked_item)
+	# NOTE This line is the one causing me trouble ...
 	inventory_for_objects.remove_item(last_clicked_item)
-	reset_inventory(inventory_for_objects)
+	#var new_inventory = inventory_for_objects.duplicate()
+	#reset_inventory(new_inventory)
+	_on_close_button_pressed()
+	open(inventory_for_objects)
 	# Close buy box 
 	buy_instance.queue_free()
 	buy_displayed = false
@@ -147,6 +151,7 @@ func on_buy() -> void:
 func reset_inventory(inventory: Inventory) -> void:
 	
 	for child in grid_container.get_children():
+		grid_container.remove_child(child)
 		child.queue_free()
 	
 	for item in inventory.get_items():

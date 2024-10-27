@@ -37,6 +37,7 @@ animations = [{
 
 [node name="ItemSlotVending" type="PanelContainer"]
 self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
 script = ExtResource("1_fn3ux")
 arrow_scene = ExtResource("2_jietw")
 
@@ -52,3 +53,4 @@ frame_progress = 0.540309
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_x2cxg")
+stretch_mode = 5

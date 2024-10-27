@@ -11,7 +11,7 @@ extends Interactable
 
 # Variables
 # Caution 
-var player: Player
+#var player: Player already exists
 
 
 
