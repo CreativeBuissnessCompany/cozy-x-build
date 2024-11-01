@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://coshdjio0oqhl"]
+[gd_scene load_steps=3 format=3 uid="uid://csfp70arlpipg"]
 
-[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_s8148"]
-[ext_resource type="Resource" uid="uid://dfp7fvxjfmtlv" path="res://entities/items/tools/watering_can/watering_can.tres" id="2_64ssg"]
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_6dn4b"]
+[ext_resource type="Resource" uid="uid://dcd36of3vxl3o" path="res://entities/items/tools/watering_can/watering_can_resource.tres" id="2_rd5om"]
 
-[node name="WateringCanPickup" type="Node2D"]
-
-[node name="PickupComp" parent="." instance=ExtResource("1_s8148")]
-item = ExtResource("2_64ssg")
+[node name="WateringCan" instance=ExtResource("1_6dn4b")]
+item = ExtResource("2_rd5om")

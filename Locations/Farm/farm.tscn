@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://c1t2o5xyrom3b"]
+[gd_scene load_steps=44 format=4 uid="uid://c1t2o5xyrom3b"]
 
 [ext_resource type="Script" path="res://locations/farm/farm.gd" id="1_slb32"]
 [ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://locations/farm/Art/farm_tileset.tres" id="2_f15kg"]
@@ -35,7 +35,8 @@
 [ext_resource type="Script" path="res://locations/entrance_markers_node/entrance_markers_node.gd" id="28_vx1nh"]
 [ext_resource type="Script" path="res://locations/pickups_node/pick_ups.gd" id="30_bplgt"]
 [ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://entities/items/consumables/veggies/tomato/tomato_pickup.tscn" id="35_oc7ws"]
-[ext_resource type="PackedScene" uid="uid://u4pab4j5ywss" path="res://entities/items/non_consumable/can/can_pickup.tscn" id="36_r68gs"]
+[ext_resource type="PackedScene" uid="uid://csfp70arlpipg" path="res://entities/items/tools/watering_can/watering_can_pickup.tscn" id="37_k2ykm"]
+[ext_resource type="PackedScene" uid="uid://bod382lpid4lc" path="res://entities/items/tools/hoe/hoe_pickup.tscn" id="37_yve7i"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_na2pg"]
 noise_type = 5
@@ -884,5 +885,8 @@ position = Vector2(-70, 185)
 [node name="Tomato" parent="PickUps" instance=ExtResource("35_oc7ws")]
 position = Vector2(-64, 224)
 
-[node name="WateringCanPickup" parent="PickUps" instance=ExtResource("36_r68gs")]
-position = Vector2(-111.838, 275.245)
+[node name="WateringCan" parent="PickUps" instance=ExtResource("37_k2ykm")]
+position = Vector2(-116, 269)
+
+[node name="Hoe" parent="PickUps" instance=ExtResource("37_yve7i")]
+position = Vector2(256, 178)

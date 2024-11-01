@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://dcd36of3vxl3o"]
+
+[ext_resource type="Script" path="res://data/models/item.gd" id="1_5yyjs"]
+[ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://entities/items/tools/art/tools.png" id="2_qospy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6i5r"]
+atlas = ExtResource("2_qospy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4win2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6i5r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_5yyjs")
+item_type = 0
+name = "Watering Can"
+description = "A Waterin' Can, Boy-O! "
+price = 4
+sprite_frame = SubResource("SpriteFrames_4win2")

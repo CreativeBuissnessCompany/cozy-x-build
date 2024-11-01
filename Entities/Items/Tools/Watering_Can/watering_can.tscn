@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bisrl4xat66wc"]
-
-[ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://entities/items/tools/art/tools.png" id="1_0u8rl"]
-
-[node name="Sprite2D" type="Sprite2D"]
-texture = ExtResource("1_0u8rl")
-region_enabled = true
-region_rect = Rect2(32, 0, 32, 32)

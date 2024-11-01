@@ -11,7 +11,7 @@ class_name CropToSeed extends AnimatedSprite2D
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-# New, Set stages in inspector
+# Set stages 
 @export var stage_one: int
 @export var stage_two: int
 @export var stage_three: int
@@ -43,6 +43,17 @@ var grown: bool = false
 
 # Script_Start
 func _ready() -> void:
+	
+	# NOTE New
+	stage_one = item_data.stage_one
+	stage_two = item_data.stage_two
+	stage_three = item_data.stage_three
+	stage_four = item_data.stage_four
+	stage_five = item_data.stage_five
+	stage_six = item_data.stage_six
+	stage_seven = item_data.stage_seven
+	
+	
 	print(" Grown Status at Ready in SeedToCrop....")
 	print(grown)
 	
@@ -54,7 +65,7 @@ func _ready() -> void:
 	if GameData.crop_array:
 		#print("GameData CropArray Exists....")
 		#print(GameData.crop_array)
-		 #Get Crops Data from GameData
+		 #NOTE Get Crops Data from GameData
 		 #Set
 		days_watered = GameData.crop_array[-6]
 		current_day = GameData.crop_array[-5]

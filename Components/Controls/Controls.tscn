@@ -1,10 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://fcc1qd2fx2tc"]
+[gd_scene load_steps=3 format=3 uid="uid://fcc1qd2fx2tc"]
 
 [ext_resource type="Theme" uid="uid://brr683dvacaev" path="res://themes/first_theme.tres" id="1_5ekkx"]
+[ext_resource type="Script" path="res://components/controls/mouse_entered_transparency.gd" id="2_4hlfk"]
 
-[node name="ControlsCanvasLayer" type="CanvasLayer"]
-
-[node name="Controls" type="Control" parent="."]
+[node name="Controls" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +13,27 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_5ekkx")
 
-[node name="MarginContainer" type="MarginContainer" parent="Controls"]
+[node name="ColorRect2" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.2)
+custom_minimum_size = Vector2(80, 70.08)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.77
+offset_top = -81.71
+offset_right = -8.77002
+offset_bottom = -11.63
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+mouse_filter = 1
+color = Color(0.553881, 0.312371, 0.174044, 1)
+script = ExtResource("2_4hlfk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 10
@@ -22,69 +41,103 @@ anchor_right = 1.0
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Controls/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 color = Color(0.627451, 0.823529, 0.388235, 0.529412)
 
-[node name="LowerHalfHBoxContainer" type="HBoxContainer" parent="Controls"]
+[node name="LowerHalfHBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -263.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Controls/LowerHalfHBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="LowerHalfHBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="ColorRect2" type="ColorRect" parent="Controls/LowerHalfHBoxContainer/MarginContainer"]
-visible = false
-custom_minimum_size = Vector2(500, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="LowerHalfHBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 8
 mouse_filter = 2
-color = Color(1, 0.552941, 1, 0.52549)
+theme_override_constants/separation = -1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Controls/LowerHalfHBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Controls/LowerHalfHBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Wasd" type="RichTextLabel" parent="Controls/LowerHalfHBoxContainer/VBoxContainer"]
+[node name="WasdLabel" type="RichTextLabel" parent="LowerHalfHBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 14
-text = "    W, A, S, D 
-Up, Dwn, Lft, Rght
+theme_override_colors/default_color = Color(0.930881, 0.455358, 0.344561, 1)
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "W, A, S, D  
+Up, Dwn, Lft, Rght "
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="HoeLabel" type="RichTextLabel" parent="LowerHalfHBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.851281, 0.584953, 0.543869, 1)
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "E - Hoe Select"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="WateringLabel" type="RichTextLabel" parent="LowerHalfHBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.851281, 0.584953, 0.543869, 1)
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "R - Watering Can"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="InventoryLabel" type="RichTextLabel" parent="LowerHalfHBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.851281, 0.584953, 0.543869, 1)
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "I  - Inventory
 "
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
-[node name="Zoom" type="RichTextLabel" parent="Controls/LowerHalfHBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="LowerHalfHBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 14
-text = "    Z and X 
-Zoom Out and In"
 
-[node name="TillWaterRichTextLabel3" type="RichTextLabel" parent="Controls/LowerHalfHBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 14
-text = "     E and R 
-  Till Or Water"
+[connection signal="mouse_entered" from="ColorRect2" to="ColorRect2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect2" to="ColorRect2" method="_on_mouse_exited"]

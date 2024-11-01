@@ -48,8 +48,17 @@ animations = [{
 
 [resource]
 script = ExtResource("1_ib0xx")
-item_type = 1
 name = "Greenpea Seed"
 description = ""
+item_type = 1
 price = 6
 sprite_frame = SubResource("SpriteFrames_kin4s")
+stage_one = 0
+stage_two = 1
+stage_three = 2
+stage_four = 3
+stage_five = 4
+stage_six = 0
+stage_seven = 0
+last_stage = 0
+current_stage = 0

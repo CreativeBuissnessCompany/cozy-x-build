@@ -52,11 +52,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			_on_close_button_pressed()
 		
 	
-
-
-
-
-
+		# Close vendingInventory if you open inventory 
+	if event.is_action_released("ui_inventory"):
+		_on_close_button_pressed()
+	
 
 
 func display_buy(pos) -> void:
@@ -67,9 +66,6 @@ func display_buy(pos) -> void:
 	#buy_instance.connect( "pressed", on_buy )
 	buy_displayed = true
 	pass
-
-
-
 
 
 

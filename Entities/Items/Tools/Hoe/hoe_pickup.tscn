@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkh1qf7asekwi"]
+[gd_scene load_steps=3 format=3 uid="uid://bod382lpid4lc"]
 
-[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_3ae07"]
-[ext_resource type="Resource" uid="uid://b8kqqyhobg6pb" path="res://entities/items/tools/hoe/hoe.tres" id="2_xgigf"]
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_c2f75"]
+[ext_resource type="Resource" uid="uid://bf15tuw54hbkg" path="res://entities/items/tools/hoe/hoe_resource.tres" id="2_qa5kp"]
 
-[node name="HoePickup" type="Node2D"]
-
-[node name="PickupComp" parent="." instance=ExtResource("1_3ae07")]
-item = ExtResource("2_xgigf")
+[node name="Hoe" instance=ExtResource("1_c2f75")]
+item = ExtResource("2_qa5kp")

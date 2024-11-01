@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2sk03mavno0p"]
-
-[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_ljur8"]
-
-[node name="RaddishSeed" type="Sprite2D"]
-texture = ExtResource("1_ljur8")
-hframes = 6
-region_enabled = true
-region_rect = Rect2(0, 80, 96, 48)

@@ -58,17 +58,6 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("5_xd6ju")
 
-[node name="ColorRect" type="ColorRect" parent="UIRoot/HUD"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0.137255, 1)
-
 [node name="Day" type="RichTextLabel" parent="UIRoot/HUD"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(74.54, 31.28)
@@ -85,6 +74,7 @@ theme_override_font_sizes/normal_font_size = 18
 text = "Day: 1"
 
 [node name="ControlsCanvasLayer" parent="UIRoot/HUD" instance=ExtResource("11_5qn33")]
+layout_mode = 1
 
 [node name="Farm" parent="." instance=ExtResource("6_ssa4s")]
 

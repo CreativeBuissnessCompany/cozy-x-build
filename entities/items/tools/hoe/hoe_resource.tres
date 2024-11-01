@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://bf15tuw54hbkg"]
+
+[ext_resource type="Script" path="res://data/models/item.gd" id="1_2h8i2"]
+[ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://entities/items/tools/art/tools.png" id="2_0pkgu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efilu"]
+atlas = ExtResource("2_0pkgu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4win2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efilu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_2h8i2")
+item_type = 0
+name = "Hoe"
+description = "A Hoe, For Tillin'"
+price = 4
+sprite_frame = SubResource("SpriteFrames_4win2")

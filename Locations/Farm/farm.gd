@@ -85,12 +85,12 @@ func _ready() -> void:
 # Player Inputs at Farm ...
 func _input(_event: InputEvent) -> void:
 	
-	# E key
+	# E key Till
 	if Input.is_action_just_pressed("toggle_dirt"):
 		farming_mode_state = FARMING_MODES.TILL
 		#print("Till State")
 	
-	# R key
+	# R key Water
 	if Input.is_action_just_pressed("toggle_water"):
 		farming_mode_state = FARMING_MODES.WATERING
 		#print("Water State")
