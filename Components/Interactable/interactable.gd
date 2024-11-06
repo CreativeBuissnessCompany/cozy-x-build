@@ -28,7 +28,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			else:
 				return
 	
-		print("No interact")
+		#print("No interact")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

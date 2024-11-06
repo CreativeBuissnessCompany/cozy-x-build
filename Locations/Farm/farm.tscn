@@ -848,7 +848,7 @@ script = ExtResource("28_vx1nh")
 metadata/_edit_lock_ = true
 
 [node name="any" type="Marker2D" parent="EntranceMarkers"]
-position = Vector2(141.728, 42.6543)
+position = Vector2(75.3499, 308.375)
 
 [node name="ObjectsWithUI" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -877,10 +877,10 @@ position = Vector2(142.381, 221.78)
 position = Vector2(203.03, 175.401)
 
 [node name="GreenpeaSeed" parent="PickUps" instance=ExtResource("10_mmsmp")]
-position = Vector2(-93, 214)
+position = Vector2(299.04, 241.253)
 
 [node name="RaddishSeedPickup" parent="PickUps" instance=ExtResource("14_mp82r")]
-position = Vector2(-70, 185)
+position = Vector2(299.04, 241.253)
 
 [node name="Tomato" parent="PickUps" instance=ExtResource("35_oc7ws")]
 position = Vector2(-64, 224)

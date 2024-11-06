@@ -20,8 +20,17 @@ animations = [{
 
 [resource]
 script = ExtResource("1_uqjfi")
-item_type = 0
 name = "Greenpea "
 description = "Peas that are Green, Hiding but no leaves......* Snap snap snap snap....* "
+item_type = 0
 price = 20
 sprite_frame = SubResource("SpriteFrames_o1uqp")
+stage_one = 0
+stage_two = 0
+stage_three = 0
+stage_four = 0
+stage_five = 0
+stage_six = 0
+stage_seven = 0
+last_stage = 0
+current_stage = 0

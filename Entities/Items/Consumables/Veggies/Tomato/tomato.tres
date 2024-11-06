@@ -16,8 +16,17 @@ animations = [{
 
 [resource]
 script = ExtResource("1_6dlwh")
-item_type = 0
 name = "Tomato"
 description = ""
+item_type = 0
 price = 0
 sprite_frame = SubResource("SpriteFrames_du4de")
+stage_one = 0
+stage_two = 0
+stage_three = 0
+stage_four = 0
+stage_five = 0
+stage_six = 0
+stage_seven = 0
+last_stage = 0
+current_stage = 0

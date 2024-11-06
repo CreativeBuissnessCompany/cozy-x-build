@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1u5tbb7cpvpk"]
+
+[ext_resource type="Script" path="res://components/day_button/day_button.gd" id="1_3iidn"]
+[ext_resource type="StyleBox" uid="uid://cbwy0inidan2s" path="res://components/day_button/day_button_theme_02.tres" id="1_jl54j"]
+[ext_resource type="StyleBox" uid="uid://crvphffuy50p5" path="res://components/day_button/day_button_theme_01.tres" id="2_4flbd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3d4a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3hpp"]
+
+[node name="DayButton" type="Button"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -16.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o3d4a")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h3hpp")
+theme_override_styles/pressed = ExtResource("1_jl54j")
+theme_override_styles/normal = ExtResource("2_4flbd")
+action_mode = 0
+script = ExtResource("1_3iidn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -15.5
+offset_right = 26.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.866829, 0.802863, 0.70049, 1)
+theme_override_font_sizes/font_size = 12
+text = "Next Day"
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

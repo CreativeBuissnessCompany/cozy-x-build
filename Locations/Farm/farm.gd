@@ -95,15 +95,15 @@ func _input(_event: InputEvent) -> void:
 		farming_mode_state = FARMING_MODES.WATERING
 		#print("Water State")
 	
-	
-	# Mouse click, Farming Happening ..
+	# NOTE Need to make it so only active 
+	# when close to farming area ....
 	if Input.is_action_pressed("click"):
 		# Whats the pos of Mouse? Vector 2
 		var mouse_pos: Vector2 = get_global_mouse_position()
 		var state = farming_mode_state
 		# Farming Func ...
 		farming(state, mouse_pos)
-		print(" Trying To Farm at Farm.gd")
+		#print(" 'click' at farm.gd")
 		return
 
 
@@ -132,8 +132,8 @@ func on_seed_selected(item_resource: Item):
 		farming_mode_state = FARMING_MODES.PLANT_SEED
 		seed_selected = item_resource
 		# NOTE  Close UI
-		var inventory_ui: InventoryUI = get_parent().find_child("InventoryUI")
-		inventory_ui._on_close_button_pressed()
+		#var inventory_ui: InventoryUI = get_parent().find_child("InventoryUI")
+		#inventory_ui._on_close_button_pressed()
 		
 		
 		#print("Clicked Seed to Plant")
@@ -176,10 +176,12 @@ func farming(state,mouse_pos):
 				var child = layer_to_place.get_child(-1)
 				# Set Item Data to Current  
 				child.item_data = seed_selected
-				print(" Changing selected Seed")
+				#print("Changing selected Seed")
 				# NOTE SEED SFX
 				if ui_open == false:
 					Signalbus.sfx.emit(sfx_file)
+	
+	
 	 # Farming Func for NOT seeds
 	if farming_mode_state != FARMING_MODES.PLANT_SEED:
 		# After STATE match, Do work ...

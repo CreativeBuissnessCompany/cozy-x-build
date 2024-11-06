@@ -103,7 +103,7 @@ func open(inventory:Inventory):
 
 
 func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_position):
-	print_debug( "Received " + item_resource.description )
+	#print_debug( "Received " + item_resource.description )
 	item_desc_label.text = item_resource.description
 	qty.text = "Qty: " + str(item_resource.qty)
 	# Stop Other Slot Animations

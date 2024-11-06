@@ -1,5 +1,8 @@
 # seed_to_crop.gd
+@tool
 class_name CropToSeed extends AnimatedSprite2D
+
+
 
 # Variables
 
@@ -11,21 +14,21 @@ class_name CropToSeed extends AnimatedSprite2D
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-# Set stages 
-@export var stage_one: int
-@export var stage_two: int
-@export var stage_three: int
-@export var stage_four: int
-@export var stage_five: int
-@export var stage_six: int
-@export var stage_seven: int
-@export var last_stage: int
+# Set stages , NOTE Change on 11/01
+var stage_one: int
+var stage_two: int
+var stage_three: int
+var stage_four: int
+var stage_five: int
+var stage_six: int
+var stage_seven: int
+var last_stage: int
 @export var current_stage: int
 
 var day_planted: int
 var days_since_planted: int = 0
 var current_day: int 
-var current_frame: float = 0.00
+#var current_frame: float = 0.00
 var watered: bool = false
 var days_watered: int = 0
 # Path for Directory of "from_seed" ...
@@ -44,18 +47,8 @@ var grown: bool = false
 # Script_Start
 func _ready() -> void:
 	
-	# NOTE New
-	stage_one = item_data.stage_one
-	stage_two = item_data.stage_two
-	stage_three = item_data.stage_three
-	stage_four = item_data.stage_four
-	stage_five = item_data.stage_five
-	stage_six = item_data.stage_six
-	stage_seven = item_data.stage_seven
-	
-	
-	print(" Grown Status at Ready in SeedToCrop....")
-	print(grown)
+	#print(" Grown Status at Ready in SeedToCrop....")
+	#print(grown)
 	
 	
 	# From Farm...
@@ -63,19 +56,21 @@ func _ready() -> void:
 	
 	# Setting Vars from GameData...
 	if GameData.crop_array:
-		#print("GameData CropArray Exists....")
-		#print(GameData.crop_array)
+		
+		
 		 #NOTE Get Crops Data from GameData
 		 #Set
-		days_watered = GameData.crop_array[-6]
-		current_day = GameData.crop_array[-5]
-		day_planted = GameData.crop_array[-4]
-		current_frame = GameData.crop_array[-3]
+		days_watered = GameData.crop_array[-5]
+		current_day = GameData.crop_array[-4]
+		day_planted = GameData.crop_array[-3]
+		#current_frame = GameData.crop_array[-3]
 		watered = GameData.crop_array[-2]
 		item_data = GameData.crop_array[-1]
 		
+		# Set Last stage ( current_stage)
+		current_stage = item_data.current_stage
+		
 		# Pop
-		GameData.crop_array.pop_back()
 		GameData.crop_array.pop_back()
 		GameData.crop_array.pop_back()
 		GameData.crop_array.pop_back()
@@ -95,13 +90,16 @@ func _ready() -> void:
 	
 	# NOTE NOTE Might Delete for SpriteFrames
 	# Set Animationplayer @ 0.00 in "default" Animation
-	animation_player.play("default")
-	animation_player.seek(current_frame, true)
-	animation_player.pause()
+	#animation_player.play("default")
+	#animation_player.seek(current_frame, true)
+	#animation_player.pause()
 	
-	if watered == true:
+	
+	# NOTE Change /// ???
+	#if watered == true:
 		# Advance to next stage of plant growth...
-		advance_stage(days_watered)
+		# NOTE Moved To down below 11/04 .... NOTE
+	#advance_stage(days_watered)
 		
 	
 	# If day bigger than day on record, watered false
@@ -109,15 +107,42 @@ func _ready() -> void:
 		# Set watered to false
 		watered = false 
 	
-	# NOTE Happens no matter what 
+	# Happens no matter what 
 	# Set Day 
 	current_day = time_tracker.day
 	
-	# NOTE New ...
 	# New, Try to set spriteframes...
 	self.sprite_frames = item_data.sprite_frame
 	#self.offset = Vector2( 0 , -12 )
+	
+	
+	# NOTE New, Set stages after everything
+	stage_one = item_data.stage_one
+	stage_two = item_data.stage_two
+	stage_three = item_data.stage_three
+	stage_four = item_data.stage_four
+	stage_five = item_data.stage_five
+	stage_six = item_data.stage_six
+	stage_seven = item_data.stage_seven
+	last_stage = item_data.last_stage
+	
+	#print("In Ready.......", " ---------------")
+	#print("Three", " ", stage_three)
+	#print("Four", " ",stage_four)
+	#print("Five", " ",stage_five)
+	#print("Last Stage", " ", item_data.last_stage)
+	
+	
+	advance_stage(days_watered)
 
+
+func _process(delta: float) -> void:
+	
+	if Engine.is_editor_hint():
+		
+		self.frame = current_stage
+		pass
+	# Code to execute in editor.
 
 
 func _on_watered(mos_pos):
@@ -131,49 +156,64 @@ func _on_watered(mos_pos):
 
 func advance_stage(_days_since_planted):
 	
+	print("Seed Type" , " " , item_data.name)
+	
+	
+	
+	
 	match _days_since_planted:
 		
 		stage_one:
 			current_stage = stage_one
 			self.frame = stage_one
-			#print("Stage One")
+			print("Stage One")
 		
 		stage_two:
 			current_stage = stage_two
 			#animation_player.seek(1.00, true)
 			self.frame = stage_two
-			#print("Stage Two")
+			print("Stage Two")
 			
 		stage_three:
 			current_stage = stage_three
 			#animation_player.seek(2.00,true)
 			self.frame = stage_three
-			#print("Stage Three")
+			print("Stage Three")
 			
 		stage_four:
 			current_stage = stage_four
 			#animation_player.seek(3.00,true)
 			self.frame = stage_four
-			#print("Stage Four")
+			print("Stage Four")
 			
 		stage_five:
 			current_stage = stage_five
 			#animation_player.seek(4.00,true)
 			self.frame = stage_five
-			#print("Stage Five")
+			print("Stage Five")
 			
 		stage_six:
 			current_stage = stage_six
 			#animation_player.seek(5.00,true)
 			self.frame = stage_six
-			#print("Stage Six")
+			print("Stage Six")
 			
 		stage_seven:
 			current_stage = stage_seven
 			#animation_player.seek(6.00,true)
 			self.frame = stage_seven
-			#print("Stage Seven")
+			print("Stage Seven")
 			
+	
+	
+		_:
+			# All else fails, Set to previous stage 
+			print("Wild Card Statement ")
+			# NOTE  Set Frame.....
+			self.frame = item_data.current_stage 
+	
+	
+	
 	# Last Stage ...
 	if current_stage == last_stage:
 		print("Last Stage")
@@ -181,15 +221,15 @@ func advance_stage(_days_since_planted):
 		
 		# Delete word "Seed" from item name....
 		# NOTE Space BEFORE the word seed is NEEDED
-		print(item_data.name)
+		#print(item_data.name)
 		var item_name = item_data.name.replacen(" seed","")
-		print(item_name)
+		#print(item_name)
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name.containsn(item_name):
 				#print(file_name)
-				print( "They Match!")
+				#print( "They Match!")
 				# Combine Directory Path with File Path for full path...
 				#print(dir_path + file_name)
 				var full_path = dir_path + file_name
@@ -211,8 +251,10 @@ func advance_stage(_days_since_planted):
 		#print(file_name)
 		
 	
-	animation_player.pause()
-	current_frame = animation_player.current_animation_position
+	#animation_player.pause()
+	#current_frame = animation_player.current_animation_position
+	
+	#print("Current Stage" , "" , current_stage)
 	
 	
 
@@ -220,10 +262,18 @@ func advance_stage(_days_since_planted):
 func _exit_tree() -> void:
 	# Send Data if Grown not true ...
 	if not grown:
+		
+		# Set current Stage 
+		item_data.current_stage = current_stage
+		
+		
 		GameData.crop_array.append(days_watered)
 		GameData.crop_array.append(current_day)
 		GameData.crop_array.append(day_planted)
-		GameData.crop_array.append(current_frame)
+		#GameData.crop_array.append(current_frame)
 		GameData.crop_array.append(watered)
 		GameData.crop_array.append(item_data)
-		print(" Not Grown ")
+		
+		#print(" Not Grown ")
+		print("Next Day ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !")
+		

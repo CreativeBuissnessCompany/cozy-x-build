@@ -20,8 +20,17 @@ animations = [{
 
 [resource]
 script = ExtResource("1_5yyjs")
-item_type = 0
 name = "Watering Can"
 description = "A Waterin' Can, Boy-O! "
+item_type = 0
 price = 4
 sprite_frame = SubResource("SpriteFrames_4win2")
+stage_one = 0
+stage_two = 0
+stage_three = 0
+stage_four = 0
+stage_five = 0
+stage_six = 0
+stage_seven = 0
+last_stage = 0
+current_stage = 0

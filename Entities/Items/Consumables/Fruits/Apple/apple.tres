@@ -16,9 +16,18 @@ animations = [{
 
 [resource]
 script = ExtResource("2_sheuc")
-item_type = 2
 name = "Apple"
 description = "A delicious [wave amp=25.0 freq=3.0 connected=1] [color=Firebrick]Apple[/color] [/wave] to eat on.....Have an Eat!
 Yup, Love me some [wave amp=25.0 freq=3.0 connected=1] [color=firebrick]Apple[/color] [/wave] ...."
+item_type = 2
 price = 4
 sprite_frame = SubResource("SpriteFrames_5oasv")
+stage_one = 0
+stage_two = 0
+stage_three = 0
+stage_four = 0
+stage_five = 0
+stage_six = 0
+stage_seven = 0
+last_stage = 0
+current_stage = 0

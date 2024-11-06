@@ -17,6 +17,5 @@ func on_day_change(day):
 func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("ui_inventory"):
-		print("Press")
 		self.visible = !self.visible
 	

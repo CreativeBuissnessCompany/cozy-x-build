@@ -8,7 +8,6 @@ extends Node2D
 	set(value):
 		item = value
 
-#var instance: Node2D
 var ITEM_TYPE_SEED: int = 1
 var ITEM_TYPE_RESIZE: int = 2
 var animated_sprite2d := AnimatedSprite2D.new()
@@ -19,8 +18,7 @@ var animated_sprite2d := AnimatedSprite2D.new()
 
 # Script_Start
 func _ready() -> void:
-	print(item.name," is Ready.... ")
-	#instance = item.scene.instantiate()
+	#print(item.name," is Ready.... ")
 	
 	var sprite_frame: SpriteFrames = item.sprite_frame
 	
@@ -33,7 +31,6 @@ func _ready() -> void:
 	if item.item_type == ITEM_TYPE_RESIZE:
 		self.scale = Vector2(0.5,0.5)
 		pass
-	#add_child(instance)
 	
 	
 	# NOTE New ......Testing....

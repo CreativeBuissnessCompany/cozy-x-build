@@ -8,5 +8,5 @@ extends Interactable
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	lamp.play("default")
 	light.visible = !light.visible
-	print("Liight")
+	#print("Liight")
 	pass # Replace with function body.
