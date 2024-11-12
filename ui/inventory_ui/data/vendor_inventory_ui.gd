@@ -25,7 +25,7 @@ var ui_open: bool = false:
 	set(value):
 		ui_open = value
 		Signalbus.ui_open.emit()
-		#print(" Emitting From Inventory ")
+		print(" Emitting From Inventory ")
 
 
 
@@ -44,18 +44,18 @@ func _ready() -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	
-	if Input.is_action_just_released("escape"):
-		if buy_displayed:
-			buy_instance.queue_free()
-			buy_displayed = false
-		else:
+	
+	if ui_open == true:
+		if Input.is_action_just_released("escape"):
+			if buy_displayed:
+				buy_instance.queue_free()
+				buy_displayed = false
+			else:
+				_on_close_button_pressed()
+			# Close vendingInventory if you open inventory 
+		if event.is_action_released("ui_inventory"):
 			_on_close_button_pressed()
 		
-	
-		# Close vendingInventory if you open inventory 
-	if event.is_action_released("ui_inventory"):
-		_on_close_button_pressed()
-	
 
 
 func display_buy(pos) -> void:

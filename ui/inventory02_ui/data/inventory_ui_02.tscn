@@ -30,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_force_pass_scroll_events = false
 theme_override_styles/panel = SubResource("StyleBoxTexture_u5aj0")
 script = ExtResource("2_okr7b")
 item_slot_scene = ExtResource("6_hgrmp")
@@ -39,6 +40,7 @@ use_drop_scene = ExtResource("4_trncf")
 show_behind_parent = true
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
 color = Color(0.137255, 0.137255, 0.137255, 0.745098)
 
 [node name="MarginForInsideScreen" type="BoxContainer" parent="."]
@@ -46,9 +48,12 @@ custom_minimum_size = Vector2(549.09, 254.47)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginForInsideScreen"]
 layout_mode = 2
+mouse_filter = 0
 theme_override_constants/margin_left = 14
 theme_override_constants/margin_bottom = 15
 
@@ -56,17 +61,20 @@ theme_override_constants/margin_bottom = 15
 custom_minimum_size = Vector2(548.82, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 0
 theme_override_constants/separation = 6
 
 [node name="Icons" type="TextureButton" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll"]
 custom_minimum_size = Vector2(32, 128)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_force_pass_scroll_events = false
 texture_normal = ExtResource("5_56aus")
 
 [node name="Spacer" type="MarginContainer" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll"]
 custom_minimum_size = Vector2(2.97, 0)
 layout_mode = 2
+mouse_filter = 0
 
 [node name="MainBoxPanel" type="NinePatchRect" parent="MarginForInsideScreen/MarginContainer/HBoxContainerForAll"]
 custom_minimum_size = Vector2(224, 197)

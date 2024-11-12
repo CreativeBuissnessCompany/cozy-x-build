@@ -43,4 +43,4 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("ui_inventory"):
 		inventory_ui.open(player.inventory)
-	
+		#print("Released")

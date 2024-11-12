@@ -62,6 +62,7 @@ func display(item:Item):
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			# For UI Purposes
 			on_item_button_pressed.emit( animated_sprite_2d, item_resource, self.global_position )
 			# Sent to farm ...
 			Signalbus.item_clicked.emit(item_resource)

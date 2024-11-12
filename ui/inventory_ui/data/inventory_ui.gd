@@ -23,6 +23,7 @@ var ui_open: bool = false:
 	set(value):
 		ui_open = value
 		Signalbus.ui_open.emit()
+		#print_debug(" UI CHANGE emit")
 		#print(" Emitting From Inventory ")
 
 

@@ -4,7 +4,7 @@ extends BaseScene
 
 # Variables
 # TileMapLayers
-@onready var tml_1:= %"01BrightGrass"
+@onready var tml_1: TileMapLayer = %"00BrightGrass"
 @onready var tml_2:= %"02DirtPaths"
 @onready var tml_3:= %"03TilledAndWatered"
 @onready var tml_4:= %"04Crops"
@@ -102,15 +102,30 @@ func _input(_event: InputEvent) -> void:
 		var mouse_pos: Vector2 = get_global_mouse_position()
 		var state = farming_mode_state
 		# Farming Func ...
-		farming(state, mouse_pos)
-		#print(" 'click' at farm.gd")
-		return
+		# TEST Check if mouse is on tml 3 or 4 
+		
+		if ui_open == false:
+			farming(state, mouse_pos)
+			#print(" 'click' at farm.gd")
+			return
 
 
 
 
 
 # NOTE Custom Functions ...
+
+
+
+
+func mouse_inbounds()-> bool:
+	
+	
+	
+	return false
+
+
+
 # Used for deleting CropToSeed when it turns into a Fruit/Veggie ...
 func on_delete_crop(coords):
 	var local_coords = tml_4.to_local(coords)
@@ -122,13 +137,16 @@ func on_delete_crop(coords):
 
 
 func on_ui_open():
+	#print(" UI Change according to farm.gd ")
 	ui_open = !ui_open
+	#print("UI_OPEN = ", ui_open)
 	#print(" UI Status")
 	#print(ui_open)
 
 
 func on_seed_selected(item_resource: Item):
 	if item_resource.item_type == Item.ITEM_TYPE.SEED:
+		
 		farming_mode_state = FARMING_MODES.PLANT_SEED
 		seed_selected = item_resource
 		# NOTE  Close UI
@@ -169,14 +187,28 @@ func farming(state,mouse_pos):
 			var mouse_pos_for_seed = tml_4.local_to_map(get_local_mouse_position())
 			
 			if retrieving_custom_data(layer_to_look, mouse_pos_for_data, custom_data):
-				# # Scenetile, Add sourceid and tile id, seed_cord to (0,0)
+				# # Set Scenetile in the ground first.... Add sourceid and tile id, seed_cord to (0,0)
 				layer_to_place.set_cell(mouse_pos_for_seed,source_id, Vector2i(0,0),scene_tile_id)
+				# Wait for it to get added to the tree ....
 				await get_tree().process_frame
+				await get_tree().process_frame
+				
 				# Grab SceneTile as Node from Parent ...
+				#await var child = layer_to_place.get_child(-1)
+				#await layer_to_place.child_entered_tree
+				# NOTE NEW TEST
+				if layer_to_place.get_child_count() != 0:
+					#print("Not Empty")
+					pass
+				else:
+					print("Its Empty")
+					
 				var child = layer_to_place.get_child(-1)
+				#var child = layer_to_place.call_deferred("get_child", -1)
 				# Set Item Data to Current  
 				child.item_data = seed_selected
 				#print("Changing selected Seed")
+				
 				# NOTE SEED SFX
 				if ui_open == false:
 					Signalbus.sfx.emit(sfx_file)
@@ -236,5 +268,5 @@ func retrieving_custom_data(tml_layer: TileMapLayer,tml_mouse_pos: Vector2, cust
 		#print("Got Data")
 		return tile_data.get_custom_data(custom_tilemap_data_name)
 	else:
-		#print("NO DataTile here")
+		print("NO DataTile here")
 		return false
