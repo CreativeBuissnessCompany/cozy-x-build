@@ -203,11 +203,13 @@ func farming(state,mouse_pos):
 				else:
 					print("Its Empty")
 					
+				
 				var child = layer_to_place.get_child(-1)
 				#var child = layer_to_place.call_deferred("get_child", -1)
 				# Set Item Data to Current  
 				child.item_data = seed_selected
-				#print("Changing selected Seed")
+				print("Setting selected Seed Data into crop")
+				print(seed_selected.name)
 				
 				# NOTE SEED SFX
 				if ui_open == false:

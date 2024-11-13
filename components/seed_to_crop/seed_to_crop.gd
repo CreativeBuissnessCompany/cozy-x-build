@@ -7,7 +7,7 @@ class_name CropToSeed extends AnimatedSprite2D
 @export var item_data: Item:
 	set(value):
 		item_data = value
-		#self.sprite_frames = item_data.sprite_frame
+		self.sprite_frames = item_data.sprite_frame
 
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -76,20 +76,20 @@ func _ready() -> void:
 	else:
 		print(" CropData dont exist ......... ----")
 		day_planted = time_tracker.day
-
+	
 	# Also ...advance DaysWatered ...
 	# Do math for days planted ....
 	if watered == true:
 		if time_tracker.day > day_planted:
 			days_watered += 1
 			days_since_planted = time_tracker.day - day_planted
-
+	
 	 #Set Animationplayer @ 0.00 in "default" Animation
 	animation_player.play("default")
 	#animation_player.seek(current_frame, true)
 	animation_player.pause()
 	
-	# NOTE New, Set stages after everything
+	# NOTE New, Set stages after everything ALERT
 	stage_one = item_data.stage_one
 	stage_two = item_data.stage_two
 	stage_three = item_data.stage_three
@@ -110,15 +110,36 @@ func _ready() -> void:
 	
 
 
-# NOTE ------- TEST ------- TOOL 
-func _process(delta: float) -> void:
-	
+# ------- TEST ------- Tool........ 
+#func _process(delta: float) -> void:
 	#if Engine.is_editor_hint():
 		#self.frame = current_stage
 		#animation_player.seek(current_stage, true) 
-		pass
+		#pass
 	# Code to execute in editor.
 # NOTE ------- TEST ------- TOOL 
+
+
+# NOTE Custom Functions ........
+
+func item_set():
+	
+	stage_one = item_data.stage_one
+	stage_two = item_data.stage_two
+	stage_three = item_data.stage_three
+	stage_four = item_data.stage_four
+	stage_five = item_data.stage_five
+	stage_six = item_data.stage_six
+	stage_seven = item_data.stage_seven
+	last_stage = item_data.last_stage
+	
+	
+	
+	
+	
+	
+	pass
+
 
 
 func _on_watered(mos_pos):
@@ -256,8 +277,3 @@ func _exit_tree() -> void:
 	else:
 		print(" No GameData Update  ")
 		return
-		#GameData.crop_array.pop_back()
-		#GameData.crop_array.pop_back()
-		#GameData.crop_array.pop_back()
-		#GameData.crop_array.pop_back()
-		#GameData.crop_array.pop_back()
