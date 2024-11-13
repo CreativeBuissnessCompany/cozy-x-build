@@ -85,6 +85,8 @@ anchor_left = 0.971875
 anchor_top = 0.119444
 anchor_right = 0.971875
 anchor_bottom = 0.119444
+farm_path = NodePath("../../../Farm")
+universe_path = NodePath("../../..")
 metadata/_edit_use_anchors_ = true
 
 [node name="Farm" parent="." instance=ExtResource("6_ssa4s")]

@@ -251,8 +251,8 @@ func _exit_tree() -> void:
 		GameData.crop_array.append(item_data)
 		
 		#print(" Not Grown ")
-		print("Next Day ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !")
-		
+		print_debug("Next Day ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !")
+		print("Appending GameData ....")
 	else:
 		print(" No GameData Update  ")
 		return
