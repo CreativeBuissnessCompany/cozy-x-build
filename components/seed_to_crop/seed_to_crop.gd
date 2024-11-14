@@ -8,8 +8,9 @@ class_name CropToSeed extends AnimatedSprite2D
 @export var item_data: Item:
 	set(value):
 		item_data = value
+		# Used for when farm.gd sets data ...
 		self.sprite_frames = item_data.sprite_frame
-		print("sprite changed cause item data changed")
+		#print("    item_data changed ...... .... //// /// // ")
 
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -30,7 +31,7 @@ var days_since_planted: int = 0
 var current_day: int 
 #var current_frame: float = 0.00
 var watered: bool = false
-var days_watered: int = 0
+#var days_watered: int = 0
 # Path for Directory of "from_seed" ...
 var dir_path: String = "res://entities/items/consumables/from_seed_pickups/"
 # Directory for Fully grown versions of seeds....Fruit,Veggie....
@@ -47,6 +48,8 @@ var grown: bool = false
 # Script_Start
 func _ready() -> void:
 	
+	
+	
 	# From Farm.gd...
 	Signalbus.connect("watered", _on_watered)
 	
@@ -55,7 +58,7 @@ func _ready() -> void:
 		#print(" crop_array exists .... ")
 		 #NOTE Get Crops Data from GameData
 		
-		days_watered = GameData.crop_array[-5]
+		#days_watered = GameData.crop_array[-4]
 		current_day = GameData.crop_array[-4]
 		day_planted = GameData.crop_array[-3]
 		watered = GameData.crop_array[-2]
@@ -65,48 +68,46 @@ func _ready() -> void:
 		# --- NOTE Changed 11/11 ..... ---
 		current_stage = item_data.current_stage
 		
-		# Pop
-		var array_size: int = 5
+		# Clear array after grabbing from it NOTE
+		var array_size: int = 4 # NOTE Should reflect GameData.crop_array size
 		while array_size != 0:
 			GameData.crop_array.pop_back()
 			array_size -= 1
-			#print(" Popped ")
+			
 	#Or Else ... Set DayPlanted
 	else:
 		# If no saved data, This must be its first day planted....
-		print(" CropData dont exist ......... ----")
-		print(" Setting Day Planted ....")
 		day_planted = time_tracker.day
 	
-
-	#NOTE New, Set stages ALERT
+	
+	
+	#NOTE New, Set stages
 	item_set()
+	
+	
+	
 	
 	# Do math for days planted .... # Also ...advance days_watered ...
 	if watered == true:
 		print("Watered is true ")
-		if time_tracker.day > day_planted:
+		if time_tracker.day > day_planted and time_tracker.day > current_day:
 			print("time_tracker is bigger than day_planted ")
-			days_watered += 1
 			days_since_planted = time_tracker.day - day_planted
-			#current_day = time_tracker.day
-			advance_stage(days_watered)
-			#watered = false 
+			advance_stage(days_since_planted)
+			watered = false 
+			current_day = time_tracker.day
 			
 	
 	
-# ALERT 
 	 #Grab animation NAME from Item Resource....
 	var animation_name = item_data.animation_resize_check()
 	animation_player.play(animation_name)
 	animation_player.pause()
-# ALERT 
-	
 	animation_player.seek(current_stage, true) 
-	print("Current Stage ", " ", current_stage)
+	print("Current Stage ", " ", 1+current_stage)
 	#animation_player.pause()
-
-# Old Block
+	
+	# Old Block
 	# If current day bigger than day on recorded, watered false. For when you change scene 
 	#-Without proceeding to the next day
 	#if current_day <= time_tracker.day:
@@ -114,12 +115,11 @@ func _ready() -> void:
 		#watered = false 
 	## Set Day after the check above 
 	#current_day = time_tracker.day
-	
 	#advance_stage(days_watered)
 	#print("Advancing Stage")
 
 
-# ------- TEST ------- Tool........ 
+# ------- NOTE ------- Tool........ 
 #func _process(delta: float) -> void:
 	#if Engine.is_editor_hint():
 		#
@@ -198,12 +198,10 @@ func advance_stage(_days_since_planted):
 	if current_stage == last_stage:
 		last_stage_process()
 	
-	
-	
 
-#TEST 11/13 
+#NOTE added 11/13 ...
 func last_stage_process():
-	print("Last Stage")
+	print("last_stage_process called ")
 	grown = true
 	# Delete word "Seed" from item name....Space before the word "seed" aswell ...
 	var item_name = item_data.name.replacen(" seed","")
@@ -238,7 +236,7 @@ func _exit_tree() -> void:
 		# Set current Stage 
 		item_data.current_stage = current_stage
 		
-		GameData.crop_array.append(days_watered)
+		#GameData.crop_array.append(days_watered)
 		GameData.crop_array.append(current_day)
 		GameData.crop_array.append(day_planted)
 		GameData.crop_array.append(watered)

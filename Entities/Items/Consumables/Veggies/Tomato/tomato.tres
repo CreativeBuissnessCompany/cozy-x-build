@@ -21,6 +21,7 @@ description = ""
 item_type = 0
 price = 0
 sprite_frame = SubResource("SpriteFrames_du4de")
+animation_resize_type = 0
 stage_one = 0
 stage_two = 0
 stage_three = 0

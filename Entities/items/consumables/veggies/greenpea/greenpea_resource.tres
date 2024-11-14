@@ -25,6 +25,7 @@ description = "Peas that are Green, Hiding but no leaves......* Snap snap snap s
 item_type = 0
 price = 20
 sprite_frame = SubResource("SpriteFrames_o1uqp")
+animation_resize_type = 0
 stage_one = 0
 stage_two = 0
 stage_three = 0

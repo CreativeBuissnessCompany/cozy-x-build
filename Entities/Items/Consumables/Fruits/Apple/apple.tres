@@ -22,6 +22,7 @@ Yup, Love me some [wave amp=25.0 freq=3.0 connected=1] [color=firebrick]Apple[/c
 item_type = 2
 price = 4
 sprite_frame = SubResource("SpriteFrames_5oasv")
+animation_resize_type = 0
 stage_one = 0
 stage_two = 0
 stage_three = 0
