@@ -118,22 +118,12 @@ func _input(_event: InputEvent) -> void:
 
 
 
-func mouse_inbounds()-> bool:
-	
-	
-	
-	return false
-
-
-
 # Used for deleting CropToSeed when it turns into a Fruit/Veggie ...
 func on_delete_crop(coords):
 	var local_coords = tml_4.to_local(coords)
 	var cell = tml_4.local_to_map(local_coords)
 	tml_4.erase_cell(cell)
 	#print(" Erased Cell At ....", cell )
-
-
 
 
 func on_ui_open():
@@ -220,8 +210,10 @@ func farming(state,mouse_pos):
 	if farming_mode_state != FARMING_MODES.PLANT_SEED:
 		# After STATE match, Do work ...
 		var mouse_pos_for_farming = Utility.convert_mos_local(layer_to_look,mouse_pos)
+		
 		if retrieving_custom_data(layer_to_look, mouse_pos_for_farming, custom_data):
-			tiles.append(mouse_pos_for_farming) 
+			tiles.append(mouse_pos_for_farming) # Store for  ...
+			
 			if farming_mode_state == FARMING_MODES.WATERING:
 				# Store dirt tile first
 				dirt_tile_data["tile location"] = mouse_pos_for_farming
@@ -253,12 +245,17 @@ func check_day():
 				# Reset dirt_tiles
 				tml_3.set_cell(tile["tile location"], dirt_tiles_source_id, tile["atlas coords"]) # Changed from farmhouse - 0
 				
+				
 		# Set day Eitherway... As long as Timetracker.day is bigger than current day in farm 
 		current_day = time_tracker.day
 		# Clear Dirt Tiles Array
 		dirt_tiles_to_replace.clear()
 		# Clear Dict
 		dirt_tile_data.clear()
+	
+	# NOTE New TEST - - - - - - - - Comment out above for below to work 
+		if dirt_tiles_to_replace:
+			tml_3.set_cells_terrain_connect(dirt_tiles_to_replace, terrain_set, tilled_terrain_02)
 
 
 func retrieving_custom_data(tml_layer: TileMapLayer,tml_mouse_pos: Vector2, custom_tilemap_data_name: String):
