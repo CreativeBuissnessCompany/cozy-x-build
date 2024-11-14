@@ -16,7 +16,7 @@ var source_id
 var dirt_tiles_source_id: int = 5 
 var scene_source_id = 3
 
-# Terrains within 1st Set
+# Terrains within 1st Set ( Index is actually 0, Computers dumb )
 var tilled_terrain_02: int = 10 # From 5
 var watered_terrain_02: int = 11 # From 6
 
@@ -44,7 +44,15 @@ var can_plant: String = "can_plant"
 # Empty vars until used by farming()
 var layer_to_look: TileMapLayer
 var layer_to_place: TileMapLayer
-var tiles: Array
+
+var tiles: Array:
+	set(value):
+		tiles = value
+		print(" Setting Tiles ")
+	get():
+		return tiles
+		print(" Getting Tiles ")
+
 var terrain: int
 var custom_data: String
 # Day Change
@@ -153,7 +161,7 @@ func farming(state,mouse_pos):
 		FARMING_MODES.TILL:
 			layer_to_look = tml_2 
 			layer_to_place = tml_3
-			tiles = dirt_tiles
+			tiles = dirt_tiles # Empty before this 
 			terrain = tilled_terrain_02
 			custom_data = can_till_custom_data
 			sfx_file = sfx_till
@@ -161,7 +169,7 @@ func farming(state,mouse_pos):
 		FARMING_MODES.WATERING:
 			layer_to_look = tml_3
 			layer_to_place = tml_3
-			tiles = wet_tiles
+			tiles = wet_tiles # Empty before this 
 			terrain = watered_terrain_02
 			custom_data = can_water_custom_data
 			sfx_file = sfx_watering
@@ -175,13 +183,14 @@ func farming(state,mouse_pos):
 			
 			var mouse_pos_for_data = Utility.convert_mos_local(layer_to_look,mouse_pos)
 			var mouse_pos_for_seed = tml_4.local_to_map(get_local_mouse_position())
-			
+			# Seed SceneTile
 			if retrieving_custom_data(layer_to_look, mouse_pos_for_data, custom_data):
 				# # Set Scenetile in the ground first.... Add sourceid and tile id, seed_cord to (0,0)
 				layer_to_place.set_cell(mouse_pos_for_seed,source_id, Vector2i(0,0),scene_tile_id)
 				# Wait for it to get added to the tree ....
 				await get_tree().process_frame
 				await get_tree().process_frame
+				
 				
 				# Grab SceneTile as Node from Parent ...
 				#await var child = layer_to_place.get_child(-1)
@@ -241,9 +250,16 @@ func check_day():
 	
 	if time_tracker.day > current_day:
 		if dirt_tiles_to_replace:
-			for tile in dirt_tiles_to_replace:
-				# Reset dirt_tiles
-				tml_3.set_cell(tile["tile location"], dirt_tiles_source_id, tile["atlas coords"]) # Changed from farmhouse - 0
+			# NOTE New TEST - - - - - - - - Comment out above for below to work 
+			tml_3.set_cells_terrain_connect(tiles, terrain_set, tilled_terrain_02)
+			tiles.clear()
+			print(" Clearing tiles Array")
+			
+			
+			# NOTE Delete Below
+			#for tile in dirt_tiles_to_replace:
+				## Reset dirt_tiles
+				#tml_3.set_cell(tile["tile location"], dirt_tiles_source_id, tile["atlas coords"]) # Changed from farmhouse - 0
 				
 				
 		# Set day Eitherway... As long as Timetracker.day is bigger than current day in farm 
@@ -253,9 +269,8 @@ func check_day():
 		# Clear Dict
 		dirt_tile_data.clear()
 	
-	# NOTE New TEST - - - - - - - - Comment out above for below to work 
-		if dirt_tiles_to_replace:
-			tml_3.set_cells_terrain_connect(dirt_tiles_to_replace, terrain_set, tilled_terrain_02)
+	
+
 
 
 func retrieving_custom_data(tml_layer: TileMapLayer,tml_mouse_pos: Vector2, custom_tilemap_data_name: String):
