@@ -30,7 +30,6 @@ func _ready() -> void:
 	# PositionPlayer with Grabbed Markers...
 	Utility.position_player(entrance_markers, player)
 
-
 # Position player again when new scene is loaded
 # Maybe add current location ....
 func on_location_loaded(new_entrance_markers: Node2D):

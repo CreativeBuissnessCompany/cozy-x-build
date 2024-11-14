@@ -41,7 +41,7 @@ func _ready() -> void:
 	pass
 
 
-func _unhandled_key_input(event: InputEvent) -> void:
+func _unhandled_key_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_released("escape"):
 		if use_drop_displayed:
