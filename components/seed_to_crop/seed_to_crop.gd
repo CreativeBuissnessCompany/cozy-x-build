@@ -15,7 +15,7 @@ class_name CropToSeed extends AnimatedSprite2D
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-# Set stages , NOTE Change on 11/01
+# Set Stages ..
 var stage_one: int
 var stage_two: int
 var stage_three: int
@@ -24,14 +24,26 @@ var stage_five: int
 var stage_six: int
 var stage_seven: int
 var last_stage: int
-@export var current_stage: int
+
+@export var current_stage: int:
+	set(value):
+		current_stage = value
+		print(" ")
+		print(" Someone Changed current_stage !!!!!!!!")
+		print(" ")
 
 var day_planted: int
 var days_since_planted: int = 0
 var current_day: int 
 #var current_frame: float = 0.00
-var watered: bool = false
+var watered: bool = false:
+	set(value):
+		watered = value
+		#print("Watered Variable Changed to ..")
+		#print("......", watered)
+
 #var days_watered: int = 0
+
 # Path for Directory of "from_seed" ...
 var dir_path: String = "res://entities/items/consumables/from_seed_pickups/"
 # Directory for Fully grown versions of seeds....Fruit,Veggie....
@@ -59,17 +71,19 @@ func _ready() -> void:
 		 #NOTE Get Crops Data from GameData
 		
 		#days_watered = GameData.crop_array[-4]
+		current_stage = GameData.crop_array[-6]
+		days_since_planted = GameData.crop_array[-5]
 		current_day = GameData.crop_array[-4]
 		day_planted = GameData.crop_array[-3]
 		watered = GameData.crop_array[-2]
 		item_data = GameData.crop_array[-1]
 		
-		# Set most recent stage ( current_stage)
-		# --- NOTE Changed 11/11 ..... ---
-		current_stage = item_data.current_stage
+		# --- NOTE Changed 11/11      # Set most recent stage ( current_stage)
+		#current_stage = item_data.current_stage
+		print("After GameData Loop.... current_stage is"," ", current_stage)
 		
 		# Clear array after grabbing from it NOTE
-		var array_size: int = 4 # NOTE Should reflect GameData.crop_array size
+		var array_size: int = 6 # NOTE Should reflect GameData.crop_array size
 		while array_size != 0:
 			GameData.crop_array.pop_back()
 			array_size -= 1
@@ -81,22 +95,25 @@ func _ready() -> void:
 	
 	
 	
+	
+	
 	#NOTE New, Set stages
 	item_set()
 	
 	
-	
-	
 	# Do math for days planted .... # Also ...advance days_watered ...
 	if watered == true:
-		print("Watered is true ")
+		#print("Watered is true in Ready ")
 		if time_tracker.day > day_planted and time_tracker.day > current_day:
-			print("time_tracker is bigger than day_planted ")
+			print("time_tracker > day_pland and current_day ")
 			days_since_planted = time_tracker.day - day_planted
+			print("days_since_planted...", " ",days_since_planted)
+			
 			advance_stage(days_since_planted)
 			watered = false 
-			current_day = time_tracker.day
-			
+			print("Water changed to false in Ready/ if watered == true: loop")
+	#NOTE new, Was indented one more
+	current_day = time_tracker.day
 	
 	
 	 #Grab animation NAME from Item Resource....
@@ -104,7 +121,8 @@ func _ready() -> void:
 	animation_player.play(animation_name)
 	animation_player.pause()
 	animation_player.seek(current_stage, true) 
-	print("Current Stage ", " ", 1+current_stage)
+	print("End of @Ready , Current Stage ", " ", current_stage)
+	print("")
 	#animation_player.pause()
 	
 	# Old Block
@@ -161,35 +179,38 @@ func advance_stage(_days_since_planted):
 		
 		stage_one:
 			current_stage = stage_one
-			print("Stage One")
+			#print("Stage One")
 		
 		stage_two:
 			current_stage = stage_two
-			print("Stage Two")
+			#print("Stage Two")
 			
 		stage_three:
 			current_stage = stage_three
-			print("Stage Three")
+			#print("Stage Three")
 			
 		stage_four:
 			current_stage = stage_four
-			print("Stage Four")
+			#print("Stage Four")
 			
 		stage_five:
 			current_stage = stage_five
-			print("Stage Five")
+			#print("Stage Five")
 			
 		stage_six:
 			current_stage = stage_six
-			print("Stage Six")
+			#print("Stage Six")
 			
 		stage_seven:
 			current_stage = stage_seven
-			print("Stage Seven")
+			#print("Stage Seven")
 			
-		_:    #WILDCARD All else fails, Set to previous stage 
-			current_stage = item_data.current_stage 
+		_:    #WILDCARD All else fails, Set to previous stage  NOTE 11/14
+			#current_stage = item_data.current_stage 
 			print("Wild Card Statement ")
+	
+	
+	print("advance_stage() is done ", " current stage is ..", current_stage)
 	
 	
 	# NOTE New After Match , Do this no matter what ....
@@ -234,17 +255,24 @@ func _exit_tree() -> void:
 	if not grown:
 		
 		# Set current Stage 
-		item_data.current_stage = current_stage
+		print_debug("EXIT TREE Current Stage is ... ", " ", current_stage)
+		print(" ")
+		
+		
+		#item_data.current_stage = current_stage
+		
 		
 		#GameData.crop_array.append(days_watered)
+		GameData.crop_array.append(current_stage)
+		GameData.crop_array.append(days_since_planted)
 		GameData.crop_array.append(current_day)
 		GameData.crop_array.append(day_planted)
 		GameData.crop_array.append(watered)
 		GameData.crop_array.append(item_data)
 		
-		print_debug("Exiting Tree")
-		print("Appending GameData ....")
+		#print_debug("Exiting Tree")
+		#print("Appending GameData ....")
 		
-	else:
+	else: # Maybe check for last stage 
 		print(" No GameData Update  ")
 		return

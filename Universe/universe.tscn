@@ -90,7 +90,6 @@ universe_path = NodePath("../../..")
 metadata/_edit_use_anchors_ = true
 
 [node name="Farm" parent="." instance=ExtResource("6_ssa4s")]
-metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true
