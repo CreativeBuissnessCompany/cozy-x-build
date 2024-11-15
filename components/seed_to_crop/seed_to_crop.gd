@@ -42,7 +42,7 @@ var watered: bool = false:
 		#print("Watered Variable Changed to ..")
 		#print("......", watered)
 
-#var days_watered: int = 0
+var days_watered: int = 0
 
 # Path for Directory of "from_seed" ...
 var dir_path: String = "res://entities/items/consumables/from_seed_pickups/"
@@ -70,7 +70,7 @@ func _ready() -> void:
 		#print(" crop_array exists .... ")
 		 #NOTE Get Crops Data from GameData
 		
-		#days_watered = GameData.crop_array[-4]
+		days_watered = GameData.crop_array[-7]
 		current_stage = GameData.crop_array[-6]
 		days_since_planted = GameData.crop_array[-5]
 		current_day = GameData.crop_array[-4]
@@ -83,7 +83,7 @@ func _ready() -> void:
 		print("After GameData Loop.... current_stage is"," ", current_stage)
 		
 		# Clear array after grabbing from it NOTE
-		var array_size: int = 6 # NOTE Should reflect GameData.crop_array size
+		var array_size: int = 7 # NOTE Should reflect GameData.crop_array size
 		while array_size != 0:
 			GameData.crop_array.pop_back()
 			array_size -= 1
@@ -105,11 +105,14 @@ func _ready() -> void:
 	if watered == true:
 		#print("Watered is true in Ready ")
 		if time_tracker.day > day_planted and time_tracker.day > current_day:
+			
+			# NOTE NEW 11/14 ( OLD )
+			days_watered += 1
 			print("time_tracker > day_pland and current_day ")
 			days_since_planted = time_tracker.day - day_planted
 			print("days_since_planted...", " ",days_since_planted)
 			
-			advance_stage(days_since_planted)
+			advance_stage(days_watered)
 			watered = false 
 			print("Water changed to false in Ready/ if watered == true: loop")
 	#NOTE new, Was indented one more
@@ -262,7 +265,7 @@ func _exit_tree() -> void:
 		#item_data.current_stage = current_stage
 		
 		
-		#GameData.crop_array.append(days_watered)
+		GameData.crop_array.append(days_watered)
 		GameData.crop_array.append(current_stage)
 		GameData.crop_array.append(days_since_planted)
 		GameData.crop_array.append(current_day)
