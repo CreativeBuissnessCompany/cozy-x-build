@@ -4,6 +4,7 @@ class_name CropToSeed extends AnimatedSprite2D
 
 
 # Variables
+
 # Where we get the texture and such for seed to crop 
 @export var item_data: Item:
 	set(value):
@@ -48,9 +49,9 @@ var days_watered: int = 0
 var dir_path: String = "res://entities/items/consumables/from_seed_pickups/"
 # Directory for Fully grown versions of seeds....Fruit,Veggie....
 var dir = DirAccess.open(dir_path)
-
 var grown: bool = false
-
+# Pack 'em up
+var crops_array: Array = []
 
 
 
@@ -61,14 +62,18 @@ var grown: bool = false
 func _ready() -> void:
 	
 	
-	
 	# From Farm.gd...
 	Signalbus.connect("watered", _on_watered)
+	
+	
 	
 	# Setting Vars from GameData...
 	if GameData.crop_array:
 		#print(" crop_array exists .... ")
 		 #NOTE Get Crops Data from GameData
+		
+		# TEST Try a for loop .... With a Dictionary ....
+		crops_array = GameData.all_crops_array[-1]
 		
 		days_watered = GameData.crop_array[-7]
 		current_stage = GameData.crop_array[-6]
@@ -81,6 +86,9 @@ func _ready() -> void:
 		# --- NOTE Changed 11/11      # Set most recent stage ( current_stage)
 		#current_stage = item_data.current_stage
 		print("After GameData Loop.... current_stage is"," ", current_stage)
+		
+		
+		# TEST Change...
 		
 		# Clear array after grabbing from it NOTE
 		var array_size: int = 7 # NOTE Should reflect GameData.crop_array size
@@ -257,13 +265,27 @@ func _exit_tree() -> void:
 	# Send Data if Grown not true ...
 	if not grown:
 		
+		# TEST Try a for loop ....
+		 # Pack the array
+		var crop_array: Array = [
+			days_watered,
+			current_stage,
+			days_since_planted,
+			current_day,
+			day_planted,
+			watered,
+			item_data
+		]
+		
+		GameData.all_crops_array.append(crop_array)
+		
+		
 		# Set current Stage 
 		print_debug("EXIT TREE Current Stage is ... ", " ", current_stage)
+		print(crop_array)
 		print(" ")
 		
-		
 		#item_data.current_stage = current_stage
-		
 		
 		GameData.crop_array.append(days_watered)
 		GameData.crop_array.append(current_stage)
