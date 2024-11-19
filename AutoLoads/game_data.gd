@@ -8,7 +8,8 @@ var crop_array: Array=[]:
 		return crop_array
 
 
-var all_crops_array: Array = []
 
+var item_data_array: Array = []
 
 #var crop_dict: Dictionary = {}
+#var all_crops_array: Array = []

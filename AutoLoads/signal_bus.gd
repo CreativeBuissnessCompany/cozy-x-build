@@ -23,3 +23,4 @@ signal sfx(audio_file)
 signal ui_open()
 # Time to delete SeedToCrop Scene in farm.gd - TML...
 signal delete_crop()
+signal crop_ready()

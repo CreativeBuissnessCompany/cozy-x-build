@@ -50,3 +50,20 @@ func animation_resize_check() -> String:
 	
 	
 	return animation_name
+
+	
+func pack_stages_array() -> Array:
+	
+	var stages_array: Array = [
+	stage_one,
+	stage_two,
+	stage_three,
+	stage_four,
+	stage_five,
+	stage_six,
+	stage_seven,
+	last_stage,
+	current_stage
+	]
+	
+	return stages_array

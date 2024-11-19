@@ -92,6 +92,8 @@ func _ready() -> void:
 	Signalbus.ui_open.connect(on_ui_open)
 	#  Connects to SeedToCrop .... To delete Crop when pickup instantiated....
 	Signalbus.delete_crop.connect(on_delete_crop)
+	# To set crop
+	Signalbus.crop_ready.connect(on_crop_ready)
 
 
 # Player Inputs at Farm ...
@@ -127,7 +129,20 @@ func _input(_event: InputEvent) -> void:
 
 # NOTE Custom Functions ...
 
-
+func on_crop_ready(child:SeedToCrop):
+	
+	var _item_data: Item
+	
+	# Check if Already Planted, if yes grab data
+	if GameData.item_data_array:
+		_item_data = GameData.item_data_array[-1]
+		print_debug(_item_data.name)
+		child.set_crop_data(_item_data) 
+		GameData.item_data_array.pop_back()
+	# First time planted
+	else:
+		child.set_crop_data(seed_selected)
+		pass
 
 
 # Used for deleting CropToSeed when it turns into a Fruit/Veggie ...
@@ -209,6 +224,8 @@ func farming(state,mouse_pos):
 				
 				var child = layer_to_place.get_child(-1)
 				#var child = layer_to_place.call_deferred("get_child", -1)
+				# TEST 
+				on_crop_ready(child) # NOTE Check for seed_selected variable ////
 				# Set Item Data to Current  
 				child.item_data = seed_selected
 				#print("Setting selected Seed Data into crop")

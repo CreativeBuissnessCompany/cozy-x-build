@@ -1,6 +1,5 @@
-# seed_to_crop.gd
-#@tool
-class_name CropToSeed extends AnimatedSprite2D
+#@tool                                      #seed_to_crop.gd 
+class_name SeedToCrop extends AnimatedSprite2D
 
 
 # Variables
@@ -11,12 +10,13 @@ class_name CropToSeed extends AnimatedSprite2D
 		item_data = value
 		# Used for when farm.gd sets data ...
 		self.sprite_frames = item_data.sprite_frame
-		#print("    item_data changed ...... .... //// /// // ")
+		#print("    item_data changed .......... ///////// ")
 
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 # Set Stages ..
+#var stages_array: Array = [] # Pack iun func dow2n there ....
 var stage_one: int
 var stage_two: int
 var stage_three: int
@@ -26,32 +26,24 @@ var stage_six: int
 var stage_seven: int
 var last_stage: int
 
-@export var current_stage: int:
-	set(value):
-		current_stage = value
-		print(" ")
-		print(" Someone Changed current_stage !!!!!!!!")
-		print(" ")
 
+
+#var crop_data_array: Array = [] # Packed in a function down there.... # NOTE UNUSED
+@export var current_stage: int # Tweak to better use for testing 
 var day_planted: int
 var days_since_planted: int = 0
 var current_day: int 
-#var current_frame: float = 0.00
-var watered: bool = false:
-	set(value):
-		watered = value
-		#print("Watered Variable Changed to ..")
-		#print("......", watered)
-
+var watered: bool = false
 var days_watered: int = 0
+
 
 # Path for Directory of "from_seed" ...
 var dir_path: String = "res://entities/items/consumables/from_seed_pickups/"
 # Directory for Fully grown versions of seeds....Fruit,Veggie....
-var dir = DirAccess.open(dir_path)
+var dir := DirAccess.open(dir_path)
 var grown: bool = false
-# Pack 'em up
-var crops_array: Array = []
+
+
 
 
 
@@ -61,123 +53,138 @@ var crops_array: Array = []
 # Script_Start
 func _ready() -> void:
 	
-	
-	# From Farm.gd...
+	# From farm.gd...
 	Signalbus.connect("watered", _on_watered)
+	# Also from farm.gd
+	Signalbus.emit_signal("crop_ready", self)
 	
 	
 	
+
+#                                  Custom Functions 
+
+
+# Happens from farm EVERYTIME SeedToCrop is ready, After and in Ready ...
+# Made of multiple Functions ....
+func set_crop_data(_item_data):
+	
+	# Set from farm no matter what, Farm grabs at GameData.item_data_array....
+	item_data = _item_data
+	stages_set(item_data) # Grabbed from item_data
 	# Setting Vars from GameData...
-	if GameData.crop_array:
-		#print(" crop_array exists .... ")
-		 #NOTE Get Crops Data from GameData
-		
-		# TEST Try a for loop .... With a Dictionary ....
-		crops_array = GameData.all_crops_array[-1]
-		
-		days_watered = GameData.crop_array[-7]
-		current_stage = GameData.crop_array[-6]
-		days_since_planted = GameData.crop_array[-5]
-		current_day = GameData.crop_array[-4]
-		day_planted = GameData.crop_array[-3]
-		watered = GameData.crop_array[-2]
-		item_data = GameData.crop_array[-1]
-		
-		# --- NOTE Changed 11/11      # Set most recent stage ( current_stage)
-		#current_stage = item_data.current_stage
-		print("After GameData Loop.... current_stage is"," ", current_stage)
-		
-		
-		# TEST Change...
-		
-		# Clear array after grabbing from it NOTE
-		var array_size: int = 7 # NOTE Should reflect GameData.crop_array size
-		while array_size != 0:
-			GameData.crop_array.pop_back()
-			array_size -= 1
-			
-	#Or Else ... Set DayPlanted
-	else:
-		# If no saved data, This must be its first day planted....
-		day_planted = time_tracker.day
-	
-	
-	
-	
-	
-	#NOTE New, Set stages
-	item_set()
-	
-	
+	check_for_crop_data()
+
 	# Do math for days planted .... # Also ...advance days_watered ...
+	check_if_watered()
+	current_day = time_tracker.day # NOTE Always after check_if_watered
+	#Grab animation NAME from Item Resource, Set....
+	set_crop_animation()
+	
+	
+
+func set_crop_animation():
+	var animation_name: String = item_data.animation_resize_check()
+	animation_player.play(animation_name)
+	animation_player.pause()
+	animation_player.seek(current_stage, true)
+	print("End of @Ready , Current Stage ", " ", current_stage)
+	print("")
+
+
+func check_if_watered():
 	if watered == true:
 		#print("Watered is true in Ready ")
 		if time_tracker.day > day_planted and time_tracker.day > current_day:
-			
+
 			# NOTE NEW 11/14 ( OLD )
 			days_watered += 1
 			print("time_tracker > day_pland and current_day ")
 			days_since_planted = time_tracker.day - day_planted
 			print("days_since_planted...", " ",days_since_planted)
-			
+
 			advance_stage(days_watered)
-			watered = false 
+			watered = false
 			print("Water changed to false in Ready/ if watered == true: loop")
-	#NOTE new, Was indented one more
-	current_day = time_tracker.day
+
+
+func check_for_crop_data():
+
+	if GameData.crop_array: 
+		print(" crop_array exists .... ")
+		#  Get Crops Data from GameData
+
+		# TEST 11/18 Should replace the array and all vars inside .... 
+		#		crop_data_array = GameData.all_crops_array[-1]
+		#		print(days_since_planted)
+
+		days_watered = GameData.crop_array[-6]
+		current_stage = GameData.crop_array[-5]
+		days_since_planted = GameData.crop_array[-4]
+		current_day = GameData.crop_array[-3]
+		day_planted = GameData.crop_array[-2]
+		watered = GameData.crop_array[-1]
+		#		item_data = GameData.crop_array[-1] # Set at Exit, seperate
+
+		print("After GameData Loop.... current_stage is"," ", current_stage)
+
+
+
+		# TEST 11/18 
+		#		GameData.all_crops_array.pop_back()
+
+
+
+		# TEST Change...
+
+		# Clear array after grabbing from it NOTE
+		var array_size: int = 6 # NOTE Should reflect GameData.crop_array size
+		while array_size != 0:
+			GameData.crop_array.pop_back()
+			array_size -= 1
+
+		#Or Else ... Set DayPlanted
+	else:
+		# If no saved data, This must be its first day planted....
+		day_planted = time_tracker.day
+
+	# NOTE Unused ?
+#func pack_crop_data_array():
+#
+#	crop_data_array = [
+#	current_stage,
+#	day_planted,
+#	days_since_planted,
+#	current_day,
+#	watered,
+#	days_watered,
+#	item_data
+#	]
+
+    # NOTE Unused ???
+func transfer_array(array_from: Array, array_to: Array)-> Array:
+	
+	for i in array_from:
+		array_to[i] = array_from[i]
 	
 	
-	 #Grab animation NAME from Item Resource....
-	var animation_name = item_data.animation_resize_check()
-	animation_player.play(animation_name)
-	animation_player.pause()
-	animation_player.seek(current_stage, true) 
-	print("End of @Ready , Current Stage ", " ", current_stage)
-	print("")
-	#animation_player.pause()
+	return array_to
 	
-	# Old Block
-	# If current day bigger than day on recorded, watered false. For when you change scene 
-	#-Without proceeding to the next day
-	#if current_day <= time_tracker.day:
-		#print("current_day Smaller or Equal to GameData.day")
-		#watered = false 
-	## Set Day after the check above 
-	#current_day = time_tracker.day
-	#advance_stage(days_watered)
-	#print("Advancing Stage")
 
-
-# ------- NOTE ------- Tool........ 
-#func _process(delta: float) -> void:
-	#if Engine.is_editor_hint():
-		#
-		##self.frame = current_stage
-		#animation_player.seek(current_stage, false) 
-		##pass
-	## Code to execute in editor.
-
-
-
-
-# NOTE Custom Functions ........
-
-#Splitting Function up...
-func item_set():
+func stages_set(_item_data):
 	
-	stage_one = item_data.stage_one
-	stage_two = item_data.stage_two
-	stage_three = item_data.stage_three
-	stage_four = item_data.stage_four
-	stage_five = item_data.stage_five
-	stage_six = item_data.stage_six
-	stage_seven = item_data.stage_seven
-	last_stage = item_data.last_stage
+	stage_one = _item_data.stage_one
+	stage_two = _item_data.stage_two
+	stage_three = _item_data.stage_three
+	stage_four = _item_data.stage_four
+	stage_five = _item_data.stage_five
+	stage_six = _item_data.stage_six
+	stage_seven = _item_data.stage_seven
+	last_stage = _item_data.last_stage
 
 
 func _on_watered(mos_pos):
 	
-	var parent = get_parent()
+	var parent: Node   = get_parent()
 	var tile_pos_local = Utility.convert_mos_local(parent,global_position )
 	
 	if mos_pos == tile_pos_local:
@@ -231,24 +238,23 @@ func advance_stage(_days_since_planted):
 		last_stage_process()
 	
 
-#NOTE added 11/13 ...
 func last_stage_process():
 	print("last_stage_process called ")
 	grown = true
 	# Delete word "Seed" from item name....Space before the word "seed" aswell ...
-	var item_name = item_data.name.replacen(" seed","")
+	var item_name: String = item_data.name.replacen(" seed","")
 	dir.list_dir_begin()
-	var file_name = dir.get_next()
+	var file_name: String = dir.get_next()
 	while file_name != "":
 		if file_name.containsn(item_name):
 			# Combine Directory Path with File Path for full path...
-			var full_path = dir_path + file_name
+			var full_path: String = dir_path + file_name
 			# Load, Instantiate
 			var crop_scene: PackedScene = load(full_path)
-			var instanced_scene = crop_scene.instantiate()
+			var instanced_scene: Node   = crop_scene.instantiate()
 			# Position
 			instanced_scene.global_position = self.global_position
-			var pickups_node = get_parent().owner.find_child("PickUps")
+			var pickups_node: Node = get_parent().owner.find_child("PickUps")
 			pickups_node.add_child(instanced_scene)
 			# NOTE Changed on 10/13... Unindented by one
 			# Set grown to true so we dont send data to GameData
@@ -258,34 +264,23 @@ func last_stage_process():
 		#------ END IF STATEMENT ------
 		# Loop through untill you cant ...
 		file_name = dir.get_next()
-	#------ END WHILE STATEMENT ------
+	
 
 
+# Exit Tree //////////////////
 func _exit_tree() -> void:
 	# Send Data if Grown not true ...
 	if not grown:
 		
-		# TEST Try a for loop ....
-		 # Pack the array
-		var crop_array: Array = [
-			days_watered,
-			current_stage,
-			days_since_planted,
-			current_day,
-			day_planted,
-			watered,
-			item_data
-		]
-		
-		GameData.all_crops_array.append(crop_array)
+#		GameData.all_crops_array.append(crop_data_array)
 		
 		
 		# Set current Stage 
 		print_debug("EXIT TREE Current Stage is ... ", " ", current_stage)
-		print(crop_array)
-		print(" ")
+#		print(crop_data_array)
+#		print(" ")
 		
-		#item_data.current_stage = current_stage
+#		item_data.current_stage = current_stage
 		
 		GameData.crop_array.append(days_watered)
 		GameData.crop_array.append(current_stage)
@@ -293,7 +288,9 @@ func _exit_tree() -> void:
 		GameData.crop_array.append(current_day)
 		GameData.crop_array.append(day_planted)
 		GameData.crop_array.append(watered)
-		GameData.crop_array.append(item_data)
+		
+		# Farm.gd will be garbbing this later ...
+		GameData.item_data_array.append(item_data)
 		
 		#print_debug("Exiting Tree")
 		#print("Appending GameData ....")
@@ -301,3 +298,13 @@ func _exit_tree() -> void:
 	else: # Maybe check for last stage 
 		print(" No GameData Update  ")
 		return
+
+
+# ------- WARNING ------- Tool........ 
+#func _process(delta: float) -> void:
+#if Engine.is_editor_hint():
+#
+##self.frame = current_stage
+#animation_player.seek(current_stage, false) 
+##pass
+## Code to execute in editor.
