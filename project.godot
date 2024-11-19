@@ -19,9 +19,9 @@ config/icon="res://entities/player/art/raincoat-boy-player-version.png"
 
 [autoload]
 
-GameData="*res://autoloads/game_data.gd"
 Signalbus="*res://autoloads/signal_bus.gd"
-scene_manager="*res://autoloads/scene_manager.gd"
+CropData="*res://autoloads/crop_data.gd"
+SceneManager="*res://autoloads/scene_manager.gd"
 Utility="*res://globals/utility.gd"
 time_tracker="*res://autoloads/time_tracker.gd"
 AudioData="*res://autoloads/audio_data.gd"

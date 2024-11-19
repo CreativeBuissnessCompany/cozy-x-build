@@ -56,6 +56,7 @@ func _ready() -> void:
 	# From farm.gd...
 	Signalbus.connect("watered", _on_watered)
 	# Also from farm.gd
+	print_debug("crop_ready Signal Emitted....")
 	Signalbus.emit_signal("crop_ready", self)
 	
 	
@@ -67,11 +68,11 @@ func _ready() -> void:
 # Happens from farm EVERYTIME SeedToCrop is ready, After and in Ready ...
 # Made of multiple Functions ....
 func set_crop_data(_item_data):
-	
-	# Set from farm no matter what, Farm grabs at GameData.item_data_array....
+	print_debug(" set_crop_data in seed_to_crop")
+	# Set from farm no matter what, Farm grabs at CropData.item_data_array....
 	item_data = _item_data
 	stages_set(item_data) # Grabbed from item_data
-	# Setting Vars from GameData...
+	# Setting Vars from CropData...
 	check_for_crop_data()
 
 	# Do math for days planted .... # Also ...advance days_watered ...
@@ -109,37 +110,37 @@ func check_if_watered():
 
 func check_for_crop_data():
 
-	if GameData.crop_array: 
+	if CropData.crop_array: 
 		print(" crop_array exists .... ")
-		#  Get Crops Data from GameData
+		#  Get Crops Data from CropData
 
 		# TEST 11/18 Should replace the array and all vars inside .... 
-		#		crop_data_array = GameData.all_crops_array[-1]
+		#		crop_data_array = CropData.all_crops_array[-1]
 		#		print(days_since_planted)
 
-		days_watered = GameData.crop_array[-6]
-		current_stage = GameData.crop_array[-5]
-		days_since_planted = GameData.crop_array[-4]
-		current_day = GameData.crop_array[-3]
-		day_planted = GameData.crop_array[-2]
-		watered = GameData.crop_array[-1]
-		#		item_data = GameData.crop_array[-1] # Set at Exit, seperate
+		days_watered = CropData.crop_array[-6]
+		current_stage = CropData.crop_array[-5]
+		days_since_planted = CropData.crop_array[-4]
+		current_day = CropData.crop_array[-3]
+		day_planted = CropData.crop_array[-2]
+		watered = CropData.crop_array[-1]
+		#		item_data = CropData.crop_array[-1] # Set at Exit, seperate
 
-		print("After GameData Loop.... current_stage is"," ", current_stage)
+		print("After CropData Loop.... current_stage is"," ", current_stage)
 
 
 
 		# TEST 11/18 
-		#		GameData.all_crops_array.pop_back()
+		#		CropData.all_crops_array.pop_back()
 
 
 
 		# TEST Change...
 
 		# Clear array after grabbing from it NOTE
-		var array_size: int = 6 # NOTE Should reflect GameData.crop_array size
+		var array_size: int = 6 # NOTE Should reflect CropData.crop_array size
 		while array_size != 0:
-			GameData.crop_array.pop_back()
+			CropData.crop_array.pop_back()
 			array_size -= 1
 
 		#Or Else ... Set DayPlanted
@@ -160,7 +161,7 @@ func check_for_crop_data():
 #	item_data
 #	]
 
-    # NOTE Unused ???
+		# NOTE Unused ???
 func transfer_array(array_from: Array, array_to: Array)-> Array:
 	
 	for i in array_from:
@@ -257,7 +258,7 @@ func last_stage_process():
 			var pickups_node: Node = get_parent().owner.find_child("PickUps")
 			pickups_node.add_child(instanced_scene)
 			# NOTE Changed on 10/13... Unindented by one
-			# Set grown to true so we dont send data to GameData
+			# Set grown to true so we dont send data to CropData
 			Signalbus.delete_crop.emit(self.global_position)
 			get_parent().remove_child(self)
 			self.queue_free()
@@ -272,7 +273,7 @@ func _exit_tree() -> void:
 	# Send Data if Grown not true ...
 	if not grown:
 		
-#		GameData.all_crops_array.append(crop_data_array)
+#		CropData.all_crops_array.append(crop_data_array)
 		
 		
 		# Set current Stage 
@@ -282,21 +283,21 @@ func _exit_tree() -> void:
 		
 #		item_data.current_stage = current_stage
 		
-		GameData.crop_array.append(days_watered)
-		GameData.crop_array.append(current_stage)
-		GameData.crop_array.append(days_since_planted)
-		GameData.crop_array.append(current_day)
-		GameData.crop_array.append(day_planted)
-		GameData.crop_array.append(watered)
+		CropData.crop_array.append(days_watered)
+		CropData.crop_array.append(current_stage)
+		CropData.crop_array.append(days_since_planted)
+		CropData.crop_array.append(current_day)
+		CropData.crop_array.append(day_planted)
+		CropData.crop_array.append(watered)
 		
 		# Farm.gd will be garbbing this later ...
-		GameData.item_data_array.append(item_data)
+		CropData.item_data_array.append(item_data)
 		
 		#print_debug("Exiting Tree")
-		#print("Appending GameData ....")
+		#print("Appending CropData ....")
 		
 	else: # Maybe check for last stage 
-		print(" No GameData Update  ")
+		print(" No CropData Update  ")
 		return
 
 

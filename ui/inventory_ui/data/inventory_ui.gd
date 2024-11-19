@@ -22,7 +22,7 @@ var use_drop_displayed: bool = false
 var ui_open: bool = false:
 	set(value):
 		ui_open = value
-		Signalbus.ui_open.emit()
+		Signalbus.ui_open.emit() # Connected to Farm for input ////
 		#print_debug(" UI CHANGE emit")
 		#print(" Emitting From Inventory ")
 
@@ -35,10 +35,6 @@ var ui_open: bool = false:
 
 
 # Script_Start
-func _ready() -> void:
-	#print(" Ready in inventory_ui")
-	#print(inventory_for_objects)
-	pass
 
 
 func _unhandled_key_input(_event: InputEvent) -> void:
@@ -53,11 +49,6 @@ func _unhandled_key_input(_event: InputEvent) -> void:
 	
 
 
-
-
-
-
-
 func display_use_drop(pos) -> void:
 	use_drop_instance = use_drop_scene.instantiate()
 	use_drop_instance.global_position = pos
@@ -66,24 +57,15 @@ func display_use_drop(pos) -> void:
 	pass
 
 
-
-
-
-
 # What node is using this? Player.gd ... 
 func open(inventory:Inventory):
-	# Emit Signal to Stop Input in Farm.gd
-	self.ui_open = true
-	# Show/Hide UI
-	self.visible = !self.visible
+	self.ui_open = true # Emitting in setget, Signal to Stop Input in Farm.gd
+	self.visible = !self.visible # Show/Hide UI # NOTE CHANGED TO SHOW from !self.visible
 	
 	# Used for things that already have inventory like...
-	#Vending Machine, Chest, Etc ...
+	# Vending Machine, Chest, Etc ...
 	if inventory_for_objects:
 		inventory = inventory_for_objects
-		#print(" Found Inventory")
-		#printt(inventory, inventory_for_objects)
-	
 	
 	for child in grid_container.get_children():
 		child.queue_free()
@@ -96,13 +78,12 @@ func open(inventory:Inventory):
 		slot.on_item_button_pressed.connect(_on_item_button_pressed)
 
 
-
 func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_position):
 	#print_debug( "Received " + item_resource.description )
 	item_desc_label.text = item_resource.description
 	qty.text = "Qty: " + str(item_resource.qty)
 	# Stop Other Slot Animations
-	var slot_array = grid_container.get_children()
+	var slot_array: Array[Node] = grid_container.get_children()
 	for slot in slot_array:
 		slot.animated_sprite_2d.animation = "Default"
 	
@@ -116,9 +97,7 @@ func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_posit
 		use_drop_instance.global_position = slot_position
 	
 
-
-
 func _on_close_button_pressed() -> void:
 	# Let everyone know ui is Closed.....
 	self.ui_open = false
-	hide()
+	self.visible = !self.visible

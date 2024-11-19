@@ -26,7 +26,7 @@ var inventory:Inventory = Inventory.new()
 func _ready() -> void:
 	# Send self to SceneManager
 	#print("Player: Ready")
-	scene_manager.player = self
+	SceneManager.player = self
 
 
 func _physics_process(_delta: float) -> void:

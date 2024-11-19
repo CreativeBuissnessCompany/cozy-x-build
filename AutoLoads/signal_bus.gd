@@ -19,7 +19,7 @@ signal item_clicked
 signal watered
 # Emit SFX
 signal sfx(audio_file)
-# When UI Opens ...
+# When UI Opens ... go where? ///
 signal ui_open()
 # Time to delete SeedToCrop Scene in farm.gd - TML...
 signal delete_crop()

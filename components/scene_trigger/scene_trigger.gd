@@ -26,5 +26,5 @@ func _on_body_entered(body: Node2D) -> void:
 		var loaded_scene = load(connected_scene)
 		# Get Owner Node ( Location i.e. "Farm" )
 		current_scene = get_owner()
-		scene_manager.manual_scene_change(current_scene, loaded_scene)
+		SceneManager.manual_scene_change(current_scene, loaded_scene)
 		Signalbus.sfx.emit(audio_file)

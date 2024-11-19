@@ -1,4 +1,5 @@
-class_name SceneManager extends Node
+# SceneManager
+extends Node
 
 var player: Player
 var previous_scene: Node2D

@@ -18,7 +18,7 @@ var entrance_markers
 # Script_Start
 func _ready() -> void:
 	# Give Player Node Referece to Scene_Manager
-	scene_manager.player = player
+	SceneManager.player = player
 	
 	# Connect location_loaded signal
 	Signalbus.location_loaded.connect(on_location_loaded)

@@ -2,73 +2,62 @@
 @icon("res://themes/editor_icons/crops_icon.png")
 extends BaseScene
 
-# Variables
-# TileMapLayers
-@onready var tml_1: TileMapLayer = %"00BrightGrass"
-@onready var tml_2:= %"02DirtPaths"
-@onready var tml_3:= %"03TilledAndWatered"
-@onready var tml_4:= %"04Crops"
-# NOTE NEW 
-@onready var tilled_tml: TileMapLayer = %Tilled
 
 
-# 1st Terrain Set
-var terrain_set:int = 0 
-# Source ID
-var source_id
-var dirt_tiles_source_id: int = 5 
-var scene_source_id = 3
+#                                 VARIABLES 
 
-# Terrains within 1st Set ( Index is actually 0, Computers dumb )
-var tilled_terrain_02: int = 10 # From 5
-var watered_terrain_02: int = 11 # From 6
+#			TileMapLayers
 
-# Tile Containers ...
+@onready var dirt_paths_tml:TileMapLayer= %DirtPaths
+@onready var tilled_tml:TileMapLayer = %Tilled
+@onready var watered_tml:TileMapLayer= %Watered
+@onready var crops_tml:TileMapLayer= %Crops
+
+#			Seed Info
+
+var terrain_set:int = 0 # 1st Terrain Set
+# Source ID's
+var source_id: int
+var dirt_tiles_source_id:= 5 
+var scene_source_id := 3
+# Terrains, 1st Set ( Index is actually 0, Computers dumb )
+var tilled_terrain: int = 10 # From 5
+var watered_terrain: int = 11 # From 6
+# 			Tile Containers ...
 var dirt_tiles: Array = []
 var wet_tiles: Array = []
-var dirt_tiles_to_replace: Array = []
-
-var dirt_tile_data: Dictionary = {
-	"tile location" : 0,
-	"atlas coords" : Vector2(0,0)
-}
-
+#var dirt_tiles_to_replace: Array = []      11.19 coment out
 # Scenetile ID for SEEDS
 var scene_tile_id := 1
 
-# Farming States ...
+#			Farming Stuff ...
+
 enum FARMING_MODES {WATERING, TILL, PLANT_SEED}
-# Current State of Farming mode 
 var farming_mode_state := FARMING_MODES.TILL
-# Holds the string name for the custom data we want...
 var can_till_custom_data: String = "can_till"
 var can_water_custom_data: String = "can_water"
 var can_plant: String = "can_plant"
 # Empty vars until used by farming()
 var layer_to_look: TileMapLayer
 var layer_to_place: TileMapLayer
-
-var tiles: Array:
-	set(value):
-		tiles = value
-		#print(" Setting Tiles ")
-	get():
-		return tiles
-		#print(" Getting Tiles ")
-
+var tiles: Array
 var terrain: int
 var custom_data: String
-# Day Change
+
+#			Day Change
+
 var current_day: int = 1
-# Audio
+
+#			Audio
 var sfx_file: AudioStreamMP3
 @export var sfx_till: AudioStreamMP3 
 @export var sfx_watering: AudioStreamMP3 
 @export var sfx_seed: AudioStreamMP3
-#Stop User input if UI is open ....
-var ui_open: bool = false
-# When selecting seed from inventory ....
-var seed_selected: Item
+
+#			Misc...
+
+var ui_open: bool = false # Signal from inventory, to Stop User input if UI is open ....
+var seed_selected: Item # Signal received from inventory ....
 
 
 
@@ -77,12 +66,11 @@ var seed_selected: Item
 
 
 
-#Script_Start 
+#								Script_Start 
 func _enter_tree() -> void:
 	super()
 	check_day()
 	
-
 
 func _ready() -> void:
 	super()
@@ -93,10 +81,10 @@ func _ready() -> void:
 	#  Connects to SeedToCrop .... To delete Crop when pickup instantiated....
 	Signalbus.delete_crop.connect(on_delete_crop)
 	# To set crop
+	print_debug("Connecting crop_ready from farm")
 	Signalbus.crop_ready.connect(on_crop_ready)
 
 
-# Player Inputs at Farm ...
 func _input(_event: InputEvent) -> void:
 	
 	# E key Till
@@ -114,7 +102,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("click"):
 		# Whats the pos of Mouse? Vector 2
 		var mouse_pos: Vector2 = get_global_mouse_position()
-		var state = farming_mode_state
+		var state: int         = farming_mode_state
 		# Farming Func ...
 		# TEST Check if mouse is on tml 3 or 4 
 		
@@ -127,38 +115,32 @@ func _input(_event: InputEvent) -> void:
 
 
 
-# NOTE Custom Functions ...
+#						NOTE Custom Functions ... NOTE 
 
 func on_crop_ready(child:SeedToCrop):
-	
-	var _item_data: Item
+#	print_debug("Doing on_crop_ready in Farm.gd")
+	var item_data: Item
 	
 	# Check if Already Planted, if yes grab data
-	if GameData.item_data_array:
-		_item_data = GameData.item_data_array[-1]
-		print_debug(_item_data.name)
-		child.set_crop_data(_item_data) 
-		GameData.item_data_array.pop_back()
-	# First time planted
-	else:
+	if CropData.item_data_array:
+		item_data = CropData.item_data_array[-1]
+#		print_debug("Checking if CropData.item_data_array exists ", "Crop is a", item_data.name)
+		child.set_crop_data(item_data) 
+		CropData.item_data_array.pop_back()
+	else: # First time planted
 		child.set_crop_data(seed_selected)
 		pass
 
 
-# Used for deleting CropToSeed when it turns into a Fruit/Veggie ...
+
 func on_delete_crop(coords):
-	var local_coords = tml_4.to_local(coords)
-	var cell = tml_4.local_to_map(local_coords)
-	tml_4.erase_cell(cell)
-	#print(" Erased Cell At ....", cell )
+	var local_coords: Vector2 = crops_tml.to_local(coords)
+	var cell: Vector2i = crops_tml.local_to_map(local_coords)
+	crops_tml.erase_cell(cell)
 
-
+# For SFX and Farming, BLOCKS INPUT Etc..
 func on_ui_open():
-	#print(" UI Change according to farm.gd ")
 	ui_open = !ui_open
-	#print("UI_OPEN = ", ui_open)
-	#print(" UI Status")
-	#print(ui_open)
 
 
 func on_seed_selected(item_resource: Item):
@@ -167,141 +149,103 @@ func on_seed_selected(item_resource: Item):
 		farming_mode_state = FARMING_MODES.PLANT_SEED
 		seed_selected = item_resource
 		# NOTE  Close UI
-		#var inventory_ui: InventoryUI = get_parent().find_child("InventoryUI")
-		#inventory_ui._on_close_button_pressed()
+		var inventory_ui: InventoryUI = get_parent().find_child("InventoryUI")
+		inventory_ui._on_close_button_pressed()
 		
-		
-		#print("Clicked Seed to Plant")
-
 
 func farming(state,mouse_pos):
 	
 	match state:
 		FARMING_MODES.TILL:
-			layer_to_look = tml_2 
-			layer_to_place = tilled_tml # NOTE used to be tml_3
-			tiles = dirt_tiles # Empty before this 
-			terrain = tilled_terrain_02
+			layer_to_look = dirt_paths_tml 
+			layer_to_place = tilled_tml 
+#			tiles = dirt_tiles # Empty before this / 11.19 - COMMENT OUT 
+			                   # Works I think cuz new day clears dirt tiles
+			terrain = tilled_terrain
 			custom_data = can_till_custom_data
 			sfx_file = sfx_till
 	
 		FARMING_MODES.WATERING:
 			layer_to_look = tilled_tml
-			layer_to_place = tml_3
-			tiles = wet_tiles # Empty before this 
-			terrain = watered_terrain_02
+			layer_to_place = watered_tml
+			tiles = wet_tiles # Empty before this , Needed or else all previously TILL tiles\
+							  # Will get watered at once ....
+			terrain = watered_terrain
 			custom_data = can_water_custom_data
 			sfx_file = sfx_watering
 	
 		FARMING_MODES.PLANT_SEED:
-			layer_to_look = tilled_tml # NOTE Changed from tml_3
-			layer_to_place = tml_4 
+			layer_to_look = tilled_tml 
+			layer_to_place = crops_tml 
 			custom_data = can_plant
 			source_id = scene_source_id # Maybe change for scene tile , from 1 to 3
 			sfx_file = sfx_seed
 			
-			var mouse_pos_for_data = Utility.convert_mos_local(layer_to_look,mouse_pos)
-			var mouse_pos_for_seed = tml_4.local_to_map(get_local_mouse_position())
+			var mouse_pos_for_data           = Utility.convert_mos_local(layer_to_look,mouse_pos) # All same ?
+			var mouse_pos_for_seed: Vector2i = crops_tml.local_to_map(get_local_mouse_position())
 			# Seed SceneTile
 			if retrieving_custom_data(layer_to_look, mouse_pos_for_data, custom_data):
-				# # Set Scenetile in the ground first.... Add sourceid and tile id, seed_cord to (0,0)
+				# Set Scenetile in the ground first.... Add sourceid and tile id, seed_cord to (0,0)
 				layer_to_place.set_cell(mouse_pos_for_seed,source_id, Vector2i(0,0),scene_tile_id)
 				# Wait for it to get added to the tree ....
 				await get_tree().process_frame
 				await get_tree().process_frame
 				
-				
-				# Grab SceneTile as Node from Parent ...
-				#await var child = layer_to_place.get_child(-1)
-				#await layer_to_place.child_entered_tree
-				# NOTE NEW TEST
-				if layer_to_place.get_child_count() != 0:
-					#print("Not Empty")
-					pass
-				else:
-					print("Its Empty")
-					
-				
-				var child = layer_to_place.get_child(-1)
+				var child: Node = layer_to_place.get_child(-1)
 				#var child = layer_to_place.call_deferred("get_child", -1)
-				# TEST 
 				on_crop_ready(child) # NOTE Check for seed_selected variable ////
 				# Set Item Data to Current  
 				child.item_data = seed_selected
-				#print("Setting selected Seed Data into crop")
-				#print(seed_selected.name)
 				
 				# NOTE SEED SFX
 				if ui_open == false:
 					Signalbus.sfx.emit(sfx_file)
 	
+	
+	# NOTE                       DONE if not PLANT_SEED
 	# Farming Func for NOT seeds
 	if farming_mode_state != FARMING_MODES.PLANT_SEED:
 		# After STATE match, Do work ...
 		var mouse_pos_for_farming = Utility.convert_mos_local(layer_to_look,mouse_pos)
-		# Whats custom data right now?
+		# WATERING & TILL ARE LOOKING ON SAME LAYER ....
 		if retrieving_custom_data(layer_to_look, mouse_pos_for_farming, custom_data):
-			tiles.append(mouse_pos_for_farming) # Store for  ...
+			tiles.append(mouse_pos_for_farming) # Store for Tilling/Watering Removing at end of day? ...
 			
 			if farming_mode_state == FARMING_MODES.WATERING:
-				# Store dirt tile pos first
-				dirt_tiles.append(mouse_pos_for_farming)
-				#dirt_tile_data["tile location"] = mouse_pos_for_farming
-				# NOTE Used to be tml_3
-				#var dirt_coords = tilled_tml.get_cell_atlas_coords(mouse_pos_for_farming) 
-				#dirt_tile_data["atlas coords"] = dirt_coords
-				#dirt_tiles_to_replace.append(dirt_tile_data.duplicate())
+				dirt_tiles.append(mouse_pos_for_farming)   # Store dirt tile pos first
 				Signalbus.emit_signal("watered", mouse_pos_for_farming)
 			
-			# After storing dirt tiles, Place dirt or watering tile
+			# Place Till or Watering tile ..... 
 			layer_to_place.set_cells_terrain_connect(tiles,terrain_set, terrain) 
-			#print("tiles")
-			#print(tiles)
 		
-		
-		# Beware, May need to tab shift back a bit.... if farmingmode watering may be interfereing..
-		# If that worked, Pop Tile Array to try to fiz issues with placement 
-		
-		## NOTE Change on 11/14
-			#if wet_tiles.size() or dirt_tiles.size() >= 3:
-				#wet_tiles.pop_back()
-				#dirt_tiles.pop_back()
-	
-	if ui_open == false:
+	if ui_open == false:     # NOTE Do When UI Closed....
 		Signalbus.sfx.emit(sfx_file)
-		# NOTE Do When UI Closed....
+		
+
+	
 
 
 func check_day():
 	
 	if time_tracker.day > current_day:
 		if dirt_tiles.size() != 0:
-			# NOTE New TEST - - - - - - - - Comment out above for below to work 
-			 # Clear wet tiles ...
-			tml_3.clear()
-			tilled_tml.set_cells_terrain_connect(dirt_tiles, terrain_set, tilled_terrain_02)
+			# Clear wet tiles ...
+			watered_tml.clear()
+			tilled_tml.set_cells_terrain_connect(dirt_tiles, terrain_set, tilled_terrain)
 			tiles.clear()
 			dirt_tiles.clear()
 			#print(" Clearing tiles Array")
-			
-			# NOTE Delete Below
-			#for tile in dirt_tiles_to_replace:
-				## Reset dirt_tiles
-				#tml_3.set_cell(tile["tile location"], dirt_tiles_source_id, tile["atlas coords"]) # Changed from farmhouse - 0
-				#
 				
 		# Set day Eitherway... As long as Timetracker.day is bigger than current day in farm 
 		current_day = time_tracker.day
-		# Clear Dirt Tiles Array
-		#dirt_tiles_to_replace.clear()
-		# Clear Dict
-		#dirt_tile_data.clear()
+	
 	
 	
 
 
 
-func retrieving_custom_data(tml_layer: TileMapLayer,tml_mouse_pos: Vector2, custom_tilemap_data_name: String):
+func retrieving_custom_data(tml_layer: TileMapLayer,\
+tml_mouse_pos: Vector2, custom_tilemap_data_name: String) -> Variant:
 	
 	# Get tile map data at the converted mouse position...
 	var tile_data: TileData = tml_layer.get_cell_tile_data(tml_mouse_pos)
