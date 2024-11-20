@@ -159,8 +159,7 @@ func farming(state,mouse_pos):
 		FARMING_MODES.TILL:
 			layer_to_look = dirt_paths_tml 
 			layer_to_place = tilled_tml 
-#			tiles = dirt_tiles # Empty before this / 11.19 - COMMENT OUT 
-			                   # Works I think cuz new day clears dirt tiles
+			tiles = dirt_tiles # Empty before this / NEED THIS
 			terrain = tilled_terrain
 			custom_data = can_till_custom_data
 			sfx_file = sfx_till

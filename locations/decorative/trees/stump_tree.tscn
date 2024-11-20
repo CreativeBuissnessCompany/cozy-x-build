@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://br55qkrspasuo"]
+
+[ext_resource type="Texture2D" uid="uid://3lrsvb60me3v" path="res://locations/decorative/trees/tree stump.png" id="1_k4r6l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wscqb"]
+size = Vector2(20, 7)
+
+[node name="StumpTree" type="Sprite2D"]
+position = Vector2(-397, -57)
+texture = ExtResource("1_k4r6l")
+offset = Vector2(0, -15)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, -19.5)
+shape = SubResource("RectangleShape2D_wscqb")

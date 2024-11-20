@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw0vftytpc7ff"]
+
+[ext_resource type="Texture2D" uid="uid://dnrhkjrlnyasr" path="res://locations/decorative/fence/farmfence.png" id="1_cfpdm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foiqo"]
+size = Vector2(1280, 6.01598)
+
+[node name="Fence" type="Sprite2D"]
+position = Vector2(-2, -245)
+scale = Vector2(1, 1.00401)
+texture = ExtResource("1_cfpdm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -7.94807)
+shape = SubResource("RectangleShape2D_foiqo")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccqyld0e85gx1"]
+
+[ext_resource type="Texture2D" uid="uid://cgu0spbtj5jon" path="res://locations/decorative/rocks/big rock.png" id="1_veeqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3svgr"]
+size = Vector2(14, 4)
+
+[node name="BigRock" type="Sprite2D"]
+texture = ExtResource("1_veeqb")
+offset = Vector2(0, -23.54)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, -18)
+shape = SubResource("RectangleShape2D_3svgr")

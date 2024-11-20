@@ -86,6 +86,7 @@ _data = {
 
 [node name="SeedToCrop" type="AnimatedSprite2D"]
 y_sort_enabled = true
+position = Vector2(0, 2.6)
 sprite_frames = SubResource("SpriteFrames_jfyjn")
 offset = Vector2(0.19, -5.81)
 script = ExtResource("1_mb8ct")

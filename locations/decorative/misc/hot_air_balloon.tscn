@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b48g84ou0m3kd"]
+
+[ext_resource type="Texture2D" uid="uid://cvtbyv5n4fs1a" path="res://locations/decorative/misc/hotairballoon.png" id="1_hafgi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu5ne"]
+size = Vector2(32, 22)
+
+[node name="HotAirBalloon" type="Sprite2D"]
+y_sort_enabled = true
+position = Vector2(79, -104)
+texture = ExtResource("1_hafgi")
+offset = Vector2(5, -100)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -37)
+shape = SubResource("RectangleShape2D_pu5ne")

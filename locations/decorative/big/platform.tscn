@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnvfq46b4cias"]
+
+[ext_resource type="Texture2D" uid="uid://7uxqtx11ys0g" path="res://locations/decorative/big/plat.png" id="1_wpfcd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65av8"]
+size = Vector2(424, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ck7rc"]
+size = Vector2(121, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7cah"]
+size = Vector2(245.5, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iadja"]
+size = Vector2(158, 2)
+
+[node name="Platform" type="Sprite2D"]
+y_sort_enabled = true
+position = Vector2(215, -153)
+texture = ExtResource("1_wpfcd")
+offset = Vector2(0, 92.13)
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_65av8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-155, 162)
+shape = SubResource("RectangleShape2D_ck7rc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(88, 161.5)
+shape = SubResource("RectangleShape2D_e7cah")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(212.75, 64)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_iadja")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-212, 62)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_iadja")

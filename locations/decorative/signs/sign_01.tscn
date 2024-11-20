@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxfomi38j5ev7"]
+
+[ext_resource type="Texture2D" uid="uid://b73hbky2q3tx0" path="res://locations/decorative/signs/sign.png" id="1_dr4ft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mte3y"]
+size = Vector2(23, 7)
+
+[node name="Sign01" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_dr4ft")
+offset = Vector2(0, -16.23)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1.5, -13.5)
+shape = SubResource("RectangleShape2D_mte3y")

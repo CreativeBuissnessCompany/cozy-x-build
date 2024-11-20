@@ -38,7 +38,7 @@ sfx_step_interval = 0.07
 y_sort_enabled = true
 position = Vector2(0, 8)
 texture = ExtResource("2_4ueq5")
-offset = Vector2(0.46, -28.63)
+offset = Vector2(0.46, -22.45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -13)

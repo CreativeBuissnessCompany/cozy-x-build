@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bidglkk80jtdt"]
+
+[ext_resource type="Texture2D" uid="uid://c46ftsbfxn4ne" path="res://locations/decorative/rocks/smallrock.png" id="1_3vt30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oai7p"]
+size = Vector2(14, 4)
+
+[node name="SmallRock" type="Sprite2D"]
+y_sort_enabled = true
+position = Vector2(32, -29)
+texture = ExtResource("1_3vt30")
+offset = Vector2(0, -16.61)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -16.24)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(2, 9)
+shape = SubResource("RectangleShape2D_oai7p")
