@@ -697,7 +697,7 @@ metadata/_edit_lock_ = true
 
 [node name="SceneTrigger" parent="." instance=ExtResource("3_d5uw2")]
 position = Vector2(340.85, -93.1881)
-connected_scene = "res://Locations/Farm/Inside_Farmhouse/inside_farm_house.tscn"
+connected_scene = "res://locations/farm/inside_farmhouse/inside_farm_house.tscn"
 audio_file = ExtResource("5_pv6jj")
 metadata/_edit_lock_ = true
 
@@ -714,7 +714,7 @@ script = ExtResource("28_vx1nh")
 metadata/_edit_lock_ = true
 
 [node name="any" type="Marker2D" parent="EntranceMarkers"]
-position = Vector2(75.3499, 308.375)
+position = Vector2(140.878, 31.4701)
 
 [node name="ObjectsWithUI" type="Node2D" parent="."]
 unique_name_in_owner = true

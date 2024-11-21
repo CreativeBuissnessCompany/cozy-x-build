@@ -1,19 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cksttmx08lh3a"]
+[gd_scene load_steps=5 format=3 uid="uid://cksttmx08lh3a"]
 
-[ext_resource type="Texture2D" uid="uid://bhsr5t3imheng" path="res://locations/farm/Art/farm-interior-test.png" id="1_n26xy"]
+[ext_resource type="Script" path="res://components/asset_flipper/asset_flipper.gd" id="2_cy7da"]
+[ext_resource type="Texture2D" uid="uid://dntdh8dtedl2h" path="res://entities/items/interactive_furniture/bookshelf/bookshelf_01.png" id="3_2tqqc"]
+[ext_resource type="Texture2D" uid="uid://bog1l0hc1e4pw" path="res://entities/items/interactive_furniture/bookshelf/bookshelf_02.png" id="4_b2g7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g712n"]
 size = Vector2(40, 38)
 
-[node name="Bookshelf" type="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("3_2tqqc")
+offset = Vector2(0, -30.78)
+region_rect = Rect2(384, 64, 48, 64)
+script = ExtResource("2_cy7da")
+switch_asset_to = 1
+assets_options = Array[Texture2D]([ExtResource("3_2tqqc"), ExtResource("4_b2g7q")])
+
+[node name="Bookshelf" type="StaticBody2D" parent="."]
 collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_n26xy")
-offset = Vector2(0, -30.78)
-region_enabled = true
-region_rect = Rect2(384, 64, 48, 64)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf"]
 position = Vector2(0, -19.72)
 shape = SubResource("RectangleShape2D_g712n")

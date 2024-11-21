@@ -2,8 +2,8 @@
 extends Node
 
 var player: Player
-var previous_scene: Node2D
-var next_scene: Node2D
+var previous_scene: Node2D = null
+var next_scene: Node2D = null
 
 
 func _ready() -> void:

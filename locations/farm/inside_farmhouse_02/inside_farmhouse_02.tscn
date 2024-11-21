@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=3 uid="uid://kx8kpbyk74fe"]
+
+[ext_resource type="Texture2D" uid="uid://b3ari0iyb4x61" path="res://locations/farm/inside_farmhouse_02/farm-interior-floor.png" id="1_e2xlq"]
+[ext_resource type="PackedScene" uid="uid://c6nqqggvbaemk" path="res://entities/items/interactive_furniture/beds/Bed.tscn" id="2_f83x3"]
+[ext_resource type="PackedScene" uid="uid://bq1hrrbom2hl4" path="res://entities/items/interactive_furniture/nightstands/nightstand.tscn" id="3_ompua"]
+[ext_resource type="PackedScene" uid="uid://7g4gbu5boirf" path="res://entities/items/interactive_furniture/lamps/interactable_lamp.tscn" id="4_1ulds"]
+[ext_resource type="PackedScene" uid="uid://bomm8onlnh6ui" path="res://entities/items/decorative/clock/clock.tscn" id="5_0lo8n"]
+[ext_resource type="Texture2D" uid="uid://dayhmq0k7a0py" path="res://entities/items/decorative/windows/window_01.png" id="6_p1oh7"]
+[ext_resource type="PackedScene" uid="uid://cksttmx08lh3a" path="res://entities/items/interactive_furniture/bookshelf/bookshelf.tscn" id="7_f3y6d"]
+[ext_resource type="PackedScene" uid="uid://cjpa2r3baq2pc" path="res://entities/items/interactive_furniture/tv/tv.tscn" id="9_m3cid"]
+[ext_resource type="PackedScene" uid="uid://2yly7tr2l3bp" path="res://entities/items/interactive_furniture/fridges/fridge.tscn" id="10_1r50a"]
+
+[node name="InsideFarmhouse02" type="Node2D"]
+
+[node name="TestCamera" type="Camera2D" parent="."]
+position = Vector2(-65.257, 120.397)
+
+[node name="FloorAndWalls" type="Sprite2D" parent="."]
+texture = ExtResource("1_e2xlq")
+
+[node name="Bed" parent="." instance=ExtResource("2_f83x3")]
+position = Vector2(47, -84)
+
+[node name="NightStand" parent="." instance=ExtResource("3_ompua")]
+position = Vector2(86, -139)
+
+[node name="InteractableLamp" parent="." instance=ExtResource("4_1ulds")]
+position = Vector2(92, -157)
+
+[node name="Clock" parent="." instance=ExtResource("5_0lo8n")]
+position = Vector2(140, -211)
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(40, -211)
+texture = ExtResource("6_p1oh7")
+
+[node name="Bookshelf" parent="." instance=ExtResource("7_f3y6d")]
+position = Vector2(-16, -142)
+switch_asset_to = 0
+
+[node name="Tv" parent="." instance=ExtResource("9_m3cid")]
+position = Vector2(9, 90)
+
+[node name="Fridge" parent="." instance=ExtResource("10_1r50a")]
+position = Vector2(-34.801, 99.2678)

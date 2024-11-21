@@ -33,7 +33,8 @@ script = ExtResource("8_fxu4h")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="AudioManager"]
 stream = SubResource("AudioStreamPlaylist_wtpp2")
-volume_db = -12.0
+volume_db = -15.0
+autoplay = true
 bus = &"Music"
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="AudioManager"]

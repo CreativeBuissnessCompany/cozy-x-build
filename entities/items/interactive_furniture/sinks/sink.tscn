@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfsqjuwsdkqbf"]
+
+[ext_resource type="Texture2D" uid="uid://cs5l57vk6nbt6" path="res://entities/items/interactive_furniture/sinks/sink_01.png" id="1_0c7j5"]
+[ext_resource type="Script" path="res://components/asset_flipper/asset_flipper.gd" id="2_caokl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mw8j"]
+size = Vector2(30, 20)
+
+[node name="Sink" type="Sprite2D"]
+texture = ExtResource("1_0c7j5")
+script = ExtResource("2_caokl")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_4mw8j")

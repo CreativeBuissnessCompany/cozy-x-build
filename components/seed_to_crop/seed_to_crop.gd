@@ -242,8 +242,11 @@ func advance_stage(_days_since_planted):
 func last_stage_process():
 	print("last_stage_process called ")
 	grown = true
+	# Change to lowercase
+	var lowercase_item_name = item_data.name.to_lower()
 	# Delete word "Seed" from item name....Space before the word "seed" aswell ...
-	var item_name: String = item_data.name.replacen(" seed","")
+	var item_name: String = lowercase_item_name.replacen(" seed","")
+	print_debug(item_name)
 	dir.list_dir_begin()
 	var file_name: String = dir.get_next()
 	while file_name != "":
