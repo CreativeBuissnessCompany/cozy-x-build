@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://kx8kpbyk74fe"]
+[gd_scene load_steps=13 format=3 uid="uid://kx8kpbyk74fe"]
 
 [ext_resource type="Texture2D" uid="uid://b3ari0iyb4x61" path="res://locations/farm/inside_farmhouse_02/farm-interior-floor.png" id="1_e2xlq"]
 [ext_resource type="PackedScene" uid="uid://c6nqqggvbaemk" path="res://entities/items/interactive_furniture/beds/Bed.tscn" id="2_f83x3"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cksttmx08lh3a" path="res://entities/items/interactive_furniture/bookshelf/bookshelf.tscn" id="7_f3y6d"]
 [ext_resource type="PackedScene" uid="uid://cjpa2r3baq2pc" path="res://entities/items/interactive_furniture/tv/tv.tscn" id="9_m3cid"]
 [ext_resource type="PackedScene" uid="uid://2yly7tr2l3bp" path="res://entities/items/interactive_furniture/fridges/fridge.tscn" id="10_1r50a"]
+[ext_resource type="PackedScene" uid="uid://8nij5lr4d345" path="res://entities/items/furniture_no_interaction/counters/counter_01.tscn" id="10_vgyee"]
+[ext_resource type="PackedScene" uid="uid://cfsqjuwsdkqbf" path="res://entities/items/interactive_furniture/sinks/sink.tscn" id="11_1hjl4"]
+[ext_resource type="PackedScene" uid="uid://c3ampkvnley2c" path="res://entities/items/furniture_no_interaction/counters/counter_02.tscn" id="12_0bfj5"]
 
 [node name="InsideFarmhouse02" type="Node2D"]
 
@@ -36,10 +39,18 @@ texture = ExtResource("6_p1oh7")
 
 [node name="Bookshelf" parent="." instance=ExtResource("7_f3y6d")]
 position = Vector2(-16, -142)
-switch_asset_to = 0
 
 [node name="Tv" parent="." instance=ExtResource("9_m3cid")]
 position = Vector2(9, 90)
 
 [node name="Fridge" parent="." instance=ExtResource("10_1r50a")]
 position = Vector2(-34.801, 99.2678)
+
+[node name="Counter01" parent="." instance=ExtResource("10_vgyee")]
+position = Vector2(-69, 83)
+
+[node name="Sink" parent="." instance=ExtResource("11_1hjl4")]
+position = Vector2(-102, 77)
+
+[node name="Counter02" parent="." instance=ExtResource("12_0bfj5")]
+position = Vector2(-136, 83)
