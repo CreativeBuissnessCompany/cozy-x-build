@@ -20,7 +20,7 @@ config/icon="res://entities/player/art/raincoat-boy-player-version.png"
 [autoload]
 
 Signalbus="*res://autoloads/signal_bus.gd"
-CropData="*res://autoloads/crop_data.gd"
+CropData="*res://autoloads/crop_data.tscn"
 SceneManager="*res://autoloads/scene_manager.gd"
 Utility="*res://globals/utility.gd"
 time_tracker="*res://autoloads/time_tracker.gd"
@@ -43,6 +43,10 @@ window/stretch/scale_mode="integer"
 [editor]
 
 movie_writer/movie_file="/Users/kennethfee/Documents/Cozy Game Clips/CozyX02.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/resource_databases/editor_only/plugin.cfg")
 
 [file_customization]
 

@@ -697,7 +697,7 @@ metadata/_edit_lock_ = true
 
 [node name="SceneTrigger" parent="." instance=ExtResource("3_d5uw2")]
 position = Vector2(340.85, -93.1881)
-connected_scene = "res://locations/farm/inside_farmhouse/inside_farm_house.tscn"
+connected_scene = "res://locations/farm/inside_farmhouse_02/inside_farmhouse_02.tscn"
 audio_file = ExtResource("5_pv6jj")
 metadata/_edit_lock_ = true
 

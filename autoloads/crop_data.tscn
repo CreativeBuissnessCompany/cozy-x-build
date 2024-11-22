@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlgk8hdc4k4hy"]
+
+[ext_resource type="Script" path="res://autoloads/crop_data.gd" id="1_lwv4w"]
+[ext_resource type="Resource" path="res://my_databases/seeds.gddb" id="2_8thp0"]
+
+[node name="CropData" type="Node"]
+script = ExtResource("1_lwv4w")
+database = ExtResource("2_8thp0")

@@ -58,8 +58,8 @@ func _ready() -> void:
 	# Also from farm.gd
 	print_debug("crop_ready Signal Emitted....")
 	Signalbus.emit_signal("crop_ready", self)
-	
-	
+
+
 	
 
 #                                  Custom Functions 
@@ -67,6 +67,30 @@ func _ready() -> void:
 
 # Happens from farm EVERYTIME SeedToCrop is ready, After and in Ready ...
 # Made of multiple Functions ....
+
+# TEST 
+func new_last_stage_process():
+
+	print("new_last_stage_process called ")
+	
+	var scene: PackedScene = CropData.get_seeds_scene(item_data.name)
+	
+	var instanced_scene: Node = scene.instantiate() # Instantiate ...
+	
+	grown = true   # Set Grow ...
+	
+	instanced_scene.global_position = self.global_position   # Position ...
+	var pickups_node: Node = get_parent().owner.find_child("PickUps") # Find Node ...
+	pickups_node.add_child(instanced_scene) # Add Child ...
+	Signalbus.delete_crop.emit(self.global_position) # Emit Delete Self ...
+	get_parent().remove_child(self) # Also , Delete Self
+	self.queue_free() 
+	
+	pass
+
+
+
+
 func set_crop_data(_item_data):
 	print_debug(" set_crop_data in seed_to_crop")
 	# Set from farm no matter what, Farm grabs at CropData.item_data_array....
@@ -82,7 +106,6 @@ func set_crop_data(_item_data):
 	set_crop_animation()
 	
 	
-
 func set_crop_animation():
 	var animation_name: String = item_data.animation_resize_check()
 	animation_player.play(animation_name)
@@ -148,18 +171,6 @@ func check_for_crop_data():
 		# If no saved data, This must be its first day planted....
 		day_planted = time_tracker.day
 
-	# NOTE Unused ?
-#func pack_crop_data_array():
-#
-#	crop_data_array = [
-#	current_stage,
-#	day_planted,
-#	days_since_planted,
-#	current_day,
-#	watered,
-#	days_watered,
-#	item_data
-#	]
 
 		# NOTE Unused ???
 func transfer_array(array_from: Array, array_to: Array)-> Array:
@@ -236,7 +247,8 @@ func advance_stage(_days_since_planted):
 	#animation_player.seek(current_stage, true) # ALERT Maybe change to false .....
 	# Last Stage ...
 	if current_stage == last_stage:
-		last_stage_process()
+#		last_stage_process()
+		new_last_stage_process()
 	
 
 func last_stage_process():
