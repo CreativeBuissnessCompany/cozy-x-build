@@ -66,6 +66,7 @@ radius = 3.44227
 [node name="Farm" type="Node2D" groups=["Locations"]]
 y_sort_enabled = true
 script = ExtResource("1_slb32")
+camera_bounds = Vector4i(-600, -400, 580, 410)
 sfx_till = ExtResource("2_ph3a1")
 sfx_watering = ExtResource("3_048vp")
 sfx_seed = ExtResource("4_5s2ym")

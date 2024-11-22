@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://8qagl21khwcy"]
+[gd_scene load_steps=15 format=3 uid="uid://8qagl21khwcy"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_eeuee"]
 [ext_resource type="Texture2D" uid="uid://boj8vq4e5iowp" path="res://entities/player/art/raincoat-boy-player-version.png" id="2_4ueq5"]
 [ext_resource type="AudioStream" uid="uid://cej8fptkjmhiq" path="res://audio_files/sfx/pitpats/Pat01.mp3" id="3_thu3i"]
+[ext_resource type="Script" path="res://entities/player/camera.gd" id="3_yoekm"]
 [ext_resource type="AudioStream" uid="uid://d3hxw63wfj2um" path="res://audio_files/sfx/pitpats/Pat02.mp3" id="4_3tnmv"]
 [ext_resource type="AudioStream" uid="uid://d02bkcuyu707q" path="res://audio_files/sfx/pitpats/Pat03.mp3" id="5_kv505"]
 [ext_resource type="AudioStream" uid="uid://b5pc8jw855kg" path="res://audio_files/sfx/pitpats/Pat04.mp3" id="6_4joej"]
@@ -51,6 +52,7 @@ drag_horizontal_enabled = true
 drag_left_margin = 0.3
 drag_right_margin = 0.3
 editor_draw_drag_margin = true
+script = ExtResource("3_yoekm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_k7rxr")

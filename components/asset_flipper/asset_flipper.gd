@@ -20,6 +20,6 @@ func _ready() -> void:
 	pass
 	
 func switch_asset():
-	print("poop")
+	
 	await Engine.get_main_loop().process_frame
 	self.texture = assets_options[switch_asset_to]

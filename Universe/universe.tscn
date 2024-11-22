@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b37p04mi2tsjd" path="res://ui/inventory02_ui/data/inventory_ui_02.tscn" id="3_pelb8"]
 [ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://ui/vending_machine_ui/inventory_ui_vending_machine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
 [ext_resource type="Script" path="res://ui/hud/hud.gd" id="5_xd6ju"]
-[ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://locations/farm/farm.tscn" id="6_ssa4s"]
 [ext_resource type="Script" path="res://audio_manager/audio_manager.gd" id="8_fxu4h"]
 [ext_resource type="AudioStream" uid="uid://blf0dnkb8lyof" path="res://audio_files/music/AmbiBankC.mp3" id="8_nxnny"]
 [ext_resource type="AudioStream" uid="uid://dlo4g24p5cme6" path="res://audio_files/music/821 Loop.mp3" id="9_wco5c"]
@@ -14,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cx8gh37mgdmov" path="res://audio_files/music/Faze.mp3" id="11_4jhlq"]
 [ext_resource type="PackedScene" uid="uid://fcc1qd2fx2tc" path="res://components/controls/Controls.tscn" id="11_5qn33"]
 [ext_resource type="PackedScene" uid="uid://b1u5tbb7cpvpk" path="res://components/day_button/day_button.tscn" id="12_482gc"]
+[ext_resource type="PackedScene" uid="uid://kx8kpbyk74fe" path="res://locations/farm/inside_farmhouse_02/inside_farmhouse_02.tscn" id="13_c8vr1"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wtpp2"]
 shuffle = true
@@ -85,11 +85,11 @@ anchor_left = 0.971875
 anchor_top = 0.119444
 anchor_right = 0.971875
 anchor_bottom = 0.119444
-farm_path = NodePath("../../../Farm")
+farm_path = NodePath("")
 universe_path = NodePath("../../..")
 metadata/_edit_use_anchors_ = true
 
-[node name="Farm" parent="." instance=ExtResource("6_ssa4s")]
+[node name="InsideFarmhouse02" parent="." instance=ExtResource("13_c8vr1")]
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true

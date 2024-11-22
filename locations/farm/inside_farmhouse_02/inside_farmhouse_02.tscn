@@ -19,11 +19,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ra2p"]
 size = Vector2(48.6513, 23.6785)
 
-[node name="InsideFarmhouse02" type="Node2D"]
+[node name="InsideFarmhouse02" type="Node2D" groups=["Locations"]]
 script = ExtResource("1_0xjtu")
-
-[node name="TestCamera" type="Camera2D" parent="."]
-position = Vector2(-65.257, 120.397)
 
 [node name="FloorAndWalls" type="Sprite2D" parent="."]
 z_index = -1
@@ -73,7 +70,7 @@ audio_file = ExtResource("14_1jipb")
 position = Vector2(1, 3.5)
 shape = SubResource("RectangleShape2D_5ra2p")
 
-[node name="EntranceMarkers" type="Node2D" parent="."]
+[node name="EntranceMarkers" type="Node2D" parent="." groups=["Locations"]]
 unique_name_in_owner = true
 position = Vector2(-96, 225)
 

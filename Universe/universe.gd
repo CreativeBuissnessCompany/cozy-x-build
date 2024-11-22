@@ -24,7 +24,15 @@ func _ready() -> void:
 	Signalbus.location_loaded.connect(on_location_loaded)
 	
 	# Set current_location
-	current_location = get_tree().get_nodes_in_group("Locations")[0]
+	if get_tree().get_nodes_in_group("Locations").size() == 0 :
+		print_debug("Cant Get node in group 'Locations'")
+		return
+	else:
+		print_debug("'Locations' group not empty, Setting current Location for \
+		 func position_player? Found in Universe.gd? ...")
+		current_location = get_tree().get_nodes_in_group("Locations")[0]
+
+	
 	# Grab Location/Scene's Markers
 	entrance_markers = current_location.entrance_markers
 	# PositionPlayer with Grabbed Markers...
@@ -33,5 +41,6 @@ func _ready() -> void:
 # Position player again when new scene is loaded
 # Maybe add current location ....
 func on_location_loaded(new_entrance_markers: Node2D):
+	print(" on_location_loaded in Universe is goin ...")
 	Utility.position_player(new_entrance_markers, player)
 	

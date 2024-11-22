@@ -6,6 +6,10 @@ extends BaseScene
 
 #                                 VARIABLES 
 
+@export var camera_bounds: Vector4i 
+
+
+
 #			TileMapLayers
 
 @onready var dirt_paths_tml:TileMapLayer= %DirtPaths
@@ -70,6 +74,9 @@ var seed_selected: Item # Signal received from inventory ....
 func _enter_tree() -> void:
 	super()
 	check_day()
+	# Update Camera
+	GameData.camera_bounds = camera_bounds
+	Signalbus.camera_limits.emit()
 	
 
 func _ready() -> void:
@@ -81,9 +88,10 @@ func _ready() -> void:
 	#  Connects to SeedToCrop .... To delete Crop when pickup instantiated....
 	Signalbus.delete_crop.connect(on_delete_crop)
 	# To set crop
-	print_debug("Connecting crop_ready from farm")
+	print_debug("Farm is Ready ...")
 	Signalbus.crop_ready.connect(on_crop_ready)
-
+	
+	
 
 func _input(_event: InputEvent) -> void:
 	
@@ -116,6 +124,9 @@ func _input(_event: InputEvent) -> void:
 
 
 #						NOTE Custom Functions ... NOTE 
+
+
+
 
 func on_crop_ready(child:SeedToCrop):
 #	print_debug("Doing on_crop_ready in Farm.gd")
@@ -168,7 +179,7 @@ func farming(state,mouse_pos):
 			layer_to_look = tilled_tml
 			layer_to_place = watered_tml
 			tiles = wet_tiles # Empty before this , Needed or else all previously TILL tiles\
-							  # Will get watered at once ....
+								# Will get watered at once ....
 			terrain = watered_terrain
 			custom_data = can_water_custom_data
 			sfx_file = sfx_watering
