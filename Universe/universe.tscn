@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cx8gh37mgdmov" path="res://audio_files/music/Faze.mp3" id="11_4jhlq"]
 [ext_resource type="PackedScene" uid="uid://fcc1qd2fx2tc" path="res://components/controls/Controls.tscn" id="11_5qn33"]
 [ext_resource type="PackedScene" uid="uid://b1u5tbb7cpvpk" path="res://components/day_button/day_button.tscn" id="12_482gc"]
-[ext_resource type="PackedScene" uid="uid://kx8kpbyk74fe" path="res://locations/farm/inside_farmhouse_02/inside_farmhouse_02.tscn" id="13_c8vr1"]
+[ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://locations/farm/farm.tscn" id="13_wh1qb"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wtpp2"]
 shuffle = true
@@ -26,6 +26,7 @@ stream_3 = ExtResource("11_4jhlq")
 [node name="Universe" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_lm1sa")
+developer_mode = true
 metadata/_edit_lock_ = true
 
 [node name="AudioManager" type="Node" parent="."]
@@ -75,6 +76,27 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "Day: 1"
 
+[node name="Debug" type="RichTextLabel" parent="UIRoot/HUD"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(74.54, 31.28)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -74.54
+offset_top = -15.64
+offset_bottom = 28.85
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.341583, 0.400643, 1)
+theme_override_font_sizes/normal_font_size = 18
+text = "Debug Mode"
+scroll_active = false
+
 [node name="ControlsCanvasLayer" parent="UIRoot/HUD" instance=ExtResource("11_5qn33")]
 layout_mode = 1
 
@@ -89,7 +111,7 @@ farm_path = NodePath("")
 universe_path = NodePath("../../..")
 metadata/_edit_use_anchors_ = true
 
-[node name="InsideFarmhouse02" parent="." instance=ExtResource("13_c8vr1")]
+[node name="Farm" parent="." instance=ExtResource("13_wh1qb")]
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true

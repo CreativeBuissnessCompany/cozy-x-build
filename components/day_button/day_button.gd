@@ -8,13 +8,18 @@ extends Button
 
 func _on_pressed() -> void:
 	
-	var farm: Node2D = get_node(farm_path)
-	var universe = get_node(universe_path)
 	
+	# TESTING
+	
+	
+	var universe = get_node(universe_path)
+	var current_location: Node2D = universe.current_location
+	print(current_location)
+
 	#print(" Day Button Has Been [ pressed ] .... Hated it ")
 	#var copy: Node2D = farm
-	farm.get_parent().remove_child(farm)
+	current_location.get_parent().remove_child(current_location)
 	time_tracker.day += 1
 	await Engine.get_main_loop().process_frame
-	universe.call_deferred("add_child", farm)
+	universe.call_deferred("add_child", current_location)
 	pass # Replace with function body.

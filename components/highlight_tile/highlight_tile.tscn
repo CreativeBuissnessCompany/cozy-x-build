@@ -41,7 +41,6 @@ _data = {
 }
 
 [node name="HighlightTile" type="Node2D"]
-visible = false
 script = ExtResource("1_h4q3m")
 
 [node name="ColorRect" type="ColorRect" parent="."]

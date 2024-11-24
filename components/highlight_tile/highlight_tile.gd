@@ -6,11 +6,11 @@ extends Node2D
 # Variables 
 @onready var color_rect: ColorRect = $ColorRect
 
-var new_pos
+var new_pos # TESTING
 var offset = Vector2(5,5)
 var tilemap_target: TileMapLayer
-var tile_array: Array = []
-var wait_time: float = 0.15
+var tile_array: Array
+var wait_time: float = 0.20
 
 var highlight_atlas_coords = Vector2(0,0)
 
@@ -27,7 +27,6 @@ func _ready() -> void:
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	 
 	var mos_pos: Vector2i = get_global_mouse_position()
@@ -36,6 +35,26 @@ func _process(_delta: float) -> void:
 	tile_array.append(tilemap_target.get_cell_atlas_coords(mouse_pos_tml))
 	# Change Tile to Highlight PNG
 	tilemap_target.set_cell(mouse_pos_tml, 2, highlight_atlas_coords)
+	
+	# BESFORE TESTING
+
+#	if tile_array.size() != 0:
+#		for tile in tile_array:
+#			print(tile)
+#			pass
+#
+#
+#	
+#	var replace_pos
+#	
+#	while replace_pos != mouse_pos_tml:
+#		
+#		replace_pos = mouse_pos_tml
+
+	# AFTER TESTING 
+		
+
+
 	# Create Timer and Wait for TimeOut...
 	await get_tree().create_timer(wait_time).timeout
 	# Grab the previous Tile and Put it back where it belongs ....

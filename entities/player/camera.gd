@@ -19,10 +19,10 @@ func _ready() -> void:
 
 func update_camera_bounds():
 	# TESTING 
-	print(GameData.camera_bounds[0])
-	print(GameData.camera_bounds[1])
-	print(GameData.camera_bounds[2])
-	print(GameData.camera_bounds[3])
+#	print(GameData.camera_bounds[0])
+#	print(GameData.camera_bounds[1])
+#	print(GameData.camera_bounds[2])
+#	print(GameData.camera_bounds[3])
 	
 	if GameData.camera_bounds == Vector4i(0,0,0,0):
 		print("Camera Bounds not set in root of Level/Location ....")
