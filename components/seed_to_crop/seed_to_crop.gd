@@ -43,6 +43,8 @@ var dir_path: String = "res://entities/items/consumables/from_seed_pickups/"
 var dir := DirAccess.open(dir_path)
 var grown: bool = false
 
+var ready_to_harvest: bool = false
+
 
 
 
@@ -55,10 +57,12 @@ func _ready() -> void:
 	
 	# From farm.gd...
 	Signalbus.connect("watered", _on_watered)
+	
+	Signalbus.harvest.connect(_on_harvest)
 	# Also from farm.gd
 	print_debug("crop_ready Signal Emitted....")
 	Signalbus.emit_signal("crop_ready", self)
-
+	
 
 	
 
@@ -69,6 +73,27 @@ func _ready() -> void:
 # Made of multiple Functions ....
 
 # TEST 
+
+func _on_harvest(_mos_pos):
+	var parent: TileMapLayer = get_parent()
+	var seed_pos = parent.local_to_map(self.position)
+	print("seedtocrop pos")
+	print(seed_pos)
+	print("mos_pos")
+	print(_mos_pos)
+	
+	if seed_pos == _mos_pos:
+		if ready_to_harvest == true:
+			print("Player is trying to Harvest ...")
+			new_last_stage_process()
+		
+#	if ready_to_harvest == true:
+#	
+#		new_last_stage_process()
+
+
+
+
 func new_last_stage_process():
 
 	print("new_last_stage_process called ")
@@ -87,8 +112,6 @@ func new_last_stage_process():
 	self.queue_free() 
 	
 	pass
-
-
 
 
 func set_crop_data(_item_data):
@@ -172,15 +195,8 @@ func check_for_crop_data():
 		day_planted = time_tracker.day
 
 
-		# NOTE Unused ???
-func transfer_array(array_from: Array, array_to: Array)-> Array:
 	
-	for i in array_from:
-		array_to[i] = array_from[i]
-	
-	
-	return array_to
-	
+		
 
 func stages_set(_item_data):
 	
@@ -247,8 +263,9 @@ func advance_stage(_days_since_planted):
 	#animation_player.seek(current_stage, true) # ALERT Maybe change to false .....
 	# Last Stage ...
 	if current_stage == last_stage:
-#		last_stage_process()
-		new_last_stage_process()
+		print("Seed to crop is setting ready_to_harvest = true ....")
+		ready_to_harvest = true
+#		new_last_stage_process() # TEST NEW 
 	
 
 func last_stage_process():
@@ -316,11 +333,4 @@ func _exit_tree() -> void:
 		return
 
 
-# ------- WARNING ------- Tool........ 
-#func _process(delta: float) -> void:
-#if Engine.is_editor_hint():
-#
-##self.frame = current_stage
-#animation_player.seek(current_stage, false) 
-##pass
-## Code to execute in editor.
+

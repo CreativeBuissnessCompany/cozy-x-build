@@ -9,6 +9,8 @@ extends Control  # Oct 23rd.
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
 @onready var qty: RichTextLabel = %Qty
+
+# * * *
 # Use_or_drop stuff
 @export var use_drop_scene: PackedScene
 var use_drop_instance: Node2D

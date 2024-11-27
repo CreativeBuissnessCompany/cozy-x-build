@@ -36,7 +36,7 @@ var scene_tile_id := 1
 
 #			Farming Stuff ...
 
-enum FARMING_MODES {WATERING, TILL, PLANT_SEED}
+enum FARMING_MODES {WATERING, TILL, PLANT_SEED, HARVEST}
 var farming_mode_state := FARMING_MODES.TILL
 var can_till_custom_data: String = "can_till"
 var can_water_custom_data: String = "can_water"
@@ -105,6 +105,15 @@ func _input(_event: InputEvent) -> void:
 		farming_mode_state = FARMING_MODES.WATERING
 		#print("Water State")
 	
+# NEW
+	# T key Harvest
+	if Input.is_action_just_pressed("toggle_harvest"):
+		farming_mode_state = FARMING_MODES.HARVEST
+		print("Harvest State Toggled")
+
+
+
+	
 	# NOTE Need to make it so only active 
 	# when close to farming area ....
 	if Input.is_action_pressed("click"):
@@ -115,15 +124,31 @@ func _input(_event: InputEvent) -> void:
 		# TEST Check if mouse is on tml 3 or 4 
 		
 		if ui_open == false:
-			farming(state, mouse_pos)
-			#print(" 'click' at farm.gd")
-			return
+			if farming_mode_state != FARMING_MODES.HARVEST:
+					
+				farming(state, mouse_pos)
+				#print(" 'click' at farm.gd")
+				return
+			else:
+				print("Bout to harvest")
+				harvest(mouse_pos)
+				pass
 
 
 
 
 
 #						NOTE Custom Functions ... NOTE 
+
+func harvest(_mouse_pos):
+	var local_mos = Utility.convert_mos_local(crops_tml,_mouse_pos)
+	Signalbus.harvest.emit(local_mos)
+	print("harvest in farm.gd")
+	# Get tile from mos_pos, Do func on it
+	pass
+
+
+
 
 
 
@@ -232,7 +257,6 @@ func farming(state,mouse_pos):
 		Signalbus.sfx.emit(sfx_file)
 		
 
-	
 
 
 func check_day():

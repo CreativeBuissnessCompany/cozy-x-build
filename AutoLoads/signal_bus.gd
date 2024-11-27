@@ -8,7 +8,7 @@ class_name SignalBus extends Node
 # Sent to universe.gd 
 signal location_loaded
 # UI for Objects with inventory, From Object to UIRoot
-signal open_object_with_inventory
+signal open_object_with_inventory # Vending Machine....
 # Object with DialogBox 
 signal object_with_dialogbox
 # Day change...
@@ -27,3 +27,5 @@ signal crop_ready()
 # Scene with Camera Limits ready ... 
 # Variable & Signal not in BaseScene, But in root scene of location ...
 signal camera_limits()
+# SeedToCrop and Farm 
+signal harvest()
