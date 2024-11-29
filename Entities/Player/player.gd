@@ -41,6 +41,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 	quit_game()
 	
 
+	
+
+
+
 
 func walk_sound(delta) -> void:
 	
@@ -82,3 +86,11 @@ func quit_game()->void:
 	# Shift + Esc. 
 	if Input.is_action_just_released("quit_game"):
 		get_tree().quit() 
+
+
+#func _check_for_crops(area:Area2D) -> void:
+#	print(area)
+#	# 
+#	var crop_object = area.get_parent() 
+#	crop_object.go_to_player()
+#	pass # Replace with function body.

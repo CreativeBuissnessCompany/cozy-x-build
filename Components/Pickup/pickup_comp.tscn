@@ -1,18 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://blga528vftp33"]
+[gd_scene load_steps=5 format=3 uid="uid://blga528vftp33"]
 
 [ext_resource type="Script" path="res://components/pickup/pickup_comp.gd" id="1_vlwba"]
 [ext_resource type="Resource" uid="uid://c2rr865bmxad1" path="res://entities/items/non_consumable/can/can.tres" id="2_jxxco"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cq01i"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qal5"]
+radius = 100.71
+
 [node name="PickupComp" type="Node2D"]
 script = ExtResource("1_vlwba")
 item = ExtResource("2_jxxco")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_cq01i")
 
+[node name="GoToPlayerArea2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoToPlayerArea2D"]
+shape = SubResource("CircleShape2D_7qal5")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="GoToPlayerArea2D" to="." method="go_to_player"]
+[connection signal="body_entered" from="GoToPlayerArea2D" to="." method="go_to_player_body"]
+[connection signal="body_exited" from="GoToPlayerArea2D" to="." method="dont_go_to_player"]

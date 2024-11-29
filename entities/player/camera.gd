@@ -8,7 +8,7 @@ extends Camera2D
 
 func _ready() -> void:
 	
-	print("Camera is Ready ...")
+#	print("Camera is Ready ...")
 	update_camera_bounds()
 	Signalbus.camera_limits.connect(update_camera_bounds)
 	
@@ -28,7 +28,7 @@ func update_camera_bounds():
 		print("Camera Bounds not set in root of Level/Location ....")
 		return
 	else:
-		print("Camera updated, Camera Bounds are set")
+#		print("Camera updated, Camera Bounds are set")
 		
 		self.limit_left = GameData.camera_bounds[0]
 		self.limit_top = GameData.camera_bounds[1]

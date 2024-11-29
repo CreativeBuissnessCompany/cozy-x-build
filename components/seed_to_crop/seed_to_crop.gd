@@ -1,4 +1,4 @@
-#@tool                                      #seed_to_crop.gd 
+#@tool                                      seed_to_crop.gd 
 class_name SeedToCrop extends AnimatedSprite2D
 
 
@@ -10,13 +10,11 @@ class_name SeedToCrop extends AnimatedSprite2D
 		item_data = value
 		# Used for when farm.gd sets data ...
 		self.sprite_frames = item_data.sprite_frame
-		#print("    item_data changed .......... ///////// ")
 
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-# Set Stages ..
-#var stages_array: Array = [] # Pack iun func dow2n there ....
+# Set Stages .. NOTE How can you get rid of this shit ? ?
 var stage_one: int
 var stage_two: int
 var stage_three: int
@@ -26,21 +24,12 @@ var stage_six: int
 var stage_seven: int
 var last_stage: int
 
-
-
-#var crop_data_array: Array = [] # Packed in a function down there.... # NOTE UNUSED
 @export var current_stage: int # Tweak to better use for testing 
 var day_planted: int
 var days_since_planted: int = 0
 var current_day: int 
 var watered: bool = false
 var days_watered: int = 0
-
-
-# Path for Directory of "from_seed" ...
-var dir_path: String = "res://entities/items/consumables/from_seed_pickups/"
-# Directory for Fully grown versions of seeds....Fruit,Veggie....
-var dir := DirAccess.open(dir_path)
 var grown: bool = false
 
 var ready_to_harvest: bool = false
@@ -57,52 +46,41 @@ func _ready() -> void:
 	
 	# From farm.gd...
 	Signalbus.connect("watered", _on_watered)
-	
 	Signalbus.harvest.connect(_on_harvest)
-	# Also from farm.gd
-	print_debug("crop_ready Signal Emitted....")
-	Signalbus.emit_signal("crop_ready", self)
 	
-
 	
 
 #                                  Custom Functions 
 
 
-# Happens from farm EVERYTIME SeedToCrop is ready, After and in Ready ...
-# Made of multiple Functions ....
 
-# TEST 
 
+
+
+## If parent isnt null, does local_to_map(self.pos) to compare with _mos_pos ...
+## If match,And ready_to_harvest is equal to true... Do new_last_stage_process() ...
 func _on_harvest(_mos_pos):
+	
 	var parent: TileMapLayer = get_parent()
-	var seed_pos = parent.local_to_map(self.position)
-	print("seedtocrop pos")
-	print(seed_pos)
-	print("mos_pos")
-	print(_mos_pos)
+	var seed_pos
+	
+	if parent != null:
+		seed_pos = parent.local_to_map(self.position)
+	else:
+		return
 	
 	if seed_pos == _mos_pos:
 		if ready_to_harvest == true:
 			print("Player is trying to Harvest ...")
 			new_last_stage_process()
-		
-#	if ready_to_harvest == true:
-#	
-#		new_last_stage_process()
 
-
-
-
+## Triggered in on_harvest() above,Does CropData.get_seeds_scene(item_data.name), 
+## Instantiates PackedScene,Sets grown to true, Positiones,Does add_child to pickups_node, Finally ...
+## Signalbus.delete_crop.emit(self.global_position), parent.remove_child(self),And self.queue_free() ...
 func new_last_stage_process():
-
-	print("new_last_stage_process called ")
-	
 	var scene: PackedScene = CropData.get_seeds_scene(item_data.name)
-	
 	var instanced_scene: Node = scene.instantiate() # Instantiate ...
-	
-	grown = true   # Set Grow ...
+	grown = true   # Set Grown ...
 	
 	instanced_scene.global_position = self.global_position   # Position ...
 	var pickups_node: Node = get_parent().owner.find_child("PickUps") # Find Node ...
@@ -114,56 +92,59 @@ func new_last_stage_process():
 	pass
 
 
-func set_crop_data(_item_data):
-	print_debug(" set_crop_data in seed_to_crop")
-	# Set from farm no matter what, Farm grabs at CropData.item_data_array....
-	item_data = _item_data
-	stages_set(item_data) # Grabbed from item_data
-	# Setting Vars from CropData...
-	check_for_crop_data()
+## check_if_watered(), Set current_day = TimeTracker.day, 
+## advance_stage(days_since_planted), set_crop_animation()
+func _on_next_day():
+	
+	check_if_watered()
+	current_day = time_tracker.day # NOTE Always after check_if_watered
+	advance_stage(days_watered)
+	print("days_watered")
+	print_debug(days_watered)
+	set_crop_animation()
+	# Receive signal
+	pass
 
+
+## Sets item_data from farm.gd plant_seed(seed_selected), stages_set(item_data), 
+## check_if_watered(),current_day = TimeTracker.day, 
+## advance_stage(days_since_planted), set_crop_animation()
+func set_crop_data(_item_data):
+#	print_debug(" set_crop_data in seed_to_crop")
+	item_data = _item_data
+	day_planted = time_tracker.day
+	stages_set(item_data) # Grabbed from item_data
+#	check_for_crop_data() # Setting Vars from CropData... NOTE Delete ????
 	# Do math for days planted .... # Also ...advance days_watered ...
 	check_if_watered()
 	current_day = time_tracker.day # NOTE Always after check_if_watered
-	#Grab animation NAME from Item Resource, Set....
-	set_crop_animation()
+	advance_stage(days_watered)
+	set_crop_animation() # Grab animation NAME from Item Resource, Set....
 	
-	
+## Checks item_data for animation to use... i.e. "default" or "resize_16_tall" in Item ...	
 func set_crop_animation():
 	var animation_name: String = item_data.animation_resize_check()
 	animation_player.play(animation_name)
 	animation_player.pause()
 	animation_player.seek(current_stage, true)
-	print("End of @Ready , Current Stage ", " ", current_stage)
-	print("")
 
 
+## if watered is True,time_tracker.day > day_planted AND time_tracker.day> current_day ...
+## days_watered += 1, set watered = false ...
 func check_if_watered():
 	if watered == true:
-		#print("Watered is true in Ready ")
 		if time_tracker.day > day_planted and time_tracker.day > current_day:
 
-			# NOTE NEW 11/14 ( OLD )
 			days_watered += 1
-			print("time_tracker > day_pland and current_day ")
 			days_since_planted = time_tracker.day - day_planted
-			print("days_since_planted...", " ",days_since_planted)
-
-			advance_stage(days_watered)
 			watered = false
-			print("Water changed to false in Ready/ if watered == true: loop")
 
-
+## NOTE Delete ? ? ?
+## Look at CropData.crop_array for info
 func check_for_crop_data():
 
 	if CropData.crop_array: 
-		print(" crop_array exists .... ")
-		#  Get Crops Data from CropData
-
-		# TEST 11/18 Should replace the array and all vars inside .... 
-		#		crop_data_array = CropData.all_crops_array[-1]
-		#		print(days_since_planted)
-
+		print(" crop_array exists .... ") #  Get Crops Data from CropData
 		days_watered = CropData.crop_array[-6]
 		current_stage = CropData.crop_array[-5]
 		days_since_planted = CropData.crop_array[-4]
@@ -174,30 +155,17 @@ func check_for_crop_data():
 
 		print("After CropData Loop.... current_stage is"," ", current_stage)
 
-
-
-		# TEST 11/18 
-		#		CropData.all_crops_array.pop_back()
-
-
-
-		# TEST Change...
-
-		# Clear array after grabbing from it NOTE
+		# Clear array after grabbing from it 
 		var array_size: int = 6 # NOTE Should reflect CropData.crop_array size
 		while array_size != 0:
 			CropData.crop_array.pop_back()
 			array_size -= 1
-
-		#Or Else ... Set DayPlanted
-	else:
+		
+	else: #Or Else ... Set DayPlanted
 		# If no saved data, This must be its first day planted....
 		day_planted = time_tracker.day
 
-
-	
-		
-
+## Sets stages from _item_data ... Used by set_crop_data() Above ...
 func stages_set(_item_data):
 	
 	stage_one = _item_data.stage_one
@@ -209,19 +177,22 @@ func stages_set(_item_data):
 	stage_seven = _item_data.stage_seven
 	last_stage = _item_data.last_stage
 
-
+## Triggered by SignalBus.watered ... Matches mos_pos to tile_pos_local ...
+## NOTE Maybe check if its actually matching the tile itself ...
 func _on_watered(mos_pos):
 	
 	var parent: Node   = get_parent()
 	var tile_pos_local = Utility.convert_mos_local(parent,global_position )
 	
 	if mos_pos == tile_pos_local:
+		print("Watered Successfully")
 		watered = true
 
-
-func advance_stage(_days_since_planted):
+## Matches the days_watered var from check_if_watered() above to stage_one, stage_two, Etc ...
+## NOTE Changed from _days_since_planted to _days_watered ... 11/29
+func advance_stage(_days_watered):
 	
-	match _days_since_planted:
+	match _days_watered:
 		
 		stage_one:
 			current_stage = stage_one
@@ -265,72 +236,21 @@ func advance_stage(_days_since_planted):
 	if current_stage == last_stage:
 		print("Seed to crop is setting ready_to_harvest = true ....")
 		ready_to_harvest = true
-#		new_last_stage_process() # TEST NEW 
 	
 
-func last_stage_process():
-	print("last_stage_process called ")
-	grown = true
-	# Change to lowercase
-	var lowercase_item_name = item_data.name.to_lower()
-	# Delete word "Seed" from item name....Space before the word "seed" aswell ...
-	var item_name: String = lowercase_item_name.replacen(" seed","")
-	print_debug(item_name)
-	dir.list_dir_begin()
-	var file_name: String = dir.get_next()
-	while file_name != "":
-		if file_name.containsn(item_name):
-			# Combine Directory Path with File Path for full path...
-			var full_path: String = dir_path + file_name
-			# Load, Instantiate
-			var crop_scene: PackedScene = load(full_path)
-			var instanced_scene: Node   = crop_scene.instantiate()
-			# Position
-			instanced_scene.global_position = self.global_position
-			var pickups_node: Node = get_parent().owner.find_child("PickUps")
-			pickups_node.add_child(instanced_scene)
-			# NOTE Changed on 10/13... Unindented by one
-			# Set grown to true so we dont send data to CropData
-			Signalbus.delete_crop.emit(self.global_position)
-			get_parent().remove_child(self)
-			self.queue_free()
-		#------ END IF STATEMENT ------
-		# Loop through untill you cant ...
-		file_name = dir.get_next()
-	
-
-
-# Exit Tree //////////////////
+# NOTE                                      Exit Tree 
+# CropData.crop_array.append(self)
 func _exit_tree() -> void:
 	# Send Data if Grown not true ...
 	if not grown:
 		
-#		CropData.all_crops_array.append(crop_data_array)
+		CropData.crop_array.append(self)
 		
-		
-		# Set current Stage 
 		print_debug("EXIT TREE Current Stage is ... ", " ", current_stage)
-#		print(crop_data_array)
-#		print(" ")
-		
-#		item_data.current_stage = current_stage
-		
-		CropData.crop_array.append(days_watered)
-		CropData.crop_array.append(current_stage)
-		CropData.crop_array.append(days_since_planted)
-		CropData.crop_array.append(current_day)
-		CropData.crop_array.append(day_planted)
-		CropData.crop_array.append(watered)
-		
-		# Farm.gd will be garbbing this later ...
-		CropData.item_data_array.append(item_data)
-		
-		#print_debug("Exiting Tree")
-		#print("Appending CropData ....")
 		
 	else: # Maybe check for last stage 
 		print(" No CropData Update  ")
+		print()
+		print(" Grown")
+		print()
 		return
-
-
-

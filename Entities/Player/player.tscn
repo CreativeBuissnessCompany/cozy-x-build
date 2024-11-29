@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8qagl21khwcy"]
+[gd_scene load_steps=16 format=3 uid="uid://8qagl21khwcy"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_eeuee"]
 [ext_resource type="Texture2D" uid="uid://boj8vq4e5iowp" path="res://entities/player/art/raincoat-boy-player-version.png" id="2_4ueq5"]
@@ -28,6 +28,9 @@ stream_6/stream = ExtResource("9_rr8s4")
 stream_7/stream = ExtResource("10_mypiu")
 stream_8/stream = ExtResource("11_ecpu2")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rnip"]
+radius = 106.75
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera_node") groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 2
@@ -56,3 +59,13 @@ script = ExtResource("3_yoekm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_k7rxr")
+
+[node name="CheckForCropsArea2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckForCropsArea2D"]
+shape = SubResource("CircleShape2D_6rnip")
+
+[connection signal="area_entered" from="CheckForCropsArea2D" to="." method="_check_for_crops"]

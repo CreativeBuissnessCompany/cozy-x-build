@@ -35,19 +35,10 @@ func get_seeds_scene(item_name: StringName)-> PackedScene:
 	formatted_item_name = spaceless_item_name.replace("seed","pickup") # Replace "seed" with "_pickup" ...
 
 
-#	print()
-#	print("Testing 'formatted_item_name'")
-#	print(formatted_item_name)
-#	print()
-
-
 	# Find Resource using Collection & Resource Name ...
 	var resource_int_id: int = database.get_int_id(name_of_collection, formatted_item_name)
 	var scene: PackedScene = database.fetch_data(name_of_collection, resource_int_id)
 	
-#	print("Instantiated scene name")
-#	print(instanced_scene.get_name())
-#	print()
 
 	return scene
 

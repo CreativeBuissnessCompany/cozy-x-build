@@ -30,7 +30,7 @@ var entrance_name: String = "any"
 # Script_Start
 func _ready() -> void:
 	check_if_developer_mode()
-	print("Universe is ready ....")
+#	print("Universe is ready ....")
 	
 	# Give Player Node Referece to Scene_Manager
 	SceneManager.player = player
@@ -43,8 +43,7 @@ func _ready() -> void:
 		print_debug("Cant Get node in group 'Locations'")
 		return
 	else:
-		print_debug("'Locations' group not empty, Setting current Location for \
-		 func position_player? Found in Universe.gd? ...")
+#		print_debug("'Locations' group not empty, Setting current Location for \func position_player? Found in Universe.gd? ...")
 		current_location = get_tree().get_nodes_in_group("Locations")[0]
 
 	
@@ -68,6 +67,6 @@ func check_if_developer_mode():
 # Position player again when new scene is loaded
 # Maybe add current location ....
 func on_location_loaded(new_entrance_markers: Node2D):
-	print(" on_location_loaded in Universe is goin ...")
+#	print(" on_location_loaded in Universe is goin ...")
 #	Utility.position_player(new_entrance_markers, player)
 	Utility.entrance_name_check(new_entrance_markers, player, entrance_name)

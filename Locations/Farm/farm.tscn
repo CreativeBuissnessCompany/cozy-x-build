@@ -718,7 +718,7 @@ metadata/_edit_lock_ = true
 position = Vector2(140.878, 31.4701)
 
 [node name="debug" type="Marker2D" parent="EntranceMarkers"]
-position = Vector2(32.6941, 353.126)
+position = Vector2(25.1884, 297.257)
 
 [node name="ObjectsWithUI" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -749,10 +749,10 @@ position = Vector2(142.381, 221.78)
 position = Vector2(203.03, 175.401)
 
 [node name="GreenpeaSeed" parent="PickUps" instance=ExtResource("10_mmsmp")]
-position = Vector2(299.04, 241.253)
+position = Vector2(242.39, 213.139)
 
 [node name="RaddishSeedPickup" parent="PickUps" instance=ExtResource("14_mp82r")]
-position = Vector2(299.04, 241.253)
+position = Vector2(264.673, 221.127)
 
 [node name="Tomato" parent="PickUps" instance=ExtResource("35_oc7ws")]
 position = Vector2(-77, 176)

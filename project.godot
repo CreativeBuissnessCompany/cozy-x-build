@@ -36,6 +36,7 @@ gdscript/warnings/unused_signal=0
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/initial_position_type=0
+window/size/always_on_top=true
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
@@ -159,6 +160,7 @@ toggle_harvest={
 
 2d_physics/layer_1="Walls,Floors,Objects"
 2d_physics/layer_2="Player"
+2d_physics/layer_3="crops"
 
 [rendering]
 
