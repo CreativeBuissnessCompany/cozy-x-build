@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://biutgknunyp1u"]
+
+[ext_resource type="Script" path="res://data/models/item.gd" id="1_f16po"]
+[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="2_d72bs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdb1l"]
+atlas = ExtResource("2_d72bs")
+region = Rect2(80, 79, 16, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13pyc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdb1l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_f16po")
+name = "Raddish "
+description = "Only good with tacos ...s"
+item_type = 0
+price = 20
+sprite_frame = SubResource("SpriteFrames_13pyc")
+animation_resize_type = 0
+stage_one = 0
+stage_two = 0
+stage_three = 0
+stage_four = 0
+stage_five = 0
+stage_six = 0
+stage_seven = 0
+last_stage = 0
+current_stage = 0

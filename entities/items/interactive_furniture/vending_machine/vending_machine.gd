@@ -7,7 +7,6 @@ extends Interactable
 # @exports ....
 # Resource holding Inventory
 @export var vending_inventory: InventoryResource
-@export var currency_node: Currency
 
 # Variables
 # Caution 

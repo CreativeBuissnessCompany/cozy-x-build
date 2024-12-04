@@ -64,7 +64,10 @@ func dont_go_to_player(_body:Node2D) -> void:
 
 	
 func go_to_player():
+	await get_tree().create_timer(.20).timeout
+	
 	if player_near:
+		
 		var tween: Tween = get_tree().create_tween().bind_node(self)
 		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(self,"global_position", player_body.global_position, .30)

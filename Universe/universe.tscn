@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://db4eylrann81f"]
+[gd_scene load_steps=21 format=3 uid="uid://db4eylrann81f"]
 
 [ext_resource type="Script" path="res://universe/universe.gd" id="1_lm1sa"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://entities/player/player.tscn" id="2_3rlae"]
@@ -12,8 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://bp54n8ghvava4" path="res://audio_files/music/43020.mp3" id="10_ffxe7"]
 [ext_resource type="AudioStream" uid="uid://cx8gh37mgdmov" path="res://audio_files/music/Faze.mp3" id="11_4jhlq"]
 [ext_resource type="PackedScene" uid="uid://fcc1qd2fx2tc" path="res://components/controls/Controls.tscn" id="11_5qn33"]
-[ext_resource type="FontFile" uid="uid://8mh7uny51w8" path="res://themes/fonts/Agfiustor Free.ttf" id="11_23gn1"]
+[ext_resource type="FontFile" uid="uid://pxdyu2wc4iuq" path="res://themes/fonts/Baldur.ttf" id="11_bkhxi"]
+[ext_resource type="Material" uid="uid://ctt4qnldpofbm" path="res://materials/lines01.tres" id="12_66c2x"]
 [ext_resource type="PackedScene" uid="uid://b1u5tbb7cpvpk" path="res://components/day_button/day_button.tscn" id="12_482gc"]
+[ext_resource type="Texture2D" uid="uid://dx1uxmrmdoblc" path="res://oval.png" id="13_t66gf"]
 [ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://locations/farm/farm.tscn" id="14_ke8uo"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wtpp2"]
@@ -24,7 +26,60 @@ stream_1 = ExtResource("9_wco5c")
 stream_2 = ExtResource("10_ffxe7")
 stream_3 = ExtResource("11_4jhlq")
 
-[node name="Universe" type="Node2D"]
+[sub_resource type="Shader" id="Shader_dj8mm"]
+code = "shader_type canvas_item;
+
+uniform vec3 color_one : source_color;
+uniform vec3 color_two : source_color;
+
+uniform float angle = 20.0;
+uniform float line_count = 20.0;
+uniform float speed = 10.0;
+uniform float blur : hint_range(0.0, 2.0, 0);
+
+
+
+
+
+
+
+
+
+
+vec2 rotate(vec2 uv, float rotation_angle) {
+    float radians_angle = radians(rotation_angle);
+    float cos_angle = cos(radians_angle);
+    float sin_angle = sin(radians_angle);
+    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
+    return uv * rotation_matrix;
+}
+
+float stripe(vec2 uv) {
+    return cos(uv.x * 0.0 - TIME*speed + uv.y * -line_count/2.0);
+}
+
+void fragment() {
+    vec2 uv = UV;
+    vec2 resolution = 1.0 / TEXTURE_PIXEL_SIZE;
+    float a = TEXTURE_PIXEL_SIZE.x / TEXTURE_PIXEL_SIZE.y;
+    uv.x *= a;
+    uv = rotate(uv, angle);
+    float g = stripe(uv);
+    vec3 col = mix(color_one, color_two, smoothstep(0.5, blur, g));
+    COLOR = vec4(col, 0.8);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uawje"]
+shader = SubResource("Shader_dj8mm")
+shader_parameter/color_one = Color(0, 0.027451, 0.564706, 1)
+shader_parameter/color_two = Color(0.826295, 0.158975, 0.461857, 1)
+shader_parameter/angle = -70.0
+shader_parameter/line_count = 200.0
+shader_parameter/speed = 4.0
+shader_parameter/blur = 0.3
+
+[node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_lm1sa")
 developer_mode = true
@@ -64,28 +119,42 @@ script = ExtResource("5_xd6ju")
 
 [node name="Currency" type="RichTextLabel" parent="UIRoot/HUD"]
 unique_name_in_owner = true
+z_index = 1
 texture_filter = 5
 clip_contents = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 7.63
-offset_right = 48.0
-offset_bottom = 39.63
+offset_left = -24.25
+offset_top = -1.37
+offset_right = 43.75
+offset_bottom = 30.63
 grow_horizontal = 2
+pivot_offset = Vector2(19.3, 37)
 theme_override_colors/default_color = Color(0.7496, 0.589038, 0, 1)
-theme_override_fonts/normal_font = ExtResource("11_23gn1")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_fonts/normal_font = ExtResource("11_bkhxi")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "$"
+text = "$10"
 scroll_active = false
 shortcut_keys_enabled = false
 meta_underlined = false
 hint_underlined = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Sprite2D" type="Sprite2D" parent="UIRoot/HUD/Currency"]
+clip_children = 2
+z_index = -1
+material = SubResource("ShaderMaterial_uawje")
+position = Vector2(31, 20.37)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_t66gf")
+
+[node name="ColorRect" type="Sprite2D" parent="UIRoot/HUD/Currency/Sprite2D"]
+material = ExtResource("12_66c2x")
+texture = ExtResource("13_t66gf")
 
 [node name="Day" type="RichTextLabel" parent="UIRoot/HUD"]
 unique_name_in_owner = true
@@ -101,6 +170,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "Day: 1"
+metadata/_edit_lock_ = true
 
 [node name="DayButton" parent="UIRoot/HUD" instance=ExtResource("12_482gc")]
 layout_mode = 1
@@ -112,6 +182,7 @@ anchor_bottom = 0.119444
 farm_path = NodePath("../../../Farm")
 universe_path = NodePath("../../..")
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Debug" type="RichTextLabel" parent="UIRoot/HUD"]
 unique_name_in_owner = true
@@ -133,9 +204,11 @@ theme_override_colors/default_color = Color(1, 0.341583, 0.400643, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "Debug Mode"
 scroll_active = false
+metadata/_edit_lock_ = true
 
 [node name="ControlsCanvasLayer" parent="UIRoot/HUD" instance=ExtResource("11_5qn33")]
 layout_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true

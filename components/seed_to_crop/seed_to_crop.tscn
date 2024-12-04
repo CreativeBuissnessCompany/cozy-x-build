@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_7eqit"]
 [ext_resource type="Script" path="res://components/seed_to_crop/seed_to_crop.gd" id="1_mb8ct"]
 [ext_resource type="Texture2D" uid="uid://2rysbyde7xnn" path="res://entities/items/tools/seeds/crops_ingame_11_12_Edited.png" id="2_uk6gx"]
-[ext_resource type="Resource" uid="uid://cca773myvhb44" path="res://entities/items/tools/seeds/raddish/raddish_seed_resource.tres" id="3_1bhri"]
+[ext_resource type="Resource" uid="uid://cca773myvhb44" path="res://data/resources/seeds/raddish_seed_resource.tres" id="3_1bhri"]
 [ext_resource type="Animation" uid="uid://rp8mlp0wjw2d" path="res://entities/items/tools/seeds/greenpea/default.res" id="5_nhnhr"]
 [ext_resource type="Animation" uid="uid://cii8wi3ldks5w" path="res://entities/items/tools/seeds/raddish/default.res" id="6_k5vgh"]
 

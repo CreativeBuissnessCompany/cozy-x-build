@@ -207,7 +207,7 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="Qty" type="RichTextLabel" parent="HBoxContainer/SidePanelsVBoxContainer2/SidePanelContainer/MarginContainer/Panel/MarginContainer4"]
+[node name="Price" type="RichTextLabel" parent="HBoxContainer/SidePanelsVBoxContainer2/SidePanelContainer/MarginContainer/Panel/MarginContainer4"]
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2

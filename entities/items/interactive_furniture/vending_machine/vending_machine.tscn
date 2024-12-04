@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4vrpmdrlpamn"]
+[gd_scene load_steps=6 format=3 uid="uid://c4vrpmdrlpamn"]
 
 [ext_resource type="Script" path="res://entities/items/interactive_furniture/vending_machine/vending_machine.gd" id="1_myppn"]
 [ext_resource type="Resource" uid="uid://b2dktshx1ka1v" path="res://ui/vending_machine_ui/inventory_ui_vending_machine/vending_inventory_stock_01.tres" id="2_y44pt"]
 [ext_resource type="Texture2D" uid="uid://c1b1a8rdevi05" path="res://entities/items/interactive_furniture/vending_machine/art/overworld-vending.png" id="2_ykt3q"]
-[ext_resource type="PackedScene" uid="uid://v0ox0cvbdbym" path="res://components/currency/currency.tscn" id="4_hqo7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t68w"]
 size = Vector2(32, 30)
@@ -11,11 +10,10 @@ size = Vector2(32, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_726p2"]
 size = Vector2(34, 46)
 
-[node name="VendingMachine" type="Node2D" node_paths=PackedStringArray("currency_node")]
+[node name="VendingMachine" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_myppn")
 vending_inventory = ExtResource("2_y44pt")
-currency_node = NodePath("Currency")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -36,8 +34,5 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -35)
 shape = SubResource("RectangleShape2D_726p2")
-
-[node name="Currency" parent="." instance=ExtResource("4_hqo7b")]
-currency_held = 20
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

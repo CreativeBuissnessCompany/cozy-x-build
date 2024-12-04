@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ctt4qnldpofbm"]
+
+[ext_resource type="Shader" path="res://locations/farm/inside_farmhouse_02/BackGroundShader01.gdshader" id="1_08p0j"]
+
+[resource]
+shader = ExtResource("1_08p0j")
+shader_parameter/color_one = Color(0, 0.386548, 0.111637, 1)
+shader_parameter/color_two = Color(0.503271, 0.345471, 0.233831, 1)
+shader_parameter/angle = 357.0
+shader_parameter/line_count = -30.0
+shader_parameter/speed = 4.0
+shader_parameter/blur = 1.02243

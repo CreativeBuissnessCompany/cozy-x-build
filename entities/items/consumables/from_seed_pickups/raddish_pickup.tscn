@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqi02f3k1a31s"]
 
 [ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_n83st"]
-[ext_resource type="Resource" uid="uid://biutgknunyp1u" path="res://entities/items/consumables/veggies/raddish/raddish_resource.tres" id="2_8q0me"]
+[ext_resource type="Resource" uid="uid://biutgknunyp1u" path="res://data/resources/consumables/raddish_resource.tres" id="2_8q0me"]
 
 [node name="RaddishPickup" instance=ExtResource("1_n83st")]
 item = ExtResource("2_8q0me")

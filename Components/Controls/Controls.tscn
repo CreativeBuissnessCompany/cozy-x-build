@@ -15,21 +15,21 @@ theme = ExtResource("1_5ekkx")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.2)
-custom_minimum_size = Vector2(80, 70.08)
+custom_minimum_size = Vector2(84, 70.08)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -88.77
-offset_top = -81.71
-offset_right = -8.77002
-offset_bottom = -11.63
+offset_left = -85.77
+offset_top = -77.71
+offset_right = -1.77002
+offset_bottom = -2.62997
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
-mouse_filter = 1
+mouse_force_pass_scroll_events = false
 color = Color(0.553881, 0.312371, 0.174044, 1)
 script = ExtResource("2_4hlfk")
 
@@ -47,6 +47,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 color = Color(0.627451, 0.823529, 0.388235, 0.529412)
+
+[node name="ControlsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 570.5
+offset_top = 260.0
+offset_right = 667.5
+offset_bottom = 291.0
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 12
+text = "Controls"
 
 [node name="LowerHalfHBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
@@ -67,7 +79,8 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LowerHalfHBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
@@ -79,15 +92,20 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.930881, 0.455358, 0.344561, 1)
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 9
 bbcode_enabled = true
-text = "W, A, S, D  
-Up, Dwn, Lft, Rght "
+text = "   W   A   S   D   
+   ⬆  ⬇  ⬅  ➡    "
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="LowerHalfHBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 7
 
 [node name="HoeLabel" type="RichTextLabel" parent="LowerHalfHBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -95,7 +113,7 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.851281, 0.584953, 0.543869, 1)
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 9
 bbcode_enabled = true
 text = "E - Hoe Select"
 fit_content = true
@@ -110,7 +128,7 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.851281, 0.584953, 0.543869, 1)
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 9
 bbcode_enabled = true
 text = "R - Watering Can"
 fit_content = true
@@ -125,7 +143,7 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.851281, 0.584953, 0.543869, 1)
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 9
 bbcode_enabled = true
 text = "I  - Inventory
 "
@@ -136,8 +154,10 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="LowerHalfHBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 0
 
 [connection signal="mouse_entered" from="ColorRect2" to="ColorRect2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect2" to="ColorRect2" method="_on_mouse_exited"]

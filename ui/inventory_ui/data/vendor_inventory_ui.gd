@@ -8,7 +8,7 @@ extends Control  # Sept 15, Used to be panel container
 @export var inventory_for_objects: InventoryResource    # Heads-Up... Change to inventory_for_sellers ...
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
-@onready var qty: RichTextLabel = %Qty
+@onready var price_label: RichTextLabel = %Price
 
 # Use_or_drop stuff
 @export var buy_scene: PackedScene
@@ -74,9 +74,9 @@ func open(inventory: InventoryResource):
 func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_position):
 	#print_debug( "Received " + item_resource.description )
 	item_desc_label.text = item_resource.description
-	qty.text = "Qty: " + str(item_resource.qty)
+	price_label.text = "$: " + str(item_resource.price)
 	# Stop Other Slot Animations
-	var slot_array = grid_container.get_children()
+	var slot_array: Array[Node] = grid_container.get_children()
 	for slot in slot_array:
 		slot.animated_sprite_2d.animation = "Default"
 	
@@ -95,8 +95,9 @@ func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_posit
 # Heads-Up...  Close buy box added New ... 12/03
 func _on_close_button_pressed() -> void:
 	# Close buy box  Heads-Up... New ... 12/03
-	buy_instance.queue_free()
-	buy_displayed = false
+	if buy_instance:
+		buy_instance.queue_free()
+		buy_displayed = false
 	#
 	self.ui_open = false
 	hide()
