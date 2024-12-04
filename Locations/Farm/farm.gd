@@ -6,7 +6,7 @@ extends BaseScene
 
 #                                      VARIABLES 
 
-@export var camera_bounds: Vector4i 
+@export var camera_bounds: Vector4i # NOTE Test when you move it to misc. 
 var crop_to_seed_scene: PackedScene  = preload("res://components/seed_to_crop/seed_to_crop.tscn")
 
 #			TileMapLayers
@@ -20,18 +20,18 @@ var crop_to_seed_scene: PackedScene  = preload("res://components/seed_to_crop/se
 
 var terrain_set:int = 0 # 1st Terrain Set
 # Source ID's
-var source_id: int
-var dirt_tiles_source_id:= 5 
-var scene_source_id := 3
+var source_id: int #                                                       Delete? Seemingly Unused 
+var dirt_tiles_source_id:= 5 #                                             Delete? Seemingly Unused 
+var scene_source_id := 3 #                                                 Delete? Seemingly Unused 
 # Terrains, 1st Set ( Index is actually 0, Computers dumb )
-var tilled_terrain: int = 10 # From 5
-var watered_terrain: int = 11 # From 6
+var tilled_terrain: int = 10 
+var watered_terrain: int = 11 
 # 			Tile Containers ...
 var dirt_tiles: Array = []
 var wet_tiles: Array = []
-#var dirt_tiles_to_replace: Array = []      11.19 coment out
+
 # Scenetile ID for SEEDS
-var scene_tile_id := 1
+var scene_tile_id := 1  #                                       NOTE Seemingly Unused Delete ....
 
 #			Farming Stuff ...
 
@@ -51,7 +51,7 @@ var custom_data: String
 
 var current_day: int = 1
 
-#			Audio
+#			Audio      NOTE Probably move this out ...
 var sfx_file: AudioStreamMP3
 @export var sfx_till: AudioStreamMP3 
 @export var sfx_watering: AudioStreamMP3 
@@ -60,23 +60,23 @@ var sfx_file: AudioStreamMP3
 #			Misc...
 
 var ui_open: bool = false # Signal from inventory, to Stop User input if UI is open ....
-var seed_selected: Item # Signal received from inventory ....
+var seed_selected: Item # Signal received from inventoryUI ....
 
 
 
 
+#								                     Script Start... 
 
 
-
-
-#								Script_Start 
+# super(), check_day(), Sends camera_limits ...
 func _enter_tree() -> void:
 	super()
 	check_day()
-	print("farm entering")
+
 	# Update Camera
 	GameData.camera_bounds = camera_bounds
 	Signalbus.camera_limits.emit()
+#	print("farm entering")
 	
 
 func _ready() -> void:
@@ -87,13 +87,10 @@ func _ready() -> void:
 	Signalbus.ui_open.connect(on_ui_open)
 	#  Connects to SeedToCrop .... To delete Crop when pickup instantiated....
 	Signalbus.delete_crop.connect(on_delete_crop)
-	# To set crop
-#	print_debug("Farm is Ready ...")
-	Signalbus.crop_ready.connect(on_crop_ready)
+		
 	
-	
-	
-
+# Controls are.... Press E To Toggle Till, R For Water, T For Harvest 
+# Click does the action thats Toggled ...
 func _input(_event: InputEvent) -> void:
 	
 	# E key Till
@@ -106,41 +103,35 @@ func _input(_event: InputEvent) -> void:
 		farming_mode_state = FARMING_MODES.WATERING
 		#print("Water State")
 	
-# NEW
 	# T key Harvest
 	if Input.is_action_just_pressed("toggle_harvest"):
 		farming_mode_state = FARMING_MODES.HARVEST
 		print("Harvest State Toggled")
 
-
-
-	
 	# NOTE Need to make it so only active 
 	# when close to farming area ....
-	if Input.is_action_pressed("click"):
+	if Input.is_action_just_pressed("click"):
 		# Whats the pos of Mouse? Vector 2
 		var mouse_pos: Vector2 = get_global_mouse_position()
 		var state: int         = farming_mode_state
 		# Farming Func ...
-		# TEST Check if mouse is on tml 3 or 4 
-		
 		if ui_open == false:
 			if farming_mode_state != FARMING_MODES.HARVEST:
-					
 				farming(state, mouse_pos)
 				#print(" 'click' at farm.gd")
 				return
 			else:
-				print("Bout to harvest")
+#				print("Bout to harvest")
 				harvest(mouse_pos)
 				pass
 
 
 
-#						NOTE Custom Functions ... NOTE 
+#						                           Custom Functions... 
 
 
-
+## Converts mos_pos to tml_mos_pos, Checks for Custom Data in Tile ( " can_plant " ), Instantiates SeedToCrop ...
+## Add Child to crop_tml, Set position, Run set_crop_data in SeedToCrop, Append to CropData.crop_array...
 func plant_seed(mouse_pos: Vector2i) -> void :
 
 	var mouse_pos_for_data = Utility.convert_mos_local(tilled_tml,mouse_pos) 
@@ -154,7 +145,7 @@ func plant_seed(mouse_pos: Vector2i) -> void :
 		print()
 		print("Just appended")
 		print(CropData.crop_array)
-		# >>>                  >>>
+		# >>>                  >>>              NOTE Delete ? ? ?
 		# Wait for it to get added to the tree ....
 #		await get_tree().process_frame
 #		await get_tree().process_frame   # Commented out on new func make....
@@ -165,23 +156,22 @@ func plant_seed(mouse_pos: Vector2i) -> void :
 			Signalbus.sfx.emit(sfx_seed) # play sound
 	return
 
-
-		
+## Converts mos_pos to tml_mos_pos, Sends signal to SeedToCrop to do _on_harvest() ...
 func harvest(_mouse_pos):
 	var local_mos = Utility.convert_mos_local(crops_tml,_mouse_pos)
 	Signalbus.harvest.emit(local_mos)
-	print("harvest in farm.gd")
+#	print("harvest in farm.gd")
 	# Get tile from mos_pos, Do func on it
 	pass
 
+## Unused ...Delete ? ? ?
 ## Uses function check_day() ....Triggered by Signal emitted by SeedToCrop ...
 func on_crop_ready() -> void:
 	print("farm, on_crop_ready")
 #	check_day()
 	return
 
-
-
+## Triggered by signal from SeedToCrop ... Does erase_cell on TileMapLayer ...x 
 func on_delete_crop(coords):
 	var local_coords: Vector2 = crops_tml.to_local(coords)
 	var cell: Vector2i = crops_tml.local_to_map(local_coords)
@@ -191,7 +181,7 @@ func on_delete_crop(coords):
 func on_ui_open():
 	ui_open = !ui_open
 
-
+## Triggered by InventoryUI
 func on_seed_selected(item_resource: Item):
 	if item_resource.item_type == Item.ITEM_TYPE.SEED:
 		
@@ -201,7 +191,8 @@ func on_seed_selected(item_resource: Item):
 		var inventory_ui: InventoryUI = get_parent().find_child("InventoryUI")
 		inventory_ui._on_close_button_pressed()
 		
-
+## Uses farming_state/FARMING_MODES to Check and then Match the farming modes selected....
+## Uses mos_pos to change tiles for TILL, WATER and HARVEST ... Uses set_cells_terrain_connect ...
 func farming(state,mouse_pos):
 	
 	match state:
@@ -216,44 +207,15 @@ func farming(state,mouse_pos):
 		FARMING_MODES.WATERING:
 			layer_to_look = tilled_tml
 			layer_to_place = watered_tml
-			tiles = wet_tiles # Empty before this , Needed or else all previously TILL tiles\
-								# Will get watered at once ....
+			tiles = wet_tiles # Empty before this , Needed or else all previously TILL tiles ...
+							  # ... Will get watered at once ....
 			terrain = watered_terrain
 			custom_data = can_water_custom_data
 			sfx_file = sfx_watering
 	
 		FARMING_MODES.PLANT_SEED:
 		
-			# TEST
 			plant_seed(mouse_pos)	
-		
-	
-#			layer_to_look = tilled_tml 
-#			layer_to_place = crops_tml 
-#			custom_data = can_plant
-#			source_id = scene_source_id # Maybe change for scene tile , from 1 to 3
-#			sfx_file = sfx_seed
-#			
-#			var mouse_pos_for_data           = Utility.convert_mos_local(layer_to_look,mouse_pos) # All same ?
-#			var mouse_pos_for_seed: Vector2i = crops_tml.local_to_map(get_local_mouse_position())
-#			# Seed SceneTile
-#			if retrieving_custom_data(layer_to_look, mouse_pos_for_data, custom_data):
-#				# Set Scenetile in the ground first.... Add sourceid and tile id, seed_cord to (0,0)
-#				layer_to_place.set_cell(mouse_pos_for_seed,source_id, Vector2i(0,0),scene_tile_id)
-#				# Wait for it to get added to the tree ....
-#				await get_tree().process_frame
-#				await get_tree().process_frame
-#				
-#				var child: Node = layer_to_place.get_child(-1)
-#				#var child = layer_to_place.call_deferred("get_child", -1)
-#				on_crop_ready(child) # NOTE Check for seed_selected variable ////
-#				# Set Item Data to Current  
-#				child.item_data = seed_selected
-#				
-#				# NOTE SEED SFX
-#				if ui_open == false:
-#					Signalbus.sfx.emit(sfx_file)
-	
 	
 	# NOTE                       DONE if not PLANT_SEED
 	# Farming Func for NOT seeds
@@ -286,9 +248,6 @@ func check_day():
 		crop._on_next_day()
 	CropData.crop_array.clear()
 		
-	
-	
-	
 	if time_tracker.day > current_day:
 		if dirt_tiles.size() != 0:
 			# Clear wet tiles ...
@@ -301,11 +260,7 @@ func check_day():
 		# Set day Eitherway... As long as Timetracker.day is bigger than current day in farm 
 		current_day = time_tracker.day
 	
-	
-	
-
-
-
+## Check TileMapLayer for custom data in a Tile at tml_mos_pos ( conversion done inside ) ... 
 func retrieving_custom_data(tml_layer: TileMapLayer,\
 tml_mouse_pos: Vector2, custom_tilemap_data_name: String) -> Variant:
 	

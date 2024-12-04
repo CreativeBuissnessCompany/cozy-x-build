@@ -29,3 +29,5 @@ signal crop_ready()
 signal camera_limits()
 # SeedToCrop and Farm 
 signal harvest()
+# Currency, From Player to HUD ...
+signal currency()

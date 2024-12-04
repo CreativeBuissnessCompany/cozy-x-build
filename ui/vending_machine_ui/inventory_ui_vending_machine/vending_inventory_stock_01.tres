@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=8 format=3 uid="uid://b2dktshx1ka1v"]
+[gd_resource type="Resource" script_class="InventoryResource" load_steps=8 format=3 uid="uid://b2dktshx1ka1v"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_hgrod"]
 [ext_resource type="Resource" uid="uid://c2rr865bmxad1" path="res://entities/items/non_consumable/can/can.tres" id="2_ci174"]

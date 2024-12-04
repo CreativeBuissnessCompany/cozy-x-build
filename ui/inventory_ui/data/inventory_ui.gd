@@ -5,7 +5,7 @@ extends Control  # Oct 23rd.
 # Variables
 # Setting the item slot scene to use ....
 @export var item_slot_scene:PackedScene
-@export var inventory_for_objects: Inventory
+@export var inventory_for_objects: InventoryResource
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
 @onready var qty: RichTextLabel = %Qty
@@ -60,7 +60,7 @@ func display_use_drop(pos) -> void:
 
 
 # What node is using this? Player.gd ... 
-func open(inventory:Inventory):
+func open(inventory: InventoryResource):
 	self.ui_open = true # Emitting in setget, Signal to Stop Input in Farm.gd
 	self.visible = !self.visible # Show/Hide UI # NOTE CHANGED TO SHOW from !self.visible
 	

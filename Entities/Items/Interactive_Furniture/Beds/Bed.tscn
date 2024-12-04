@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6nqqggvbaemk"]
+[gd_scene load_steps=7 format=3 uid="uid://c6nqqggvbaemk"]
 
 [ext_resource type="Script" path="res://entities/items/interactive_furniture/beds/bed.gd" id="1_4kw3y"]
 [ext_resource type="Texture2D" uid="uid://dl2550o15lyd3" path="res://entities/items/interactive_furniture/beds/art/bed n covers.png" id="2_elal7"]
 [ext_resource type="AudioStream" uid="uid://c0bqg62ayapgv" path="res://audio_files/sfx/jingles/BedtimeAndMorning 2024-09-27 1633.mp3" id="2_vri2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1vhk"]
-size = Vector2(58, 90)
+size = Vector2(58, 80.73)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6q8a"]
 size = Vector2(20, 46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uyua7"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
 
 [node name="Bed" type="StaticBody2D"]
 y_sort_enabled = true
@@ -18,7 +21,7 @@ jingle = ExtResource("2_vri2h")
 
 [node name="Base" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(92, -9)
+position = Vector2(-2, -9)
 texture = ExtResource("2_elal7")
 offset = Vector2(0, -50.4)
 hframes = 2
@@ -28,7 +31,7 @@ region_rect = Rect2(0, 0, 128, 96)
 [node name="Covers" type="Sprite2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(92, -29.37)
+position = Vector2(-2, -29.37)
 texture = ExtResource("2_elal7")
 offset = Vector2(0, -20.84)
 hframes = 2
@@ -39,10 +42,11 @@ region_rect = Rect2(0, 32, 128, 48)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 y_sort_enabled = true
-position = Vector2(93, -54.46)
+position = Vector2(-1, -59.365)
 shape = SubResource("RectangleShape2D_f1vhk")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-94, 0)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -58,7 +62,7 @@ offset_left = 48.0
 offset_top = -157.0
 offset_right = 126.0
 offset_bottom = -129.81
-color = Color(0.47451, 0.6, 0.603922, 0)
+color = Color(0.7589, 0.242263, 0.193768, 0.670588)
 
 [node name="BoxContainer" type="BoxContainer" parent="DialogBox"]
 layout_mode = 0
@@ -86,6 +90,7 @@ theme_override_colors/font_color = Color(0.980139, 0.980139, 0.980139, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_uyua7")
 text = "Yes?"
 flat = true
 

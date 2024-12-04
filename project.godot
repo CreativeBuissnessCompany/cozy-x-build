@@ -169,3 +169,14 @@ textures/vram_compression/import_etc2_astc=true
 textures/default_filters/use_nearest_mipmap_filter=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 anti_aliasing/screen_space_roughness_limiter/amount=4.0
+
+[shader_globals]
+
+width={
+"type": "float",
+"value": 640.0
+}
+height={
+"type": "float",
+"value": 360.0
+}

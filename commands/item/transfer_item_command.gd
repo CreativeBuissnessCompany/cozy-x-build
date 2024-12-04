@@ -4,7 +4,7 @@ class_name TransferItemCommand
 
 
 
-func transfer_item( item: Item, inventory_a: Inventory,inventory_b: Inventory) -> void:
+func transfer_item( item: Item, inventory_a: InventoryResource,inventory_b: InventoryResource) -> void:
 	# find item in inventory a
 	for item_a in inventory_a.get_items():
 		print(item_a)

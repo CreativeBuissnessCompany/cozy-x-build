@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkt7h6dvd5lsu"]
+
+[ext_resource type="Texture2D" uid="uid://ck36ij762c70n" path="res://entities/items/furniture_no_interaction/counters/counter_02.png" id="1_mgblc"]
+[ext_resource type="Texture2D" uid="uid://conn5c27pefc" path="res://entities/items/interactive_furniture/stove/stove_01.png" id="1_tnmtq"]
+[ext_resource type="Script" path="res://components/asset_flipper/asset_flipper.gd" id="2_lsu7s"]
+[ext_resource type="Texture2D" uid="uid://cpaabrjwsfvvl" path="res://entities/items/furniture_no_interaction/counters/counter_01.png" id="3_lt3md"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mw8j"]
+size = Vector2(30, 20)
+
+[node name="Stove01" type="Sprite2D"]
+position = Vector2(-70, 84)
+texture = ExtResource("1_tnmtq")
+script = ExtResource("2_lsu7s")
+assets_options = Array[Texture2D]([ExtResource("3_lt3md"), ExtResource("1_mgblc")])
+switch_asset_to = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_4mw8j")

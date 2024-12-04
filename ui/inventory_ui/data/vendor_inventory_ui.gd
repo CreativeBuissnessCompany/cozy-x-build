@@ -2,15 +2,14 @@ class_name VendorInventoryUI
 extends Control  # Sept 15, Used to be panel container
 
 
-# Variables
+#                                                         Variables...
 # Setting the item slot scene to use ....
 @export var item_slot_scene:PackedScene
-@export var inventory_for_objects: Inventory
+@export var inventory_for_objects: InventoryResource    # Heads-Up... Change to inventory_for_sellers ...
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
 @onready var qty: RichTextLabel = %Qty
 
-# * * *
 # Use_or_drop stuff
 @export var buy_scene: PackedScene
 var buy_instance: Node2D
@@ -20,14 +19,11 @@ var last_clicked_item: Item
 # Player Var
 @export var player: Player
 
-
-
 # For Signals, And Stopping user Input
 var ui_open: bool = false:
 	set(value):
 		ui_open = value
 		Signalbus.ui_open.emit()
-#		print(" Emitting From Inventory ")
 
 
 
@@ -37,11 +33,11 @@ var ui_open: bool = false:
 
 
 
-# Script_Start
+#                                           Script Start...
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	
-	
+	# Close inventoryUI ....
 	if ui_open == true:
 		if Input.is_action_just_released("escape"):
 			if buy_displayed:
@@ -54,7 +50,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			_on_close_button_pressed()
 		
 
-
 func display_buy(pos) -> void:
 	buy_instance = buy_scene.instantiate()
 	buy_instance.global_position = pos
@@ -65,18 +60,14 @@ func display_buy(pos) -> void:
 	pass
 
 
-
 # What node is using this? Player.gd ... 
-func open(inventory:Inventory):
+func open(inventory: InventoryResource):
 	self.ui_open = true # Emit Signal to Stop Input in Farm.gd
 	self.visible = !self.visible # Show/Hide UI
-
-
 	# Used for things that already have inventory like...
 	#Vending Machine, Chest, Etc ...
 	if inventory_for_objects:
 		inventory = inventory_for_objects
-	
 	reset_inventory(inventory)
 
 
@@ -101,29 +92,48 @@ func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_posit
 	# Set last_clicked_item for buy
 	last_clicked_item = item_resource
 
-
+# Heads-Up...  Close buy box added New ... 12/03
 func _on_close_button_pressed() -> void:
-	
+	# Close buy box  Heads-Up... New ... 12/03
+	buy_instance.queue_free()
+	buy_displayed = false
+	#
 	self.ui_open = false
 	hide()
 
 
 func on_buy() -> void:
-	print(" Clicked Buy Button ")
-	player.inventory.add_item(last_clicked_item)
-	# NOTE This line is the one causing me trouble ...
-	inventory_for_objects.remove_item(last_clicked_item)
+#	print(" Clicked Buy Button ")
+	var price: int = last_clicked_item.price
+	var held: int = player.currency_node.currency_held
+	
+
+	if check_if_player_can_afford(price, held):
+		player.currency_node.lose_currency(price)
+
+		player.inventory.add_item(last_clicked_item)
+		# NOTE This line is the one causing me trouble ...
+		inventory_for_objects.remove_item(last_clicked_item)
 	#var new_inventory = inventory_for_objects.duplicate()
 	#reset_inventory(new_inventory)
-	_on_close_button_pressed()
-	open(inventory_for_objects)
+		_on_close_button_pressed()
+		open(inventory_for_objects)
 	# Close buy box 
-	buy_instance.queue_free()
-	buy_displayed = false
+		buy_instance.queue_free()
+		buy_displayed = false
+	else:
+		print("Cant Afford This Shit Bud!! ....")
+		return
+	
+func check_if_player_can_afford(cost: int, held: int) -> bool:
+	# Make sure player has enough currency for transaction ...
+	if held >= cost:
+		return true
+	else:
+		return false
 
 
-# * * * 
-func reset_inventory(inventory: Inventory) -> void:
+func reset_inventory(inventory: InventoryResource) -> void:
 	
 	for child in grid_container.get_children():
 		grid_container.remove_child(child)

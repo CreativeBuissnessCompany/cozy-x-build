@@ -28,12 +28,12 @@ func _ready() -> void:
 
 
 
-func on_open_object_with_inventory(vending_inventory: Inventory):
+func on_open_object_with_inventory(vending_inventory: InventoryResource):
 	inventory_ui_vending_machine.open(vending_inventory)
 	
 
 
-func _on_vending_machine_ui(inventory_vending: Inventory):
+func _on_vending_machine_ui(inventory_vending: InventoryResource):
 	inventory_ui_vending_machine.open(inventory_vending)
 	#print("UIRoot, Signal Received")
 

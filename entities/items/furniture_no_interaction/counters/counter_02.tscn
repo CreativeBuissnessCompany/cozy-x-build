@@ -9,10 +9,10 @@ size = Vector2(30, 20)
 
 [node name="Counter01" type="Sprite2D"]
 position = Vector2(-70, 84)
-texture = ExtResource("1_407pa")
+texture = ExtResource("3_mfvoq")
 script = ExtResource("2_kl7qx")
-switch_asset_to = 1
 assets_options = Array[Texture2D]([ExtResource("1_407pa"), ExtResource("3_mfvoq")])
+switch_asset_to = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 0

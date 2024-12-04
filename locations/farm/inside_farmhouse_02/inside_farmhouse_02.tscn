@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://kx8kpbyk74fe"]
+[gd_scene load_steps=29 format=3 uid="uid://kx8kpbyk74fe"]
 
 [ext_resource type="Script" path="res://locations/farm/inside_farmhouse/inside_farm_house.gd" id="1_0xjtu"]
 [ext_resource type="Texture2D" uid="uid://b3ari0iyb4x61" path="res://locations/farm/inside_farmhouse_02/farm-interior-floor.png" id="1_e2xlq"]
@@ -15,56 +15,167 @@
 [ext_resource type="PackedScene" uid="uid://c3ampkvnley2c" path="res://entities/items/furniture_no_interaction/counters/counter_02.tscn" id="12_0bfj5"]
 [ext_resource type="PackedScene" uid="uid://c6s3lxp4v0570" path="res://components/scene_trigger/scene_trigger.tscn" id="13_6oxf2"]
 [ext_resource type="AudioStream" uid="uid://se8cawjh4tlt" path="res://audio_files/sfx/doors/DoorInsideOut.mp3" id="14_1jipb"]
+[ext_resource type="PackedScene" uid="uid://dkt7h6dvd5lsu" path="res://entities/items/interactive_furniture/stove/stove_01.tscn" id="14_ej2b4"]
+[ext_resource type="Shader" path="res://locations/farm/inside_farmhouse_02/earthbound.gdshader" id="17_maaur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b0di"]
+size = Vector2(57.5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pohc6"]
+size = Vector2(110.75, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m40sx"]
+size = Vector2(70.75, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktffs"]
+size = Vector2(70.75, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5yra"]
+size = Vector2(110.75, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3coe7"]
+size = Vector2(183.375, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epvuk"]
+size = Vector2(189.688, 19.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2jr7"]
+size = Vector2(189.688, 19.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4i2f"]
+size = Vector2(41.4221, 19.3125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ra2p"]
 size = Vector2(48.6513, 23.6785)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtfrs"]
+shader = ExtResource("17_maaur")
+shader_parameter/snes_transparency = true
+shader_parameter/gba_transparency = true
+shader_parameter/horizontal_scan_line = true
+shader_parameter/vertical_scan_line = false
+shader_parameter/enable_palette_cycling = false
+shader_parameter/sprite_scroll_direction = Vector2(0, 0)
+shader_parameter/sprite_scroll_speed = 0.13
+shader_parameter/gba_transparency_scroll_direction = Vector2(0.56, 0)
+shader_parameter/gba_transparency_scroll_speed = 0.01
+shader_parameter/gba_transparency_value = 0.8
+shader_parameter/horizontal_wave_amplitude = 0.34
+shader_parameter/horizontal_wave_frequency = 0.26
+shader_parameter/horizontal_wave_speed = 1.58
+shader_parameter/vertical_wave_amplitude = 1.43
+shader_parameter/vertical_wave_frequency = 1.25
+shader_parameter/vertical_wave_speed = 1.48
+shader_parameter/horizontal_deform_amplitude = 5.17
+shader_parameter/horizontal_deform_frequency = 1.81
+shader_parameter/horizontal_deform_speed = 1.77
+shader_parameter/vertical_deform_amplitude = 0.83
+shader_parameter/vertical_deform_frequency = 0.0
+shader_parameter/vertical_deform_speed = 1.0
+shader_parameter/palette_cycling_speed = 0.46
+
 [node name="InsideFarmhouse02" type="Node2D" groups=["Locations"]]
+y_sort_enabled = true
 script = ExtResource("1_0xjtu")
 
 [node name="FloorAndWalls" type="Sprite2D" parent="."]
 z_index = -1
 y_sort_enabled = true
 texture = ExtResource("1_e2xlq")
+metadata/_edit_lock_ = true
+
+[node name="RoomCollisions" type="StaticBody2D" parent="FloorAndWalls"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorAndWalls/RoomCollisions"]
+position = Vector2(38.25, -182)
+shape = SubResource("RectangleShape2D_4b0di")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FloorAndWalls/RoomCollisions"]
+position = Vector2(-49.9999, -85.375)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_pohc6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="FloorAndWalls/RoomCollisions"]
+position = Vector2(-9, -2)
+shape = SubResource("RectangleShape2D_m40sx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="FloorAndWalls/RoomCollisions"]
+position = Vector2(139, 13)
+shape = SubResource("RectangleShape2D_ktffs")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="FloorAndWalls/RoomCollisions"]
+position = Vector2(179, -85.375)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_m5yra")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="FloorAndWalls/RoomCollisions"]
+position = Vector2(132, 160.313)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_3coe7")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="FloorAndWalls/RoomCollisions"]
+position = Vector2(31.8439, 251.656)
+shape = SubResource("RectangleShape2D_epvuk")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="FloorAndWalls/RoomCollisions"]
+position = Vector2(-187, 162)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_l2jr7")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="FloorAndWalls/RoomCollisions"]
+position = Vector2(-151.289, 265.422)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_o4i2f")
 
 [node name="Bed" parent="." instance=ExtResource("2_f83x3")]
-position = Vector2(47, -84)
+position = Vector2(142, -76)
 
 [node name="NightStand" parent="." instance=ExtResource("3_ompua")]
 position = Vector2(86, -139)
+metadata/_edit_lock_ = true
 
 [node name="InteractableLamp" parent="." instance=ExtResource("4_1ulds")]
 position = Vector2(92, -157)
+metadata/_edit_lock_ = true
 
 [node name="Clock" parent="." instance=ExtResource("5_0lo8n")]
 position = Vector2(140, -211)
+metadata/_edit_lock_ = true
 
 [node name="Window" type="Sprite2D" parent="."]
 position = Vector2(40, -211)
 texture = ExtResource("6_p1oh7")
+metadata/_edit_lock_ = true
 
 [node name="Bookshelf" parent="." instance=ExtResource("7_f3y6d")]
 position = Vector2(-16, -142)
+metadata/_edit_lock_ = true
 
 [node name="Tv" parent="." instance=ExtResource("9_m3cid")]
 position = Vector2(9, 90)
+metadata/_edit_lock_ = true
 
 [node name="Fridge" parent="." instance=ExtResource("10_1r50a")]
-position = Vector2(-34.801, 99.2678)
+position = Vector2(-30.801, 98.2678)
 
 [node name="Counter01" parent="." instance=ExtResource("10_vgyee")]
-position = Vector2(-69, 83)
+position = Vector2(-64, 83)
 
 [node name="Sink" parent="." instance=ExtResource("11_1hjl4")]
-position = Vector2(-102, 77)
+position = Vector2(-97, 77)
 
 [node name="Counter02" parent="." instance=ExtResource("12_0bfj5")]
-position = Vector2(-135, 83)
+position = Vector2(-127, 83)
+
+[node name="Stove01" parent="." instance=ExtResource("14_ej2b4")]
+position = Vector2(-154.685, 76.2267)
 
 [node name="SceneTrigger" parent="." instance=ExtResource("13_6oxf2")]
 position = Vector2(-96.5759, 256.339)
 connected_scene = "res://Locations/Farm/farm.tscn"
 audio_file = ExtResource("14_1jipb")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
 position = Vector2(1, 3.5)
@@ -73,9 +184,22 @@ shape = SubResource("RectangleShape2D_5ra2p")
 [node name="EntranceMarkers" type="Node2D" parent="." groups=["Locations"]]
 unique_name_in_owner = true
 position = Vector2(-96, 225)
+metadata/_edit_lock_ = true
 
 [node name="any" type="Marker2D" parent="EntranceMarkers"]
 metadata/_edit_lock_ = true
 
 [node name="debug" type="Marker2D" parent="EntranceMarkers"]
 metadata/_edit_lock_ = true
+
+[node name="BackGround" type="Node2D" parent="."]
+visible = false
+z_index = -2
+
+[node name="ColorRect" type="ColorRect" parent="BackGround"]
+material = SubResource("ShaderMaterial_xtfrs")
+offset_left = -300.0
+offset_top = -332.0
+offset_right = 339.0
+offset_bottom = 375.0
+color = Color(0.427451, 0.388235, 1, 1)

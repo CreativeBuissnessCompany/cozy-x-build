@@ -7,15 +7,23 @@ var entrance_marker: String = "any"
 
 
 
-#func check_for_dev_mode():
+
+
+
+func move_thing(thing_to_move, where_to_move: Vector2, how_long: float):
+	
+
+	var tween: Tween = get_tree().create_tween()   # Tween ...
+	tween.tween_property(thing_to_move,"position",where_to_move,how_long)
+	
+
+	
+	
 
 
 
 # Positions Player on current Map ...
 func position_player(entrance_markers: Node2D, player: Player) -> void:
-	
-	# TESTING Insert keyword from whoever emits
-	
 	
 	
 	# Make sure player is the last node in the scene tree....
@@ -35,7 +43,7 @@ func entrance_name_check(entrance_markers: Node2D, player: Player, _name: String
 	for entrance in entrance_markers.get_children():
 		if entrance is Marker2D and entrance.name == _name:
 			player.global_position = entrance.global_position
-			print(entrance.name)
+#			print(entrance.name)
 	
 
 
