@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://db4eylrann81f"]
+[gd_scene load_steps=18 format=3 uid="uid://db4eylrann81f"]
 
 [ext_resource type="Script" path="res://universe/universe.gd" id="1_lm1sa"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://entities/player/player.tscn" id="2_3rlae"]
@@ -6,16 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://b37p04mi2tsjd" path="res://ui/inventory02_ui/data/inventory_ui_02.tscn" id="3_pelb8"]
 [ext_resource type="PackedScene" uid="uid://fe23f5hgo7jc" path="res://ui/vending_machine_ui/inventory_ui_vending_machine/inventory_ui_vending_machine.tscn" id="3_vl8i7"]
 [ext_resource type="Script" path="res://ui/hud/hud.gd" id="5_xd6ju"]
+[ext_resource type="PackedScene" uid="uid://dyc1kx60ut0eo" path="res://components/debug/debug_component.tscn" id="7_b871w"]
 [ext_resource type="Script" path="res://audio_manager/audio_manager.gd" id="8_fxu4h"]
 [ext_resource type="AudioStream" uid="uid://blf0dnkb8lyof" path="res://audio_files/music/AmbiBankC.mp3" id="8_nxnny"]
 [ext_resource type="AudioStream" uid="uid://dlo4g24p5cme6" path="res://audio_files/music/821 Loop.mp3" id="9_wco5c"]
 [ext_resource type="AudioStream" uid="uid://bp54n8ghvava4" path="res://audio_files/music/43020.mp3" id="10_ffxe7"]
 [ext_resource type="AudioStream" uid="uid://cx8gh37mgdmov" path="res://audio_files/music/Faze.mp3" id="11_4jhlq"]
 [ext_resource type="PackedScene" uid="uid://fcc1qd2fx2tc" path="res://components/controls/Controls.tscn" id="11_5qn33"]
-[ext_resource type="FontFile" uid="uid://pxdyu2wc4iuq" path="res://themes/fonts/Baldur.ttf" id="11_bkhxi"]
-[ext_resource type="Material" uid="uid://ctt4qnldpofbm" path="res://materials/lines01.tres" id="12_66c2x"]
 [ext_resource type="PackedScene" uid="uid://b1u5tbb7cpvpk" path="res://components/day_button/day_button.tscn" id="12_482gc"]
-[ext_resource type="Texture2D" uid="uid://dx1uxmrmdoblc" path="res://oval.png" id="13_t66gf"]
+[ext_resource type="PackedScene" uid="uid://p0edsdtg0va3" path="res://components/currency/currency_display.tscn" id="12_ig2xq"]
 [ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://locations/farm/farm.tscn" id="14_ke8uo"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wtpp2"]
@@ -26,63 +25,10 @@ stream_1 = ExtResource("9_wco5c")
 stream_2 = ExtResource("10_ffxe7")
 stream_3 = ExtResource("11_4jhlq")
 
-[sub_resource type="Shader" id="Shader_dj8mm"]
-code = "shader_type canvas_item;
-
-uniform vec3 color_one : source_color;
-uniform vec3 color_two : source_color;
-
-uniform float angle = 20.0;
-uniform float line_count = 20.0;
-uniform float speed = 10.0;
-uniform float blur : hint_range(0.0, 2.0, 0);
-
-
-
-
-
-
-
-
-
-
-vec2 rotate(vec2 uv, float rotation_angle) {
-    float radians_angle = radians(rotation_angle);
-    float cos_angle = cos(radians_angle);
-    float sin_angle = sin(radians_angle);
-    mat2 rotation_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
-    return uv * rotation_matrix;
-}
-
-float stripe(vec2 uv) {
-    return cos(uv.x * 0.0 - TIME*speed + uv.y * -line_count/2.0);
-}
-
-void fragment() {
-    vec2 uv = UV;
-    vec2 resolution = 1.0 / TEXTURE_PIXEL_SIZE;
-    float a = TEXTURE_PIXEL_SIZE.x / TEXTURE_PIXEL_SIZE.y;
-    uv.x *= a;
-    uv = rotate(uv, angle);
-    float g = stripe(uv);
-    vec3 col = mix(color_one, color_two, smoothstep(0.5, blur, g));
-    COLOR = vec4(col, 0.8);
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uawje"]
-shader = SubResource("Shader_dj8mm")
-shader_parameter/color_one = Color(0, 0.027451, 0.564706, 1)
-shader_parameter/color_two = Color(0.826295, 0.158975, 0.461857, 1)
-shader_parameter/angle = -70.0
-shader_parameter/line_count = 200.0
-shader_parameter/speed = 4.0
-shader_parameter/blur = 0.3
-
-[node name="Node2D" type="Node2D"]
+[node name="Universe" type="Node2D" node_paths=PackedStringArray("debug_component")]
 y_sort_enabled = true
 script = ExtResource("1_lm1sa")
-developer_mode = true
+debug_component = NodePath("DebugComponent")
 metadata/_edit_lock_ = true
 
 [node name="AudioManager" type="Node" parent="."]
@@ -95,11 +41,21 @@ bus = &"Music"
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="AudioManager"]
 
+[node name="DebugComponent" parent="." node_paths=PackedStringArray("debug_label", "day_button", "universe") instance=ExtResource("7_b871w")]
+debug_on = true
+debug_label = NodePath("../UIRoot/HUD/Debug")
+day_button = NodePath("../UIRoot/HUD/DayButton")
+universe = NodePath("..")
+
 [node name="UIRoot" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("3_p78e7")
 
-[node name="InventoryUI" parent="UIRoot" instance=ExtResource("3_pelb8")]
+[node name="InventoryUI" parent="UIRoot" node_paths=PackedStringArray("player") instance=ExtResource("3_pelb8")]
+unique_name_in_owner = true
 visible = false
+player = NodePath("../../Player")
+metadata/_edit_lock_ = true
 
 [node name="InventoryUIVendingMachine" parent="UIRoot" node_paths=PackedStringArray("player") instance=ExtResource("3_vl8i7")]
 visible = false
@@ -116,55 +72,27 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("5_xd6ju")
+metadata/_edit_lock_ = true
 
-[node name="Currency" type="RichTextLabel" parent="UIRoot/HUD"]
-unique_name_in_owner = true
-z_index = 1
-texture_filter = 5
-clip_contents = false
+[node name="CurrencyDisplay" parent="UIRoot/HUD" instance=ExtResource("12_ig2xq")]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -24.25
-offset_top = -1.37
-offset_right = 43.75
-offset_bottom = 30.63
-grow_horizontal = 2
-pivot_offset = Vector2(19.3, 37)
-theme_override_colors/default_color = Color(0.7496, 0.589038, 0, 1)
-theme_override_fonts/normal_font = ExtResource("11_bkhxi")
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "$10"
-scroll_active = false
-shortcut_keys_enabled = false
-meta_underlined = false
-hint_underlined = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="Sprite2D" type="Sprite2D" parent="UIRoot/HUD/Currency"]
-clip_children = 2
-z_index = -1
-material = SubResource("ShaderMaterial_uawje")
-position = Vector2(31, 20.37)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("13_t66gf")
-
-[node name="ColorRect" type="Sprite2D" parent="UIRoot/HUD/Currency/Sprite2D"]
-material = ExtResource("12_66c2x")
-texture = ExtResource("13_t66gf")
+offset_left = -34.0
+offset_top = 0.0
+offset_right = 34.0
+offset_bottom = 32.0
 
 [node name="Day" type="RichTextLabel" parent="UIRoot/HUD"]
 unique_name_in_owner = true
+clip_contents = false
 custom_minimum_size = Vector2(74.54, 31.28)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -74.54
-offset_bottom = 31.28
+offset_left = -78.54
+offset_top = 2.0
+offset_right = -4.0
+offset_bottom = 33.28
 grow_horizontal = 0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -172,13 +100,22 @@ theme_override_font_sizes/normal_font_size = 18
 text = "Day: 1"
 metadata/_edit_lock_ = true
 
+[node name="Polygon2D" type="Polygon2D" parent="UIRoot/HUD/Day"]
+z_index = -1
+position = Vector2(3.53998, 0)
+color = Color(0.182428, 0.523478, 0.36667, 1)
+polygon = PackedVector2Array(-5, 2, -9, 6, -9, 15, -8, 19, -4, 22, 2, 21, 8, 21, 13, 22, 21.54, 23, 36.54, 24, 47.0993, 23.34, 51, 22, 53.8524, 19.9376, 55.54, 16, 55.54, 11, 54.54, 3, 52, 1, 47.54, 1, 39, 2, 31.54, 3, 20.54, 3, 9.53998, 1, 2, 1)
+
 [node name="DayButton" parent="UIRoot/HUD" instance=ExtResource("12_482gc")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.971875
-anchor_top = 0.119444
-anchor_right = 0.971875
-anchor_bottom = 0.119444
+anchor_left = 0.95
+anchor_top = 0.119
+anchor_bottom = 0.119
+offset_top = -13.0
+offset_bottom = 3.0
 farm_path = NodePath("../../../Farm")
 universe_path = NodePath("../../..")
 metadata/_edit_use_anchors_ = true

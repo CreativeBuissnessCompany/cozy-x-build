@@ -9,6 +9,7 @@ extends Control  # Sept 15, Used to be panel container
 @onready var grid_container: GridContainer = %GridContainer
 @onready var item_desc_label: RichTextLabel = %ItemDescRichTextLabel
 @onready var price_label: RichTextLabel = %Price
+@onready var item_name_label: RichTextLabel = %ItemNameLabel
 
 # Use_or_drop stuff
 @export var buy_scene: PackedScene
@@ -18,12 +19,13 @@ var buy_displayed: bool = false
 var last_clicked_item: Item
 # Player Var
 @export var player: Player
-
 # For Signals, And Stopping user Input
 var ui_open: bool = false:
 	set(value):
 		ui_open = value
 		Signalbus.ui_open.emit()
+#
+var vendor_ui_displayed: bool = false
 
 
 
@@ -32,11 +34,9 @@ var ui_open: bool = false:
 
 
 
-
-#                                           Script Start...
-
+#                                         Script Start...
+#                                                        Esc. Key ...
 func _unhandled_key_input(event: InputEvent) -> void:
-	
 	# Close inventoryUI ....
 	if ui_open == true:
 		if Input.is_action_just_released("escape"):
@@ -51,6 +51,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		
 
 func display_buy(pos) -> void:
+	if buy_instance != null:
+		print( "Deleting buy instance in display buy")
+		buy_instance.queue_free()
 	buy_instance = buy_scene.instantiate()
 	buy_instance.global_position = pos
 	add_child(buy_instance)
@@ -62,17 +65,26 @@ func display_buy(pos) -> void:
 
 # What node is using this? Player.gd ... 
 func open(inventory: InventoryResource):
-	self.ui_open = true # Emit Signal to Stop Input in Farm.gd
-	self.visible = !self.visible # Show/Hide UI
-	# Used for things that already have inventory like...
-	#Vending Machine, Chest, Etc ...
-	if inventory_for_objects:
-		inventory = inventory_for_objects
-	reset_inventory(inventory)
+	if vendor_ui_displayed == true:
+		_on_close_button_pressed()
+		
+		return
+	else:
+		print(" Opening inventory for vendor")
+		self.ui_open = true # Emit Signal to Stop Input in Farm.gd
+		self.visible = !self.visible # Show/Hide UI
+		# Used for things that already have inventory like...
+		#Vending Machine, Chest, Etc ...
+		if inventory_for_objects:
+			inventory = inventory_for_objects
+		reset_inventory(inventory)
+		print("vendor_ui_displayed set to false")
+		vendor_ui_displayed = true
 
 
-func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_position):
+func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_position, slot_scene: ItemSlot):
 	#print_debug( "Received " + item_resource.description )
+	item_name_label.text = str("[center]" + item_resource.name + "[/center]") # TESTING 12/04 , Add name 
 	item_desc_label.text = item_resource.description
 	price_label.text = "$: " + str(item_resource.price)
 	# Stop Other Slot Animations
@@ -86,20 +98,28 @@ func _on_item_button_pressed(animated_sprite_2d, item_resource: Item, slot_posit
 	# Use or Drop Dialog Displayed 
 	if not buy_displayed:
 		display_buy(slot_position)
+		slot_scene.buy_displayed = true
 	elif buy_displayed:
+		for i in slot_array:
+			i.buy_displayed = false
 		buy_instance.global_position = slot_position
+		slot_scene.buy_displayed = true
+		
 	
 	# Set last_clicked_item for buy
 	last_clicked_item = item_resource
 
 # Heads-Up...  Close buy box added New ... 12/03
 func _on_close_button_pressed() -> void:
+	print(" Closed button pressed")
 	# Close buy box  Heads-Up... New ... 12/03
-	if buy_instance:
+	if buy_instance != null:
+		print("Delete buy_instance")
 		buy_instance.queue_free()
 		buy_displayed = false
 	#
 	self.ui_open = false
+	vendor_ui_displayed = false
 	hide()
 
 
@@ -115,13 +135,12 @@ func on_buy() -> void:
 		player.inventory.add_item(last_clicked_item)
 		# NOTE This line is the one causing me trouble ...
 		inventory_for_objects.remove_item(last_clicked_item)
-	#var new_inventory = inventory_for_objects.duplicate()
-	#reset_inventory(new_inventory)
+		buy_instance.queue_free()
+		buy_displayed = false
 		_on_close_button_pressed()
 		open(inventory_for_objects)
 	# Close buy box 
-		buy_instance.queue_free()
-		buy_displayed = false
+		
 	else:
 		print("Cant Afford This Shit Bud!! ....")
 		return

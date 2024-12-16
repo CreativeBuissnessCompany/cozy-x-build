@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://c1t2o5xyrom3b"]
+[gd_scene load_steps=39 format=4 uid="uid://c1t2o5xyrom3b"]
 
 [ext_resource type="Script" path="res://locations/farm/farm.gd" id="1_slb32"]
 [ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://locations/farm/Art/farm_tileset.tres" id="2_f15kg"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://t5pyvtb6v5l8" path="res://locations/decorative/sky/clouds_middle.png" id="7_1iv8h"]
 [ext_resource type="Texture2D" uid="uid://ck7nks8rgftei" path="res://locations/decorative/grass/tallgrass.png" id="7_o2uj1"]
 [ext_resource type="Texture2D" uid="uid://betmmt1go3o04" path="res://locations/decorative/sky/clouds_front.png" id="8_fo222"]
-[ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://entities/items/tools/seeds/greenpea/greenpea_seed_pickup.tscn" id="10_mmsmp"]
+[ext_resource type="PackedScene" uid="uid://c7jareo0pffkn" path="res://entities/items/consumables/all_pickups/greenpea_seed_pickup.tscn" id="10_mmsmp"]
 [ext_resource type="PackedScene" uid="uid://cnvfq46b4cias" path="res://locations/decorative/big/platform.tscn" id="11_x85ll"]
 [ext_resource type="PackedScene" uid="uid://dw0vftytpc7ff" path="res://locations/decorative/fence/fence.tscn" id="12_8j6su"]
 [ext_resource type="PackedScene" uid="uid://b48g84ou0m3kd" path="res://locations/decorative/misc/hot_air_balloon.tscn" id="13_pdd8b"]
@@ -31,9 +31,10 @@
 [ext_resource type="Script" path="res://locations/entrance_markers_node/entrance_markers_node.gd" id="28_vx1nh"]
 [ext_resource type="Script" path="res://locations/pickups_node/pick_ups.gd" id="30_bplgt"]
 [ext_resource type="PackedScene" uid="uid://bq15snof2oo4a" path="res://entities/items/tools/seeds/raddish/raddish_seed.tscn" id="35_n12wj"]
-[ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://entities/items/consumables/veggies/tomato/tomato_pickup.tscn" id="35_oc7ws"]
-[ext_resource type="PackedScene" uid="uid://csfp70arlpipg" path="res://entities/items/tools/watering_can/watering_can_pickup.tscn" id="37_k2ykm"]
-[ext_resource type="PackedScene" uid="uid://bod382lpid4lc" path="res://entities/items/tools/hoe/hoe_pickup.tscn" id="37_yve7i"]
+[ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://entities/items/consumables/all_pickups/tomato_pickup.tscn" id="35_oc7ws"]
+[ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://entities/items/consumables/all_pickups/apple_pickup.tscn" id="35_waiih"]
+[ext_resource type="PackedScene" uid="uid://csfp70arlpipg" path="res://entities/items/consumables/all_pickups/watering_can_pickup.tscn" id="37_k2ykm"]
+[ext_resource type="PackedScene" uid="uid://bod382lpid4lc" path="res://entities/items/consumables/all_pickups/hoe_pickup.tscn" id="37_yve7i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_colm4"]
 shader = ExtResource("23_1d8wk")
@@ -63,6 +64,7 @@ shader_parameter/offset = 0.0
 radius = 3.44227
 
 [node name="Farm" type="Node2D" groups=["Locations"]]
+process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_slb32")
 camera_bounds = Vector4i(-600, -400, 580, 410)
@@ -748,3 +750,9 @@ position = Vector2(351, 270)
 
 [node name="RaddishSeed" parent="PickUps" instance=ExtResource("35_n12wj")]
 position = Vector2(291.808, 318.748)
+
+[node name="Apple" parent="PickUps" instance=ExtResource("35_waiih")]
+position = Vector2(-21, 202)
+
+[node name="Tomato2" parent="PickUps" instance=ExtResource("35_oc7ws")]
+position = Vector2(16, 209)

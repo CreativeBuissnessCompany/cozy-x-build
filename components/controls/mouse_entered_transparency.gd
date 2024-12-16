@@ -6,7 +6,6 @@ var _playing: bool = false
 var original_x_coords: float = 82.0
 
 func _ready() -> void:
-	print("Rect ready")
 	_on_mouse_exited()
 	
 	await get_tree().create_timer(2).timeout
@@ -16,10 +15,8 @@ func _ready() -> void:
 
 
 func _on_mouse_entered() -> void:
-	print("Mouse Entered!")
 	await Engine.get_main_loop().process_frame
 	if _playing == false:
-		print("_playing == false, now doing mouse ENTERED")
 		_playing = true
 		# Move Controls Label
 		var tween_label: Tween = get_tree().create_tween()
@@ -33,9 +30,6 @@ func _on_mouse_entered() -> void:
 		await tween_1.finished 
 		_playing = false
 		
-		print()
-		print(_playing)
-		print()
 		
 		pass # Replace with function body.
 	else:
@@ -43,10 +37,8 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
-	print("Mouse Exited")
 	await Engine.get_main_loop().process_frame
 	if _playing == false:
-		print("_playing == false, now doing mouse EXIT")
 		_playing = true
 		# Move Controls Label
 		var tween_label: Tween = get_tree().create_tween()
@@ -58,7 +50,6 @@ func _on_mouse_exited() -> void:
 		tween_1.set_ease(Tween.EASE_IN_OUT)
 		
 		tween_1.tween_property(self, "self_modulate", Color(1,1,1, 0), 1)
-		pass # Replace with function body.
 		await tween_1.finished
 		_playing = false
 	else:

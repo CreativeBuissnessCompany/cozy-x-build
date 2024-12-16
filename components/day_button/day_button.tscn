@@ -1,12 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1u5tbb7cpvpk"]
+[gd_scene load_steps=5 format=3 uid="uid://b1u5tbb7cpvpk"]
 
 [ext_resource type="Script" path="res://components/day_button/day_button.gd" id="1_3iidn"]
 [ext_resource type="StyleBox" uid="uid://cbwy0inidan2s" path="res://components/day_button/day_button_theme_02.tres" id="1_jl54j"]
 [ext_resource type="StyleBox" uid="uid://crvphffuy50p5" path="res://components/day_button/day_button_theme_01.tres" id="2_4flbd"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3d4a"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3hpp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqcn7"]
+bg_color = Color(0.305952, 0.620061, 0.917139, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.891077, 0.638015, 0.538116, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="DayButton" type="Button"]
 anchors_preset = 6
@@ -22,8 +31,8 @@ grow_vertical = 2
 size_flags_horizontal = 8
 focus_mode = 0
 mouse_force_pass_scroll_events = false
-theme_override_styles/focus = SubResource("StyleBoxEmpty_o3d4a")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_h3hpp")
+theme_override_styles/focus = ExtResource("2_4flbd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mqcn7")
 theme_override_styles/pressed = ExtResource("1_jl54j")
 theme_override_styles/normal = ExtResource("2_4flbd")
 action_mode = 0

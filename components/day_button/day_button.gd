@@ -1,7 +1,21 @@
 extends Button
 
-@export_node_path("Node") var farm_path 
-@export_node_path("Node") var universe_path 
+
+# Code Smell
+@export_node_path("Node") var farm_path   
+@export_node_path("Node") var universe_path   
+@onready var universe: Node = get_node(universe_path)  
+
+
+
+
+# How is this bad? This script NEEDS universe node to have developer_mode ...... NOTE
+# Should universe hold info instead ? No, Because easy to forget this relationship....
+# What about a debug component ? I think thats the perfect solution ....
+func _ready() -> void:
+#	if universe.developer_mode == false:
+#		hide()
+	pass
 
 
 
@@ -9,17 +23,12 @@ extends Button
 func _on_pressed() -> void:
 	
 	
-	# TESTING
 	
-	
-	var universe = get_node(universe_path)
+	# Should this be set in universe? No, It's only used on debug... Placed in upcoming debug component ... NOTE
 	var current_location: Node2D = universe.current_location
 	print(current_location)
 
-	#print(" Day Button Has Been [ pressed ] .... Hated it ")
-	#var copy: Node2D = farm
-	current_location.get_parent().remove_child(current_location)
-	time_tracker.day += 1
-	await Engine.get_main_loop().process_frame
-	universe.call_deferred("add_child", current_location)
-	pass # Replace with function body.
+	current_location.get_parent().remove_child(current_location) # Maybe move to SceneManager ....
+	time_tracker.day += 1                    # Maybe move to TimeTracker ....
+	await Engine.get_main_loop().process_frame # Maybe move to SceneManager ....
+	universe.call_deferred("add_child", current_location)# Maybe move to SceneManager ....

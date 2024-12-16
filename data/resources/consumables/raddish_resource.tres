@@ -20,7 +20,7 @@ animations = [{
 
 [resource]
 script = ExtResource("1_f16po")
-name = "Raddish "
+name = "Raddish"
 description = "Only good with tacos ...s"
 item_type = 0
 price = 20

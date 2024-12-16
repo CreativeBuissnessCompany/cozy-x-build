@@ -64,7 +64,7 @@ func dont_go_to_player(_body:Node2D) -> void:
 
 	
 func go_to_player():
-	await get_tree().create_timer(.20).timeout
+	await get_tree().create_timer(.30).timeout
 	
 	if player_near:
 		

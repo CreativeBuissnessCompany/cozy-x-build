@@ -12,6 +12,8 @@ var item_resource: Item
 # Arrow
 @export var arrow_scene: PackedScene
 var arrow_instance: Node2D
+# Buy displayed 12/11
+var buy_displayed: bool = false
 
 
 
@@ -25,10 +27,11 @@ func _ready() -> void:
 
 
 func display_arrow() -> void:
-	arrow_instance = arrow_scene.instantiate()
-	#arrow_instance.position.x = 16
-	add_child(arrow_instance)
-	pass
+	if buy_displayed == false:
+		arrow_instance = arrow_scene.instantiate()
+		#arrow_instance.position.x = 16
+		add_child(arrow_instance)
+		pass
 
 
 
@@ -43,7 +46,8 @@ func on_mouse_entered():
 
 func on_mouse_exited():
 	# Destroy Arrow ...
-	arrow_instance.queue_free()
+	if arrow_instance != null:
+		arrow_instance.queue_free()
 	#print(" Mouse Exited Slot ")
 	
 
@@ -62,8 +66,8 @@ func display(item:Item):
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			# For UI Purposes
-			on_item_button_pressed.emit( animated_sprite_2d, item_resource, self.global_position )
+			# For UI Purposes, to ? ? ?
+			on_item_button_pressed.emit( animated_sprite_2d, item_resource, self.global_position, self )
 			# Sent to farm ...
 			Signalbus.item_clicked.emit(item_resource)
 			#print(" Item Slot Knows You Clicked....")

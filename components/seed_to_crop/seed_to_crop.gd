@@ -59,7 +59,7 @@ func _ready() -> void:
 
 ## If parent isnt null, does local_to_map(self.pos) to compare with _mos_pos ...
 ## If match,And ready_to_harvest is equal to true... Do new_last_stage_process() ...
-func _on_harvest(_mos_pos):
+func _on_harvest(_mos_pos) -> void:
 	
 	var parent: TileMapLayer = get_parent()
 	var seed_pos

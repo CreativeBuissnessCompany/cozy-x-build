@@ -24,12 +24,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if player != null:
 			if self.area_2d.overlaps_body(player): #                Heads-Up... This shit dont do nuthin ...
-				print_debug("Interact")
 				pass
 			else:
 				return
 	
-		#print("No interact")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

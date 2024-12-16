@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://6amsqu21k8vs"]
 
 [ext_resource type="Texture2D" uid="uid://vsnbalv21gcw" path="res://locations/sunset/Art/sunset-flat.png" id="1_q8ioe"]
-[ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://entities/items/consumables/fruits/apple/apple_pickup.tscn" id="2_0hc3l"]
+[ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://entities/items/consumables/all_pickups/apple_pickup.tscn" id="2_0hc3l"]
 
 [node name="Sunset Map" type="Node2D"]
 metadata/_edit_lock_ = true

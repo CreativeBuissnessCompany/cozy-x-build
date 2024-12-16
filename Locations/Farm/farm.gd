@@ -19,10 +19,7 @@ var crop_to_seed_scene: PackedScene  = preload("res://components/seed_to_crop/se
 #			Seed Info
 
 var terrain_set:int = 0 # 1st Terrain Set
-# Source ID's
-var source_id: int #                                                       Delete? Seemingly Unused 
-var dirt_tiles_source_id:= 5 #                                             Delete? Seemingly Unused 
-var scene_source_id := 3 #                                                 Delete? Seemingly Unused 
+
 # Terrains, 1st Set ( Index is actually 0, Computers dumb )
 var tilled_terrain: int = 10 
 var watered_terrain: int = 11 
@@ -259,7 +256,7 @@ func check_day():
 				
 		# Set day Eitherway... As long as Timetracker.day is bigger than current day in farm 
 		current_day = time_tracker.day
-	
+		
 ## Check TileMapLayer for custom data in a Tile at tml_mos_pos ( conversion done inside ) ... 
 func retrieving_custom_data(tml_layer: TileMapLayer,\
 tml_mouse_pos: Vector2, custom_tilemap_data_name: String) -> Variant:

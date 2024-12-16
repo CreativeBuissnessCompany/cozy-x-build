@@ -20,10 +20,10 @@ animations = [{
 
 [resource]
 script = ExtResource("1_lru8l")
-name = "Greenpea "
+name = "Greenpea"
 description = "Grreenpea's are fine ... Probably the better Pea out there ...s"
 item_type = 0
-price = 20
+price = 10.0
 sprite_frame = SubResource("SpriteFrames_o1uqp")
 animation_resize_type = 0
 stage_one = 0

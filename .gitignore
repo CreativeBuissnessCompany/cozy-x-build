@@ -1,6 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-
-# All Audio
+*.idea
+*.DS_Store
+.import/
+export.cfg
 *.mp3
