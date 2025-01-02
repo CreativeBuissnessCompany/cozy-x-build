@@ -58,7 +58,6 @@ func set_item(item):
 
 
 func display(item:Item):
-	
 	texture_rect.texture = item.sprite_frame.get_frame_texture("default", 0)
 	
 
@@ -66,8 +65,25 @@ func display(item:Item):
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			# For UI Purposes, to ? ? ?
+			# Sent to inventory_ui.gd
 			on_item_button_pressed.emit( animated_sprite_2d, item_resource, self.global_position, self )
-			# Sent to farm ...
+			# Sent to farm.gd ...
 			Signalbus.item_clicked.emit(item_resource)
 			#print(" Item Slot Knows You Clicked....")
+			
+			
+			
+
+func check_item_type(_item: Item):
+	match _item.item_type:
+
+		Item.ITEM_TYPE.DEFAULT:
+			pass
+
+		Item.ITEM_TYPE.SEED:
+			# Going to farm.gd ...
+			Signalbus.seed_selected.emit(_item)
+			pass
+	
+		Item.ITEM_TYPE.RESIZE:
+			pass

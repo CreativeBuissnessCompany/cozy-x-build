@@ -28,11 +28,24 @@ func add_item(item:Item):
 	else: # Do this if the Inventory(_content) is empty ...
 		_content.append(item)  # Just fucking add the Item ...
 
+		
 ## Needs work ? Actually being used by VendingMachine....          Heads-Up...
 func remove_item(item:Item):
 	# TO DO Check Qty ...
-	_content.erase(item)
+	var _count: int = _content.size()
+	if _count != 0:
+		for i in _content:
+			if i.name == item.name:
+				if item.qty > 1:
+					item.qty -= 1
+				elif item.qty == 1:
+					print("Deleteing ")
+					_content.erase(item)
 	
+#	_content.erase(item)
+	
+
+
 	#for i in range(_content.size()):
 		#if _content[i]["name"] == item.name:
 			#_content[i] == null 

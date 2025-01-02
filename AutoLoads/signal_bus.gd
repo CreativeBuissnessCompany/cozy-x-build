@@ -33,3 +33,5 @@ signal harvest()
 signal currency()
 # From use_or_drop.gd
 signal use_or_drop()
+# From item_slot.gd
+signal seed_selected()

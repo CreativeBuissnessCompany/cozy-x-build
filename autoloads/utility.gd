@@ -22,7 +22,6 @@ func fetch_pickup_scene(item_name: StringName):
 	lowercase_item_name = item_name.to_lower() # From uppercase to Lowercase ...
 	formatted_item_name = lowercase_item_name+pickup_text
 	
-	
 	# Find Resource using Collection & Resource Name ...
 	var resource_int_id: int = database.get_int_id(name_of_collection, formatted_item_name)
 	var scene: PackedScene = database.fetch_data(name_of_collection, resource_int_id)

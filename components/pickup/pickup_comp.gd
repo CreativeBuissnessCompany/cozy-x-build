@@ -15,15 +15,13 @@ var player_body: Player
 
 
 
-
-
 #                                                Script Start...
 
 
 func _ready() -> void:
 	# Set offset if item type is SEED ...
 	if item.item_type == ITEM_TYPE_SEED:
-		#animated_sprite2d.global_position += Vector2(0,-15)                  NOTE Unused, Delete? 
+		#animated_sprite2d.global_position += Vector2(0,-15)        NOTE Unused, Delete? 
 		pass
 	# ITEM_TYPE_RESIZE
 	if item.item_type == ITEM_TYPE_RESIZE:
@@ -43,7 +41,6 @@ func _process(_delta: float) -> void:
 
 # If player body enters, player.on_item_pickedup(item) ....
 func _on_area_2d_body_entered(body: Player) -> void:
-	
 	if body is Player: 
 		#print_debug("Got an %s!" % item.name)
 		body.on_item_picked_up(item)
@@ -54,8 +51,9 @@ func _on_area_2d_body_entered(body: Player) -> void:
 ## On body entered, Check if body player ...
 func check_for_player_body(body:Node2D) -> void:
 	if body is Player:
-		player_near = true
 		player_body = body
+		player_near = true
+		
 
 
 func dont_go_to_player(_body:Node2D) -> void:

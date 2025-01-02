@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bglne8a8xm13e"]
+
+[ext_resource type="PackedScene" uid="uid://cc7wyhbnukpi8" path="res://entities/animals/butterfly/butterfly_01.tscn" id="1_ciw3g"]
+[ext_resource type="Script" path="res://entities/animals/butterfly/MultipleButterfly01/multiple_butterfly_01.gd" id="1_tku04"]
+
+[node name="MultipleButterfly01" type="Node2D"]
+script = ExtResource("1_tku04")
+
+[node name="Butterfly01" parent="." instance=ExtResource("1_ciw3g")]
+scale = Vector2(0.8, 0.8)
+frame_progress = 0.153448
+offset = Vector2(-18.35, -4.97)
+
+[node name="Butterfly02" parent="." instance=ExtResource("1_ciw3g")]
+scale = Vector2(0.4, 0.4)
+frame_progress = 0.874113
+offset = Vector2(-11.94, 15.34)
+
+[node name="Butterfly03" parent="." instance=ExtResource("1_ciw3g")]
+scale = Vector2(0.6, 0.6)
+frame_progress = 0.920845
+offset = Vector2(7.78, 0)

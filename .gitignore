@@ -6,3 +6,4 @@
 .import/
 export.cfg
 *.mp3
+.DS_Store

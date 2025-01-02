@@ -17,9 +17,6 @@ var object_inventory: Array[Item]
 
 
 
-
-
-
 func _ready() -> void:
 	
 	# Setup signal to objects with inventory

@@ -38,9 +38,6 @@ var ready_to_harvest: bool = false
 
 
 
-
-
-
 # Script_Start
 func _ready() -> void:
 	
@@ -51,8 +48,6 @@ func _ready() -> void:
 	
 
 #                                  Custom Functions 
-
-
 
 
 
@@ -236,7 +231,10 @@ func advance_stage(_days_watered):
 	if current_stage == last_stage:
 		print("Seed to crop is setting ready_to_harvest = true ....")
 		ready_to_harvest = true
-	
+		# Instance the butterflies to let player know Crop Is Ready ...
+		var butterflies_scene: PackedScene = load("res://entities/animals/butterfly/MultipleButterfly01/multiple_butterfly_01.tscn") 
+		var butterflies_instance: Node2D = butterflies_scene.instantiate()
+		add_child(butterflies_instance)
 
 # NOTE                                      Exit Tree 
 # CropData.crop_array.append(self)

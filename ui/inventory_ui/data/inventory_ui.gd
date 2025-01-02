@@ -121,9 +121,12 @@ func on_use():
 
 
 func on_drop():
+	# Remove Qty no matter what
 	
-	player.inventory.remove_item(last_clicked_item)
-	Utility.fetch_pickup_scene(last_clicked_item.name) # Broken ..
+	
+	
+	player.inventory.remove_item(last_clicked_item) # Do if Qty <= 0
+	Utility.fetch_pickup_scene(last_clicked_item.name) 
 	_on_close_button_pressed()
 	
 	open(player.inventory)
@@ -131,7 +134,7 @@ func on_drop():
 	
 func _use_or_drop(action):
 	if action == "drop":
-		print("Cool bean")
+		print("...Dropping...")
 		on_drop()
 		pass
 	else:
