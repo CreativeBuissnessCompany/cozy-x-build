@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://vpl1uj3apooc"]
+
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_k6pb2"]
+[ext_resource type="Resource" uid="uid://curjx4uv4oesk" path="res://data/resources/consumables/pouch.tres" id="2_p1erd"]
+
+[node name="Pouch" type="Node2D"]
+
+[node name="PickupComp" parent="." instance=ExtResource("1_k6pb2")]
+item = ExtResource("2_p1erd")

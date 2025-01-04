@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://b2mmy33jxg724"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://b2mmy33jxg724"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_lru8l"]
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="2_0bxn0"]
+[ext_resource type="Script" path="res://components/use/use_component.gd" id="3_46wa3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvm0u"]
 atlas = ExtResource("2_0bxn0")
@@ -23,9 +24,10 @@ script = ExtResource("1_lru8l")
 name = "Greenpea"
 description = "Grreenpea's are fine ... Probably the better Pea out there ...s"
 item_type = 0
-price = 10.0
+price = 0
 sprite_frame = SubResource("SpriteFrames_o1uqp")
 animation_resize_type = 0
+use_components = Array[ExtResource("3_46wa3")]([])
 stage_one = 0
 stage_two = 0
 stage_three = 0

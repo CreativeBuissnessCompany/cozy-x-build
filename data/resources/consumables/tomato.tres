@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bl8fxmedo4f47"]
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://bl8fxmedo4f47"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_n5jlq"]
 [ext_resource type="Texture2D" uid="uid://c2k8bvm2iejdv" path="res://entities/items/consumables/veggies/tomato/art/Tomato.png" id="2_vaqm1"]
+[ext_resource type="Script" path="res://components/use/use_component.gd" id="3_w5xvh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_du4de"]
 animations = [{
@@ -14,14 +15,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_7rqqp"]
+script = ExtResource("3_w5xvh")
+use_type = 0
+amount = -2
+
+[sub_resource type="Resource" id="Resource_m7384"]
+script = ExtResource("3_w5xvh")
+use_type = 1
+amount = 10
+
 [resource]
 script = ExtResource("1_n5jlq")
 name = "Tomato"
 description = "Great when [shake rate=2.0 level=4 connected=0]Smushed[/shake]"
 item_type = 0
-price = 3.0
+price = 0
 sprite_frame = SubResource("SpriteFrames_du4de")
 animation_resize_type = 0
+use_components = Array[ExtResource("3_w5xvh")]([SubResource("Resource_7rqqp"), SubResource("Resource_m7384")])
 stage_one = 0
 stage_two = 0
 stage_three = 0

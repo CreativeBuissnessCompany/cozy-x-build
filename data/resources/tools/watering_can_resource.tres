@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://dcd36of3vxl3o"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://dcd36of3vxl3o"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_5yyjs"]
 [ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://entities/items/tools/art/tools.png" id="2_qospy"]
+[ext_resource type="Script" path="res://components/use/use_component.gd" id="3_ht8uw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6i5r"]
 atlas = ExtResource("2_qospy")
@@ -23,9 +24,10 @@ script = ExtResource("1_5yyjs")
 name = "Watering Can"
 description = "A Waterin' Can, Boy-O! "
 item_type = 0
-price = 2.0
+price = 0
 sprite_frame = SubResource("SpriteFrames_4win2")
 animation_resize_type = 0
+use_components = Array[ExtResource("3_ht8uw")]([])
 stage_one = 0
 stage_two = 0
 stage_three = 0

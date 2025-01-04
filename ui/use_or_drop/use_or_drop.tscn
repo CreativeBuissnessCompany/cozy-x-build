@@ -60,4 +60,5 @@ offset_bottom = 8.0
 scale = Vector2(1, 0.74)
 flat = true
 
+[connection signal="button_up" from="TextureRect/MarginContainer/VBoxContainer/RichTextLabel/UseButton" to="." method="_on_use_button_button_up"]
 [connection signal="button_up" from="TextureRect/MarginContainer/VBoxContainer/RichTextLabel2/DropButton" to="." method="_on_drop_button_button_up"]

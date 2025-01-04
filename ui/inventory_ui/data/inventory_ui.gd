@@ -115,12 +115,14 @@ func close_use_drop():
 	use_drop_instance.get_parent().remove_child(use_drop_instance)
 	use_drop_instance.queue_free()
 	pass	
-	
-func on_use():
-	pass
+#	
+#func on_use():
+#	last_clicked_item.use()
+#	pass
 
 
 func on_drop():
+	
 	# Remove Qty no matter what
 	
 	
@@ -132,12 +134,14 @@ func on_drop():
 	open(player.inventory)
 	pass
 	
+# Change signal to drop ...
 func _use_or_drop(action):
 	if action == "drop":
 		print("...Dropping...")
 		on_drop()
 		pass
-	else:
+	elif action == "use":
+		print(" Using in inventroy_ui")
 		pass
 	
 	

@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://curjx4uv4oesk"]
+
+[ext_resource type="Script" path="res://data/models/item.gd" id="1_f1t4x"]
+[ext_resource type="Texture2D" uid="uid://c5hym4pf5rvgq" path="res://entities/items/consumables/misc/pouch/pouch01.png" id="2_bdej7"]
+[ext_resource type="Script" path="res://components/use/use_component.gd" id="3_tvsta"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwryx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bdej7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_3mji6"]
+script = ExtResource("3_tvsta")
+use_type = 0
+amount = 5
+
+[resource]
+script = ExtResource("1_f1t4x")
+name = "Pouch"
+description = "A delicious [wave amp=25.0 freq=3.0 connected=1] [color=Gold]Pouch?[/color] [/wave] We like 
+ [wave amp=25.0 freq=3.0 connected=1] [color=Gold]money : )[/color] [/wave] ...."
+item_type = 0
+price = 4
+sprite_frame = SubResource("SpriteFrames_pwryx")
+animation_resize_type = 0
+use_components = Array[ExtResource("3_tvsta")]([SubResource("Resource_3mji6")])
+stage_one = 0
+stage_two = 0
+stage_three = 0
+stage_four = 0
+stage_five = 0
+stage_six = 0
+stage_seven = 0
+last_stage = 0
+current_stage = 0

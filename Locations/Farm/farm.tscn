@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://c1t2o5xyrom3b"]
+[gd_scene load_steps=40 format=4 uid="uid://c1t2o5xyrom3b"]
 
 [ext_resource type="Script" path="res://locations/farm/farm.gd" id="1_slb32"]
 [ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://locations/farm/Art/farm_tileset.tres" id="2_f15kg"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://bq15snof2oo4a" path="res://entities/items/tools/seeds/raddish/raddish_seed.tscn" id="35_n12wj"]
 [ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://entities/items/consumables/all_pickups/tomato_pickup.tscn" id="35_oc7ws"]
 [ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://entities/items/consumables/all_pickups/apple_pickup.tscn" id="35_waiih"]
+[ext_resource type="PackedScene" uid="uid://vpl1uj3apooc" path="res://entities/items/consumables/all_pickups/pouch_pickup.tscn" id="36_yhkcn"]
 [ext_resource type="PackedScene" uid="uid://csfp70arlpipg" path="res://entities/items/consumables/all_pickups/watering_can_pickup.tscn" id="37_k2ykm"]
 [ext_resource type="PackedScene" uid="uid://bod382lpid4lc" path="res://entities/items/consumables/all_pickups/hoe_pickup.tscn" id="37_yve7i"]
 
@@ -756,3 +757,6 @@ position = Vector2(-21, 202)
 
 [node name="Tomato2" parent="PickUps" instance=ExtResource("35_oc7ws")]
 position = Vector2(16, 209)
+
+[node name="Pouch" parent="PickUps" instance=ExtResource("36_yhkcn")]
+position = Vector2(245.32, 338.208)

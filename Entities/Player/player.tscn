@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://8qagl21khwcy"]
+[gd_scene load_steps=18 format=3 uid="uid://8qagl21khwcy"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_eeuee"]
 [ext_resource type="Texture2D" uid="uid://boj8vq4e5iowp" path="res://entities/player/art/raincoat-boy-player-version.png" id="2_4ueq5"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://6c5jq1i8nf42" path="res://audio_files/sfx/pitpats/Pat08.mp3" id="10_mypiu"]
 [ext_resource type="AudioStream" uid="uid://cv1a2ec677nr7" path="res://audio_files/sfx/pitpats/Pat09.mp3" id="11_ecpu2"]
 [ext_resource type="PackedScene" uid="uid://v0ox0cvbdbym" path="res://components/currency/currency.tscn" id="13_qt6ke"]
+[ext_resource type="Script" path="res://components/use/use_handler_component.gd" id="14_11r0h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hr3uo"]
 
@@ -71,6 +72,9 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_6rnip")
 
 [node name="Currency" parent="." instance=ExtResource("13_qt6ke")]
-currency_held = 10
+currency_held = 2
+
+[node name="UseHandler" type="Node2D" parent="."]
+script = ExtResource("14_11r0h")
 
 [connection signal="area_entered" from="CheckForCropsArea2D" to="." method="_check_for_crops"]

@@ -14,7 +14,7 @@ enum ANIMATION_RESIZE_TYPE {DEFAULT, RESIZE_16_TALL}
 var qty: int = 1
 @export var sprite_frame: SpriteFrames
 @export var animation_resize_type: ANIMATION_RESIZE_TYPE = ANIMATION_RESIZE_TYPE.DEFAULT 
-
+@export var use_components: Array[UseComponent]
 
 # New, Set stages in inspector
 @export_category("Stages")
@@ -28,11 +28,14 @@ var qty: int = 1
 @export var last_stage: int
 @export var current_stage: int
 
+# Added 01/01
+#enum USE_TYPE {DEFAULT, SEED, RESIZE} 
 
 
 
-
-
+func use():
+	for i in range(use_components.size()):
+		use_components[i].use_component()
 
 
 func animation_resize_check() -> String:
