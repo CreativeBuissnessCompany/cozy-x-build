@@ -29,11 +29,17 @@ var last_clicked_item: Item
 
 func _ready() -> void:
 	Signalbus.use_or_drop.connect(_use_or_drop)
-
+	Signalbus.use_item.connect(_on_use)
 
 
 
 #                                           Script Start... 
+
+# on_use... Close and open inventory
+func _on_use(_item: Item):
+	await get_tree().process_frame
+	_on_close_button_pressed()
+	open(player.inventory)
 
 
 func _unhandled_key_input(_event: InputEvent) -> void:
@@ -115,10 +121,7 @@ func close_use_drop():
 	use_drop_instance.get_parent().remove_child(use_drop_instance)
 	use_drop_instance.queue_free()
 	pass	
-#	
-#func on_use():
-#	last_clicked_item.use()
-#	pass
+
 
 
 func on_drop():

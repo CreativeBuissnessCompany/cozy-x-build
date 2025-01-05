@@ -16,14 +16,16 @@ func _on_use(item: Item):
 			
 			UseComponent.USE_TYPE.MONEY:
 				print("Money change..." + str(item.use_components[i].amount))
-				var amount: int = item.use_components[i].amount
-				money_please(amount)
+				money_please(item, i)
+			
 			UseComponent.USE_TYPE.HEALTH:
 				print("Health Gained..." + str(item.use_components[i].amount))
 		
 
 		
-func money_please(amount: int):
+func money_please(item: Item,  i: int):
+	var amount: int = item.use_components[i].amount
+	
 	print("Money change amount $" + str(amount))
 	
 	var player: Player = get_parent()
@@ -31,5 +33,6 @@ func money_please(amount: int):
 
 	print("currency held BEFORE item use = $" + str(currency_node.currency_held))
 	currency_node.change_currency(amount)
-	
 	print("currency held AFTER item use = $" + str(currency_node.currency_held))
+	
+	player.inventory.remove_item(item)
