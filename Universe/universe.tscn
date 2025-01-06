@@ -14,8 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://cx8gh37mgdmov" path="res://audio_files/music/Faze.mp3" id="11_4jhlq"]
 [ext_resource type="PackedScene" uid="uid://fcc1qd2fx2tc" path="res://components/controls/Controls.tscn" id="11_5qn33"]
 [ext_resource type="PackedScene" uid="uid://b1u5tbb7cpvpk" path="res://components/day_button/day_button.tscn" id="12_482gc"]
-[ext_resource type="PackedScene" uid="uid://p0edsdtg0va3" path="res://components/currency/currency_display.tscn" id="12_ig2xq"]
 [ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://locations/farm/farm.tscn" id="14_ke8uo"]
+[ext_resource type="PackedScene" uid="uid://bh3gbo8iw53p5" path="res://components/currency/currency_display02.tscn" id="15_n4feo"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wtpp2"]
 shuffle = true
@@ -73,23 +73,16 @@ mouse_filter = 2
 script = ExtResource("5_xd6ju")
 metadata/_edit_lock_ = true
 
-[node name="CurrencyDisplay" parent="UIRoot/HUD" instance=ExtResource("12_ig2xq")]
-layout_mode = 1
-offset_left = -34.0
-offset_top = 0.0
-offset_right = 34.0
-offset_bottom = 32.0
-
 [node name="Day" type="RichTextLabel" parent="UIRoot/HUD"]
 unique_name_in_owner = true
 clip_contents = false
 custom_minimum_size = Vector2(74.54, 31.28)
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -78.54
-offset_top = 2.0
+offset_top = 59.0
 offset_right = -4.0
 offset_bottom = 33.28
 grow_horizontal = 0
@@ -145,6 +138,11 @@ metadata/_edit_lock_ = true
 [node name="ControlsCanvasLayer" parent="UIRoot/HUD" instance=ExtResource("11_5qn33")]
 layout_mode = 1
 metadata/_edit_lock_ = true
+
+[node name="CurrencyDisplay02" parent="UIRoot/HUD" instance=ExtResource("15_n4feo")]
+layout_mode = 1
+anchor_left = 0.974
+anchor_right = 1.061
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true

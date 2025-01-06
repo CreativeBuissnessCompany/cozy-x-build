@@ -4,7 +4,7 @@ class_name Item
 extends Resource
 
 
-enum ITEM_TYPE {DEFAULT, SEED, RESIZE}
+enum ITEM_TYPE {DEFAULT, SEED, RESIZE, TOOL}
 enum ANIMATION_RESIZE_TYPE {DEFAULT, RESIZE_16_TALL}
 
 @export var name:String

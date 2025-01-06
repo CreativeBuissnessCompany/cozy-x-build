@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://dcd36of3vxl3o"]
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://dcd36of3vxl3o"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_5yyjs"]
 [ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://entities/items/tools/art/tools.png" id="2_qospy"]
@@ -19,15 +19,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_durd0"]
+script = ExtResource("3_ht8uw")
+use_type = 2
+amount = 0
+
 [resource]
 script = ExtResource("1_5yyjs")
 name = "Watering Can"
 description = "A Waterin' Can, Boy-O! "
-item_type = 0
+item_type = 3
 price = 0
 sprite_frame = SubResource("SpriteFrames_4win2")
 animation_resize_type = 0
-use_components = Array[ExtResource("3_ht8uw")]([])
+use_components = Array[ExtResource("3_ht8uw")]([SubResource("Resource_durd0")])
 stage_one = 0
 stage_two = 0
 stage_three = 0

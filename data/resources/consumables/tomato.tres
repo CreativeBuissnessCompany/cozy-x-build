@@ -28,7 +28,7 @@ amount = 10
 [resource]
 script = ExtResource("1_n5jlq")
 name = "Tomato"
-description = "Great when [shake rate=2.0 level=4 connected=0]Smushed[/shake]"
+description = "Great when [shake rate=2.0 level=4 connected=0]Smushed[/shake]. Unfortunatley, $2 magically vanish when eaten raw.........you pig you....."
 item_type = 0
 price = 0
 sprite_frame = SubResource("SpriteFrames_du4de")

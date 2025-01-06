@@ -28,7 +28,8 @@ var last_clicked_item: Item
 
 
 func _ready() -> void:
-	Signalbus.use_or_drop.connect(_use_or_drop)
+	# Change to just "drop"
+	Signalbus.drop.connect(on_drop)
 	Signalbus.use_item.connect(_on_use)
 
 
@@ -37,9 +38,14 @@ func _ready() -> void:
 
 # on_use... Close and open inventory
 func _on_use(_item: Item):
-	await get_tree().process_frame
-	_on_close_button_pressed()
-	open(player.inventory)
+# Resetting inventory on use? Why? Qty stuff ?
+# Check for TOOL
+	if _item.item_type != Item.ITEM_TYPE.TOOL:
+# Check Qty 
+		if _item.qty == 1:
+	#		await get_tree().process_frame
+			_on_close_button_pressed()
+			open(player.inventory)
 
 
 func _unhandled_key_input(_event: InputEvent) -> void:
@@ -137,14 +143,14 @@ func on_drop():
 	open(player.inventory)
 	pass
 	
-# Change signal to drop ...
-func _use_or_drop(action):
-	if action == "drop":
-		print("...Dropping...")
-		on_drop()
-		pass
-	elif action == "use":
-		print(" Using in inventroy_ui")
-		pass
-	
+## Change signal to drop ...
+#func _use_or_drop(action):
+#	if action == "drop":
+#		print("...Dropping...")
+#		on_drop()
+#		pass
+#	elif action == "use":
+#		print(" Using in inventroy_ui")
+#		pass
+#	
 	

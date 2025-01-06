@@ -4,7 +4,7 @@ extends Node2D
 
 
 # Variables 
-@onready var color_rect: ColorRect = $ColorRect
+#@onready var color_rect: ColorRect = $ColorRect
 @onready var dirt_paths: TileMapLayer = %DirtPaths
 
 

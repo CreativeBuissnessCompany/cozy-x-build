@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://p0edsdtg0va3"]
+[gd_scene load_steps=9 format=3 uid="uid://bh3gbo8iw53p5"]
 
-[ext_resource type="FontFile" uid="uid://pxdyu2wc4iuq" path="res://themes/fonts/Baldur.ttf" id="1_62o7o"]
-[ext_resource type="Script" path="res://universe/currency_display.gd" id="2_cp832"]
-[ext_resource type="Texture2D" uid="uid://dx1uxmrmdoblc" path="res://oval.png" id="3_4cstc"]
-[ext_resource type="Material" uid="uid://ctt4qnldpofbm" path="res://materials/lines01.tres" id="4_fx6vh"]
-[ext_resource type="Texture2D" uid="uid://day88y35e6gvj" path="res://ui/inventory02_ui/art/uicoingraphic.png" id="5_mv007"]
+[ext_resource type="Texture2D" uid="uid://day88y35e6gvj" path="res://ui/inventory02_ui/art/uicoingraphic.png" id="1_5d4of"]
+[ext_resource type="Texture2D" uid="uid://dx1uxmrmdoblc" path="res://oval.png" id="2_sypqy"]
+[ext_resource type="FontFile" uid="uid://cdp7qaiesa28r" path="res://themes/fonts/Comicoro.ttf" id="3_rnn8i"]
+[ext_resource type="Material" uid="uid://ctt4qnldpofbm" path="res://materials/lines01.tres" id="3_ysct8"]
+[ext_resource type="Script" path="res://universe/currency_display.gd" id="5_46mol"]
+[ext_resource type="Texture2D" uid="uid://d4fhxs6c38wmj" path="res://components/currency/TopRightUi.png" id="6_uiiid"]
 
 [sub_resource type="Shader" id="Shader_dj8mm"]
 code = "shader_type canvas_item;
@@ -59,34 +60,27 @@ shader_parameter/line_count = 200.0
 shader_parameter/speed = 4.0
 shader_parameter/blur = 1.46228
 
-[node name="Root" type="Control"]
+[node name="CurrencyDisplay02" type="Control"]
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-
-[node name="Coins" type="Sprite2D" parent="."]
-position = Vector2(-15.25, 17.63)
-scale = Vector2(2, 2)
-texture = ExtResource("5_mv007")
-
-[node name="Coins2" type="Sprite2D" parent="."]
-position = Vector2(27.75, 18.63)
-scale = Vector2(2, 2)
-texture = ExtResource("5_mv007")
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 32.0
+grow_horizontal = 0
+size_flags_horizontal = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 clip_children = 2
 z_index = -1
 material = SubResource("ShaderMaterial_uawje")
 position = Vector2(6.75, 19)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_4cstc")
+texture = ExtResource("2_sypqy")
 
 [node name="ColorRect" type="Sprite2D" parent="Sprite2D"]
-material = ExtResource("4_fx6vh")
-texture = ExtResource("3_4cstc")
+material = ExtResource("3_ysct8")
+texture = ExtResource("2_sypqy")
 
 [node name="CurrencyDisplay" type="RichTextLabel" parent="."]
 z_index = 1
@@ -94,15 +88,17 @@ texture_filter = 1
 clip_contents = false
 layout_mode = 1
 anchors_preset = -1
-offset_left = -15.0
-offset_top = 4.0
-offset_right = 61.0
-offset_bottom = 36.0
+anchor_left = 0.15
+anchor_right = 0.564
+offset_left = -4.0
+offset_top = 8.0
+offset_right = 17.0
+offset_bottom = 20.0
 pivot_offset = Vector2(19.3, 37)
 size_flags_horizontal = 6
-theme_override_colors/default_color = Color(0.7496, 0.589038, 0, 1)
-theme_override_fonts/normal_font = ExtResource("1_62o7o")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(0.0991983, 0.316239, 0.594273, 1)
+theme_override_fonts/normal_font = ExtResource("3_rnn8i")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "$10"
 scroll_active = false
@@ -111,5 +107,12 @@ meta_underlined = false
 hint_underlined = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
-script = ExtResource("2_cp832")
+script = ExtResource("5_46mol")
 metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="Sprite2D" parent="."]
+texture = ExtResource("6_uiiid")
+
+[node name="Coins" type="Sprite2D" parent="."]
+position = Vector2(-0.13, 14.96)
+texture = ExtResource("1_5d4of")

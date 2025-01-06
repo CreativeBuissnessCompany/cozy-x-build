@@ -93,12 +93,12 @@ func _input(_event: InputEvent) -> void:
 	# E key Till
 	if Input.is_action_just_pressed("toggle_dirt"):
 		farming_mode_state = FARMING_MODES.TILL
-		#print("Till State")
+		print("FARMING_MODES.TILL")
 	
 	# R key Water
 	if Input.is_action_just_pressed("toggle_water"):
 		farming_mode_state = FARMING_MODES.WATERING
-		#print("Water State")
+		print("FARMING_MODES.WATERING")
 	
 	# T key Harvest
 	if Input.is_action_just_pressed("toggle_harvest"):

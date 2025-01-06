@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://8mh7uny51w8"
-path="res://.godot/imported/Agfiustor Free.ttf-889d8cec24f982910b19efbd6262cc0a.fontdata"
+uid="uid://w4dif6hnmx6r"
+path="res://.godot/imported/Fipps-Regular.otf-8a0961788fc9e97c0aafc3475abac28e.fontdata"
 
 [deps]
 
-source_file="res://themes/fonts/Agfiustor Free.ttf"
-dest_files=["res://.godot/imported/Agfiustor Free.ttf-889d8cec24f982910b19efbd6262cc0a.fontdata"]
+source_file="res://themes/fonts/Fipps-Regular.otf"
+dest_files=["res://.godot/imported/Fipps-Regular.otf-8a0961788fc9e97c0aafc3475abac28e.fontdata"]
 
 [params]
 
@@ -28,13 +28,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0),
-"variation_embolden": 0.0
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

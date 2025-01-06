@@ -12,8 +12,9 @@ func _ready() -> void:
 
 # Signal to inventory_ui
 func _on_drop_button_button_up() -> void:
-	var drop:= "drop"
-	Signalbus.use_or_drop.emit(drop)
+#	var drop:= "drop"
+	# Change to just "drop". nothing attached ...
+	Signalbus.drop.emit()
 	pass # Replace with function body.
 
 # Signal to inventory_ui

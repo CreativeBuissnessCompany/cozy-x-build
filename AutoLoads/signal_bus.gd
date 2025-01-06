@@ -31,8 +31,8 @@ signal camera_limits()
 signal harvest()
 # Currency, From Player to HUD ...
 signal currency()
-# From use_or_drop.gd
-signal use_or_drop()
+# From use_or_drop.gd # Change to "drop"
+signal drop()
 # From use_or_drop.gd
 signal use_item()
 # From item_slot.gd

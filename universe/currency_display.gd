@@ -10,8 +10,9 @@ func _ready() -> void:
 
 
 func on_currency_change(amount:int):
-	print_debug("currency set")
-	print(get_parent().name)
-	var _text: String = str("$", amount)
-	self.text = "[wave amp=30.0 freq=2.0 connected=0 center] %s [/wave]" % _text
+#	print_debug("currency set")
+#	print(get_parent().name)
+	# Removed "$" below ... str("$", amount)
+	var _text: String = str(amount)
+	self.text = "[wave amp=5.0 freq=3.0 connected=0 center] %s [/wave]" % _text
 	

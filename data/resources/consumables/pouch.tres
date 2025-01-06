@@ -23,7 +23,7 @@ amount = 5
 [resource]
 script = ExtResource("1_f1t4x")
 name = "Pouch"
-description = "A delicious [wave amp=25.0 freq=3.0 connected=1] [color=Gold]Pouch?[/color] [/wave] We like 
+description = "A delicious [wave amp=25.0 freq=3.0 connected=1] [color=Gold]Pouch of Coins?[/color] [/wave] Has $5 in it....We like 
  [wave amp=25.0 freq=3.0 connected=1] [color=Gold]money : )[/color] [/wave] ...."
 item_type = 0
 price = 4
