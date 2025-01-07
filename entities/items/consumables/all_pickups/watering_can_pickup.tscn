@@ -4,4 +4,5 @@
 [ext_resource type="Resource" uid="uid://dcd36of3vxl3o" path="res://data/resources/tools/watering_can_resource.tres" id="2_rd5om"]
 
 [node name="WateringCan" instance=ExtResource("1_6dn4b")]
+z_as_relative = false
 item = ExtResource("2_rd5om")

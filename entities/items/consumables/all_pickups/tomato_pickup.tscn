@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://bl8fxmedo4f47" path="res://data/resources/consumables/tomato.tres" id="2_i4ddp"]
 
 [node name="Tomato" type="Node2D"]
+z_as_relative = false
 
 [node name="PickupComp" parent="." instance=ExtResource("1_pput7")]
 item = ExtResource("2_i4ddp")

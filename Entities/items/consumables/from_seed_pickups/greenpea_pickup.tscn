@@ -4,4 +4,5 @@
 [ext_resource type="Resource" uid="uid://b2mmy33jxg724" path="res://data/resources/consumables/greenpea_resource.tres" id="2_m77lm"]
 
 [node name="GreenpeaPickup" instance=ExtResource("1_4gin4")]
+z_as_relative = false
 item = ExtResource("2_m77lm")

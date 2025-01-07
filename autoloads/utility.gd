@@ -5,12 +5,13 @@ var entrance_marker: String = "any"
 var database: Database = load("res://my_databases/seeds.gddb")
 @onready var universe: Node = get_node("../Universe") 
 
-var magic_number_for_dropping_pos: int = 10
 
 
 
-# Unused ???	
 
+
+	
+# Whos using this? inventory_ui
 func fetch_pickup_scene(item_name: StringName):
 	var pickup_text: String = "_pickup"
 	var lowercase_item_name: StringName
@@ -20,6 +21,8 @@ func fetch_pickup_scene(item_name: StringName):
 	
 	# String Formatting ...
 	lowercase_item_name = item_name.to_lower() # From uppercase to Lowercase ...
+	# Find the " SPACES " and replace with " _ " ...
+	lowercase_item_name = lowercase_item_name.replace(" ", "_")
 	formatted_item_name = lowercase_item_name+pickup_text
 	
 	# Find Resource using Collection & Resource Name ...
@@ -27,21 +30,20 @@ func fetch_pickup_scene(item_name: StringName):
 	var scene: PackedScene = database.fetch_data(name_of_collection, resource_int_id)
 	
 	if scene != null:
-		var instanced_scene: Node2D = scene.instantiate()
-		var pickups_node: Node      = universe.find_child("PickUps") # WARNING NOTE CHANGE UPPERCASE U ...
-		pickups_node.add_child(instanced_scene) # Add Child ...
-		# Move
-#		var pickup_comp: PickupComp = instanced_scene.get_child(0)
-#		pickup_comp.set_process(false)                                        # Magic Numbers ....
-		instanced_scene.global_position = SceneManager.player.global_position + Vector2(magic_number_for_dropping_pos*8,magic_number_for_dropping_pos*9)
-		# Turn off process for a sec 
-		print("yayyyy scene not null")
-	
-	
-#	var resource_int_id: int = database.get_int_id(name_of_collection, formatted_item_name)
-	
-	
-	pass
+		position_randomly(scene)
+
+func position_randomly(_scene: PackedScene):
+	var magic_number_for_dropping_pos: int = randi_range(4,14)
+	var rand_x: int = randi_range(7,13)
+	var rand_y: int = randi_range(9,13)
+	var drop_pos: Vector2 = Vector2(magic_number_for_dropping_pos * rand_x, magic_number_for_dropping_pos * rand_y)
+
+
+	var instanced_scene: Node2D = _scene.instantiate()
+	var pickups_node: Node      = universe.find_child("PickUps") # WARNING NOTE CHANGE UPPERCASE U ...
+	pickups_node.add_child(instanced_scene) # Add Child ...
+	# Move
+	instanced_scene.global_position = SceneManager.player.global_position + drop_pos
 	
 
 

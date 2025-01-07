@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://bcuhffno36qld" path="res://data/resources/consumables/apple.tres" id="2_xou11"]
 
 [node name="Apple" type="Node2D"]
+z_as_relative = false
 
 [node name="PickupComp" parent="." instance=ExtResource("1_tvyag")]
 item = ExtResource("2_xou11")

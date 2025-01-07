@@ -741,7 +741,19 @@ metadata/_edit_lock_ = true
 position = Vector2(337.39, 305.139)
 
 [node name="Tomato" parent="PickUps" instance=ExtResource("35_oc7ws")]
-position = Vector2(-77, 176)
+position = Vector2(-13.5703, 285.878)
+
+[node name="Tomato3" parent="PickUps" instance=ExtResource("35_oc7ws")]
+position = Vector2(-42, 198)
+
+[node name="Tomato4" parent="PickUps" instance=ExtResource("35_oc7ws")]
+position = Vector2(62, 202)
+
+[node name="Tomato5" parent="PickUps" instance=ExtResource("35_oc7ws")]
+position = Vector2(104, 243)
+
+[node name="Tomato6" parent="PickUps" instance=ExtResource("35_oc7ws")]
+position = Vector2(99.5, 139.5)
 
 [node name="WateringCan" parent="PickUps" instance=ExtResource("37_k2ykm")]
 position = Vector2(-116, 269)
@@ -753,10 +765,10 @@ position = Vector2(351, 270)
 position = Vector2(291.808, 318.748)
 
 [node name="Apple" parent="PickUps" instance=ExtResource("35_waiih")]
-position = Vector2(-21, 202)
+position = Vector2(-34.5, 289.5)
 
 [node name="Tomato2" parent="PickUps" instance=ExtResource("35_oc7ws")]
-position = Vector2(16, 209)
+position = Vector2(-256.763, -212.994)
 
 [node name="Pouch" parent="PickUps" instance=ExtResource("36_yhkcn")]
 position = Vector2(245.32, 338.208)

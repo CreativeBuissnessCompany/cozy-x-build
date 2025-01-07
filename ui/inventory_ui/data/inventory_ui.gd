@@ -38,14 +38,13 @@ func _ready() -> void:
 
 # on_use... Close and open inventory
 func _on_use(_item: Item):
-# Resetting inventory on use? Why? Qty stuff ?
-# Check for TOOL
+
+	# Check for TOOL
 	if _item.item_type != Item.ITEM_TYPE.TOOL:
-# Check Qty 
-		if _item.qty == 1:
-	#		await get_tree().process_frame
-			_on_close_button_pressed()
-			open(player.inventory)
+		# Check Qty 
+		player.inventory.remove_item(last_clicked_item)
+		_on_close_button_pressed()
+		open(player.inventory)
 
 
 func _unhandled_key_input(_event: InputEvent) -> void:
@@ -131,26 +130,11 @@ func close_use_drop():
 
 
 func on_drop():
-	
 	# Remove Qty no matter what
-	
-	
-	
 	player.inventory.remove_item(last_clicked_item) # Do if Qty <= 0
+	# Also positions scene 
 	Utility.fetch_pickup_scene(last_clicked_item.name) 
 	_on_close_button_pressed()
-	
 	open(player.inventory)
 	pass
-	
-## Change signal to drop ...
-#func _use_or_drop(action):
-#	if action == "drop":
-#		print("...Dropping...")
-#		on_drop()
-#		pass
-#	elif action == "use":
-#		print(" Using in inventroy_ui")
-#		pass
-#	
 	

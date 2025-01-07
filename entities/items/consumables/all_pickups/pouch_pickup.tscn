@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://curjx4uv4oesk" path="res://data/resources/consumables/pouch.tres" id="2_p1erd"]
 
 [node name="Pouch" type="Node2D"]
+z_as_relative = false
 
 [node name="PickupComp" parent="." instance=ExtResource("1_k6pb2")]
 item = ExtResource("2_p1erd")

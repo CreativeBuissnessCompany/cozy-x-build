@@ -4,4 +4,5 @@
 [ext_resource type="Resource" uid="uid://bf15tuw54hbkg" path="res://data/resources/tools/hoe_resource.tres" id="2_qa5kp"]
 
 [node name="Hoe" instance=ExtResource("1_c2f75")]
+z_as_relative = false
 item = ExtResource("2_qa5kp")

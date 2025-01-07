@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bh3gbo8iw53p5"]
+[gd_scene load_steps=22 format=3 uid="uid://bh3gbo8iw53p5"]
 
 [ext_resource type="Texture2D" uid="uid://day88y35e6gvj" path="res://ui/inventory02_ui/art/uicoingraphic.png" id="1_5d4of"]
 [ext_resource type="Texture2D" uid="uid://dx1uxmrmdoblc" path="res://oval.png" id="2_sypqy"]
@@ -6,6 +6,9 @@
 [ext_resource type="Material" uid="uid://ctt4qnldpofbm" path="res://materials/lines01.tres" id="3_ysct8"]
 [ext_resource type="Script" path="res://universe/currency_display.gd" id="5_46mol"]
 [ext_resource type="Texture2D" uid="uid://d4fhxs6c38wmj" path="res://components/currency/TopRightUi.png" id="6_uiiid"]
+[ext_resource type="Texture2D" uid="uid://cvtqgtpmpoqq0" path="res://ui/inventory02_ui/art/coin-animation.png" id="7_b4j3y"]
+[ext_resource type="Script" path="res://components/currency/coins.gd" id="7_b7ln1"]
+[ext_resource type="Script" path="res://components/currency/animated_coins.gd" id="9_p23pb"]
 
 [sub_resource type="Shader" id="Shader_dj8mm"]
 code = "shader_type canvas_item;
@@ -60,8 +63,80 @@ shader_parameter/line_count = 200.0
 shader_parameter/speed = 4.0
 shader_parameter/blur = 1.46228
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_awc7k"]
+atlas = ExtResource("7_b4j3y")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5fgw"]
+atlas = ExtResource("7_b4j3y")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh6fb"]
+atlas = ExtResource("7_b4j3y")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0uqc"]
+atlas = ExtResource("7_b4j3y")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xeyo"]
+atlas = ExtResource("7_b4j3y")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdc4r"]
+atlas = ExtResource("7_b4j3y")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uubbc"]
+atlas = ExtResource("7_b4j3y")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmhco"]
+atlas = ExtResource("7_b4j3y")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iekrt"]
+atlas = ExtResource("7_b4j3y")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtew5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awc7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5fgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh6fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0uqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xeyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdc4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uubbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmhco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iekrt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="CurrencyDisplay02" type="Control"]
 layout_mode = 3
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -60.0
@@ -96,7 +171,7 @@ offset_right = 17.0
 offset_bottom = 20.0
 pivot_offset = Vector2(19.3, 37)
 size_flags_horizontal = 6
-theme_override_colors/default_color = Color(0.0991983, 0.316239, 0.594273, 1)
+theme_override_colors/default_color = Color(0.00646966, 0.0545586, 0.137565, 1)
 theme_override_fonts/normal_font = ExtResource("3_rnn8i")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
@@ -116,3 +191,11 @@ texture = ExtResource("6_uiiid")
 [node name="Coins" type="Sprite2D" parent="."]
 position = Vector2(-0.13, 14.96)
 texture = ExtResource("1_5d4of")
+script = ExtResource("7_b7ln1")
+
+[node name="AnimatedCoins" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(4.87, -10.04)
+sprite_frames = SubResource("SpriteFrames_dtew5")
+script = ExtResource("9_p23pb")

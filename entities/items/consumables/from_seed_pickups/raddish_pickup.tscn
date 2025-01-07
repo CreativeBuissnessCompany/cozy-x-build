@@ -4,4 +4,5 @@
 [ext_resource type="Resource" uid="uid://biutgknunyp1u" path="res://data/resources/consumables/raddish_resource.tres" id="2_8q0me"]
 
 [node name="RaddishPickup" instance=ExtResource("1_n83st")]
+z_as_relative = false
 item = ExtResource("2_8q0me")

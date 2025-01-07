@@ -26,5 +26,5 @@ func lose_currency(amount: int):
 
 # Does both Gain and Loss by letting amount be negative ... Coming from UseHandlerComponent... Item Effects
 func change_currency(amount: int):
-	print("gain currency happening ")
+#	print("gain currency happening ")
 	currency_held += amount

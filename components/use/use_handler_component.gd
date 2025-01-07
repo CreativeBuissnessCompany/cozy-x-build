@@ -20,7 +20,7 @@ func _on_use(item: Item):
 			match item.use_components[i].use_type:
 				
 				UseComponent.USE_TYPE.MONEY:
-					print("Money change..." + str(item.use_components[i].amount))
+#					print("Money ..." + str(item.use_components[i].amount))
 					money_please(item, i)
 				UseComponent.USE_TYPE.HEALTH:
 					print("Health Gained..." + str(item.use_components[i].amount))
@@ -34,10 +34,10 @@ func tool_please(item: Item):
 	
 	match item.name: # Double check the input even acti0on names NOTE 
 		"Hoe":
-			print("Name Match...Till")
+#			print("Name Match...Till")
 			input_action.action = "toggle_dirt"
 		"Watering Can":
-			print("Name Match... Water")
+#			print("Name Match... Water")
 			input_action.action = "toggle_water"
 			
 	input_faker(input_action)
@@ -45,9 +45,9 @@ func tool_please(item: Item):
 	
 # For use with tools, Simulates button press ....
 func input_faker(new_input_action: InputEventAction):
-	print("input_faker(), Fake Press ...")
+#	print("input_faker(), Fake Press ...")
 	new_input_action.pressed = true
-	print(new_input_action)
+#	print(new_input_action)
 	
 # Unpause the game here? 
 	get_tree().paused = false
@@ -60,13 +60,13 @@ func input_faker(new_input_action: InputEventAction):
 func money_please(item: Item,  i: int):
 	var amount: int = item.use_components[i].amount
 	
-	print("Money change amount $" + str(amount))
+#	print("Money change amount $" + str(amount))
 	
 	var player: Player = get_parent()
 	var currency_node: Currency = player.currency_node
 
-	print("currency held BEFORE item use = $" + str(currency_node.currency_held))
+#	print("currency held BEFORE item use = $" + str(currency_node.currency_held))
 	currency_node.change_currency(amount)
-	print("currency held AFTER item use = $" + str(currency_node.currency_held))
+#	print("currency held AFTER item use = $" + str(currency_node.currency_held))
 	
 	player.inventory.remove_item(item)
