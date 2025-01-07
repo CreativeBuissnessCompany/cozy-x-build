@@ -45,6 +45,8 @@ func _on_use(_item: Item):
 		player.inventory.remove_item(last_clicked_item)
 		_on_close_button_pressed()
 		open(player.inventory)
+	else:
+		Utility.cozy_notification_spawner("Equipped", use_drop_instance, self)
 
 
 func _unhandled_key_input(_event: InputEvent) -> void:

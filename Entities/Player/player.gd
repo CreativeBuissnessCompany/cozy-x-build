@@ -69,6 +69,8 @@ func walk_sound(delta) -> void:
 ## Use's InventoryResource to add_item(item) ...
 func on_item_picked_up(item:Item):
 	inventory.add_item(item)
+	Utility.cozy_notification_spawner(item.name, self, get_parent())
+	
 
 
 func camera_zoom():

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://gqfckyue382i"]
+
+[ext_resource type="Script" path="res://components/cozy_notification/cozy_notification.gd" id="1_xg6se"]
+[ext_resource type="FontFile" uid="uid://bjmir8y7vyk8c" path="res://themes/fonts/Caviar_Dreams_Bold.ttf" id="2_vbp5d"]
+
+[node name="CozyNotification" type="Node2D"]
+script = ExtResource("1_xg6se")
+text_displayed = "Tester Tester"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+clip_contents = false
+offset_right = 77.0
+offset_bottom = 40.0
+size_flags_horizontal = 6
+theme_override_colors/default_color = Color(0.917246, 0.250632, 3.69644e-05, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_vbp5d")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+fit_content = true
+scroll_active = false

@@ -14,4 +14,7 @@ func _on_use_button_button_up() -> void:
 	var inventory_ui: InventoryUI = get_parent()
 	var last_clicked_item: Item = inventory_ui.last_clicked_item
 	Signalbus.use_item.emit(last_clicked_item)
+	
+	
+
 	pass # Replace with function body.
