@@ -8,6 +8,6 @@ func _ready() -> void:
 
 func on_currency_change(_amount: int):
 	self.visible = false
-	await get_tree().create_timer(1.5).timeout
-	await get_tree().process_frame # WARNING hacky ....... 
+	await get_tree().create_timer(0.70).timeout
+#	await get_tree().process_frame # WARNING hacky ....... 
 	self.visible = true

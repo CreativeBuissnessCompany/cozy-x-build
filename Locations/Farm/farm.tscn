@@ -753,7 +753,7 @@ position = Vector2(62, 202)
 position = Vector2(104, 243)
 
 [node name="Tomato6" parent="PickUps" instance=ExtResource("35_oc7ws")]
-position = Vector2(99.5, 139.5)
+position = Vector2(99.5, 107.5)
 
 [node name="WateringCan" parent="PickUps" instance=ExtResource("37_k2ykm")]
 position = Vector2(-116, 269)

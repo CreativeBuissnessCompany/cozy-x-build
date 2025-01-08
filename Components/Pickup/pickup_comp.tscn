@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://blga528vftp33"]
+[gd_scene load_steps=6 format=3 uid="uid://blga528vftp33"]
 
 [ext_resource type="Script" path="res://components/pickup/pickup_comp.gd" id="1_vlwba"]
 [ext_resource type="Resource" uid="uid://c2rr865bmxad1" path="res://data/resources/misc/can.tres" id="2_jxxco"]
+[ext_resource type="PackedScene" uid="uid://blsqj3rw0ygy0" path="res://addons/resource_databases/editor_only/ui/components/outline/outline.tscn" id="3_8lcn7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cq01i"]
 
@@ -26,6 +27,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoToPlayerArea2D"]
 shape = SubResource("CircleShape2D_7qal5")
+
+[node name="Outline" parent="." instance=ExtResource("3_8lcn7")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="GoToPlayerArea2D" to="." method="go_to_player"]

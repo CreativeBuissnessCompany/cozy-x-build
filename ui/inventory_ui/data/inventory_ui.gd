@@ -47,7 +47,7 @@ func _on_use(_item: Item):
 		open(player.inventory)
 	else:
 		Utility.cozy_notification_spawner("Equipped", use_drop_instance, self)
-
+		close_use_drop()
 
 func _unhandled_key_input(_event: InputEvent) -> void:
 	
