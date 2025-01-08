@@ -13,6 +13,9 @@ func _on_use(item: Item):
 	if item.item_type == Item.ITEM_TYPE.TOOL:
 		print("Using the Tool known as....." + str(item.name))
 		tool_please(item)
+	elif item.item_type == Item.ITEM_TYPE.SEED:
+		Signalbus.seed_selected.emit(item)
+		print("Seed")
 	else:
 		for i in range(item.use_components.size()):
 			print(" use_components loop,Item is" + item.name)

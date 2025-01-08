@@ -78,12 +78,14 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	super()
-	# Connects to ItemSlot in inventory_ui
-	Signalbus.item_clicked.connect(on_seed_selected)
+	# Connects to ItemSlot in inventory_ui NOTE 01/07
+#	Signalbus.item_clicked.connect(on_seed_selected)
 	# Connects to inventory_ui, To stop User input while UI open
 	Signalbus.ui_open.connect(on_ui_open)
 	#  Connects to SeedToCrop .... To delete Crop when pickup instantiated....
 	Signalbus.delete_crop.connect(on_delete_crop)
+	# Changed from Signalbus.item_clicked.connect(on_seed_selected)
+	Signalbus.seed_selected.connect(on_seed_selected)
 		
 	
 # Controls are.... Press E To Toggle Till, R For Water, T For Harvest 
@@ -112,10 +114,11 @@ func _input(_event: InputEvent) -> void:
 		var mouse_pos: Vector2 = get_global_mouse_position()
 		var state: int         = farming_mode_state
 		# Farming Func ...
-		if ui_open == false:
+		if ui_open == false: # UI CLOSED ...
+			# And NOT Harvesting ...
 			if farming_mode_state != FARMING_MODES.HARVEST:
 				farming(state, mouse_pos)
-				#print(" 'click' at farm.gd")
+				
 				return
 			else:
 #				print("Bout to harvest")
@@ -131,26 +134,31 @@ func _input(_event: InputEvent) -> void:
 ## Add Child to crop_tml, Set position, Run set_crop_data in SeedToCrop, Append to CropData.crop_array...
 func plant_seed(mouse_pos: Vector2i) -> void :
 
-	var mouse_pos_for_data = Utility.convert_mos_local(tilled_tml,mouse_pos) 
-	if retrieving_custom_data(tilled_tml, mouse_pos_for_data, can_plant):
-		var seed_scene: SeedToCrop = crop_to_seed_scene.instantiate() # Instantiate
-		crops_tml.add_child(seed_scene) # Add child 
-		seed_scene.global_position = tilled_tml.map_to_local(mouse_pos_for_data) # Set position
-		 # Set Item Data to Current seed_selected data ... 
-		seed_scene.set_crop_data(seed_selected)
-		CropData.crop_array.append(seed_scene)
-		print()
-		print("Just appended")
-		print(CropData.crop_array)
-		# >>>                  >>>              NOTE Delete ? ? ?
-		# Wait for it to get added to the tree ....
-#		await get_tree().process_frame
-#		await get_tree().process_frame   # Commented out on new func make....
-		# >>>                  >>>
+	# New NOTE 01/07 
+	if seed_selected.qty >= 1:
+		print(seed_selected.qty)
+		var mouse_pos_for_data = Utility.convert_mos_local(tilled_tml,mouse_pos) 
+		if retrieving_custom_data(tilled_tml, mouse_pos_for_data, can_plant):
+			var seed_scene: SeedToCrop = crop_to_seed_scene.instantiate() # Instantiate
+			crops_tml.add_child(seed_scene) # Add child 
+			seed_scene.global_position = tilled_tml.map_to_local(mouse_pos_for_data) # Set position
+			 # Set Item Data to Current seed_selected data ... 
+			seed_scene.set_crop_data(seed_selected)
+			CropData.crop_array.append(seed_scene)
+	
+			
+			# SEED SFX
+			if ui_open == false:
+				Signalbus.sfx.emit(sfx_seed) # play sound
+			# New NOTE 01/07
+
+		seed_selected.qty -= 1
+	else:
 		
-		# SEED SFX
-		if ui_open == false:
-			Signalbus.sfx.emit(sfx_seed) # play sound
+		Utility.cozy_notification_spawner("Out of seeds brother ....", SceneManager.player, get_parent())
+	
+		
+		
 	return
 
 ## Converts mos_pos to tml_mos_pos, Sends signal to SeedToCrop to do _on_harvest() ...
@@ -185,8 +193,8 @@ func on_seed_selected(item_resource: Item):
 		farming_mode_state = FARMING_MODES.PLANT_SEED
 		seed_selected = item_resource
 		# NOTE  Close UI
-		var inventory_ui: InventoryUI = get_parent().find_child("InventoryUI")
-		inventory_ui._on_close_button_pressed()
+#		var inventory_ui: InventoryUI = get_parent().find_child("InventoryUI")
+#		inventory_ui._on_close_button_pressed()
 		
 ## Uses farming_state/FARMING_MODES to Check and then Match the farming modes selected....
 ## Uses mos_pos to change tiles for TILL, WATER and HARVEST ... Uses set_cells_terrain_connect ...
@@ -211,7 +219,7 @@ func farming(state,mouse_pos):
 			sfx_file = sfx_watering
 	
 		FARMING_MODES.PLANT_SEED:
-		
+			
 			plant_seed(mouse_pos)	
 	
 	# NOTE                       DONE if not PLANT_SEED
