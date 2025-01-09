@@ -1,5 +1,12 @@
-[gd_scene format=3 uid="uid://8q6xdxa64ev8"]
+[gd_scene load_steps=3 format=3 uid="uid://8q6xdxa64ev8"]
+
+[ext_resource type="Script" path="res://entities/npc/classes/npc.gd" id="1_64n0w"]
+[ext_resource type="PackedScene" uid="uid://8hixi0ctiddt" path="res://components/interactable/interactable.tscn" id="2_x3nqm"]
 
 [node name="NPC" type="Node2D"]
+script = ExtResource("1_64n0w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Interactable" parent="." instance=ExtResource("2_x3nqm")]
+unique_name_in_owner = true

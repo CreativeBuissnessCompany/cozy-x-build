@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba56li1xoteso"]
+
+[ext_resource type="Script" path="res://entities/npc/classes/npc.gd" id="1_l105s"]
+[ext_resource type="PackedScene" uid="uid://8hixi0ctiddt" path="res://components/interactable/interactable.tscn" id="2_73ku0"]
+[ext_resource type="Texture2D" uid="uid://5w2cnpkipac0" path="res://entities/npc/old_guy/mc_sprite.png" id="2_r50tu"]
+[ext_resource type="Script" path="res://components/interactions/interaction_dialog.gd" id="4_u2dat"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/timeline.gd" id="5_62n13"]
+[ext_resource type="Resource" path="res://timelines/timeline_01.dtl" id="6_fftbs"]
+[ext_resource type="Resource" path="res://dialog_customs/timelines/day_01/old_guy_01.dtl" id="7_m5ne3"]
+
+[node name="OldGuy" type="Node2D"]
+script = ExtResource("1_l105s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -25)
+texture = ExtResource("2_r50tu")
+
+[node name="Interactable" parent="." node_paths=PackedStringArray("interaction_to_run") instance=ExtResource("2_73ku0")]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(0, -25)
+interaction_to_run = NodePath("InteractionDialog")
+
+[node name="InteractionDialog" type="Node" parent="Interactable"]
+script = ExtResource("4_u2dat")
+timelines = Array[ExtResource("5_62n13")]([ExtResource("6_fftbs"), ExtResource("7_m5ne3")])
+selected = 1

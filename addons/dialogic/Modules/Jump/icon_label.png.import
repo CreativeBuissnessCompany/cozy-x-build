@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx1uxmrmdoblc"
-path="res://.godot/imported/oval.png-ecbb60178478a6b9d52d02474c2701ab.ctex"
+uid="uid://c53yjrxmhmgh"
+path="res://.godot/imported/icon_label.png-3923bd1131990c8869923c838ffdb9ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://oval.png"
-dest_files=["res://.godot/imported/oval.png-ecbb60178478a6b9d52d02474c2701ab.ctex"]
+source_file="res://addons/dialogic/Modules/Jump/icon_label.png"
+dest_files=["res://.godot/imported/icon_label.png-3923bd1131990c8869923c838ffdb9ae.ctex"]
 
 [params]
 

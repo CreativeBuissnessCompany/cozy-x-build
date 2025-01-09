@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://pxdyu2wc4iuq" path="res://themes/fonts/Baldur.ttf" id="1_62o7o"]
 [ext_resource type="Script" path="res://universe/currency_display.gd" id="2_cp832"]
-[ext_resource type="Texture2D" uid="uid://dx1uxmrmdoblc" path="res://oval.png" id="3_4cstc"]
+[ext_resource type="Texture2D" uid="uid://dx1uxmrmdoblc" path="res://components/currency/oval.png" id="3_4cstc"]
 [ext_resource type="Material" uid="uid://ctt4qnldpofbm" path="res://materials/lines01.tres" id="4_fx6vh"]
 [ext_resource type="Texture2D" uid="uid://day88y35e6gvj" path="res://ui/inventory02_ui/art/uicoingraphic.png" id="5_mv007"]
 

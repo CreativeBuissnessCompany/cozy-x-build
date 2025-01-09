@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://bh3gbo8iw53p5"]
 
 [ext_resource type="Texture2D" uid="uid://day88y35e6gvj" path="res://ui/inventory02_ui/art/uicoingraphic.png" id="1_5d4of"]
-[ext_resource type="Texture2D" uid="uid://dx1uxmrmdoblc" path="res://oval.png" id="2_sypqy"]
+[ext_resource type="Texture2D" uid="uid://dx1uxmrmdoblc" path="res://components/currency/oval.png" id="2_sypqy"]
 [ext_resource type="FontFile" uid="uid://cdp7qaiesa28r" path="res://themes/fonts/Comicoro.ttf" id="3_rnn8i"]
 [ext_resource type="Material" uid="uid://ctt4qnldpofbm" path="res://materials/lines01.tres" id="3_ysct8"]
 [ext_resource type="Script" path="res://universe/currency_display.gd" id="5_46mol"]

@@ -86,6 +86,9 @@ func _ready() -> void:
 	Signalbus.delete_crop.connect(on_delete_crop)
 	# Changed from Signalbus.item_clicked.connect(on_seed_selected)
 	Signalbus.seed_selected.connect(on_seed_selected)
+	
+	await get_tree().create_timer(3).timeout
+	Dialogic.start("timeline_01")
 		
 	
 # Controls are.... Press E To Toggle Till, R For Water, T For Harvest 
