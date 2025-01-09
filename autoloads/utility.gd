@@ -5,9 +5,15 @@ var entrance_marker: String = "any"
 var database: Database = load("res://my_databases/seeds.gddb")
 @onready var universe: Node = get_node("../Universe") 
 var cozy_notification: PackedScene = load("res://components/cozy_notification/cozy_notification.tscn") 
+var transition_circle: PackedScene = preload("res://components/transitions/transition_circle/transition_circle.tscn")
 
 
 
+
+func transition_spawner():
+	
+	var instanced_trn_circle: Node = transition_circle.instantiate()
+	universe.add_child(instanced_trn_circle)
 
 
 func cozy_notification_spawner(_text: String, caller: Node2D, parent: Node):

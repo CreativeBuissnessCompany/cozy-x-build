@@ -1,8 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://kx8kpbyk74fe"]
+[gd_scene load_steps=31 format=3 uid="uid://kx8kpbyk74fe"]
 
 [ext_resource type="Script" path="res://locations/farm/inside_farmhouse/inside_farm_house.gd" id="1_0xjtu"]
 [ext_resource type="Texture2D" uid="uid://b3ari0iyb4x61" path="res://locations/farm/inside_farmhouse_02/farm-interior-floor.png" id="1_e2xlq"]
 [ext_resource type="PackedScene" uid="uid://c6nqqggvbaemk" path="res://entities/items/interactive_furniture/beds/Bed.tscn" id="2_f83x3"]
+[ext_resource type="Script" path="res://locations/farm/inside_farmhouse_02/icons_parallax_2d.gd" id="2_lxo0w"]
+[ext_resource type="Texture2D" uid="uid://bf5q4xxoiv1cp" path="res://locations/farm/inside_farmhouse_02/background_art/Icons Backgrounf.png" id="2_mekjd"]
 [ext_resource type="PackedScene" uid="uid://bq1hrrbom2hl4" path="res://entities/items/interactive_furniture/nightstands/nightstand.tscn" id="3_ompua"]
 [ext_resource type="PackedScene" uid="uid://7g4gbu5boirf" path="res://entities/items/interactive_furniture/lamps/interactable_lamp.tscn" id="4_1ulds"]
 [ext_resource type="PackedScene" uid="uid://bomm8onlnh6ui" path="res://entities/items/decorative/clock/clock.tscn" id="5_0lo8n"]
@@ -77,6 +79,21 @@ shader_parameter/palette_cycling_speed = 0.46
 [node name="InsideFarmhouse02" type="Node2D" groups=["Locations"]]
 y_sort_enabled = true
 script = ExtResource("1_0xjtu")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -7
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
+repeat_size = Vector2(512, 512)
+repeat_times = 10
+script = ExtResource("2_lxo0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+self_modulate = Color(0.581033, 0.581033, 0.581033, 1)
+z_index = -4
+z_as_relative = false
+position = Vector2(448, 0)
+texture = ExtResource("2_mekjd")
 
 [node name="FloorAndWalls" type="Sprite2D" parent="."]
 z_index = -1
