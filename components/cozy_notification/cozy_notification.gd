@@ -13,7 +13,7 @@ func _ready() -> void:
 	self.visible = false
 	await get_tree().create_timer(clampf(randf(), 0.05, 0.1)).timeout
 	starting_pos = position
-	print(starting_pos)
+#	print(starting_pos)
 	play = true
 	
 func _process(delta: float) -> void:
@@ -51,5 +51,5 @@ func random_digi() -> int:
 	
 func rich_wave(_text: String) -> String:
 	var processed_text: String = "[wave amp=40.0 freq=3.0 connected=1][color=Orange]%s[/color][/wave]" % _text
-	print(processed_text)
+#	print(processed_text)
 	return processed_text

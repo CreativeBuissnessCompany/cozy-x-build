@@ -53,6 +53,10 @@ directories/dtl_directory={
 "old_guy_01": "res://dialog_customs/timelines/day_01/old_guy_01.dtl",
 "timeline_01": "res://timelines/timeline_01.dtl"
 }
+variables={
+"quest_complete": false,
+"quest_name": "Nothing here..."
+}
 
 [display]
 

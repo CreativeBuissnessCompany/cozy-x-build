@@ -37,3 +37,18 @@ signal drop()
 signal use_item()
 # From item_slot.gd
 signal seed_selected()
+# To QuestManager from NPC?
+signal quest_given()
+# To QuestUI
+signal quest_update()
+# From Quest resource to QuestManager
+signal quest_completed()
+	
+
+
+
+func on_quest_given():
+	print("Signalbus.on_quest_given()")
+#	print(Dialogic.VAR.quest_name)
+	var quest_name: String = Dialogic.VAR.quest_name
+	quest_given.emit(quest_name)

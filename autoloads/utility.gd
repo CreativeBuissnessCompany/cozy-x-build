@@ -22,10 +22,8 @@ func cozy_notification_spawner(_text: String, caller: Node2D, parent: Node):
 	parent.add_child(cozy)
 #	parent.add_child(cozy)
 	cozy.before_display(_text)
-#	cozy.text_displayed = _text
+
 	
-
-
 # Whos using this? inventory_ui
 func fetch_pickup_scene(item_name: StringName):
 	var pickup_text: String = "_pickup"

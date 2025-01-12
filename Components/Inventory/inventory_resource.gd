@@ -5,7 +5,9 @@ extends Resource
 
 @export var _content:Array[Item] = []
 
-signal inventory_changed
+# NOTE
+signal inventory_changed # NOTE UNUSED
+
 
 
 #                                  Script Start...
@@ -42,15 +44,7 @@ func remove_item(item:Item):
 					print("Deleteing ")
 					_content.erase(item)
 	
-#	_content.erase(item)
-	
 
-
-	#for i in range(_content.size()):
-		#if _content[i]["name"] == item.name:
-			#_content[i] == null 
-			#
-			#print(_content[i]["name"])
 
 
 func get_items() -> Array[Item]:

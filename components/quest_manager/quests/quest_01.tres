@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=11 format=3 uid="uid://b2oh6xim2s1m6"]
+
+[ext_resource type="Script" path="res://components/quest_manager/base_objective/objective.gd" id="1_5h1xq"]
+[ext_resource type="Resource" uid="uid://bcuhffno36qld" path="res://data/resources/consumables/apple.tres" id="1_xrrxu"]
+[ext_resource type="Script" path="res://components/quest_manager/objectives/retrieve_objective.gd" id="2_710ya"]
+[ext_resource type="Script" path="res://components/quest_manager/base_reward/reward.gd" id="2_pyi0y"]
+[ext_resource type="Script" path="res://components/quest_manager/base_quest/quest.gd" id="3_3mat7"]
+[ext_resource type="Resource" uid="uid://curjx4uv4oesk" path="res://data/resources/consumables/pouch.tres" id="4_adc66"]
+[ext_resource type="Script" path="res://components/quest_manager/rewards/money_reward.gd" id="4_t8hxk"]
+
+[sub_resource type="Resource" id="Resource_hry20"]
+script = ExtResource("2_710ya")
+item = ExtResource("1_xrrxu")
+
+[sub_resource type="Resource" id="Resource_dix2f"]
+script = ExtResource("2_710ya")
+item = ExtResource("4_adc66")
+
+[sub_resource type="Resource" id="Resource_twpr5"]
+script = ExtResource("4_t8hxk")
+
+[resource]
+script = ExtResource("3_3mat7")
+quest_name = "quest_01"
+description = "A Reallly fun quest "
+objectives = Array[ExtResource("1_5h1xq")]([SubResource("Resource_hry20"), SubResource("Resource_dix2f")])
+rewards = Array[ExtResource("2_pyi0y")]([SubResource("Resource_twpr5")])

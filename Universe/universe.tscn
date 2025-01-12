@@ -141,8 +141,21 @@ metadata/_edit_lock_ = true
 
 [node name="CurrencyDisplay02" parent="UIRoot/HUD" instance=ExtResource("15_n4feo")]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.974
 anchor_right = 1.061
+
+[node name="QuestName" type="Label" parent="UIRoot/HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.0
+offset_right = 71.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Quest Name"
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true

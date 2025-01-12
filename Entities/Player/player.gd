@@ -12,8 +12,10 @@ class_name Player extends CharacterBody2D
 # For sfx purposes...
 var time_elapsed: float
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var quest_manager: QuestManager = %QuestManager
 
 var inventory: InventoryResource = InventoryResource.new()
+var monitor_items_added: bool = false
 
 @export var currency_node: Currency
 
@@ -68,6 +70,10 @@ func walk_sound(delta) -> void:
 
 ## Use's InventoryResource to add_item(item) ...
 func on_item_picked_up(item:Item):
+	if monitor_items_added == true:
+		# Check for item name match ...
+		quest_manager.match_items(item)
+		
 	inventory.add_item(item)
 	Utility.cozy_notification_spawner(item.name, self, get_parent())
 	
