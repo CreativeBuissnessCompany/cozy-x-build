@@ -12,12 +12,12 @@ var database: Database = load("res://my_databases/quests.gddb")
 
 
 func _ready() -> void: # Step 1 ....
-	Signalbus.quest_given.connect(_on_quest_given)
-	Signalbus.quest_completed.connect(_on_quest_completed) # Step 11 ....
+	Signalbus.quest_given.connect(_on_quest_given) #  ... From Dialogic 
+	Signalbus.quest_completed.connect(_on_quest_completed) # .... From Quest held in player ...
 
 	
 
-# Step 12 ....
+# Step 12 .... From Quest
 func _on_quest_completed(completed: bool):
 	if completed:
 		Utility.cozy_notification_spawner(" Quest Completed you cunt!!", SceneManager.player,get_parent().get_parent())
@@ -61,7 +61,7 @@ func _on_quest_given(quest_name: String):
 	number_of_objectives = current_quest.objectives.size()
 	objectives = current_quest.objectives
 	
-	# Step 7  ....
+	# (Step 6 in Player) Step 7  ....
 func match_items(item: Item):
 #	var objective: RetrieveObjective = current_quest.objective
 	objectives = current_quest.objectives # Wha Why? WARNING 

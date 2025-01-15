@@ -37,7 +37,7 @@ signal drop()
 signal use_item()
 # From item_slot.gd
 signal seed_selected()
-# To QuestManager from NPC?
+# To QuestManager from Dialogic?
 signal quest_given()
 # To QuestUI
 signal quest_update()

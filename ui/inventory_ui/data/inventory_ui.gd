@@ -50,7 +50,7 @@ func _on_use(_item: Item):
 		close_use_drop()
 
 func _unhandled_key_input(_event: InputEvent) -> void:
-	
+	# ADD  if ui open
 	if Input.is_action_just_released("escape"):
 		if use_drop_displayed:
 			use_drop_instance.queue_free()

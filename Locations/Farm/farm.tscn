@@ -718,7 +718,7 @@ script = ExtResource("28_vx1nh")
 metadata/_edit_lock_ = true
 
 [node name="any" type="Marker2D" parent="EntranceMarkers"]
-position = Vector2(140.878, 31.4701)
+position = Vector2(-120.122, 38.4701)
 
 [node name="debug" type="Marker2D" parent="EntranceMarkers"]
 position = Vector2(25.1884, 297.257)

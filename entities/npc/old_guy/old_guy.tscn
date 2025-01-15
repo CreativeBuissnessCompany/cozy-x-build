@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba56li1xoteso"]
+[gd_scene load_steps=10 format=3 uid="uid://ba56li1xoteso"]
 
 [ext_resource type="Script" path="res://entities/npc/classes/npc.gd" id="1_l105s"]
 [ext_resource type="PackedScene" uid="uid://8hixi0ctiddt" path="res://components/interactable/interactable.tscn" id="2_73ku0"]
 [ext_resource type="Texture2D" uid="uid://5w2cnpkipac0" path="res://entities/npc/old_guy/mc_sprite.png" id="2_r50tu"]
 [ext_resource type="Resource" uid="uid://b2oh6xim2s1m6" path="res://components/quest_manager/quests/quest_01.tres" id="2_u6aao"]
+[ext_resource type="Resource" path="res://dialog_customs/characters/old_guy.dch" id="3_mkspu"]
 [ext_resource type="Script" path="res://components/interactions/interaction_dialog.gd" id="4_u2dat"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/timeline.gd" id="5_62n13"]
 [ext_resource type="Resource" path="res://timelines/timeline_01.dtl" id="6_fftbs"]
@@ -12,6 +13,7 @@
 [node name="OldGuy" type="Node2D"]
 script = ExtResource("1_l105s")
 npc_quest = ExtResource("2_u6aao")
+dialogic_character_resource = ExtResource("3_mkspu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -28,3 +30,7 @@ interaction_to_run = NodePath("InteractionDialog")
 script = ExtResource("4_u2dat")
 timelines = Array[ExtResource("5_62n13")]([ExtResource("6_fftbs"), ExtResource("7_m5ne3")])
 selected = 1
+
+[node name="Marker2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(17, -23)
