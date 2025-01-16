@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_3yr8v"]
 [ext_resource type="PackedScene" uid="uid://syki6k0e6aac" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_TextBubble/text_bubble_base.tscn" id="1_wivto"]
 [ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="2_kactp"]
-[ext_resource type="PackedScene" uid="uid://d2it0xiap3gnt" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble_layer.tscn" id="3_ym6wm"]
+[ext_resource type="PackedScene" uid="uid://txngph0f2bk4" path="res://dialog_customs/styles/layers/TextbubbleLayer/custom_textbubble_layer.tscn" id="4_d7oa0"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="4_l3ht7"]
 
 [sub_resource type="Resource" id="Resource_x3p21"]
@@ -18,11 +18,16 @@ overrides = {}
 
 [sub_resource type="Resource" id="Resource_pmk82"]
 script = ExtResource("1_3yr8v")
-scene = ExtResource("3_ym6wm")
+scene = ExtResource("4_d7oa0")
 overrides = {
-"choices_text_size": "10.0",
-"name_label_font_size": "8.0",
+"box_wobble_amount": "0.2",
+"box_wobble_speed": "0.5",
+"choices_text_color_focus": "Color(0.321569, 0.670588, 0.819608, 1)",
+"choices_text_color_hover": "Color(0, 0.345703, 0, 1)",
+"choices_text_size": "8.0",
+"name_label_font_size": "10.0",
 "name_label_offset": "Vector2(-10, 10)",
+"name_label_padding": "Vector2(4, 0)",
 "text_size": "8.0"
 }
 

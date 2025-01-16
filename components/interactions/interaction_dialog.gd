@@ -9,13 +9,17 @@ var char_resource: DialogicCharacter
 
 func _ready() -> void:
 	char_resource = fetch_character_resouce()
+	# Connect to timeline ended? 
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
 
 func interact():
 	var layout := Dialogic.start(timelines[selected])
 	layout.register_character(char_resource, parent.marker2d)
-	
 	dialogic_variable()
 	
+	# Pause stuff
+	SceneManager.player.set_physics_process(false)
+	get_parent().set_process_unhandled_input(false)
 	
 
 
@@ -31,7 +35,10 @@ func dialogic_variable():
 		
 		
 func fetch_character_resouce() -> DialogicCharacter:
-	var char_resource: DialogicCharacter = parent.dialogic_character_resource
+	char_resource = parent.dialogic_character_resource
 	return char_resource
 	
-	
+func _on_timeline_ended():
+	# UnPause stuff
+	SceneManager.player.set_physics_process(true)
+	get_parent().set_process_unhandled_input(true)

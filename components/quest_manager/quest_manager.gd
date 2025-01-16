@@ -16,28 +16,34 @@ func _ready() -> void: # Step 1 ....
 	Signalbus.quest_completed.connect(_on_quest_completed) # .... From Quest held in player ...
 
 	
+func give_reward():
+	var rewards: Array = current_quest.rewards
+	for reward: int in rewards.size():
+		rewards[reward].give_cookie()
+		pass
+
+
+	
 
 # Step 12 .... From Quest
 func _on_quest_completed(completed: bool):
 	if completed:
 		Utility.cozy_notification_spawner(" Quest Completed you cunt!!", SceneManager.player,get_parent().get_parent())
+		give_reward()
 		print(" Quest Completed")
 
 # Step 5 ....
-func retrieve_objective():
-	print("Retrieving Objective")
-	var player: Player = get_parent()
-	if player.monitor_items_added != true:
-		player.monitor_items_added = true
+#func retrieve_objective():
+#	print("Retrieving Objective")
+#	var player: Player = get_parent()
+#	if player.monitor_items_added != true:
+#		player.monitor_items_added = true
 
 # Step 4 ....
 func run_objective_func(_objectives: Array[Objective]):
 	print("run_objective_func ")
 	for i in _objectives.size():
-	
-		if _objectives[i] is RetrieveObjective:
-			
-			retrieve_objective() # Should this change later to specify the item you are looking for ???
+		_objectives[i].run_objective()
 
 # Step 3 ....
 func match_quest_w_resource(quest_name: StringName) -> Quest:
