@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_cq01i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7qal5"]
-radius = 80.0
+radius = 45.0
 
 [node name="PickupComp" type="Node2D"]
 script = ExtResource("1_vlwba")
@@ -21,7 +21,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_cq01i")
 
 [node name="GoToPlayerArea2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 2
 

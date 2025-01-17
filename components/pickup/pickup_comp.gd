@@ -53,7 +53,7 @@ func check_for_player_body(body:Node2D) -> void:
 	if body is Player:
 		player_body = body
 		player_near = true
-		
+#	
 
 
 func dont_go_to_player(_body:Node2D) -> void:

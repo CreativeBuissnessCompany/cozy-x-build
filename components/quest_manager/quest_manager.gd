@@ -26,11 +26,13 @@ func give_reward():
 	
 
 # Step 12 .... From Quest
-func _on_quest_completed(completed: bool):
-	if completed:
-		Utility.cozy_notification_spawner(" Quest Completed you cunt!!", SceneManager.player,get_parent().get_parent())
-		give_reward()
-		print(" Quest Completed")
+func _on_quest_completed():
+	
+	Utility.cozy_notification_spawner(" Quest Completed, Go talk to that guy .....",\
+	 SceneManager.player,get_parent().get_parent())
+
+	give_reward()
+	print(" Quest Completed, Go talk to that guy .....")
 
 # Step 5 ....
 #func retrieve_objective():

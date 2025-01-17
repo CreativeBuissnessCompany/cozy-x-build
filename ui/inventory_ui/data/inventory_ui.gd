@@ -51,12 +51,13 @@ func _on_use(_item: Item):
 
 func _unhandled_key_input(_event: InputEvent) -> void:
 	# ADD  if ui open
-	if Input.is_action_just_released("escape"):
-		if use_drop_displayed:
-			use_drop_instance.queue_free()
-			use_drop_displayed = false
-		else:
-			_on_close_button_pressed()
+	if ui_open:
+		if Input.is_action_just_released("escape"):
+			if use_drop_displayed:
+				use_drop_instance.queue_free()
+				use_drop_displayed = false
+			else:
+				_on_close_button_pressed()
 		
 
 func display_use_drop(pos) -> void:
@@ -124,10 +125,11 @@ func _on_close_button_pressed() -> void:
 	get_tree().paused = false
 
 func close_use_drop():
-	use_drop_displayed = false
-	use_drop_instance.get_parent().remove_child(use_drop_instance)
-	use_drop_instance.queue_free()
-	pass	
+	if use_drop_displayed:
+		use_drop_displayed = false
+		use_drop_instance.get_parent().remove_child(use_drop_instance)
+		use_drop_instance.queue_free()
+		pass	
 
 
 

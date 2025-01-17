@@ -55,6 +55,7 @@ directories/dtl_directory={
 }
 variables={
 "quest_complete": false,
+"quest_given": false,
 "quest_name": "Nothing here..."
 }
 layout/style_list=["res://dialog_customs/styles/style_01.tres", "res://dialog_customs/styles/bubble_style_01.tres"]
@@ -97,7 +98,7 @@ movie_writer/movie_file="/Users/kennethfee/Documents/Cozy Game Clips/CozyX02.avi
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/resource_databases/editor_only/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/PaletteTools/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/resource_databases/editor_only/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [file_customization]
 

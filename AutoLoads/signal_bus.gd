@@ -43,8 +43,7 @@ signal quest_given()
 signal quest_update()
 # From Quest resource to QuestManager
 signal quest_completed()
-	
-
+# From Dialogic to QuestManager
 
 
 func on_quest_given():
@@ -52,3 +51,6 @@ func on_quest_given():
 #	print(Dialogic.VAR.quest_name)
 	var quest_name: String = Dialogic.VAR.quest_name
 	quest_given.emit(quest_name)
+
+func on_quest_completed():
+	quest_completed.emit()

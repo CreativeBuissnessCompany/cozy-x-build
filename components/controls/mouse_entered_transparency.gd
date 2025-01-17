@@ -21,7 +21,7 @@ func _on_mouse_entered() -> void:
 		# Move Controls Label
 		var tween_label: Tween = get_tree().create_tween()
 		tween_label.set_ease(Tween.EASE_OUT)
-		tween_label.tween_property(controls_label, "position", Vector2(571, 260), 0.4)
+		tween_label.tween_property(controls_label, "position", Vector2(571, 238.26), 0.4)
 	
 		vbox.custom_minimum_size.x = original_x_coords
 		var tween_1: Tween = get_tree().create_tween()
