@@ -1,5 +1,5 @@
 if {quest_given} == false:
-	old_guy: Can you find me an Apple?
+	old_guy: Yo !! Can you find me an Apple?
 	- Yes
 		old_guy: Well get to it and bring one back to me...
 		do Signalbus.on_quest_given()
@@ -8,8 +8,8 @@ if {quest_given} == false:
 		old_guy: Alirght...... Gaylord .....
 elif {quest_complete} == true:
 	old_guy: Well.... Shi@! You actually brought 'em back !
-	[wait time="1.0"]
+	[wait time="0.2"]
 	old_guy: Thanks! Here, Have this shi# ...
 	do Signalbus.on_quest_completed()
 else:
-	old_guy: Boy, I told 'Ye whut 'ta get ...... The hell's wrong with you ....
+	old_guy: Boy, I told 'Ye whut 'ta get ... The hell's wrong with you ....

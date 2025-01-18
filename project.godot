@@ -61,7 +61,7 @@ variables={
 layout/style_list=["res://dialog_customs/styles/style_01.tres", "res://dialog_customs/styles/bubble_style_01.tres"]
 layout/default_style="res://dialog_customs/styles/bubble_style_01.tres"
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.01
+text/letter_speed=0.07
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
@@ -79,7 +79,13 @@ choices/reveal_by_input=false
 audio/max_channels=4.0
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
-text/autopauses={}
+text/autopauses={
+"\"!!\"": 0.6,
+"\",\"": 0.4,
+"\"...\"": 0.6
+}
+text/autocolor_names=true
+text/autoadvance_enabled=true
 
 [display]
 
