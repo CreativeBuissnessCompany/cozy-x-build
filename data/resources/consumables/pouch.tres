@@ -1,8 +1,19 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://curjx4uv4oesk"]
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://curjx4uv4oesk"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_f1t4x"]
 [ext_resource type="Texture2D" uid="uid://c5hym4pf5rvgq" path="res://entities/items/consumables/misc/pouch/pouch01.png" id="2_bdej7"]
 [ext_resource type="Script" path="res://components/use/use_component.gd" id="3_tvsta"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jtpa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bdej7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pwryx"]
 animations = [{
@@ -28,6 +39,7 @@ description = "A delicious [wave amp=25.0 freq=3.0 connected=1] [color=Gold]Pouc
 item_type = 0
 price = 4
 sprite_frame = SubResource("SpriteFrames_pwryx")
+inven_spriteframe = SubResource("SpriteFrames_8jtpa")
 animation_resize_type = 0
 use_components = Array[ExtResource("3_tvsta")]([SubResource("Resource_3mji6")])
 stage_one = 0

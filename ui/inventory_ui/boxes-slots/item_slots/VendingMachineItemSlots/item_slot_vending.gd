@@ -19,7 +19,7 @@ var item_resource: Item
 
 # Script_Start 
 func display(item:Item):
-	texture_rect.texture = item.sprite_frame.get_frame_texture("default", 0)
+	texture_rect.texture = item.inven_spriteframe.get_frame_texture("default", 0)
 	item_resource = item
 
 func _gui_input(event: InputEvent) -> void:

@@ -1,8 +1,24 @@
-[gd_resource type="Resource" script_class="Item" load_steps=10 format=3 uid="uid://bqgt8f6gd6wxm"]
+[gd_resource type="Resource" script_class="Item" load_steps=13 format=3 uid="uid://bqgt8f6gd6wxm"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_ib0xx"]
+[ext_resource type="Texture2D" uid="uid://b2p26wk75owqs" path="res://entities/items/tools/seeds/crops_01_17_25.png" id="1_k8mde"]
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_loba6"]
 [ext_resource type="Script" path="res://components/use/use_component.gd" id="3_i157c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g03s"]
+atlas = ExtResource("1_k8mde")
+region = Rect2(96, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iob50"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g03s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_el7ea"]
 atlas = ExtResource("1_loba6")
@@ -54,6 +70,7 @@ description = "One of the cheapest crops you can buy, 'Least it grows fast ..."
 item_type = 1
 price = 0
 sprite_frame = SubResource("SpriteFrames_kin4s")
+inven_spriteframe = SubResource("SpriteFrames_iob50")
 animation_resize_type = 0
 use_components = Array[ExtResource("3_i157c")]([])
 stage_one = 0

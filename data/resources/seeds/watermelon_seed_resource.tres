@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="Item" load_steps=12 format=3 uid="uid://cpbev0qrskomu"]
+
+[ext_resource type="Texture2D" uid="uid://b2p26wk75owqs" path="res://entities/items/tools/seeds/crops_01_17_25.png" id="1_dm3e1"]
+[ext_resource type="Script" path="res://data/models/item.gd" id="2_ypta5"]
+[ext_resource type="Script" path="res://components/use/use_component.gd" id="4_fiq3g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt2ey"]
+atlas = ExtResource("1_dm3e1")
+region = Rect2(96, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ktvat"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt2ey")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj8tf"]
+atlas = ExtResource("1_dm3e1")
+region = Rect2(0, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpu32"]
+atlas = ExtResource("1_dm3e1")
+region = Rect2(16, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb4o7"]
+atlas = ExtResource("1_dm3e1")
+region = Rect2(32, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmc12"]
+atlas = ExtResource("1_dm3e1")
+region = Rect2(48, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71f28"]
+atlas = ExtResource("1_dm3e1")
+region = Rect2(64, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0fywp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj8tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpu32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb4o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmc12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71f28")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_ypta5")
+name = "Watermelon Seed"
+description = "Seed for Watey Melly"
+item_type = 1
+price = 10
+sprite_frame = SubResource("SpriteFrames_0fywp")
+inven_spriteframe = SubResource("SpriteFrames_ktvat")
+animation_resize_type = 0
+use_components = Array[ExtResource("4_fiq3g")]([])
+stage_one = 0
+stage_two = 1
+stage_three = 2
+stage_four = 3
+stage_five = 4
+stage_six = 4
+stage_seven = 4
+last_stage = 4
+current_stage = 0

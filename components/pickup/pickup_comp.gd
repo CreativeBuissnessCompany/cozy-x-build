@@ -27,8 +27,8 @@ func _ready() -> void:
 	if item.item_type == ITEM_TYPE_RESIZE:
 		self.scale = Vector2(0.5,0.5)
 	# Set SpriteFrame ...
-	if item.sprite_frame:
-		animated_sprite2d.sprite_frames = item.sprite_frame
+	if item.inven_spriteframe:
+		animated_sprite2d.sprite_frames = item.inven_spriteframe
 	# Add child ...
 	add_child(animated_sprite2d)
 

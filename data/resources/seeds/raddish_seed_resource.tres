@@ -1,9 +1,25 @@
-[gd_resource type="Resource" script_class="Item" load_steps=11 format=3 uid="uid://cca773myvhb44"]
+[gd_resource type="Resource" script_class="Item" load_steps=14 format=3 uid="uid://cca773myvhb44"]
 
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_b0jlw"]
+[ext_resource type="Texture2D" uid="uid://b2p26wk75owqs" path="res://entities/items/tools/seeds/crops_01_17_25.png" id="1_ogs3m"]
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_ygirr"]
 [ext_resource type="Texture2D" uid="uid://2rysbyde7xnn" path="res://entities/items/tools/seeds/crops_ingame_11_12_Edited.png" id="3_5qsd0"]
 [ext_resource type="Script" path="res://components/use/use_component.gd" id="4_ilpl7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tvvm"]
+atlas = ExtResource("1_ogs3m")
+region = Rect2(96, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mtxb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tvvm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfjxv"]
 atlas = ExtResource("1_b0jlw")
@@ -55,6 +71,7 @@ description = "The second cheapest crop you can buy, Better than 'peas, But grow
 item_type = 1
 price = 0
 sprite_frame = SubResource("SpriteFrames_jfyjn")
+inven_spriteframe = SubResource("SpriteFrames_mtxb4")
 animation_resize_type = 1
 use_components = Array[ExtResource("4_ilpl7")]([])
 stage_one = 0

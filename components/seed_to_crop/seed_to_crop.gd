@@ -105,12 +105,10 @@ func _on_next_day():
 ## check_if_watered(),current_day = TimeTracker.day, 
 ## advance_stage(days_since_planted), set_crop_animation()
 func set_crop_data(_item_data):
-#	print_debug(" set_crop_data in seed_to_crop")
 	item_data = _item_data
 	day_planted = time_tracker.day
 	stages_set(item_data) # Grabbed from item_data
-#	check_for_crop_data() # Setting Vars from CropData... NOTE Delete ????
-	# Do math for days planted .... # Also ...advance days_watered ...
+	# Do math for days planted .... # Also ...advance days_watered ... 
 	check_if_watered()
 	current_day = time_tracker.day # NOTE Always after check_if_watered
 	advance_stage(days_watered)

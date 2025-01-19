@@ -1,8 +1,24 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://biutgknunyp1u"]
+[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://biutgknunyp1u"]
 
+[ext_resource type="Texture2D" uid="uid://b2p26wk75owqs" path="res://entities/items/tools/seeds/crops_01_17_25.png" id="1_3vflq"]
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_f16po"]
 [ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="2_d72bs"]
 [ext_resource type="Script" path="res://components/use/use_component.gd" id="3_t6lur"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ear6i"]
+atlas = ExtResource("1_3vflq")
+region = Rect2(80, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_plor8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ear6i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdb1l"]
 atlas = ExtResource("2_d72bs")
@@ -26,6 +42,7 @@ description = "Only good with tacos ...s"
 item_type = 0
 price = 20
 sprite_frame = SubResource("SpriteFrames_13pyc")
+inven_spriteframe = SubResource("SpriteFrames_plor8")
 animation_resize_type = 0
 use_components = Array[ExtResource("3_t6lur")]([])
 stage_one = 0

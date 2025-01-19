@@ -58,7 +58,7 @@ func set_item(item):
 
 
 func display(item:Item):
-	texture_rect.texture = item.sprite_frame.get_frame_texture("default", 0)
+	texture_rect.texture = item.inven_spriteframe.get_frame_texture("default", 0)
 	
 
 # Inventory ...

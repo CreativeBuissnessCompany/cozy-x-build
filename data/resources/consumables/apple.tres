@@ -1,8 +1,23 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bcuhffno36qld"]
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://bcuhffno36qld"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_2hxjl"]
 [ext_resource type="Texture2D" uid="uid://bj4weai7yes1k" path="res://entities/items/consumables/fruits/apple/art/Apple02.png" id="2_26skb"]
 [ext_resource type="Script" path="res://components/use/use_component.gd" id="3_7gmxs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reui0"]
+atlas = ExtResource("2_26skb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i74pk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reui0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5oasv"]
 animations = [{
@@ -28,6 +43,7 @@ Yup, Love me some [wave amp=25.0 freq=3.0 connected=1] [color=firebrick]Apple[/c
 item_type = 2
 price = 4
 sprite_frame = SubResource("SpriteFrames_5oasv")
+inven_spriteframe = SubResource("SpriteFrames_i74pk")
 animation_resize_type = 0
 use_components = Array[ExtResource("3_7gmxs")]([SubResource("Resource_ootg0")])
 stage_one = 0

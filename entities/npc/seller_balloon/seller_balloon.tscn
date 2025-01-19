@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfpo6k55cj57n"]
+
+[ext_resource type="Script" path="res://entities/npc/classes/npc.gd" id="1_ppnoa"]
+[ext_resource type="Resource" uid="uid://b2oh6xim2s1m6" path="res://components/quest_manager/quests/quest_01.tres" id="2_06vxf"]
+[ext_resource type="Resource" path="res://dialog_customs/characters/old_guy.dch" id="3_8plep"]
+[ext_resource type="Texture2D" uid="uid://b1sw6pml3040q" path="res://entities/npc/seller_balloon/airballoon-character.png" id="4_iy87g"]
+[ext_resource type="PackedScene" uid="uid://8hixi0ctiddt" path="res://components/interactable/interactable.tscn" id="5_34i2u"]
+[ext_resource type="Script" path="res://components/interactions/interaction_dialog.gd" id="6_2dgey"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/timeline.gd" id="7_mjdrv"]
+[ext_resource type="Resource" path="res://timelines/timeline_01.dtl" id="8_attes"]
+[ext_resource type="Resource" path="res://dialog_customs/timelines/day_01/old_guy_01.dtl" id="9_ef7tl"]
+
+[node name="SellerBalloon" type="Node2D"]
+script = ExtResource("1_ppnoa")
+npc_quest = ExtResource("2_06vxf")
+dialogic_character_resource = ExtResource("3_8plep")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -25)
+texture = ExtResource("4_iy87g")
+
+[node name="Interactable" parent="." node_paths=PackedStringArray("interaction_to_run") instance=ExtResource("5_34i2u")]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(0, -25)
+interaction_to_run = NodePath("InteractionDialog")
+
+[node name="InteractionDialog" type="Node" parent="Interactable"]
+script = ExtResource("6_2dgey")
+timelines = Array[ExtResource("7_mjdrv")]([ExtResource("8_attes"), ExtResource("9_ef7tl")])
+selected = 1
+
+[node name="Marker2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(17, -23)

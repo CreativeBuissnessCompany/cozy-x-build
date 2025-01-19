@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://c1t2o5xyrom3b"]
+[gd_scene load_steps=43 format=4 uid="uid://c1t2o5xyrom3b"]
 
 [ext_resource type="Script" path="res://locations/farm/farm.gd" id="1_slb32"]
 [ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://locations/farm/Art/farm_tileset.tres" id="2_f15kg"]
@@ -36,7 +36,9 @@
 [ext_resource type="PackedScene" uid="uid://vpl1uj3apooc" path="res://entities/items/consumables/all_pickups/pouch_pickup.tscn" id="36_yhkcn"]
 [ext_resource type="PackedScene" uid="uid://ba56li1xoteso" path="res://entities/npc/old_guy/old_guy.tscn" id="37_47rwm"]
 [ext_resource type="PackedScene" uid="uid://csfp70arlpipg" path="res://entities/items/consumables/all_pickups/watering_can_pickup.tscn" id="37_k2ykm"]
+[ext_resource type="PackedScene" uid="uid://b566a22laaeuw" path="res://entities/items/consumables/from_seed_pickups/watermelon_pickup.tscn" id="37_tdqlf"]
 [ext_resource type="PackedScene" uid="uid://bod382lpid4lc" path="res://entities/items/consumables/all_pickups/hoe_pickup.tscn" id="37_yve7i"]
+[ext_resource type="PackedScene" uid="uid://dgawdqp8vp7sc" path="res://entities/items/consumables/all_pickups/watermelon_seed_pickup.tscn" id="38_ta46f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_colm4"]
 shader = ExtResource("23_1d8wk")
@@ -773,6 +775,12 @@ position = Vector2(-256.763, -212.994)
 
 [node name="Pouch" parent="PickUps" instance=ExtResource("36_yhkcn")]
 position = Vector2(245.32, 338.208)
+
+[node name="WatermelonPickup" parent="PickUps" instance=ExtResource("37_tdqlf")]
+position = Vector2(401.96, -54.8381)
+
+[node name="WatermelonSeed" parent="PickUps" instance=ExtResource("38_ta46f")]
+position = Vector2(228.368, -49.1366)
 
 [node name="OldGuy" parent="." instance=ExtResource("37_47rwm")]
 position = Vector2(79, -103)

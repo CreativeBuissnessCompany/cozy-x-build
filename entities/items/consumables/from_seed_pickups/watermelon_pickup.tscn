@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b566a22laaeuw"]
+
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_kwn5j"]
+[ext_resource type="Resource" uid="uid://uefit4bbj6nw" path="res://data/resources/consumables/watermelon_resource.tres" id="2_sknps"]
+
+[node name="WatermelonPickup" instance=ExtResource("1_kwn5j")]
+z_as_relative = false
+item = ExtResource("2_sknps")

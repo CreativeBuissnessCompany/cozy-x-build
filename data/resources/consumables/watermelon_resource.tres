@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://uefit4bbj6nw"]
+
+[ext_resource type="Texture2D" uid="uid://b2p26wk75owqs" path="res://entities/items/tools/seeds/crops_01_17_25.png" id="1_y6gk3"]
+[ext_resource type="Script" path="res://data/models/item.gd" id="2_2p4c0"]
+[ext_resource type="Script" path="res://components/use/use_component.gd" id="3_cge7t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7k1n"]
+atlas = ExtResource("1_y6gk3")
+region = Rect2(80, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1j7b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7k1n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_2p4c0")
+name = "Watermelon"
+description = "Delicious etc etc etc"
+item_type = 0
+price = 20
+inven_spriteframe = SubResource("SpriteFrames_n1j7b")
+animation_resize_type = 0
+use_components = Array[ExtResource("3_cge7t")]([])
+stage_one = 0
+stage_two = 0
+stage_three = 0
+stage_four = 0
+stage_five = 0
+stage_six = 0
+stage_seven = 0
+last_stage = 0
+current_stage = 0

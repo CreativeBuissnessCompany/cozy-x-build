@@ -1,8 +1,23 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://bf15tuw54hbkg"]
+[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://bf15tuw54hbkg"]
 
 [ext_resource type="Script" path="res://data/models/item.gd" id="1_2h8i2"]
 [ext_resource type="Texture2D" uid="uid://c1rm7ftg2gdqi" path="res://entities/items/tools/art/tools.png" id="2_0pkgu"]
 [ext_resource type="Script" path="res://components/use/use_component.gd" id="3_psmxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nulhn"]
+atlas = ExtResource("2_0pkgu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ip83h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nulhn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_efilu"]
 atlas = ExtResource("2_0pkgu")
@@ -31,6 +46,7 @@ description = "A Hoe, For Tillin'"
 item_type = 3
 price = 4
 sprite_frame = SubResource("SpriteFrames_4win2")
+inven_spriteframe = SubResource("SpriteFrames_ip83h")
 animation_resize_type = 0
 use_components = Array[ExtResource("3_psmxa")]([SubResource("Resource_kc7f5")])
 stage_one = 0
