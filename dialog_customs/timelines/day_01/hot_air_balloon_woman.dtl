@@ -1,0 +1,12 @@
+if {quest_complete} == true:
+	hot_air_balloon_seller: You actually did it! Sick !!! 
+	do Signalbus.on_quest_completed()
+else:
+	hot_air_balloon_seller: Hello !!!\
+Can ya do me a big flavor ?
+	- Maybe ...
+		hot_air_balloon_seller: Fuck yea !!!
+		do Signalbus.on_quest_given()
+		set {quest_given} = true
+	- Nehh ...
+		hot_air_balloon_seller: Well, Fuck off then! 

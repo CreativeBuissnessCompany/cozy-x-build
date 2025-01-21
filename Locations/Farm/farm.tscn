@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://c1t2o5xyrom3b"]
+[gd_scene load_steps=45 format=4 uid="uid://c1t2o5xyrom3b"]
 
 [ext_resource type="Script" path="res://locations/farm/farm.gd" id="1_slb32"]
 [ext_resource type="TileSet" uid="uid://mhfdim12khwl" path="res://locations/farm/Art/farm_tileset.tres" id="2_f15kg"]
@@ -34,11 +34,13 @@
 [ext_resource type="PackedScene" uid="uid://dqg55wljmotdt" path="res://entities/items/consumables/all_pickups/tomato_pickup.tscn" id="35_oc7ws"]
 [ext_resource type="PackedScene" uid="uid://dps80idljpcuw" path="res://entities/items/consumables/all_pickups/apple_pickup.tscn" id="35_waiih"]
 [ext_resource type="PackedScene" uid="uid://vpl1uj3apooc" path="res://entities/items/consumables/all_pickups/pouch_pickup.tscn" id="36_yhkcn"]
-[ext_resource type="PackedScene" uid="uid://ba56li1xoteso" path="res://entities/npc/old_guy/old_guy.tscn" id="37_47rwm"]
 [ext_resource type="PackedScene" uid="uid://csfp70arlpipg" path="res://entities/items/consumables/all_pickups/watering_can_pickup.tscn" id="37_k2ykm"]
 [ext_resource type="PackedScene" uid="uid://b566a22laaeuw" path="res://entities/items/consumables/from_seed_pickups/watermelon_pickup.tscn" id="37_tdqlf"]
 [ext_resource type="PackedScene" uid="uid://bod382lpid4lc" path="res://entities/items/consumables/all_pickups/hoe_pickup.tscn" id="37_yve7i"]
 [ext_resource type="PackedScene" uid="uid://dgawdqp8vp7sc" path="res://entities/items/consumables/all_pickups/watermelon_seed_pickup.tscn" id="38_ta46f"]
+[ext_resource type="PackedScene" uid="uid://vk4xapda1pqp" path="res://entities/items/consumables/all_pickups/onion_seed_pickup.tscn" id="39_lkcbm"]
+[ext_resource type="PackedScene" uid="uid://chqg415c6lf40" path="res://entities/items/consumables/from_seed_pickups/onion_pickup.tscn" id="40_q0478"]
+[ext_resource type="PackedScene" uid="uid://cfpo6k55cj57n" path="res://entities/npc/seller_balloon/seller_balloon.tscn" id="41_tk0q1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_colm4"]
 shader = ExtResource("23_1d8wk")
@@ -723,7 +725,7 @@ metadata/_edit_lock_ = true
 position = Vector2(-120.122, 38.4701)
 
 [node name="debug" type="Marker2D" parent="EntranceMarkers"]
-position = Vector2(25.1884, 297.257)
+position = Vector2(-384.711, 156.182)
 
 [node name="ObjectsWithUI" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -777,10 +779,16 @@ position = Vector2(-256.763, -212.994)
 position = Vector2(245.32, 338.208)
 
 [node name="WatermelonPickup" parent="PickUps" instance=ExtResource("37_tdqlf")]
-position = Vector2(401.96, -54.8381)
+position = Vector2(-189.776, -141.121)
 
 [node name="WatermelonSeed" parent="PickUps" instance=ExtResource("38_ta46f")]
 position = Vector2(228.368, -49.1366)
 
-[node name="OldGuy" parent="." instance=ExtResource("37_47rwm")]
-position = Vector2(79, -103)
+[node name="OnionSeed" parent="PickUps" instance=ExtResource("39_lkcbm")]
+position = Vector2(283.694, 138.265)
+
+[node name="OnionPickup" parent="PickUps" instance=ExtResource("40_q0478")]
+position = Vector2(165.204, 192.164)
+
+[node name="SellerBalloon" parent="." instance=ExtResource("41_tk0q1")]
+position = Vector2(80, -103)

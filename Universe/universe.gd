@@ -21,6 +21,8 @@ var entrance_name: String = "any"
 
 #                                               Script_Start
 func _ready() -> void:
+	# Sets itself in ... Utility Autoload ...
+	Utility.universe = self
 	
 	# Give Player Node Referece to Scene_Manager
 	SceneManager.player = player

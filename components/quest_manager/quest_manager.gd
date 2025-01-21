@@ -9,6 +9,8 @@ var objectives: Array[Objective]
 
 var database: Database = load("res://my_databases/quests.gddb")
 
+var quest_notification: PackedScene = preload("res://components/quest_manager/quest_notification/quest_notification.tscn")
+
 
 
 func _ready() -> void: # Step 1 ....
@@ -28,8 +30,12 @@ func give_reward():
 # Step 12 .... From Quest
 func _on_quest_completed():
 	
-	Utility.cozy_notification_spawner(" Quest Completed, Go talk to that guy .....",\
-	 SceneManager.player,get_parent().get_parent())
+	#Utility.cozy_notification_spawner(" Quest Completed, Go talk to that guy .....",\
+	 #SceneManager.player,get_parent().get_parent())
+	
+	var instance_quest_notify = quest_notification.instantiate()
+	self.add_child(instance_quest_notify)
+	
 
 	give_reward()
 	print(" Quest Completed, Go talk to that guy .....")

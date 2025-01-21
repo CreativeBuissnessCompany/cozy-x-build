@@ -1,24 +1,104 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfpo6k55cj57n"]
+[gd_scene load_steps=21 format=3 uid="uid://cfpo6k55cj57n"]
 
 [ext_resource type="Script" path="res://entities/npc/classes/npc.gd" id="1_ppnoa"]
-[ext_resource type="Resource" uid="uid://b2oh6xim2s1m6" path="res://components/quest_manager/quests/quest_01.tres" id="2_06vxf"]
-[ext_resource type="Resource" path="res://dialog_customs/characters/old_guy.dch" id="3_8plep"]
-[ext_resource type="Texture2D" uid="uid://b1sw6pml3040q" path="res://entities/npc/seller_balloon/airballoon-character.png" id="4_iy87g"]
+[ext_resource type="Resource" uid="uid://cxb8y23qdcdh6" path="res://components/quest_manager/quests/seller_quest_01.tres" id="2_kl2ic"]
+[ext_resource type="Resource" path="res://dialog_customs/characters/hot_air_balloon_seller.dch" id="3_ejwxr"]
+[ext_resource type="Texture2D" uid="uid://bbi73pgq3imx0" path="res://entities/npc/seller_balloon/idle animation-Sheet.png" id="4_ec3fl"]
 [ext_resource type="PackedScene" uid="uid://8hixi0ctiddt" path="res://components/interactable/interactable.tscn" id="5_34i2u"]
 [ext_resource type="Script" path="res://components/interactions/interaction_dialog.gd" id="6_2dgey"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/timeline.gd" id="7_mjdrv"]
 [ext_resource type="Resource" path="res://timelines/timeline_01.dtl" id="8_attes"]
-[ext_resource type="Resource" path="res://dialog_customs/timelines/day_01/old_guy_01.dtl" id="9_ef7tl"]
+[ext_resource type="Resource" path="res://dialog_customs/timelines/day_01/hot_air_balloon_woman.dtl" id="9_dw2dh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6cxh"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab6cd"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvruc"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uffmf"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv4t5"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu0ai"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmlro"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uygxw"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jenv2"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(256, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvb7j"]
+atlas = ExtResource("4_ec3fl")
+region = Rect2(288, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_620g1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6cxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab6cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvruc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uffmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv4t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu0ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmlro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uygxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jenv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvb7j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="SellerBalloon" type="Node2D"]
 script = ExtResource("1_ppnoa")
-npc_quest = ExtResource("2_06vxf")
-dialogic_character_resource = ExtResource("3_8plep")
+npc_quest = ExtResource("2_kl2ic")
+dialogic_character_resource = ExtResource("3_ejwxr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -25)
-texture = ExtResource("4_iy87g")
+sprite_frames = SubResource("SpriteFrames_620g1")
+autoplay = "default"
+frame_progress = 0.761618
 
 [node name="Interactable" parent="." node_paths=PackedStringArray("interaction_to_run") instance=ExtResource("5_34i2u")]
 unique_name_in_owner = true
@@ -28,7 +108,7 @@ interaction_to_run = NodePath("InteractionDialog")
 
 [node name="InteractionDialog" type="Node" parent="Interactable"]
 script = ExtResource("6_2dgey")
-timelines = Array[ExtResource("7_mjdrv")]([ExtResource("8_attes"), ExtResource("9_ef7tl")])
+timelines = Array[ExtResource("7_mjdrv")]([ExtResource("8_attes"), ExtResource("9_dw2dh")])
 selected = 1
 
 [node name="Marker2D" type="Marker2D" parent="."]

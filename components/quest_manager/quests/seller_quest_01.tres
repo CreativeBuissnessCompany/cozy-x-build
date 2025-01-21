@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=14 format=3 uid="uid://cxb8y23qdcdh6"]
+
+[ext_resource type="Script" path="res://components/quest_manager/base_objective/objective.gd" id="1_tk12m"]
+[ext_resource type="Resource" uid="uid://dvmgrrvvdh6ii" path="res://data/resources/consumables/onion_resource.tres" id="2_ufcie"]
+[ext_resource type="Script" path="res://components/quest_manager/objectives/retrieve_objective.gd" id="3_oy6ic"]
+[ext_resource type="Resource" uid="uid://uefit4bbj6nw" path="res://data/resources/consumables/watermelon_resource.tres" id="4_7l6gd"]
+[ext_resource type="Script" path="res://components/quest_manager/base_reward/reward.gd" id="5_q180k"]
+[ext_resource type="Script" path="res://components/quest_manager/rewards/money_reward.gd" id="6_88cdp"]
+[ext_resource type="Resource" uid="uid://c2rr865bmxad1" path="res://data/resources/misc/can.tres" id="7_5a4ny"]
+[ext_resource type="Script" path="res://components/quest_manager/rewards/item_reward.gd" id="8_7vqur"]
+[ext_resource type="Script" path="res://components/quest_manager/base_quest/quest.gd" id="9_m4wkd"]
+
+[sub_resource type="Resource" id="Resource_hry20"]
+script = ExtResource("3_oy6ic")
+item = ExtResource("2_ufcie")
+
+[sub_resource type="Resource" id="Resource_dix2f"]
+script = ExtResource("3_oy6ic")
+item = ExtResource("4_7l6gd")
+
+[sub_resource type="Resource" id="Resource_twpr5"]
+script = ExtResource("6_88cdp")
+reward = 20
+
+[sub_resource type="Resource" id="Resource_wg7a8"]
+script = ExtResource("8_7vqur")
+reward = ExtResource("7_5a4ny")
+
+[resource]
+resource_name = "seller_quest_01"
+script = ExtResource("9_m4wkd")
+quest_name = "seller_quest_01"
+description = "A seller type quest"
+objectives = Array[ExtResource("1_tk12m")]([SubResource("Resource_hry20"), SubResource("Resource_dix2f")])
+rewards = Array[ExtResource("5_q180k")]([SubResource("Resource_twpr5"), SubResource("Resource_wg7a8")])

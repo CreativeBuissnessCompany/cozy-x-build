@@ -5,7 +5,7 @@ extends Resource
 
 
 enum ITEM_TYPE {DEFAULT, SEED, RESIZE, TOOL}
-enum ANIMATION_RESIZE_TYPE {DEFAULT, RESIZE_16_TALL}
+enum ANIMATION_RESIZE_TYPE {DEFAULT, RESIZE_16_TALL, RESIZE_1_1_1_2_2}
 
 @export var name:String
 @export_multiline var description: String = ""
@@ -50,6 +50,10 @@ func animation_resize_check() -> String:
 		
 		ANIMATION_RESIZE_TYPE.RESIZE_16_TALL:
 			animation_name = "resize_16_tall"
+	
+		ANIMATION_RESIZE_TYPE.RESIZE_1_1_1_2_2:
+			animation_name = "resize_1_1_1_2_2"
+	
 	
 	
 	return animation_name

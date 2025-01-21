@@ -1,49 +1,48 @@
 [gd_scene load_steps=15 format=3 uid="uid://bf4hfc8olenw0"]
 
-[ext_resource type="Texture2D" uid="uid://epp758vql0by" path="res://entities/items/tools/seeds/crops.png" id="1_7eqit"]
 [ext_resource type="Script" path="res://components/seed_to_crop/seed_to_crop.gd" id="1_mb8ct"]
-[ext_resource type="Texture2D" uid="uid://2rysbyde7xnn" path="res://entities/items/tools/seeds/crops_ingame_11_12_Edited.png" id="2_uk6gx"]
-[ext_resource type="Resource" uid="uid://cca773myvhb44" path="res://data/resources/seeds/raddish_seed_resource.tres" id="3_1bhri"]
+[ext_resource type="Texture2D" uid="uid://b2p26wk75owqs" path="res://entities/items/tools/seeds/crops_01_17_25.png" id="1_q3ct4"]
+[ext_resource type="Resource" uid="uid://ddd3hpr503la8" path="res://data/resources/seeds/onion_seed_resource.tres" id="3_g1ord"]
 [ext_resource type="Animation" uid="uid://rp8mlp0wjw2d" path="res://entities/items/tools/seeds/greenpea/default.res" id="5_nhnhr"]
 [ext_resource type="Animation" uid="uid://cii8wi3ldks5w" path="res://entities/items/tools/seeds/raddish/default.res" id="6_k5vgh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jfjxv"]
-atlas = ExtResource("1_7eqit")
-region = Rect2(0, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj8tf"]
+atlas = ExtResource("1_q3ct4")
+region = Rect2(0, 160, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fwyjn"]
-atlas = ExtResource("2_uk6gx")
-region = Rect2(16, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpu32"]
+atlas = ExtResource("1_q3ct4")
+region = Rect2(16, 160, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jyvgv"]
-atlas = ExtResource("2_uk6gx")
-region = Rect2(32, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb4o7"]
+atlas = ExtResource("1_q3ct4")
+region = Rect2(32, 160, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5wyq1"]
-atlas = ExtResource("2_uk6gx")
-region = Rect2(48, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmc12"]
+atlas = ExtResource("1_q3ct4")
+region = Rect2(48, 160, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i7f05"]
-atlas = ExtResource("2_uk6gx")
-region = Rect2(64, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_71f28"]
+atlas = ExtResource("1_q3ct4")
+region = Rect2(64, 160, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jfyjn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_h8o07"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jfjxv")
+"texture": SubResource("AtlasTexture_kj8tf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fwyjn")
+"texture": SubResource("AtlasTexture_vpu32")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jyvgv")
+"texture": SubResource("AtlasTexture_eb4o7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5wyq1")
+"texture": SubResource("AtlasTexture_pmc12")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i7f05")
+"texture": SubResource("AtlasTexture_71f28")
 }],
 "loop": true,
 "name": &"default",
@@ -77,20 +76,50 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_sv6gv"]
+resource_name = "resize_1_1_1_2_2"
+length = 6.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-0.01, -1.79), Vector2(-0.01, -1.79), Vector2(-0.01, -10), Vector2(-0.01, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ogmy"]
 _data = {
 "RESET": SubResource("Animation_henvn"),
 "default": ExtResource("5_nhnhr"),
-"resize_16_tall": ExtResource("6_k5vgh")
+"resize_16_tall": ExtResource("6_k5vgh"),
+"resize_1_1_1_2_2": SubResource("Animation_sv6gv")
 }
 
 [node name="SeedToCrop" type="AnimatedSprite2D"]
 y_sort_enabled = true
 position = Vector2(0, 2.6)
-sprite_frames = SubResource("SpriteFrames_jfyjn")
+sprite_frames = SubResource("SpriteFrames_h8o07")
 offset = Vector2(0.19, -5.81)
 script = ExtResource("1_mb8ct")
-item_data = ExtResource("3_1bhri")
+item_data = ExtResource("3_g1ord")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

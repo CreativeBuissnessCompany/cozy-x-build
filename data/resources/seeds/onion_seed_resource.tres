@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="Item" load_steps=12 format=3 uid="uid://ddd3hpr503la8"]
+
+[ext_resource type="Texture2D" uid="uid://b2p26wk75owqs" path="res://entities/items/tools/seeds/crops_01_17_25.png" id="1_mq1p6"]
+[ext_resource type="Script" path="res://data/models/item.gd" id="2_07in1"]
+[ext_resource type="Script" path="res://components/use/use_component.gd" id="4_7uyw7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg8cu"]
+atlas = ExtResource("1_mq1p6")
+region = Rect2(96, 208, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_stecb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg8cu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4nsh"]
+atlas = ExtResource("1_mq1p6")
+region = Rect2(0, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq7jj"]
+atlas = ExtResource("1_mq1p6")
+region = Rect2(16, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18m36"]
+atlas = ExtResource("1_mq1p6")
+region = Rect2(32, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2pb4"]
+atlas = ExtResource("1_mq1p6")
+region = Rect2(48, 192, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdxra"]
+atlas = ExtResource("1_mq1p6")
+region = Rect2(64, 192, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k3tdg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4nsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq7jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18m36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2pb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdxra")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_07in1")
+name = "Onion Seed"
+description = "I'm 'jus a lil onion..... seed ..."
+item_type = 1
+price = 5
+sprite_frame = SubResource("SpriteFrames_k3tdg")
+inven_spriteframe = SubResource("SpriteFrames_stecb")
+animation_resize_type = 2
+use_components = Array[ExtResource("4_7uyw7")]([])
+stage_one = 0
+stage_two = 1
+stage_three = 2
+stage_four = 3
+stage_five = 4
+stage_six = 4
+stage_seven = 4
+last_stage = 4
+current_stage = 0

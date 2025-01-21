@@ -1,0 +1,135 @@
+Godot Engine v4.3.stable.official.77dcf97d8 - https://godotengine.org
+Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple M1
+
+on_currency_change in animated_coins
+on_currency_change in animated_coins
+Deleteing 
+Closing Inventory
+Seed
+1
+advance_stage() is done  current stage is ..0
+FARMING_MODES.WATERING
+Watered Successfully
+Farm:<Node2D#113598532178>
+EXIT TREE Current Stage is ...  0
+   At: res://components/seed_to_crop/seed_to_crop.gd:245:_exit_tree()
+Day Changed
+
+			 Day  2
+
+This is the fucking day of the week .....
+Monday
+CropData.crop_array.size is ... 
+2
+
+advance_stage() is done  current stage is ..1
+days_watered
+1
+   At: res://components/seed_to_crop/seed_to_crop.gd:98:_on_next_day()
+CropData.crop_array.size is ... 
+2
+
+advance_stage() is done  current stage is ..1
+days_watered
+1
+   At: res://components/seed_to_crop/seed_to_crop.gd:98:_on_next_day()
+Watered Successfully
+Farm:<Node2D#113598532178>
+EXIT TREE Current Stage is ...  1
+   At: res://components/seed_to_crop/seed_to_crop.gd:245:_exit_tree()
+Day Changed
+
+			 Day  3
+
+This is the fucking day of the week .....
+Tuesday
+CropData.crop_array.size is ... 
+1
+
+advance_stage() is done  current stage is ..2
+days_watered
+2
+   At: res://components/seed_to_crop/seed_to_crop.gd:98:_on_next_day()
+Watered Successfully
+Farm:<Node2D#113598532178>
+EXIT TREE Current Stage is ...  2
+   At: res://components/seed_to_crop/seed_to_crop.gd:245:_exit_tree()
+Day Changed
+
+			 Day  4
+
+This is the fucking day of the week .....
+Wednesday
+CropData.crop_array.size is ... 
+1
+
+Wild Card Statement 
+advance_stage() is done  current stage is ..2
+days_watered
+3
+   At: res://components/seed_to_crop/seed_to_crop.gd:98:_on_next_day()
+Watered Successfully
+Farm:<Node2D#113598532178>
+EXIT TREE Current Stage is ...  2
+   At: res://components/seed_to_crop/seed_to_crop.gd:245:_exit_tree()
+Day Changed
+
+			 Day  5
+
+This is the fucking day of the week .....
+Thursday
+CropData.crop_array.size is ... 
+1
+
+advance_stage() is done  current stage is ..4
+days_watered
+4
+   At: res://components/seed_to_crop/seed_to_crop.gd:98:_on_next_day()
+Watered Successfully
+Farm:<Node2D#113598532178>
+EXIT TREE Current Stage is ...  4
+   At: res://components/seed_to_crop/seed_to_crop.gd:245:_exit_tree()
+Day Changed
+
+			 Day  6
+
+This is the fucking day of the week .....
+Friday
+CropData.crop_array.size is ... 
+1
+
+Wild Card Statement 
+advance_stage() is done  current stage is ..4
+days_watered
+5
+   At: res://components/seed_to_crop/seed_to_crop.gd:98:_on_next_day()
+Watered Successfully
+Farm:<Node2D#113598532178>
+EXIT TREE Current Stage is ...  4
+   At: res://components/seed_to_crop/seed_to_crop.gd:245:_exit_tree()
+Day Changed
+
+			 Day  7
+
+This is the fucking day of the week .....
+Saturday
+CropData.crop_array.size is ... 
+1
+
+advance_stage() is done  current stage is ..6
+Seed to crop is setting ready_to_harvest = true ....
+days_watered
+6
+   At: res://components/seed_to_crop/seed_to_crop.gd:98:_on_next_day()
+Harvest State Toggled
+Player is trying to Harvest ...
+ No CropData Update  
+
+ Grown
+
+Deleteing 
+Closing Inventory
+Deleteing 
+Closing Inventory
+Deleteing 
+Closing Inventory

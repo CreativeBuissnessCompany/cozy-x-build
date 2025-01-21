@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://vk4xapda1pqp"]
+
+[ext_resource type="PackedScene" uid="uid://blga528vftp33" path="res://components/pickup/pickup_comp.tscn" id="1_u8v1m"]
+[ext_resource type="Resource" uid="uid://ddd3hpr503la8" path="res://data/resources/seeds/onion_seed_resource.tres" id="2_twnhb"]
+
+[node name="OnionSeed" instance=ExtResource("1_u8v1m")]
+z_as_relative = false
+item = ExtResource("2_twnhb")

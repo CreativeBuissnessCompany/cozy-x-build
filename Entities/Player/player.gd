@@ -101,4 +101,3 @@ func quit_game()->void:
 	 
 	if Input.is_action_just_released("quit_game"):
 		get_tree().quit() 
-

@@ -29,7 +29,7 @@ func interact():
 func dialogic_variable():
 	# Check the thing has an npc_quest
 	if parent.npc_quest:
-		Dialogic.VAR.quest_name = parent.npc_quest.quest_name
+		Dialogic.VAR.quest_name = parent.npc_quest.resource_name
 		print("Loojing good joker")
 		print(Dialogic.VAR.quest_name)
 		

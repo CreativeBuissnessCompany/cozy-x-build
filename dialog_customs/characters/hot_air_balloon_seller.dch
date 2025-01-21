@@ -1,0 +1,29 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 0.631373, 0.235294, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "bubble_style_01"
+},
+"default_portrait": "Default",
+"description": "Weirdo kinda ...",
+"display_name": "Hot Air Balloon Woman",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"Default": {
+"export_overrides": {
+"image": "\"res://entities/npc/seller_balloon/airballoon-character.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 1.0
+}

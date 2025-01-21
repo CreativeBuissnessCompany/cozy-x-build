@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://dvmgrrvvdh6ii"]
+
+[ext_resource type="Texture2D" uid="uid://b2p26wk75owqs" path="res://entities/items/tools/seeds/crops_01_17_25.png" id="1_qd583"]
+[ext_resource type="Script" path="res://data/models/item.gd" id="2_5tuc1"]
+[ext_resource type="Script" path="res://components/use/use_component.gd" id="3_xxo1w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g22yf"]
+atlas = ExtResource("1_qd583")
+region = Rect2(80, 208, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1knc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g22yf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_5tuc1")
+name = "Onion"
+description = "\"I'm 'jus 'bein onion\"
+- Future"
+item_type = 0
+price = 10
+inven_spriteframe = SubResource("SpriteFrames_t1knc")
+animation_resize_type = 0
+use_components = Array[ExtResource("3_xxo1w")]([])
+stage_one = 0
+stage_two = 0
+stage_three = 0
+stage_four = 0
+stage_five = 0
+stage_six = 0
+stage_seven = 0
+last_stage = 0
+current_stage = 0

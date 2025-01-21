@@ -41,15 +41,20 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [debug]
 
+file_logging/enable_file_logging=true
+file_logging/log_path="/Users/kennethfee/Godot Logs/godot.log"
+file_logging/max_log_files=10
 gdscript/warnings/unused_signal=0
 
 [dialogic]
 
 directories/dch_directory={
+"hot_air_balloon_seller": "res://dialog_customs/characters/hot_air_balloon_seller.dch",
 "old_guy": "res://dialog_customs/characters/old_guy.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"hot_air_balloon_woman": "res://dialog_customs/timelines/day_01/hot_air_balloon_woman.dtl",
 "old_guy_01": "res://dialog_customs/timelines/day_01/old_guy_01.dtl",
 "timeline_01": "res://timelines/timeline_01.dtl"
 }

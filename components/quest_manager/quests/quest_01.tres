@@ -27,6 +27,7 @@ script = ExtResource("8_d0w1d")
 reward = ExtResource("7_ntyfk")
 
 [resource]
+resource_name = "quest_01"
 script = ExtResource("3_3mat7")
 quest_name = "quest_01"
 description = "A Reallly fun quest "

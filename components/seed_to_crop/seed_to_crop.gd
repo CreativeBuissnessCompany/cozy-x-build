@@ -1,4 +1,4 @@
-#@tool                                      seed_to_crop.gd 
+
 class_name SeedToCrop extends AnimatedSprite2D
 
 

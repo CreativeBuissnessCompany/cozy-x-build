@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvhyvjesv7ust"]
+
+[ext_resource type="Script" path="res://components/quest_manager/quest_notification/quest_notification.gd" id="1_sxng2"]
+[ext_resource type="Shader" path="res://components/quest_manager/quest_notification/wave.gdshader" id="1_vwawv"]
+[ext_resource type="Texture2D" uid="uid://2vjk3mo3nbrw" path="res://components/quest_manager/quest_notification/quest-notif-UI.png" id="1_xeot2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bilu"]
+shader = ExtResource("1_vwawv")
+
+[sub_resource type="Gradient" id="Gradient_3vhws"]
+offsets = PackedFloat32Array(0, 0.126214, 0.521036, 1)
+colors = PackedColorArray(0.0240662, 0, 0.671767, 1, 1, 0, 0, 1, 0.929412, 0.803922, 0, 1, 0, 1, 0.443137, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t54uw"]
+gradient = SubResource("Gradient_3vhws")
+width = 64
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s8bjm"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(15, 10.28, 1)
+angle_min = 370.6
+angle_max = 370.6
+direction = Vector3(10, -10, 0)
+spread = 22.974
+initial_velocity_min = 60.53
+initial_velocity_max = 237.14
+gravity = Vector3(100, -98, 0)
+color_ramp = SubResource("GradientTexture1D_t54uw")
+turbulence_noise_strength = 0.0
+turbulence_noise_scale = 7.051
+turbulence_noise_speed = Vector3(11.34, 17.97, 0)
+
+[sub_resource type="Animation" id="Animation_xl31i"]
+resource_name = "default"
+length = 5.0
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Holder:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5, 3.9, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 0.659754),
+"update": 0,
+"values": [Vector2(-240, 0), Vector2(-50, 0), Vector2(-60, 0), Vector2(0, 0), Vector2(280, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bbku5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Holder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-640, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jtfmn"]
+_data = {
+"RESET": SubResource("Animation_bbku5"),
+"default": SubResource("Animation_xl31i")
+}
+
+[node name="QuestNotification" type="CanvasLayer"]
+script = ExtResource("1_sxng2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(240, 160)
+
+[node name="Holder" type="CenterContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_right = -640.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Holder"]
+material = SubResource("ShaderMaterial_8bilu")
+layout_mode = 2
+texture = ExtResource("1_xeot2")
+
+[node name="Container" type="Control" parent="Control/Holder/TextureRect"]
+layout_mode = 1
+anchor_left = 0.173611
+anchor_top = 0.265625
+anchor_right = 0.826389
+anchor_bottom = 0.640625
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Holder/TextureRect/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+text = "[center][wave amp=10.0 freq=3.0 ]Quest Complete ![/wave][center]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control"]
+position = Vector2(121, 263)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_s8bjm")
+trail_enabled = true
+trail_lifetime = 0.03
+trail_sections = 2
+trail_section_subdivisions = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jtfmn")
+}
+autoplay = "default"

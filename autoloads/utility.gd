@@ -3,10 +3,12 @@ extends Node
 
 var entrance_marker: String = "any"
 var database: Database = load("res://my_databases/seeds.gddb")
-@onready var universe: Node = get_node("../Universe") 
+# Universe sets itself
+var universe: Node 
 var cozy_notification: PackedScene = load("res://components/cozy_notification/cozy_notification.tscn") 
 var transition_circle: PackedScene = preload("res://components/transitions/transition_circle/transition_circle.tscn")
-
+# Node sets itself
+var pickups_node: Node
 
 
 
@@ -52,7 +54,7 @@ func position_randomly(_scene: PackedScene):
 	var drop_pos: Vector2 = Vector2(magic_number_for_dropping_pos * rand_x, magic_number_for_dropping_pos * rand_y)
 
 	var instanced_scene: Node2D = _scene.instantiate()
-	var pickups_node: Node      = universe.find_child("PickUps") # WARNING NOTE CHANGE UPPERCASE U ...
+
 	pickups_node.add_child(instanced_scene) # Add Child ...
 	# Move
 	instanced_scene.global_position = SceneManager.player.global_position + drop_pos
