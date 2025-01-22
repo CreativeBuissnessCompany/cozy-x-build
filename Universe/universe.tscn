@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://db4eylrann81f"]
+[gd_scene load_steps=20 format=3 uid="uid://db4eylrann81f"]
 
 [ext_resource type="Script" path="res://universe/universe.gd" id="1_lm1sa"]
 [ext_resource type="PackedScene" uid="uid://8qagl21khwcy" path="res://entities/player/player.tscn" id="2_3rlae"]
@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://fcc1qd2fx2tc" path="res://components/controls/Controls.tscn" id="11_5qn33"]
 [ext_resource type="PackedScene" uid="uid://b1u5tbb7cpvpk" path="res://components/day_button/day_button.tscn" id="12_482gc"]
 [ext_resource type="PackedScene" uid="uid://c1t2o5xyrom3b" path="res://locations/farm/farm.tscn" id="14_ke8uo"]
+[ext_resource type="Script" path="res://components/item_notification/item_notification_controller.gd" id="15_8o3df"]
 [ext_resource type="PackedScene" uid="uid://bh3gbo8iw53p5" path="res://components/currency/currency_display02.tscn" id="15_n4feo"]
+[ext_resource type="PackedScene" uid="uid://cqv7eul7lk0j4" path="res://components/item_notification/item_notification_box.tscn" id="15_uqo0i"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_wtpp2"]
 shuffle = true
@@ -157,6 +159,33 @@ offset_right = 71.0
 offset_bottom = 31.0
 grow_horizontal = 2
 text = "Quest Name"
+
+[node name="ItemNotificationController" type="VBoxContainer" parent="UIRoot/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/separation = 2
+script = ExtResource("15_8o3df")
+
+[node name="ItemNotificationBox" parent="UIRoot/HUD/ItemNotificationController" instance=ExtResource("15_uqo0i")]
+layout_mode = 2
+
+[node name="ItemNotificationBox2" parent="UIRoot/HUD/ItemNotificationController" instance=ExtResource("15_uqo0i")]
+layout_mode = 2
+
+[node name="ItemNotificationBox3" parent="UIRoot/HUD/ItemNotificationController" instance=ExtResource("15_uqo0i")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UIRoot/HUD/ItemNotificationController"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 15
 
 [node name="Player" parent="." instance=ExtResource("2_3rlae")]
 unique_name_in_owner = true

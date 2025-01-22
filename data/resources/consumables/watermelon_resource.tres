@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://data/models/item.gd" id="2_2p4c0"]
 [ext_resource type="Script" path="res://components/use/use_component.gd" id="3_cge7t"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cylap"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_trns5"]
 atlas = ExtResource("1_y6gk3")
 region = Rect2(80, 160, 16, 16)
 
@@ -12,7 +12,7 @@ region = Rect2(80, 160, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cylap")
+"texture": SubResource("AtlasTexture_trns5")
 }],
 "loop": true,
 "name": &"default",

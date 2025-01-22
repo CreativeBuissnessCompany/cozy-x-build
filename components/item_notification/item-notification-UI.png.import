@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2p26wk75owqs"
-path="res://.godot/imported/crops_01_17_25.png-4fa28c84133175ae4fa57bb22aac4db9.ctex"
+uid="uid://ds6gx1tva31s5"
+path="res://.godot/imported/item-notification-UI.png-d4fa89ba9dd27dc2d718bda1475daf01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/items/tools/seeds/crops_01_17_25.png"
-dest_files=["res://.godot/imported/crops_01_17_25.png-4fa28c84133175ae4fa57bb22aac4db9.ctex"]
+source_file="res://components/item_notification/item-notification-UI.png"
+dest_files=["res://.godot/imported/item-notification-UI.png-d4fa89ba9dd27dc2d718bda1475daf01.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

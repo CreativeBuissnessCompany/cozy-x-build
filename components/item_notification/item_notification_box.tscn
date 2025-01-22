@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqv7eul7lk0j4"]
+
+[ext_resource type="Texture2D" uid="uid://ds6gx1tva31s5" path="res://components/item_notification/item-notification-UI.png" id="1_d6arh"]
+[ext_resource type="Texture2D" uid="uid://bj4weai7yes1k" path="res://entities/items/consumables/fruits/apple/art/Apple02.png" id="2_amcrj"]
+[ext_resource type="Script" path="res://components/item_notification/item_notification_box.gd" id="2_n8ulm"]
+
+[node name="ItemNotificationBox" type="TextureRect"]
+custom_minimum_size = Vector2(112, 21.81)
+offset_right = 112.0
+offset_bottom = 30.23
+texture = ExtResource("1_d6arh")
+expand_mode = 1
+stretch_mode = 2
+script = ExtResource("2_n8ulm")
+
+[node name="Box" type="HBoxContainer" parent="."]
+offset_left = 18.0
+offset_top = 8.0
+offset_right = 102.0
+offset_bottom = 24.0
+
+[node name="Image" type="TextureRect" parent="Box"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 12)
+layout_mode = 2
+texture = ExtResource("2_amcrj")
+expand_mode = 1
+
+[node name="Margin" type="MarginContainer" parent="Box"]
+custom_minimum_size = Vector2(56, 8)
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Box/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 9
+bbcode_enabled = true
+text = "[center]Apple[/center]"
+scroll_active = false

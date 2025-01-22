@@ -43,7 +43,13 @@ signal quest_given()
 signal quest_update()
 # From Quest resource to QuestManager
 signal quest_completed()
-# From Dialogic to QuestManager
+
+# For ItemNotificationBox .....
+signal item_picked_up()
+
+
+
+
 
 
 func on_quest_given():

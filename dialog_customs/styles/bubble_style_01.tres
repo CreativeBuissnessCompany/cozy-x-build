@@ -24,11 +24,13 @@ overrides = {
 "box_wobble_speed": "0.5",
 "choices_text_color_focus": "Color(0.321569, 0.670588, 0.819608, 1)",
 "choices_text_color_hover": "Color(0, 0.345703, 0, 1)",
+"choices_text_font": "\"res://themes/fonts/Ubuntu-Regular.ttf\"",
 "choices_text_size": "8.0",
 "name_label_font_size": "10.0",
 "name_label_offset": "Vector2(-10, 10)",
 "name_label_padding": "Vector2(4, 0)",
-"text_size": "8.0"
+"normal_font": "\"res://themes/fonts/Ubuntu-Light.ttf\"",
+"text_size": "12.0"
 }
 
 [resource]

@@ -9,14 +9,14 @@ void fragment() {
 	float pixel_size_x = 1.0/float(textureSize(TEXTURE,0).x);
 	float pixel_size_y = 1.0/float(textureSize(TEXTURE,0).y);
 	vec2 pixel_size = vec2(pixel_size_x, pixel_size_y);
-	if (texture(TEXTURE, UV).a == 0.)
+	if (abs(texture(TEXTURE, UV)).a == 0.0)
 	{
 		for(float x = -width; x <= width; x++)
 		{
 			for(float y = -width; y <= width; y++)
 			{
 				vec2 pixel_offset = vec2(float(x),float(y));
-				if( texture(TEXTURE, UV+(pixel_offset*pixel_size)).a > 0.)
+				if( texture(TEXTURE, UV+(pixel_offset*pixel_size)).a > abs(0.))
 				{
 					vec4 resulting_color = outline_color;
 					float alpha_norm = (sin(TIME*flickering_speed) +1.2) *0.5;
@@ -28,6 +28,6 @@ void fragment() {
 		}
 	}else
 	{
-		COLOR.a = 0.0;
+		COLOR.a = 0.00;
 	}
 }

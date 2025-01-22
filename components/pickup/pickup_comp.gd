@@ -44,6 +44,8 @@ func _on_area_2d_body_entered(body: Player) -> void:
 	if body is Player: 
 		#print_debug("Got an %s!" % item.name)
 		body.on_item_picked_up(item)
+		#Show Notification
+		Signalbus.item_picked_up.emit(item)
 		self.queue_free()
 	else:
 		return

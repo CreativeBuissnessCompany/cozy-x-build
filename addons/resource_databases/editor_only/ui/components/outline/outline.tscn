@@ -5,8 +5,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_57wjm"]
 shader = ExtResource("1_birgp")
-shader_parameter/width = 0.75
-shader_parameter/outline_color = Color(0.643137, 0.298039, 0.396078, 1)
+shader_parameter/width = 1.0
+shader_parameter/outline_color = Color(0, 0.47451, 0.396078, 1)
 shader_parameter/flickering_speed = 4.0
 shader_parameter/minimal_flickering_alpha = null
 
